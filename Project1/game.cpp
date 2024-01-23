@@ -1,11 +1,13 @@
 #include "game.h"
 
 Game::Game() {
+	std::cout << "Constructor Game started" << std::endl;
+
 	window = nullptr;
 	renderer = nullptr;
-	screenWidth = 1280;
-	screenHeight = 720;
-	gamestate = GameState::PLAY;
+	screenWidth = 800;
+	screenHeight = 600;
+	gamestate = GameState::MENU;
 }
 
 Game::~Game() {
@@ -18,24 +20,65 @@ void Game::run() {
 }
 
 void Game::init(const char* title, int _x, int _y, int _w, int _h, Uint32 flags) {
-    SDL_Init(SDL_INIT_EVERYTHING);
-    window = SDL_CreateWindow(title, _x, _y, _w, _h, flags);
-    renderer = SDL_CreateRenderer(window, -1, 0);
+	std::cout << "start initialize Game class" << std::endl;
+
+	SDL_Init(SDL_INIT_EVERYTHING);
+	IMG_Init(IMG_INIT_JPG);
+	IMG_Init(IMG_INIT_PNG);
+	TTF_Init();
+	window = SDL_CreateWindow(title, _x, _y, _w, _h, flags);
+	renderer = SDL_CreateRenderer(window, -1, 0);
+	menu = new Menu(renderer);
+	menu->init();
+	interface = new Interface(renderer);
+	interface->init();
+	human = new Entity(renderer);
+	human->init();
 }
 
 void Game::gameLoop() {
-    while (gamestate != GameState::EXIT) {
-        handleEvents();
-    }
+	std::cout << "start gameLoop() Game class" << std::endl;
+	while (gamestate != GameState::EXIT) {
+		handleEvents();
+		render();
+	}
 }
 
 void Game::handleEvents() {
-    SDL_Event event;
-    SDL_PollEvent(&event);
+	SDL_Event e;
+	while (SDL_PollEvent(&e)) {
+		if (gamestate == GameState::MENU) {
+			if (menu->handleMenuEvents(e) == 1) {
+				gamestate = GameState::PLAY;
+				delete(menu);
+			}
+			else if (menu->handleMenuEvents(e) == 2) {
+				printf("Still updating");
+			}
+		}
 
-    switch (event.type) {
-    case SDL_QUIT:
-        gamestate = GameState::EXIT;
-        break;
-    }
+		if (gamestate == GameState::PLAY) {
+		}
+	}
+}
+
+void Game::render() {
+	SDL_RenderClear(renderer);
+
+	switch (gamestate) {
+	case GameState::MENU:
+		menu->render();
+		break;
+
+	case GameState::PLAY:
+		interface->render();
+		human->render();
+		break;
+
+	default:
+		break;
+	}
+
+	SDL_RenderPresent(renderer);
+	SDL_Delay(1000 / 240);
 }
