@@ -18,33 +18,70 @@ void TextureManagement::Draw(SDL_Renderer* renderer, SDL_Texture* texture, SDL_R
 	SDL_RenderCopy(renderer, texture, &src, &dest);
 }
 
-Map::Map() {
 
-}
-
-Map::~Map() {
-
-}
-
-std::vector<std::vector<int>> Map::loadMap(std::string path) {
+void File::readJSON(std::string path, nlohmann::json& jsondata) {
 	std::ifstream file(path);
-	std::vector<std::vector<int>> res;
-
-	if (file.is_open()) {
-		int m, n;
-		file >> m >> n;
-		res.resize(100, std::vector<int>(100));
-
-		for (int i = 0; i < m; i++) {
-			for (int j = 0; j < n; j++) {
-				file >> res[i][j];
-			}
-		}
+	if (!file.is_open()) {
+		std::cout << "Cannot open file \n";
 	}
 	else {
-		std::cout << "Cannot open file" << std::endl;
-		return res;
+		file >> jsondata;
+		file.close();
 	}
-	file.close();
-	return res;
+}
+
+std::vector<TileLayer> File::loadMap(std::string path) {
+	nlohmann::json jsondata;
+	readJSON(path, jsondata);
+
+	nlohmann::json layers = jsondata["layers"];
+	std::vector<TileLayer> tilelayer;
+
+	for (const auto& layer : layers) {
+		nlohmann::json data = layer["data"];
+		TileLayer tile;
+		int h = layer["height"];
+		int w = layer["width"];
+
+		tile.height = h;
+		tile.width = w;
+
+		for (int i = 0; i < h; i++) {
+			std::vector<int> v;
+			for (int j = w * i; j < (i + 1) * w; j++) {
+				int value = data[j];
+				v.push_back(value);
+			}
+			tile.map.push_back(v);
+		}
+		tilelayer.push_back(tile);
+	}
+	return tilelayer;
+}
+
+std::vector<TileSet> File::loadTile(std::string path) {
+	nlohmann::json jsondata;
+	readJSON(path, jsondata);
+
+	std::vector<TileSet> v;
+	nlohmann::json tilesets = jsondata["tilesets"];
+
+	for (const auto& tileset : tilesets) {
+		TileSet tile;
+		tile.firstgid = tileset["firstgid"];
+		tile.source = tileset["source"];
+		v.push_back(tile);
+	}
+	return v;
+}
+
+void File::readXML(std::string path, std::string &source, int &col) {
+	pugi::xml_document doc;
+	doc.load_file(path.c_str());
+
+	pugi::xml_node tileset = doc.child("tileset");
+	pugi::xml_node image = tileset.child("image");
+	col = tileset.attribute("columns").as_int();
+	source = image.attribute("source").as_string();
+	return;
 }

@@ -6,6 +6,9 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <nlohmann/json.hpp>
+#include <pugixml.hpp>
+#include "constant.h"
 
 class TextureManagement
 {
@@ -19,11 +22,18 @@ public:
 };
 
 
-class Map {
+class File {
 private:
+	static void readJSON(std::string path, nlohmann::json& jsondata);
+	
 
 public:
-	Map();
-	~Map();
-	static std::vector<std::vector<int>> loadMap(std::string path);
-};
+	File();
+	~File();
+
+	static std::vector<TileLayer> loadMap(std::string path);
+	static std::vector<TileSet> loadTile(std::string path);
+	static void readXML(std::string path, std::string& source, int& col);
+
+}; 
+

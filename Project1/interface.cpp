@@ -1,48 +1,7 @@
 #include "interface.h"
 
-int village[38][50] = {
-	{1,1,1,4,1,4,1,4,1,4,1,4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-	{7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,1,1,7,7,7,7,7,7,7,1,1,1,1,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,1,1,7,0,0,0,0,0,7,1,1,1,1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,7,0,0,0,0,0,7,1,1,1,1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,1,1,1,1,7,7,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,1,1,1,1,1,1,1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,1,1,1,1,1,1,1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,1,1,1,1,7,7,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,1,1,1,1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,1,1,1,1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,1,1,1,1,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7},
-	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-	{7,1,1,7,7,7,7,7,7,7,7,7,1,1,1,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,1,1,1},
-	{7,1,1,7,0,0,0,0,0,0,0,7,1,1,1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,1,1,1},
-	{7,1,1,7,0,0,0,0,0,0,0,7,1,1,1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,1,1,1},
-	{7,1,1,7,0,0,0,0,0,0,0,7,1,1,1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,1,1,1},
-	{7,1,1,7,0,0,0,0,0,0,0,7,1,1,1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,1,1,1},
-	{7,1,1,7,7,7,7,7,7,7,7,7,1,1,1,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,1,1,1},
-	{7,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-	{7,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-	{7,1,1,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,1,1,1,7,7,7,7,7,7,7,7,7,7,7,7,7,1,1,7,7,7,7,7,7,7,7,7,7},
-	{7,1,1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,1,1,1,7,0,0,0,0,0,0,0,0,0,0,0,7,1,1,7,0,0,0,0,0,0,0,0,0},
-	{7,1,1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,1,1,1,7,0,0,0,0,0,0,0,0,0,0,0,7,1,1,7,0,0,0,0,0,0,0,0,0},
-	{7,1,1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,1,1,1,7,0,0,0,0,0,0,0,0,0,0,0,7,1,1,7,0,0,0,0,0,0,0,0,0},
-	{7,1,1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,1,1,1,7,0,0,0,0,0,0,0,0,0,0,0,7,1,1,7,0,0,0,0,0,0,0,0,0},
-	{7,1,1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,1,1,1,7,0,0,0,0,0,0,0,0,0,0,0,7,1,1,7,0,0,0,0,0,0,0,0,0},
-	{7,1,1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,1,1,1,7,0,0,0,0,0,0,0,0,0,0,0,7,1,1,7,0,0,0,0,0,0,0,0,0},
-	{7,1,1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,1,1,1,7,0,0,0,0,0,7,7,7,7,7,7,7,1,1,7,0,0,0,0,0,0,0,0,0},
-	{7,1,1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,1,1,1,7,0,0,0,0,0,7,1,1,1,1,1,1,1,1,7,0,0,0,0,0,0,0,0,0},
-	{7,1,1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,1,1,1,7,0,0,0,0,0,7,1,1,1,1,1,1,1,1,7,0,0,0,0,0,0,0,0,0},
-	{7,1,1,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,1,1,1,7,7,7,7,7,7,7,1,1,1,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7},
-	{7,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1},
-	{7,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,3,1},
-	{7,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1}
-};
-
 Interface::Interface(SDL_Renderer* renderer) : renderer(renderer) {
-	printf("Interface constructor initialized");
+	std::cout << ("Interface constructor initialized") << std::endl;
 
 	// Constructor
 }
@@ -52,85 +11,53 @@ Interface::~Interface() {
 }
 
 void Interface::init() {
-	grass = TextureManagement::LoadTexture("assets/.tile/grass.png", renderer);
-	wooden = TextureManagement::LoadTexture("assets/.tile/wooden.png", renderer);
-	lockdoor = TextureManagement::LoadTexture("assets/.tile/lockdoor.png", renderer);
-	rock2 = TextureManagement::LoadTexture("assets/.tile/rock_in_water_02.png", renderer);
-	rock3 = TextureManagement::LoadTexture("assets/.tile/rock_in_water_03.png", renderer);
-	rock4 = TextureManagement::LoadTexture("assets/.tile/rock_in_water_04.png", renderer);
-	rock5 = TextureManagement::LoadTexture("assets/.tile/rock_in_water_05.png", renderer);
-	rock6 = TextureManagement::LoadTexture("assets/.tile/rock_in_water_06.png", renderer);
-	mini_chest_1 = TextureManagement::LoadTexture("assets/.tile/mini_chest_1.png", renderer);
-	box1 = TextureManagement::LoadTexture("assets/.tile/box1.png", renderer);
-	flag_1 = TextureManagement::LoadTexture("assets/.tile/flag_1.png", renderer);
-
+	map = File::loadMap(water_town);
+	tileset = File::loadTile(water_town);
 	load();
-
-	src.x = src.y = 0;
-	dest.x = dest.y = 0;
-
-	src.w = dest.w = 16;
-	src.h = dest.h = 16;
 }
 
 void Interface::render() {
-	int type = -1;
+	for (auto layer = map.begin(); layer != map.end(); layer++) {
+		//std::cout << "load layer" << std::endl;
+		int w = layer->width;
+		int h = layer->height;
 
-	for (int rows = 0; rows < 38; rows++) {
-		for (int columns = 0; columns < 50; columns++) {
-			dest.x = columns * 16;
-			dest.y = rows * 16;
-
-			type = map[rows][columns];
-			switch (type) {
-			case 0:
-				TextureManagement::Draw(renderer, grass, src, dest);
-				break;
-
-			case 1:
-				TextureManagement::Draw(renderer, wooden, src, dest);
-				break;
-
-			case 2:
-				TextureManagement::Draw(renderer, wooden, src, dest);
-				TextureManagement::Draw(renderer, lockdoor, src, dest);
-				break;
-
-			case 3:
-				TextureManagement::Draw(renderer, wooden, src, dest);
-				TextureManagement::Draw(renderer, box1, src, dest);
-				break;
-			case 4:
-				TextureManagement::Draw(renderer, wooden, src, dest);
-				TextureManagement::Draw(renderer, flag_1, src, dest);
-				break;
-
-			case 5:
-				TextureManagement::Draw(renderer, rock4, src, dest);
-				break;
-
-			case 6:
-				TextureManagement::Draw(renderer, rock5, src, dest);
-				break;
-
-			case 7:
-				TextureManagement::Draw(renderer, rock6, src, dest);
-				break;
-			case 8:
-				TextureManagement::Draw(renderer, wooden, src, dest);
-				TextureManagement::Draw(renderer, mini_chest_1, src, dest);
-
-			default:
-				break;
+		for (int i = 0; i < h; i++) {
+			for (int j = 0; j < w; j++) {
+				desRect.x = j * desRect.w;
+				desRect.y = i * desRect.h;
+				//std::cout << "loading block " << i << " " << j << std::endl;
+				if (layer->map[i][j] == 0) {
+					continue;
+				}
+				else {
+					for (auto tile = tileset.rbegin(); tile != tileset.rend(); tile++) {
+						if (layer->map[i][j] >= tile->firstgid) {
+							int gid = layer->map[i][j] - tile->firstgid;
+							srcRect.x = (gid % tile->col) * srcRect.w;
+							srcRect.y = (gid / tile->col) * srcRect.h;
+							TextureManagement::Draw(renderer, tile->texture, srcRect, desRect);
+							break;
+						}
+						else {
+							continue;
+						}
+					}
+				}
 			}
 		}
 	}
 }
 
 void Interface::load() {
-	for (int rows = 0; rows < 38; rows++) {
-		for (int columns = 0; columns < 50; columns++) {
-			map[rows][columns] = village[rows][columns];
+	for (auto it = tileset.begin(); it != tileset.end(); it++) {
+		File::readXML(it->source, it->source, it->col);
+		std::cout << it->source << std::endl;
+		it->texture = TextureManagement::LoadTexture(it->source, renderer);
+		if (it->texture == nullptr) {
+			std::cout << "null texture" << std::endl;
 		}
 	}
+	std::cout << "finish load func" << std::endl;
+	return;
 }

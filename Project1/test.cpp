@@ -28,6 +28,8 @@ void Test::init() {
 	win = SDL_CreateWindow("Test", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, w, h, SDL_WINDOW_SHOWN);
 	ren = SDL_CreateRenderer(win, -1, 0);
 
+	interface = new Interface(ren);
+	interface->init();
 	src.x = 0;
 	src.y = 2 * 64;
 	des.x = des.y = 0;
@@ -44,7 +46,7 @@ void Test::init() {
 		east_clips[i] = { i * 64, 6 * 64, 64, 64 };
 		west_clips[i] = { i * 64, 7 * 64, 64, 64 };
 		south_clips[i] = { i * 64, 4 * 64, 64 ,64 };
-		north_clips[i] = {i * 64, 5 * 64, 64, 64};
+		north_clips[i] = { i * 64, 5 * 64, 64, 64 };
 	}
 }
 
@@ -56,7 +58,6 @@ void Test::render() {
 
 	SDL_RenderPresent(ren);
 	SDL_Delay(1000 / 60);
-	
 }
 
 bool quit;
@@ -73,25 +74,25 @@ void Test::handleEvents() {
 		case SDL_SCANCODE_LEFT:
 			orient = Orient::WEST;
 			objectState = charState::RUNNING;
-			des.x-=2;
+			des.x -= SPEED;
 			break;
 		case SDL_SCANCODE_W:
 		case SDL_SCANCODE_UP:
 			orient = Orient::NORTH;
 			objectState = charState::RUNNING;
-			des.y-=2;
+			des.y -= SPEED;
 			break;
 		case SDL_SCANCODE_S:
 		case SDL_SCANCODE_DOWN:
 			orient = Orient::SOUTH;
 			objectState = charState::RUNNING;
-			des.y+=2;
+			des.y += SPEED;
 			break;
 		case SDL_SCANCODE_D:
 		case SDL_SCANCODE_RIGHT:
 			orient = Orient::EAST;
 			objectState = charState::RUNNING;
-			des.x+= 2;
+			des.x += SPEED;
 			break;
 		}
 		break;
@@ -116,11 +117,18 @@ void Test::handleEvents() {
 	}
 }
 
-// TO DO: fix the 
+/*
+* 
+* TO DO:
+* - update the animation of each tile
+* - add sprite attack, recommend use JKL
+* - collision processing
+*
+*/
+
 
 void Test::renChar() {
 	//TextureManagement::Draw(ren, tex, src, des);
-
 
 	if (objectState == charState::STANDING) {
 		if (orient == 0) {
@@ -141,7 +149,6 @@ void Test::renChar() {
 		}
 	}
 	else if (objectState == charState::RUNNING) {
-
 		frameCount++;
 
 		if (frameCount == 60) frameCount = 0;
@@ -163,25 +170,12 @@ void Test::renChar() {
 			break;
 		}
 	}
-	
+
 	TextureManagement::Draw(ren, tex, src, des);
 }
 
 void Test::renBack() {
-	for (int i = 0; i < 38; i++) {
-		for (int j = 0; j < 50; j++) {
-			mapDes.x = i * 16;
-			mapDes.y = j * 16;
-			switch (map[i][j]) {
-			case 100:
-				TextureManagement::Draw(ren, grass, mapSrc, mapDes);
-				break;
-			case 101:
-				TextureManagement::Draw(ren, wall, mapSrc, mapDes);
-				break;
-			}
-		}
-	}
+	interface->render();
 }
 
 void Test::initChar() {
@@ -191,19 +185,6 @@ void Test::initChar() {
 	if (tex == nullptr) {
 		std::cout << "null tex" << std::endl;
 	}
-	grass = TextureManagement::LoadTexture("assets/.tile/grass.png", ren);
-	test = TextureManagement::LoadTexture(TEST, ren);
-	wall = TextureManagement::LoadTexture(TEST1, ren);
-
-	if (test == nullptr) {
-		std::cout << "null back" << std::endl;
-	}
-
-	map = Map::loadMap("assets/map/test.txt");
-	mapSrc.x = mapSrc.y = 0;
-	mapDes.x = mapDes.y = 0;
-	mapSrc.w = mapSrc.h = 16;
-	mapDes.w = mapDes.h = 64;
 }
 
 void Test::baseAttack() {

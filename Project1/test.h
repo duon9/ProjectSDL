@@ -9,6 +9,7 @@
 #include "constant.h"
 #include <chrono>
 #include <vector>
+#include "interface.h"
 
 class Test
 {
@@ -27,6 +28,7 @@ public:
 	void runEast();
 
 private:
+	Interface* interface = nullptr;
 	Orient orient = Orient::EAST;
 	charState objectState = charState::STANDING;
 	int frameCount = 0;
@@ -48,6 +50,7 @@ private:
 	SDL_Rect west_clips[8];
 	SDL_Rect south_clips[8];
 	SDL_Rect north_clips[8];
-	int w = 800;
-	int h = 600;
+
+	int w = 1366;
+	int h = 768;
 };

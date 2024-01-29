@@ -1,4 +1,5 @@
 #pragma once
+#include <SDL.h>
 
 enum GameState {
 	MENU,
@@ -36,7 +37,7 @@ enum State {
 	EXHAUSTED,
 };
 
-enum MapTile {
+enum MapName {
 	VILLAGE,
 	FRONTIER_TOWN,
 	CAPITAL,
@@ -62,6 +63,19 @@ struct blockPosition {
 	}
 };
 
+struct TileLayer {
+	int height;
+	int width;
+	std::vector<std::vector<int>> map;
+};
+
+struct TileSet {
+	int firstgid;
+	std::string source;
+	int col;
+	SDL_Texture* texture = nullptr;
+};
+
 const short PLAYER_SPEED = 0;
 const short PLAYER_HEALTH = 0;
 const short PLAYER_LEVEL = 0;
@@ -73,5 +87,8 @@ const short PLAYER_CRIT = 0;
 const short PLAYER_HEAL_RATE = 0;
 const short PLAYER_AMMOR_PENETRATION = 0;
 
+const int SPEED = 1;
+
 const std::string TEST = "assets/.tile/testtile.png";
 const std::string TEST1 = "assets/.tile/walls.png";
+const std::string water_town = "assets/.tile/WATER_TOWN.tmj";
