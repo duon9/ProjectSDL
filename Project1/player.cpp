@@ -19,13 +19,18 @@ void Player::render() {
 
 	lastFrame = newFrame;
 
-	frameCount++;
-	if (frameCount == 200) {
+	if (frameCount == 200 && status == charState::IDLE) {
+		frameCount = 0;
+	}
+	else if (frameCount == 50 && status == charState::RUNNING) {
+		frameCount = 0;
+	}
+	else if (frameCount == 100 && status == charState::ATTACKING) {
 		frameCount = 0;
 	}
 
-	frameTick = frameCount / 20;
-	frameMove = frameCount % 10;
+	frameCount++;
+
 
 	switch (status) {
 	case charState::IDLE:
@@ -34,7 +39,7 @@ void Player::render() {
 			frameCount = 0;
 		}
 
-		srcRect = idleFrame[frameTick];
+		srcRect = idleFrame[frameCount / 20];
 
 		if (orient->right == 1 && orient->left == 0) {
 			flip = SDL_FLIP_NONE;
@@ -49,7 +54,23 @@ void Player::render() {
 			frameCount = 0;
 		}
 
-		srcRect = runFrame[frameTick];
+		srcRect = runFrame[frameCount / 5];
+
+		if (orient->right == 1 && orient->left == 0) {
+			flip = SDL_FLIP_NONE;
+		}
+		else if (orient->left == 1 && orient->right == 0) {
+			flip = SDL_FLIP_HORIZONTAL;
+		}
+		break;
+	case charState::ATTACKING:
+		newFrame = charState::ATTACKING;
+
+		if (lastFrame != newFrame) {
+			frameCount = 0;
+		}
+
+		srcRect = attackFrame[frameCount / 10];
 
 		if (orient->right == 1 && orient->left == 0) {
 			flip = SDL_FLIP_NONE;
@@ -77,12 +98,19 @@ void Player::setClip() {
 
 void Player::handleUserEvents(SDL_Event e) {
 	if (check_death == false) {
-		if (SDL_PollEvent(&e) != 0) {
+		if (frameTick > 0) {
+			std::cout << "frameTick: " << frameTick << std::endl;
+			frameTick--;
+			return;
+		}
+		else {
 			switch (e.type) {
 			case SDL_KEYDOWN:
 				switch (e.key.keysym.sym) {
 				case SDLK_z:
 					status = charState::ATTACKING;
+					frameTick = 100;
+					std::cout << "attacking \n";
 					break;
 				case SDLK_x:
 					status = charState::CASTING;
@@ -91,57 +119,147 @@ void Player::handleUserEvents(SDL_Event e) {
 				case SDLK_UP:
 					status = charState::RUNNING;
 					orient->up = 1;
-					desRect.y--;
+					//if (frameCount % 5 == 0) desRect.y -= PLAYER_SPEED;
+					//std::cout << "key up pressed\n";
+					frameTick = 50;
 					break;
+
 				case SDLK_a:
 				case SDLK_LEFT:
 					status = charState::RUNNING;
 					orient->left = 1;
-					desRect.x--;
+					//if (frameCount % 5 == 0) desRect.x -= PLAYER_SPEED;
+					//std::cout << "key left pressed\n";
+					frameTick = 50;
 					break;
+
+
 				case SDLK_s:
 				case SDLK_DOWN:
 					status = charState::RUNNING;
 					orient->down = 1;
-					desRect.y++;
+					//if (frameCount % 5 == 0) desRect.y += PLAYER_SPEED;
+					//std::cout << "key down pressed\n";
+					frameTick = 50;
 					break;
+
 				case SDLK_d:
 				case SDLK_RIGHT:
 					status = charState::RUNNING;
 					orient->right = 1;
-					desRect.x++;
+					//if (frameCount % 5 == 0) desRect.x += PLAYER_SPEED;
+					//std::cout << "key right pressed\n";
+					frameTick = 50;
 					break;
+
 				}
+				break;
 			case SDL_KEYUP:
 				switch (e.key.keysym.sym) {
 				case SDLK_w:
 				case SDLK_UP:
-					status = charState::IDLE;
 					orient->up = 0;
+					//std::cout << "key up released\n";
 					break;
+
 				case SDLK_a:
 				case SDLK_LEFT:
-					status = charState::IDLE;
 					orient->left = 0;
+					//std::cout << "key left released\n";
 					break;
 				case SDLK_s:
 				case SDLK_DOWN:
-					status = charState::IDLE;
 					orient->down = 0;
+					//std::cout << "key down released\n";
 					break;
 				case SDLK_d:
 				case SDLK_RIGHT:
-					status = charState::IDLE;
 					orient->right = 0;
+					//std::cout << "key right released\n";
 					break;
 				}
+				status = charState::IDLE;
+				break;
 			}
 		}
-		else {
-			return;
+		/*
+		switch (e.type) {
+		case SDL_KEYDOWN:
+			switch (e.key.keysym.sym) {
+			case SDLK_z:
+				status = charState::ATTACKING;
+				frameTick = 100;
+				break;
+			case SDLK_x:
+				status = charState::CASTING;
+				break;
+			case SDLK_w:
+			case SDLK_UP:
+				status = charState::RUNNING;
+				orient->up = 1;
+				if (frameCount % 5 == 0) desRect.y -= PLAYER_SPEED;
+				//std::cout << "key up pressed\n";
+				break;
+					
+			case SDLK_a:
+			case SDLK_LEFT:
+				status = charState::RUNNING;
+				orient->left = 1;
+				if (frameCount % 5 == 0) desRect.x-= PLAYER_SPEED;
+				//std::cout << "key left pressed\n";
+				break;
+
+					
+			case SDLK_s:
+			case SDLK_DOWN:
+				status = charState::RUNNING;
+				orient->down = 1;
+				if (frameCount % 5 == 0) desRect.y+=PLAYER_SPEED;
+				//std::cout << "key down pressed\n";
+				break;
+					
+			case SDLK_d:
+			case SDLK_RIGHT:
+				status = charState::RUNNING;
+				orient->right = 1;
+				if (frameCount % 5 == 0) desRect.x+= PLAYER_SPEED;
+				//std::cout << "key right pressed\n";
+				
+				break;
+					
+			}
+			break;
+		case SDL_KEYUP:
+			switch (e.key.keysym.sym) {
+			case SDLK_w:
+			case SDLK_UP:
+				orient->up = 0;
+				//std::cout << "key up released\n";
+				break;
+					
+			case SDLK_a:
+			case SDLK_LEFT:
+				orient->left = 0;
+				//std::cout << "key left released\n";
+				break;
+			case SDLK_s:
+			case SDLK_DOWN:
+				orient->down = 0;
+				//std::cout << "key down released\n";
+				break;
+			case SDLK_d:
+			case SDLK_RIGHT:
+				orient->right = 0;
+				//std::cout << "key right released\n";
+				break;
+			}
+			status = charState::IDLE;
+			break;
 		}
+		*/
 	}
 	else {
-		return;
+		status = charState::DEATH;
+		std::cout << "Error D102" << std::endl;
 	}
 }

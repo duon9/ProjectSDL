@@ -67,9 +67,9 @@ protected:
 	SDL_Rect srcRect;
 	SDL_Rect desRect;
 
-	int frameCount = 0;
+	int frameCount;
 	int frameTick;
-	int frameMove;
+
 	charState lastFrame = charState::IDLE, newFrame = charState::IDLE;
 
 	Orient* orient = new Orient();

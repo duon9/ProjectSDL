@@ -47,6 +47,7 @@ enum charState {
 	TALKING,
 	CASTING,
 	IDLE,
+	DEATH
 };
 
 struct blockPosition {
@@ -71,7 +72,7 @@ struct TileSet {
 	SDL_Texture* texture = nullptr;
 };
 
-const int PLAYER_SPEED = 10;
+const int PLAYER_SPEED = 7;
 const int PLAYER_HEALTH = 1000;
 const int PLAYER_MANA = 500;
 const int PLAYER_LEVEL = 1;

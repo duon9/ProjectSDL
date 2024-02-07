@@ -133,6 +133,7 @@
     <ClCompile Include="button.cpp" />
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="entity.cpp" />
+    <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menu.cpp" />
@@ -148,6 +149,7 @@
     <ClInclude Include="button.h" />
     <ClInclude Include="collision.h" />
     <ClInclude Include="entity.h" />
+    <ClInclude Include="EntityManager.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="constant.h" />
     <ClInclude Include="interface.h" />

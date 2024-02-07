@@ -27,7 +27,7 @@ void Game::init(const char* title, int _x, int _y, int _w, int _h, Uint32 flags)
 	IMG_Init(IMG_INIT_PNG);
 	TTF_Init();
 	window = SDL_CreateWindow(title, _x, _y, _w, _h, flags);
-	renderer = SDL_CreateRenderer(window, -1, 0);
+	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	menu = new Menu(renderer);
 	menu->init();
 	interface = new Interface(renderer);
@@ -46,20 +46,19 @@ void Game::gameLoop() {
 
 void Game::handleEvents() {
 	SDL_Event e;
-	while (SDL_PollEvent(&e)) {
-		if (gamestate == GameState::MENU) {
-			if (menu->handleMenuEvents(e) == 1) {
-				gamestate = GameState::PLAY;
-				delete(menu);
-			}
-			else if (menu->handleMenuEvents(e) == 2) {
-				printf("Still updating");
-			}
+	SDL_PollEvent(&e);
+	if (gamestate == GameState::MENU) {
+		if (menu->handleMenuEvents(e) == 1) {
+			gamestate = GameState::PLAY;
+			delete(menu);
 		}
+		else if (menu->handleMenuEvents(e) == 2) {
+			printf("Still updating");
+		}
+	}
 
-		if (gamestate == GameState::PLAY) {
-			player1->handleUserEvents(e);
-		}
+	if (gamestate == GameState::PLAY) {
+		player1->handleUserEvents(e);
 	}
 }
 
@@ -81,5 +80,5 @@ void Game::render() {
 	}
 
 	SDL_RenderPresent(renderer);
-	SDL_Delay(1000 / 240);
+	SDL_Delay(1000 / 70);
 }
