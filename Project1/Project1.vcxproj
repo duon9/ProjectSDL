@@ -138,6 +138,7 @@
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="interface.cpp" />
     <ClCompile Include="interact_obj.cpp" />
+    <ClCompile Include="player.cpp" />
     <ClCompile Include="skill.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="test.cpp" />
@@ -152,6 +153,7 @@
     <ClInclude Include="interface.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="interact_obj.h" />
+    <ClInclude Include="player.h" />
     <ClInclude Include="skill.h" />
     <ClInclude Include="test.h" />
     <ClInclude Include="utils.h" />

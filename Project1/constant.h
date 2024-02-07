@@ -8,18 +8,6 @@ enum GameState {
 	PAUSE
 };
 
-enum Orient {
-	NORTH,
-	WEST,
-	EAST,
-	SOUTH,
-	//NORTHWEST,
-	//NORTHEAST,
-	//SOUTHEAST,
-	//SOUTHWEST,
-	NONE
-};
-
 enum Option {
 	START,
 	LOAD,
@@ -27,14 +15,19 @@ enum Option {
 	SETTING
 };
 
-enum State {
-	HEALTHY,
-	POISONED,
-	BLEEDING,
-	BLIND,
-	SILENT,
-	PARALYZE,
-	EXHAUSTED,
+struct Orient {
+	int up = 0;
+	int down = 0;
+	int left = 0;
+	int right = 0;
+
+	Orient(int _up = 0, int _down = 0, int _left = 0, int _right = 0) {
+		up = _up;
+		down = _down;
+		left = _left;
+		right = _right;
+	}
+
 };
 
 enum MapName {
@@ -49,10 +42,11 @@ enum MapName {
 };
 
 enum charState {
+	ATTACKING,
 	RUNNING,
 	TALKING,
-	RESTING,
-	STANDING,
+	CASTING,
+	IDLE,
 };
 
 struct blockPosition {
@@ -64,6 +58,7 @@ struct blockPosition {
 };
 
 struct TileLayer {
+	std::string name;
 	int height;
 	int width;
 	std::vector<std::vector<int>> map;
@@ -76,19 +71,18 @@ struct TileSet {
 	SDL_Texture* texture = nullptr;
 };
 
-const short PLAYER_SPEED = 0;
-const short PLAYER_HEALTH = 0;
-const short PLAYER_LEVEL = 0;
-const short PLAYER_MAGIC_DAMAGE = 0;
-const short PLAYER_AMMOR = 0;
-const short PLAYER_RANGE = 0;
-const short PLAYER_MAGIC_RESISTANCE = 0;
-const short PLAYER_CRIT = 0;
-const short PLAYER_HEAL_RATE = 0;
-const short PLAYER_AMMOR_PENETRATION = 0;
+const int PLAYER_SPEED = 10;
+const int PLAYER_HEALTH = 1000;
+const int PLAYER_MANA = 500;
+const int PLAYER_LEVEL = 1;
+const int PLAYER_MAGIC_DAMAGE = 15;
+const int PLAYER_ARMOR = 1;
+const int PLAYER_RANGE = 1;
+const int PLAYER_MAGIC_RESISTANCE = 1;
 
-const int SPEED = 1;
+const int SPEED = 5;
 
 const std::string TEST = "assets/.tile/testtile.png";
 const std::string TEST1 = "assets/.tile/walls.png";
-const std::string water_town = "assets/.tile/WATER_TOWN.tmj";
+const std::string water_town = "assets/.tile/test2.tmj";
+const std::string ROGUE = "assets/characters/rogue.png";

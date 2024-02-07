@@ -33,14 +33,11 @@ void Interface::render() {
 				else {
 					for (auto tile = tileset.rbegin(); tile != tileset.rend(); tile++) {
 						if (layer->map[i][j] >= tile->firstgid) {
-							int gid = layer->map[i][j] - tile->firstgid;
-							srcRect.x = (gid % tile->col) * srcRect.w;
-							srcRect.y = (gid / tile->col) * srcRect.h;
+							int gid = (layer->map[i][j]) - (tile->firstgid);
+							srcRect.x = static_cast<int>(gid % tile->col) * srcRect.w;
+							srcRect.y = static_cast<int>(gid / tile->col) * srcRect.h;
 							TextureManagement::Draw(renderer, tile->texture, srcRect, desRect);
 							break;
-						}
-						else {
-							continue;
 						}
 					}
 				}
@@ -53,6 +50,9 @@ void Interface::load() {
 	for (auto it = tileset.begin(); it != tileset.end(); it++) {
 		File::readXML(it->source, it->source, it->col);
 		std::cout << it->source << std::endl;
+		std::cout << it->col << std::endl;
+		std::cout << it->firstgid << std::endl;
+		
 		it->texture = TextureManagement::LoadTexture(it->source, renderer);
 		if (it->texture == nullptr) {
 			std::cout << "null texture" << std::endl;

@@ -32,8 +32,8 @@ void Game::init(const char* title, int _x, int _y, int _w, int _h, Uint32 flags)
 	menu->init();
 	interface = new Interface(renderer);
 	interface->init();
-	human = new Entity(renderer);
-	human->init();
+	player1 = new Player(renderer, ROGUE);
+	player1->init();
 }
 
 void Game::gameLoop() {
@@ -58,6 +58,7 @@ void Game::handleEvents() {
 		}
 
 		if (gamestate == GameState::PLAY) {
+			player1->handleUserEvents(e);
 		}
 	}
 }
@@ -72,7 +73,7 @@ void Game::render() {
 
 	case GameState::PLAY:
 		interface->render();
-		human->render();
+		player1->render();
 		break;
 
 	default:

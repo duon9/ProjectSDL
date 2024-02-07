@@ -13,18 +13,10 @@ class Entity
 public:
 	Entity(SDL_Renderer* renderer);
 	~Entity();
-	Orient getOrient();
-	blockPosition getBlockPos();
-	void updateOrient(Orient tmpOrient);
-	void updateBlockPos(blockPosition tmpBlockPos);
 	virtual void init();
 	virtual void render();
 	virtual void free();
-
-protected:
 	SDL_Renderer* renderer = nullptr;
-	Orient curr_orient;
-	blockPosition currBlockPos;
 	short width, height;
-	char name[15];
+	std::string name;
 };

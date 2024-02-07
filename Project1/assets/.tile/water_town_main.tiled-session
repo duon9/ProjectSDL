@@ -1,0 +1,128 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "test2.tmx",
+    "expandedProjectPaths": [
+        "tileset",
+        ".",
+        "test_collion"
+    ],
+    "fileStates": {
+        "C:/Users/duong/ag.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/duong/faf.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/duong/fff.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/duong/sewer.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/duong/town.tsx": {
+            "scaleInDock": 1
+        },
+        "test2.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 361.33333333333326,
+                "y": 339.3333333333333
+            }
+        },
+        "test_collion/green.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "test_collion/sewer.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "test_collion/test.tmj": {
+            "scale": 0.2861875,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 800.17471063551,
+                "y": 609.7401179296791
+            }
+        },
+        "test_collion/test.tmx": {
+            "scale": 0.33,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 548.4848484848485,
+                "y": 1022.7272727272727
+            }
+        },
+        "tileset/Castle2.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tileset/classical_temple_tiles.tsx": {
+            "scaleInDock": 0.75,
+            "scaleInEditor": 1
+        },
+        "tileset/collion.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tileset/collisontest.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tileset/sewer.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1.5
+        },
+        "tileset/tilesetformattedupdate1.tsx": {
+            "scaleInDock": 0.75,
+            "scaleInEditor": 1
+        },
+        "tileset/town.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1.5
+        },
+        "untitled.tmx": {
+            "scale": 0.2861875,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 800.17471063551,
+                "y": 609.7401179296791
+            }
+        }
+    },
+    "last.exportedFilePath": "C:/Users/duong/source/repos/Project1/Project1/assets/.tile",
+    "last.imagePath": "C:/Users/duong/source/repos/Project1/Project1/assets/.tile/tileset",
+    "map.height": 20,
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.width": 25,
+    "openFiles": [
+        "test2.tmx",
+        "test_collion/sewer.tsx",
+        "test_collion/green.tsx"
+    ],
+    "project": "water_town_main.tiled-project",
+    "recentFiles": [
+        "test_collion/green.tsx",
+        "test_collion/sewer.tsx",
+        "test2.tmx",
+        "test_collion/test.tmj",
+        "untitled.tmx",
+        "test_collion/test.tmx",
+        "tileset/collion.tsx",
+        "tileset/collisontest.tsx",
+        "tileset/tilesetformattedupdate1.tsx",
+        "tileset/sewer.tsx",
+        "tileset/classical_temple_tiles.tsx",
+        "tileset/Castle2.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 32,
+        "width": 32
+    }
+}

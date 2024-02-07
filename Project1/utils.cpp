@@ -38,23 +38,29 @@ std::vector<TileLayer> File::loadMap(std::string path) {
 	std::vector<TileLayer> tilelayer;
 
 	for (const auto& layer : layers) {
-		nlohmann::json data = layer["data"];
-		TileLayer tile;
-		int h = layer["height"];
-		int w = layer["width"];
 
-		tile.height = h;
-		tile.width = w;
-
-		for (int i = 0; i < h; i++) {
-			std::vector<int> v;
-			for (int j = w * i; j < (i + 1) * w; j++) {
-				int value = data[j];
-				v.push_back(value);
-			}
-			tile.map.push_back(v);
+		if (layer["name"] == "collision") {
+			continue;
 		}
-		tilelayer.push_back(tile);
+		else {
+			nlohmann::json data = layer["data"];
+			TileLayer tile;
+			int h = layer["height"];
+			int w = layer["width"];
+
+			tile.height = h;
+			tile.width = w;
+
+			for (int i = 0; i < h; i++) {
+				std::vector<int> v;
+				for (int j = w * i; j < (i + 1) * w; j++) {
+					int value = data[j];
+					v.push_back(value);
+				}
+				tile.map.push_back(v);
+			}
+			tilelayer.push_back(tile);
+		}
 	}
 	return tilelayer;
 }
@@ -84,4 +90,31 @@ void File::readXML(std::string path, std::string &source, int &col) {
 	col = tileset.attribute("columns").as_int();
 	source = image.attribute("source").as_string();
 	return;
+}
+
+std::vector<std::vector<int>> File::readCollision(std::string path) {
+	std::vector<std::vector<int>> res;
+	nlohmann::json jsondata;
+	readJSON(path, jsondata);
+
+	nlohmann::json layers = jsondata["layers"];
+
+	for (const auto& layer : layers) {
+		if (layer["name"] == "collision") {
+			nlohmann::json data = layer["data"];
+			int h = layer["height"];
+			int w = layer["width"];
+
+			for (int i = 0; i < h; i++) {
+				std::vector<int> v;
+				for (int j = w * i; j < (i + 1) * w; j++) {
+					int value = data[j];
+					v.push_back(value);
+				}
+				res.push_back(v);
+			}
+		}
+	}
+
+	return res;
 }

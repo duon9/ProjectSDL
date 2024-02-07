@@ -2,26 +2,11 @@
 
 Entity::Entity(SDL_Renderer* renderer) : renderer(renderer) {
 	//constructor
+	std::cout << "Entity constructor initialize" << std::endl;
 }
 
 Entity::~Entity() {
 	//destructor
-}
-
-Orient Entity::getOrient() {
-	return curr_orient;
-}
-
-blockPosition Entity::getBlockPos() {
-	return currBlockPos;
-}
-
-void Entity::updateOrient(Orient tmpOrient) {
-	curr_orient = tmpOrient;
-}
-
-void Entity::updateBlockPos(blockPosition tmpBlockPos) {
-	currBlockPos = tmpBlockPos;
 }
 
 void Entity::init() {

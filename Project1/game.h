@@ -9,6 +9,7 @@
 #include "interface.h"
 #include "entity.h"
 #include "constant.h"
+#include "player.h"
 
 class Game
 {
@@ -32,5 +33,5 @@ private:
 	Menu* menu = nullptr;
 	GameState gamestate;
 	Interface* interface = nullptr;
-	Entity* human = nullptr;
+	Player* player1 = nullptr;
 };

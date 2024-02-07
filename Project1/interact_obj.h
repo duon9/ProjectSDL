@@ -10,38 +10,78 @@
 #include <vector>
 #include "skill.h"
 
-class Interact_Object : public Entity {
+class Object : public Entity {
 public:
-	short getHealth();
-	short getMana();
-	short getLevel();
-	short getExp();
-	short getSpeed();
-	short getMagicDamage();
-	short getRange();
-	short getAmmor();
-	short getMagicResistance();
-	short getPhysicDamage();
-	short getCrit();
 
-	void updateHealth(short newHealth);
-	void updateMana(short newMana);
-	void updateLevel(short newLevel);
-	void updateExp(short newExp);
-	void updateSpeed(short newSpeed);
-	void updateMagicDamage(short newMagicDamage);
-	void updateRange(short newRange);
-	void updateAmmor(short newAmmor);
-	void updateMagicResistance(short newMagicResistance);
-	void updatePhysicDamage(short newPhysicDamage);
-	void updateCrit(short newCrit);
+	Object(SDL_Renderer* renderer) : Entity(renderer) {
+		std::cout << "Object constructor initialize \n";
+	}
+	~Object() {
+		// destructor
 
-	void collisionProcess(); // still planning
-	void usingSkill(); // still planning
+		std::cout << "Object class destructor called" << std::endl;
+	}
+
+	int getHealth();
+	int getMana();
+	int getLevel();
+	int getExp();
+	int getSpeed();
+	int getMagicDamage();
+	int getRange();
+	int getAmmor();
+	int getMagicResistance();
+	int getPhysicDamage();
+
+	void updateHealth(int newHealth);
+	void updateMana(int newMana);
+	void updateLevel(int newLevel);
+	void updateExp(int newExp);
+	void updateSpeed(int newSpeed);
+	void updateMagicDamage(int newMagicDamage);
+	void updateRange(int newRange);
+	void updateArmor(int newArmor);
+	void updateMagicResistance(int newMagicResistance);
+	void updatePhysicDamage(int newPhysicDamage);
+
+	//virtual void collisionProcess(); // still planning
+	//virtual void spellCast(); // still planning
+
+	//virtual void setSkill();
+	virtual void setClip();
 
 protected:
-	short health, mana, level, exp, speed, magicDamage, range, armor, magicResistance, physicDamage, crit;
-	State currState;
-	charState currCharState;
+	int health, mana, level, exp, speed, magicDamage, range, armor, magicResistance, physicDamage;
+	
 	std::vector<Skill> skillSet;
+
+	SDL_Rect idleFrame[10];
+	SDL_Rect runFrame[10];
+	SDL_Rect attackFrame[10];
+	SDL_Rect spellcastFrame[10];
+	SDL_Rect deathFrame[10];
+
+	SDL_RendererFlip flip = SDL_FLIP_NONE;
+	SDL_Texture* texture = nullptr;
+
+	SDL_Rect srcRect;
+	SDL_Rect desRect;
+
+	int frameCount = 0;
+	int frameTick;
+	int frameMove;
+	charState lastFrame = charState::IDLE, newFrame = charState::IDLE;
+
+	Orient* orient = new Orient();
+
+	charState status = charState::IDLE;
+
+	int x, y;
+
+	int map_x, map_y;
+
+	bool check_attack = false;
+	bool check_death = false;
+	bool check_take_damage = false;
+
 };

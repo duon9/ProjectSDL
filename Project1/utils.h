@@ -9,6 +9,7 @@
 #include <nlohmann/json.hpp>
 #include <pugixml.hpp>
 #include "constant.h"
+#include <chrono>
 
 class TextureManagement
 {
@@ -21,11 +22,9 @@ public:
 	static void Draw(SDL_Renderer* renderer, SDL_Texture* texture, SDL_Rect src, SDL_Rect dest);
 };
 
-
 class File {
 private:
 	static void readJSON(std::string path, nlohmann::json& jsondata);
-	
 
 public:
 	File();
@@ -34,6 +33,6 @@ public:
 	static std::vector<TileLayer> loadMap(std::string path);
 	static std::vector<TileSet> loadTile(std::string path);
 	static void readXML(std::string path, std::string& source, int& col);
-
-}; 
+	static std::vector<std::vector<int>> readCollision(std::string path);
+};
 

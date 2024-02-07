@@ -11,7 +11,7 @@ private:
 	MapName mapName = MapName::WATER_TOWN;
 	std::vector<TileLayer> map;
 	std::vector<TileSet> tileset;
-	SDL_Rect desRect = { 0, 0 , 16, 16 };
+	SDL_Rect desRect = { 0, 0 , 32, 32 };
 	SDL_Rect srcRect = { 0, 0, 32, 32 };
 
 public:
