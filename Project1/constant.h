@@ -27,7 +27,6 @@ struct Orient {
 		left = _left;
 		right = _right;
 	}
-
 };
 
 enum MapName {
@@ -87,3 +86,6 @@ const std::string TEST = "assets/.tile/testtile.png";
 const std::string TEST1 = "assets/.tile/walls.png";
 const std::string water_town = "assets/.tile/test2.tmj";
 const std::string ROGUE = "assets/characters/rogue.png";
+const std::string littleboy = "assets/characters/player.png";
+const std::string VIKING = "assets/characters/viking.png";
+const std::string DARK = "assets/characters/dark.png";

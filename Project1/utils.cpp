@@ -18,7 +18,6 @@ void TextureManagement::Draw(SDL_Renderer* renderer, SDL_Texture* texture, SDL_R
 	SDL_RenderCopy(renderer, texture, &src, &dest);
 }
 
-
 void File::readJSON(std::string path, nlohmann::json& jsondata) {
 	std::ifstream file(path);
 	if (!file.is_open()) {
@@ -38,7 +37,6 @@ std::vector<TileLayer> File::loadMap(std::string path) {
 	std::vector<TileLayer> tilelayer;
 
 	for (const auto& layer : layers) {
-
 		if (layer["name"] == "collision") {
 			continue;
 		}
@@ -81,7 +79,7 @@ std::vector<TileSet> File::loadTile(std::string path) {
 	return v;
 }
 
-void File::readXML(std::string path, std::string &source, int &col) {
+void File::readXML(std::string path, std::string& source, int& col) {
 	pugi::xml_document doc;
 	doc.load_file(path.c_str());
 

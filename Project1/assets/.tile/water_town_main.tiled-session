@@ -10,6 +10,18 @@
         "test_collion"
     ],
     "fileStates": {
+        "C:/Users/duong/Downloads/New folder (3)/Attack.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/duong/Downloads/New folder (3)/Idle.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/duong/Downloads/New folder (3)/Run.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "C:/Users/duong/ag.tsx": {
             "scaleInDock": 1
         },
@@ -29,8 +41,8 @@
             "scale": 0.75,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 361.33333333333326,
-                "y": 339.3333333333333
+                "x": 360,
+                "y": 338
             }
         },
         "test_collion/green.tsx": {
@@ -95,11 +107,13 @@
         }
     },
     "last.exportedFilePath": "C:/Users/duong/source/repos/Project1/Project1/assets/.tile",
-    "last.imagePath": "C:/Users/duong/source/repos/Project1/Project1/assets/.tile/tileset",
-    "map.height": 20,
+    "last.imagePath": "C:/Users/duong/Downloads/Monsters_Creatures_Fantasy/Goblin",
+    "map.height": 40,
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
-    "map.width": 25,
+    "map.tileHeight": 4,
+    "map.tileWidth": 4,
+    "map.width": 50,
     "openFiles": [
         "test2.tmx",
         "test_collion/sewer.tsx",
@@ -107,22 +121,22 @@
     ],
     "project": "water_town_main.tiled-project",
     "recentFiles": [
-        "test_collion/green.tsx",
-        "test_collion/sewer.tsx",
+        "C:/Users/duong/Downloads/New folder (3)/Idle.tsx",
+        "C:/Users/duong/Downloads/New folder (3)/Attack.tsx",
+        "C:/Users/duong/Downloads/New folder (3)/Run.tsx",
         "test2.tmx",
+        "test_collion/sewer.tsx",
+        "test_collion/green.tsx",
         "test_collion/test.tmj",
         "untitled.tmx",
         "test_collion/test.tmx",
         "tileset/collion.tsx",
         "tileset/collisontest.tsx",
-        "tileset/tilesetformattedupdate1.tsx",
-        "tileset/sewer.tsx",
-        "tileset/classical_temple_tiles.tsx",
-        "tileset/Castle2.tsx"
+        "tileset/tilesetformattedupdate1.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
-        "height": 32,
-        "width": 32
+        "height": 4,
+        "width": 4
     }
 }

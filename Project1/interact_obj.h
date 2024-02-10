@@ -52,7 +52,7 @@ public:
 
 protected:
 	int health, mana, level, exp, speed, magicDamage, range, armor, magicResistance, physicDamage;
-	
+	std::string type;
 	std::vector<Skill> skillSet;
 
 	SDL_Rect idleFrame[10];
@@ -70,6 +70,8 @@ protected:
 	int frameCount;
 	int frameTick;
 
+	bool direction = true;
+
 	charState lastFrame = charState::IDLE, newFrame = charState::IDLE;
 
 	Orient* orient = new Orient();
@@ -80,8 +82,9 @@ protected:
 
 	int map_x, map_y;
 
+	bool check_run = false;
+	bool check_pause = false;
 	bool check_attack = false;
 	bool check_death = false;
 	bool check_take_damage = false;
-
 };

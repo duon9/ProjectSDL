@@ -10,6 +10,7 @@
 #include "entity.h"
 #include "constant.h"
 #include "player.h"
+#include "computer.h"
 
 class Game
 {
@@ -34,4 +35,5 @@ private:
 	GameState gamestate;
 	Interface* interface = nullptr;
 	Player* player1 = nullptr;
+	Computer* comp1 = nullptr;
 };

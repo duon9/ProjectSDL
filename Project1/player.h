@@ -27,5 +27,5 @@ public:
 	virtual void setClip() override;
 	//virtual void setSkill() override;
 	void handleUserEvents(SDL_Event e);
+	void move();
 };
-

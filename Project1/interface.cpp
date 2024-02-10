@@ -52,7 +52,7 @@ void Interface::load() {
 		std::cout << it->source << std::endl;
 		std::cout << it->col << std::endl;
 		std::cout << it->firstgid << std::endl;
-		
+
 		it->texture = TextureManagement::LoadTexture(it->source, renderer);
 		if (it->texture == nullptr) {
 			std::cout << "null texture" << std::endl;

@@ -1,10 +1,7 @@
 #pragma once
 #include <vector>
 #include "player.h"
-
-struct Enemys {
-
-};
+#include "computer.h"
 
 class EntityManager
 {
@@ -13,7 +10,7 @@ private:
 	SDL_Event e;
 	std::vector<std::vector<int>> collisionMap;
 	std::vector<Player> playerManager;
-	std::vector<Enemys> ememysManager;
+	std::vector<Computer> ememysManager;
 	//std::vector<AnimatedTile> animatedTileManager;
 
 public:
@@ -26,4 +23,3 @@ public:
 	void readCollision();
 	void loadEntity();
 };
-

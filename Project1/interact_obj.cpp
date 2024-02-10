@@ -1,6 +1,5 @@
 #include "interact_obj.h"
 
-
 int Object::getAmmor() {
 	return armor;
 }

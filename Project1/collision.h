@@ -13,5 +13,4 @@ public:
 	~Collision();
 
 private:
-
 };

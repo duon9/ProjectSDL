@@ -35,4 +35,3 @@ public:
 	static void readXML(std::string path, std::string& source, int& col);
 	static std::vector<std::vector<int>> readCollision(std::string path);
 };
-

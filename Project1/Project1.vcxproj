@@ -132,27 +132,30 @@
   <ItemGroup>
     <ClCompile Include="button.cpp" />
     <ClCompile Include="collision.cpp" />
+    <ClCompile Include="computer.cpp" />
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="math.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="interface.cpp" />
     <ClCompile Include="interact_obj.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="skill.cpp" />
-    <ClCompile Include="Source.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="button.h" />
     <ClInclude Include="collision.h" />
+    <ClInclude Include="computer.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="EntityManager.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="constant.h" />
     <ClInclude Include="interface.h" />
+    <ClInclude Include="math.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="interact_obj.h" />
     <ClInclude Include="player.h" />
