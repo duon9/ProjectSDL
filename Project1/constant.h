@@ -71,13 +71,20 @@ struct TileSet {
 	SDL_Texture* texture = nullptr;
 };
 
+const int RUN_FRAMETICK = 40;
+const int ATTACK_FRAMETICK = 100;
+const int MAX_IDLE_FRAMECOUNT = 200 - 1;
+const int MAX_RUN_FRAMECOUNT = 40 - 1;
+const int MAX_ATTACK_FRAMECOUNT = 100 - 1;
+const int MAX_DEAD_FRAMECOUNT = 100 - 1;
+
 const int OBJECT_WIDTH = 64;
 const int OBJECT_HEIGHT = 64;
 
 const int TILE_WIDTH = 32;
 const int TILE_HEIGHT = 32;
 
-const int PLAYER_SPEED = 7;
+const int PLAYER_SPEED = 4;
 const int PLAYER_HEALTH = 1000;
 const int PLAYER_MANA = 500;
 const int PLAYER_LEVEL = 1;

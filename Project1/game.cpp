@@ -34,6 +34,8 @@ void Game::init(const char* title, int _x, int _y, int _w, int _h, Uint32 flags)
 	interface->init();
 	player1 = new Player(renderer, ROGUE);
 	player1->init();
+	comp1 = new Computer(renderer, ROGUE);
+	comp1->init();
 
 }
 
@@ -61,6 +63,7 @@ void Game::handleEvents() {
 
 	if (gamestate == GameState::PLAY) {
 		player1->handleUserEvents(e);
+		comp1->randomBotMovement();
 	}
 }
 
@@ -75,6 +78,7 @@ void Game::render() {
 	case GameState::PLAY:
 		interface->render();
 		player1->render();
+		comp1->render();
 		break;
 
 	default:

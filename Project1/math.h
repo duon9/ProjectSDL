@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
 #include <SDL.h>
+#include <random>
+#include <ctime>
 
 namespace Math {
 	class Vector {
@@ -30,6 +32,26 @@ namespace Math {
 		friend std::ostream& operator << (std::ostream& os, const Vector& v) {
 			os << "(" << v.x << "," << v.y << ")" << std::endl;
 			return os;
+		}
+	};
+
+	class Casuale {
+	private:
+
+	public:
+		static int casuale(int min, int max) {
+			//std::mt19937 rng(std::time(nullptr)); // get current time
+			//std::uniform_int_distribution<int> distribution(first, last); // get random orient
+			//int res = distribution(rng);
+			//return res;
+
+			std::random_device rd;
+			std::mt19937 gen(rd());
+
+			// limit the range of generated number
+			std::uniform_int_distribution<int> distribution(min, max);
+
+			return distribution(gen);
 		}
 	};
 }

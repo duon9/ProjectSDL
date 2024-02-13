@@ -48,9 +48,13 @@ public:
 
 	//virtual void setSkill();
 	virtual void setClip();
+	bool collisionHandle(std::vector<std::vector<int>> collider);
+	void colliderLoad(std::string path);
+	void move();
 
+	virtual void render() override;
 protected:
-
+	int w, h;
 	std::vector<std::vector<int>> collider;
 
 	int health, prehealth, mana, level, exp, speed, range, damage;

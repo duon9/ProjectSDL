@@ -10,6 +10,8 @@
 #include <pugixml.hpp>
 #include "constant.h"
 #include <chrono>
+#include <random>
+#include <ctime>
 
 class TextureManagement
 {
@@ -37,3 +39,11 @@ public:
 	static void loadObject(SDL_Texture* texture, std::string path);
 };
 // vector
+
+//namespace luckywheel {
+//	int ranint(int first, int last) {
+//		std::mt19937 rng(std::time(nullptr)); // get current time
+//		std::uniform_int_distribution<int> distribution(first, last); // get random orient
+//		return distribution(rng);
+//	}
+//}

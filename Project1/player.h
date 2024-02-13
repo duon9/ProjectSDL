@@ -1,13 +1,13 @@
 #pragma once
 #include "interact_obj.h"
 #include "constant.h"
-#include <queue>
 #include "utils.h"
 
 class Player : public Object
 {
 private:
 	std::string source;
+	//bool keyPressed = false;
 
 public:
 
@@ -23,10 +23,8 @@ public:
 	}
 
 	virtual void init() override;
-	virtual void render() override;
 	virtual void setClip() override;
 	//virtual void setSkill() override;
 	void handleUserEvents(SDL_Event e);
-	void move();
-	bool collisionHandle(std::vector<std::vector<int>> collider);
+	/*bool collisionHandle(std::vector<std::vector<int>> collider);*/
 };

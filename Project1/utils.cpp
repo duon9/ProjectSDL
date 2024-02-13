@@ -1,4 +1,6 @@
 #include "utils.h"
+#include <random>
+#include <ctime>
 
 TextureManagement::TextureManagement() {
 }
@@ -113,6 +115,6 @@ std::vector<std::vector<int>> File::readCollision(std::string path) {
 			}
 		}
 	}
-
 	return res;
 }
+
