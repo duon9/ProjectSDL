@@ -34,4 +34,6 @@ public:
 	static std::vector<TileSet> loadTile(std::string path);
 	static void readXML(std::string path, std::string& source, int& col);
 	static std::vector<std::vector<int>> readCollision(std::string path);
+	static void loadObject(SDL_Texture* texture, std::string path);
 };
+// vector

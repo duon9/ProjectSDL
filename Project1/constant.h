@@ -71,6 +71,12 @@ struct TileSet {
 	SDL_Texture* texture = nullptr;
 };
 
+const int OBJECT_WIDTH = 64;
+const int OBJECT_HEIGHT = 64;
+
+const int TILE_WIDTH = 32;
+const int TILE_HEIGHT = 32;
+
 const int PLAYER_SPEED = 7;
 const int PLAYER_HEALTH = 1000;
 const int PLAYER_MANA = 500;

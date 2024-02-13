@@ -28,4 +28,5 @@ public:
 	//virtual void setSkill() override;
 	void handleUserEvents(SDL_Event e);
 	void move();
+	bool collisionHandle(std::vector<std::vector<int>> collider);
 };

@@ -14,7 +14,9 @@ class Object : public Entity {
 public:
 
 	Object(SDL_Renderer* renderer) : Entity(renderer) {
-		std::cout << "Object constructor initialize \n";
+		//constructor
+
+		std::cout << "Object constructor called \n";
 	}
 	~Object() {
 		// destructor
@@ -22,27 +24,24 @@ public:
 		std::cout << "Object class destructor called" << std::endl;
 	}
 
+	
 	int getHealth();
 	int getMana();
 	int getLevel();
 	int getExp();
 	int getSpeed();
-	int getMagicDamage();
 	int getRange();
-	int getAmmor();
-	int getMagicResistance();
-	int getPhysicDamage();
+	int getDamage();
 
 	void updateHealth(int newHealth);
 	void updateMana(int newMana);
 	void updateLevel(int newLevel);
 	void updateExp(int newExp);
 	void updateSpeed(int newSpeed);
-	void updateMagicDamage(int newMagicDamage);
 	void updateRange(int newRange);
-	void updateArmor(int newArmor);
-	void updateMagicResistance(int newMagicResistance);
-	void updatePhysicDamage(int newPhysicDamage);
+	void updateDamage(int newDamage);
+
+	virtual void logicHandle();
 
 	//virtual void collisionProcess(); // still planning
 	//virtual void spellCast(); // still planning
@@ -51,7 +50,10 @@ public:
 	virtual void setClip();
 
 protected:
-	int health, mana, level, exp, speed, magicDamage, range, armor, magicResistance, physicDamage;
+
+	std::vector<std::vector<int>> collider;
+
+	int health, prehealth, mana, level, exp, speed, range, damage;
 	std::string type;
 	std::vector<Skill> skillSet;
 
@@ -77,10 +79,12 @@ protected:
 	Orient* orient = new Orient();
 
 	charState status = charState::IDLE;
+	charState next_status = charState::IDLE;
 
 	int x, y;
 
 	int map_x, map_y;
+	int next_map_x, next_map_y;
 
 	bool check_run = false;
 	bool check_pause = false;

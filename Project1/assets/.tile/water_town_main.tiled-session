@@ -3,24 +3,32 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "test2.tmx",
+    "activeFile": "C:/Users/duong/Downloads/New folder (3)/untitled.tmx",
     "expandedProjectPaths": [
-        "tileset",
         ".",
+        "tileset",
         "test_collion"
     ],
     "fileStates": {
         "C:/Users/duong/Downloads/New folder (3)/Attack.tsx": {
-            "scaleInDock": 1,
+            "scaleInDock": 1.5,
             "scaleInEditor": 1
         },
         "C:/Users/duong/Downloads/New folder (3)/Idle.tsx": {
-            "scaleInDock": 1,
+            "scaleInDock": 0.5,
             "scaleInEditor": 1
         },
         "C:/Users/duong/Downloads/New folder (3)/Run.tsx": {
-            "scaleInDock": 1,
+            "scaleInDock": 0.75,
             "scaleInEditor": 1
+        },
+        "C:/Users/duong/Downloads/New folder (3)/untitled.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 239.33333333333334,
+                "y": 92.66666666666666
+            }
         },
         "C:/Users/duong/ag.tsx": {
             "scaleInDock": 1
@@ -115,15 +123,17 @@
     "map.tileWidth": 4,
     "map.width": 50,
     "openFiles": [
-        "test2.tmx",
-        "test_collion/sewer.tsx",
-        "test_collion/green.tsx"
+        "C:/Users/duong/Downloads/New folder (3)/untitled.tmx",
+        "C:/Users/duong/Downloads/New folder (3)/Idle.tsx",
+        "C:/Users/duong/Downloads/New folder (3)/Attack.tsx",
+        "C:/Users/duong/Downloads/New folder (3)/Run.tsx"
     ],
     "project": "water_town_main.tiled-project",
     "recentFiles": [
-        "C:/Users/duong/Downloads/New folder (3)/Idle.tsx",
-        "C:/Users/duong/Downloads/New folder (3)/Attack.tsx",
         "C:/Users/duong/Downloads/New folder (3)/Run.tsx",
+        "C:/Users/duong/Downloads/New folder (3)/Attack.tsx",
+        "C:/Users/duong/Downloads/New folder (3)/Idle.tsx",
+        "C:/Users/duong/Downloads/New folder (3)/untitled.tmx",
         "test2.tmx",
         "test_collion/sewer.tsx",
         "test_collion/green.tsx",
@@ -131,8 +141,7 @@
         "untitled.tmx",
         "test_collion/test.tmx",
         "tileset/collion.tsx",
-        "tileset/collisontest.tsx",
-        "tileset/tilesetformattedupdate1.tsx"
+        "tileset/collisontest.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

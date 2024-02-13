@@ -1,8 +1,5 @@
 #include "interact_obj.h"
 
-int Object::getAmmor() {
-	return armor;
-}
 
 int Object::getHealth() {
 	return health;
@@ -24,20 +21,13 @@ int Object::getSpeed() {
 	return speed;
 }
 
-int Object::getMagicDamage() {
-	return magicDamage;
-}
-
 int Object::getRange() {
 	return range;
 }
 
-int Object::getMagicResistance() {
-	return magicResistance;
-}
 
-int Object::getPhysicDamage() {
-	return physicDamage;
+int Object::getDamage() {
+	return damage;
 }
 
 void Object::updateHealth(int newHealth) {
@@ -60,26 +50,27 @@ void Object::updateSpeed(int newSpeed) {
 	speed = newSpeed;
 }
 
-void Object::updateMagicDamage(int newMagicDamage) {
-	magicDamage = newMagicDamage;
-}
-
 void Object::updateRange(int newRange) {
 	range = newRange;
 }
 
-void Object::updateArmor(int newArmor) {
-	armor = newArmor;
-}
-
-void Object::updateMagicResistance(int newMagicResistance) {
-	magicResistance = newMagicResistance;
-}
-
-void Object::updatePhysicDamage(int newPhysicDamage) {
-	physicDamage = newPhysicDamage;
+void Object::updateDamage(int newDamage) {
+	damage = newDamage;
 }
 
 void Object::setClip() {
 	std::cout << "a" << std::endl;
+}
+
+void Object::logicHandle() {
+	if (health < 0) {
+		check_death = true;
+		status = charState::DEATH;
+	}
+	else if (prehealth > health) {
+		check_take_damage = true;
+	}
+	else {
+		return;
+	}
 }

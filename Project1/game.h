@@ -31,6 +31,9 @@ private:
 	void handleEvents();
 	void gameLoop();
 	void render();
+	void handleLogicGame();
+
+
 	Menu* menu = nullptr;
 	GameState gamestate;
 	Interface* interface = nullptr;

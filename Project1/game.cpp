@@ -35,13 +35,12 @@ void Game::init(const char* title, int _x, int _y, int _w, int _h, Uint32 flags)
 	player1 = new Player(renderer, ROGUE);
 	player1->init();
 
-	comp1 = new Computer(renderer, DARK);
-	comp1->init();
 }
 
 void Game::gameLoop() {
 	std::cout << "start gameLoop() Game class" << std::endl;
 	while (gamestate != GameState::EXIT) {
+		handleLogicGame();
 		handleEvents();
 		render();
 	}
@@ -76,7 +75,6 @@ void Game::render() {
 	case GameState::PLAY:
 		interface->render();
 		player1->render();
-		comp1->render();
 		break;
 
 	default:
@@ -85,4 +83,8 @@ void Game::render() {
 
 	SDL_RenderPresent(renderer);
 	SDL_Delay(1000 / 70);
+}
+
+void Game::handleLogicGame() {
+	player1->logicHandle();
 }
