@@ -36,7 +36,8 @@ public:
 	static std::vector<TileSet> loadTile(std::string path);
 	static void readXML(std::string path, std::string& source, int& col);
 	static std::vector<std::vector<int>> readCollision(std::string path);
-	static void loadObject(SDL_Texture* texture, std::string path);
+	static void getProperties(std::string type, int& health, int& mana, int& speed, int& level, int& exp, int& damage, std::string& source, int& map_x, int& map_y);
+	//static void getClips(std::string type, );
 };
 // vector
 
@@ -46,4 +47,19 @@ public:
 //		std::uniform_int_distribution<int> distribution(first, last); // get random orient
 //		return distribution(rng);
 //	}
+//}
+
+//void getProperties(std::string type, int& health, int& mana, int& speed, int& level, int& exp, int& damage, std::string& source, int& map_x, int& map_y) {
+//	nlohmann::json jsondata;
+//	readJSON(path, jsondata);
+//	nlohmann::json object = jsondata[type];
+//	health = object["health"].get<int>();
+//	mana = object["mana"].get<int>();
+//	damage = object["damage"].get<int>();
+//	level = object["level"].get<int>();
+//	exp = object["exp"].get<int>();
+//	speed = object["speed"].get<int>();
+//	source = object["source"].get<std::string>();
+//	map_x = object["map_x"].get<int>();
+//	map_y = object["map_y"].get<int>();
 //}

@@ -118,3 +118,17 @@ std::vector<std::vector<int>> File::readCollision(std::string path) {
 	return res;
 }
 
+void File::getProperties(std::string type, int& health, int& mana, int& speed, int& level, int& exp, int& damage, std::string& source, int& map_x, int& map_y) {
+	nlohmann::json jsondata;
+	readJSON(object, jsondata);
+	nlohmann::json object = jsondata[type];
+	health = object["health"].get<int>();
+	mana = object["mana"].get<int>();
+	damage = object["damage"].get<int>();
+	level = object["level"].get<int>();
+	exp = object["exp"].get<int>();
+	speed = object["speed"].get<int>();
+	source = object["source"].get<std::string>();
+	map_x = object["map_x"].get<int>();
+	map_y = object["map_y"].get<int>();
+}

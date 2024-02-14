@@ -102,3 +102,4 @@ const std::string ROGUE = "assets/characters/rogue.png";
 const std::string littleboy = "assets/characters/player.png";
 const std::string VIKING = "assets/characters/viking.png";
 const std::string DARK = "assets/characters/dark.png";
+const std::string object = "assets/characters/object.json";
