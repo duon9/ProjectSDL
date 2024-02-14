@@ -37,7 +37,7 @@ public:
 	static void readXML(std::string path, std::string& source, int& col);
 	static std::vector<std::vector<int>> readCollision(std::string path);
 	static void getProperties(std::string type, int& health, int& mana, int& speed, int& level, int& exp, int& damage, std::string& source, int& map_x, int& map_y);
-	//static void getClips(std::string type, );
+	static std::vector<std::vector<SDL_Rect>> getClips(std::string type);
 };
 // vector
 

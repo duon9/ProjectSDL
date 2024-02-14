@@ -120,7 +120,7 @@ std::vector<std::vector<int>> File::readCollision(std::string path) {
 
 void File::getProperties(std::string type, int& health, int& mana, int& speed, int& level, int& exp, int& damage, std::string& source, int& map_x, int& map_y) {
 	nlohmann::json jsondata;
-	readJSON(object, jsondata);
+	readJSON(file_object, jsondata);
 	nlohmann::json object = jsondata[type];
 	health = object["health"].get<int>();
 	mana = object["mana"].get<int>();
@@ -131,4 +131,51 @@ void File::getProperties(std::string type, int& health, int& mana, int& speed, i
 	source = object["source"].get<std::string>();
 	map_x = object["map_x"].get<int>();
 	map_y = object["map_y"].get<int>();
+}
+
+
+//enum charState {
+//	IDLE,
+//	RUNNING,
+//	ATTACKING,
+//	DEATH,
+//	SPELLCAST,
+//	TAKEDAMAGE
+//	
+//};
+
+
+std::vector<std::vector<SDL_Rect>> File::getClips(std::string type) {
+	std::vector<std::vector<SDL_Rect>> res;
+	SDL_Rect temp;
+	nlohmann::json jsondata;
+	readJSON(file_object, jsondata);
+	nlohmann::json entity = jsondata["rogue_knight"];
+	std::cout << "load object finish \n";
+	nlohmann::json clips = entity["clips"];
+
+	std::cout << "load clips finish \n";
+
+	for (const auto& clip : clips) {
+		std::vector<SDL_Rect> frame;
+		int count = clip["count"];
+
+		if (count == 0) {
+			continue;
+		}
+		else {
+			nlohmann::json ware = clip["srcRect"];
+			nlohmann::json present = clip["desRect"];
+			if (ware.is_array()) {
+				for (const auto& action : ware) {
+					//temp = { ware[i][0], ware[i][1], ware[i][2], ware[i][3] };
+					temp = { action[0], action[1], action[2], action[3] };
+					frame.push_back(temp);
+				}
+			}
+		}
+
+		res.push_back(frame);
+	}
+	return res;
 }
