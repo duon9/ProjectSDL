@@ -7,11 +7,11 @@
     "exp": 1,
     "speed": 2,
     "source": "assets/characters/rogue.png",
-    "map_x": 10,
-    "map_y": 2,
+    "range": 1,
     "clips": {
-      "idleFrame:": {
+      "idleFrame": {
         "count": 10,
+        "maxFrame": 200, 
         "srcRect": [
           [ 0, 0, 32, 32 ], 
           [ 32, 0, 32, 32 ], 
@@ -28,6 +28,7 @@
       },
       "runFrame": {
         "count": 10,
+        "maxFrame": 40,
         "srcRect": [
           [ 0, 64, 32, 32 ],
           [ 32, 64, 32, 32 ],
@@ -44,6 +45,7 @@
       },
       "attackFrame": {
         "count": 10,
+        "maxFrame": 100,
         "srcRect": [
           [ 0, 96, 32, 32 ],
           [ 32, 96, 32, 32 ],
@@ -60,6 +62,7 @@
       },
       "deathFrame": {
         "count": 10,
+        "maxFrame": 100,
         "srcRect": [
           [ 0, 128, 32, 32 ],
           [ 32, 128, 32, 32 ],
@@ -75,10 +78,12 @@
         "desRect": "NULL"
       },
       "spellFrame": {
-        "count" :  0
+        "count": 0,
+        "maxFrame": 0
       },
       "takedameFrame": {
-        "count" :  0
+        "count": 0,
+        "maxFrame": 0
       }
     }
   }

@@ -26,17 +26,17 @@ public:
 
 class File {
 private:
-	static void readJSON(std::string path, nlohmann::json& jsondata);
-
+	
+	
 public:
 	File();
 	~File();
-
+	static void readJSON(std::string path, nlohmann::json& jsondata);
 	static std::vector<TileLayer> loadMap(std::string path);
 	static std::vector<TileSet> loadTile(std::string path);
 	static void readXML(std::string path, std::string& source, int& col);
 	static std::vector<std::vector<int>> readCollision(std::string path);
-	static void getProperties(std::string type, int& health, int& mana, int& speed, int& level, int& exp, int& damage, std::string& source, int& map_x, int& map_y);
+	static void getProperties(std::string type, Stat& stat);
 	static std::vector<std::vector<SDL_Rect>> getClips(std::string type);
 };
 // vector

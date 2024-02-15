@@ -2,77 +2,77 @@
 
 
 int Object::getHealth() {
-	return health;
+	return stat.health;
 }
 
 int Object::getMana() {
-	return mana;
+	return stat.mana;
 }
 
 int Object::getLevel() {
-	return level;
+	return stat.level;
 }
 
 int Object::getExp() {
-	return exp;
+	return stat.exp;
 }
 
 int Object::getSpeed() {
-	return speed;
+	return stat.speed;
 }
 
 int Object::getRange() {
-	return range;
+	return stat.range;
 }
 
 
 int Object::getDamage() {
-	return damage;
+	return stat.damage;
 }
 
 void Object::updateHealth(int newHealth) {
-	health = newHealth;
+	stat.health = newHealth;
 }
 
 void Object::updateMana(int newMana) {
-	mana = newMana;
+	stat.mana = newMana;
 }
 
 void Object::updateLevel(int newLevel) {
-	level = newLevel;
+	stat.level = newLevel;
 }
 
 void Object::updateExp(int newExp) {
-	exp = newExp;
+	stat.exp = newExp;
 }
 
 void Object::updateSpeed(int newSpeed) {
-	speed = newSpeed;
+	stat.speed = newSpeed;
 }
 
 void Object::updateRange(int newRange) {
-	range = newRange;
+	stat.range = newRange;
 }
 
 void Object::updateDamage(int newDamage) {
-	damage = newDamage;
+	stat.damage = newDamage;
 }
 
 void Object::setClip() {
-	std::cout << "a" << std::endl;
+	wareClips = File::getClips(type);
 }
 
 void Object::logicHandle() {
-	if (health <= 0) {
+	if (stat.health <= 0) {
 		check_death = true;
 		status = charState::DEATH;
 	}
-	else if (prehealth > health) {
-		check_take_damage = true;
-	}
-	else {
-		return;
-	}
+	//else if (prehealth > stat.health) {
+	//	check_take_damage = true;
+	//}
+	//else {
+	//	return;
+	//}
 }
 
 bool Object::collisionHandle(std::vector<std::vector<int>> collider) {
@@ -125,45 +125,16 @@ void Object::move() {
 			else if (orient->up && check_run) {
 				desRect.y -= PLAYER_SPEED;
 			}
-			else if (orient->left && orient->up && check_run) {
-				desRect.x -= 32.0 / 10;
-				desRect.y -= 32.0 / 10;
-			}
-			else if (orient->left && orient->down && check_run) {
-				desRect.x -= 32.0 / 10;
-				desRect.y += 32.0 / 10;
-			}
-			else if (orient->right && orient->up && check_run) {
-				desRect.x += 32.0 / 10;
-				desRect.y -= 32.0 / 10;
-			}
-			else if (orient->right && orient->down && check_run) {
-				desRect.x += 32.0 / 10;
-				desRect.y += 32.0 / 10;
-			}
-			else {
-				return;
-			}
 		}
-		else {
-			return;
-		}
-	}
-	else {
-		return;
 	}
 }
 
+void Object::setProperties() {
+	File::getProperties(type, stat);
+	texture = TextureManagement::LoadTexture(stat.source, renderer);
+}
+
 void Object::render() {
-	lastFrame = newFrame;
-
-	if (direction) {
-		flip = SDL_FLIP_HORIZONTAL;
-	}
-	else {
-		flip = SDL_FLIP_NONE;
-	}
-
 	if (frameCount == MAX_IDLE_FRAMECOUNT && status == charState::IDLE) {
 		frameCount = 0;
 	}
@@ -176,51 +147,47 @@ void Object::render() {
 	else if (frameCount == MAX_DEAD_FRAMECOUNT && status == charState::DEATH) {
 		frameCount = 0;
 	}
-
+	
 	frameCount++;
 
-	switch (status) {
-	case charState::IDLE:
-		newFrame = charState::IDLE;
-		if (lastFrame != newFrame) {
-			frameCount = 0;
-		}
-
-		srcRect = idleFrame[frameCount / 20];
-
-		break;
-	case charState::RUNNING:
-		newFrame = charState::RUNNING;
-		if (lastFrame != newFrame) {
-			frameCount = 0;
-		}
-
-		srcRect = runFrame[frameCount / 4];
-		break;
-	case charState::ATTACKING:
-		newFrame = charState::ATTACKING;
-
-		if (lastFrame != newFrame) {
-			frameCount = 0;
-		}
-
-		srcRect = attackFrame[frameCount / 10];
-		break;
-
-	case charState::DEATH:
-		newFrame = charState::DEATH;
-		if (lastFrame != newFrame) {
-			frameCount = 0;
-		}
-
-		srcRect = deathFrame[frameCount / 10];
-
-		if (frameCount == 98) {
-			frameCount--;
-		}
-
-		break;
+	if (status != lastFrame) {
+		frameCount = 0;
 	}
 
+	srcRect = wareClips[static_cast<int>(status)][change()];
+	lastFrame = status;
 	SDL_RenderCopyEx(renderer, texture, &srcRect, &desRect, NULL, NULL, flip);
 }
+
+int Object::change() {
+	switch (status) {
+	case charState::IDLE:
+		return frameCount / 20;
+	case charState::RUNNING:
+		return frameCount / 4;
+	case charState::ATTACKING:
+		return frameCount / 10;
+	case charState::DEATH:
+		return frameCount / 10;
+	}
+}
+
+void Object::setLocation() {
+	while (collider[map_y][map_x] == 0) {
+		map_x = Math::Casuale::casuale(0, w - 1);
+		map_y = Math::Casuale::casuale(0, h - 1);
+	}
+
+	next_map_x = map_x;
+	next_map_y = map_y;
+
+	desRect = { (((map_x - 2) * TILE_WIDTH) + (TILE_WIDTH / 2) + (OBJECT_WIDTH / 2)), ((map_y * TILE_HEIGHT) + TILE_HEIGHT - OBJECT_HEIGHT) - 10, OBJECT_WIDTH, OBJECT_HEIGHT };
+}
+
+void Object::init() {
+	colliderLoad(water_town);
+	setLocation();
+	setProperties();
+	setClip();
+}
+

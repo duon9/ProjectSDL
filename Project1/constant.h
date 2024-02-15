@@ -77,6 +77,32 @@ struct TileSet {
 	SDL_Texture* texture = nullptr;
 };
 
+struct Stat {
+	int health;
+	int mana;
+	int damage;
+	int level;
+	int exp;
+	int speed;
+	std::string source;
+	int range;
+
+	Stat(int _health, int _mana, int _damage, int _level, int _exp, int _speed, std::string _source, int _range) {
+		health = _health;
+		mana = _mana;
+		damage = _damage;
+		level = _level;
+		exp = _level;
+		speed = _speed;
+		source = _source;
+		range = _range;
+	}
+
+	Stat() {
+		std::cout << "Stat called \n";
+	}
+};
+
 const int RUN_FRAMETICK = 40;
 const int ATTACK_FRAMETICK = 100;
 const int MAX_IDLE_FRAMECOUNT = 200 - 1;
@@ -104,7 +130,7 @@ const int SPEED = 5;
 const std::string TEST = "assets/.tile/testtile.png";
 const std::string TEST1 = "assets/.tile/walls.png";
 const std::string water_town = "assets/.tile/test2.tmj";
-const std::string ROGUE = "assets/characters/rogue.png";
+const std::string ROGUE = "rogue_knight";
 const std::string littleboy = "assets/characters/player.png";
 const std::string VIKING = "assets/characters/viking.png";
 const std::string DARK = "assets/characters/dark.png";

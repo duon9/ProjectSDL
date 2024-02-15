@@ -55,9 +55,8 @@ void Interface::load() {
 
 		it->texture = TextureManagement::LoadTexture(it->source, renderer);
 		if (it->texture == nullptr) {
-			std::cout << "null texture" << std::endl;
+			std::cout << "null interface texture" << std::endl;
 		}
 	}
-	std::cout << "finish load func" << std::endl;
 	return;
 }

@@ -9,6 +9,7 @@
 #include "constant.h"
 #include <vector>
 #include "skill.h"
+#include "math.h"
 
 class Object : public Entity {
 public:
@@ -48,24 +49,23 @@ public:
 
 	//virtual void setSkill();
 	virtual void setClip();
+	virtual void setProperties();
 	bool collisionHandle(std::vector<std::vector<int>> collider);
 	void colliderLoad(std::string path);
 	void move();
-
+	int change();
+	void setLocation();
+	virtual void init() override;
 	virtual void render() override;
 protected:
 	int w, h;
 	std::vector<std::vector<int>> collider;
+	Stat stat;
 
-	int health, prehealth, mana, level, exp, speed, range, damage;
 	std::string type;
 	std::vector<Skill> skillSet;
 
-	SDL_Rect idleFrame[10];
-	SDL_Rect runFrame[10];
-	SDL_Rect attackFrame[10];
-	SDL_Rect spellcastFrame[10];
-	SDL_Rect deathFrame[10];
+	std::vector<std::vector<SDL_Rect>> wareClips;
 
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
 	SDL_Texture* texture = nullptr;
@@ -76,14 +76,12 @@ protected:
 	int frameCount;
 	int frameTick;
 
-	bool direction = true;
-
-	charState lastFrame = charState::IDLE, newFrame = charState::IDLE;
+	charState lastFrame = charState::IDLE;
 
 	Orient* orient = new Orient();
 
 	charState status = charState::IDLE;
-	charState next_status = charState::IDLE;
+	charState next_status = charState::IDLE; // still use, do not delete
 
 	int x, y;
 

@@ -6,14 +6,12 @@
 class Player : public Object
 {
 private:
-	std::string source;
-	//bool keyPressed = false;
 
 public:
 
-	Player(SDL_Renderer* renderer, std::string source) : Object(renderer) {
+	Player(SDL_Renderer* renderer, std::string type) : Object(renderer) {
 		this->renderer = renderer;
-		this->source = source;
+		this->type = type;
 		std::cout << "Player constructor initialize" << std::endl;
 	}
 	~Player() {
@@ -22,9 +20,7 @@ public:
 		*/
 	}
 
-	virtual void init() override;
-	virtual void setClip() override;
-	//virtual void setSkill() override;
+	//virtual void init() override;
 	void handleUserEvents(SDL_Event e);
 	/*bool collisionHandle(std::vector<std::vector<int>> collider);*/
 };

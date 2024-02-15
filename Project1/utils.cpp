@@ -118,31 +118,19 @@ std::vector<std::vector<int>> File::readCollision(std::string path) {
 	return res;
 }
 
-void File::getProperties(std::string type, int& health, int& mana, int& speed, int& level, int& exp, int& damage, std::string& source, int& map_x, int& map_y) {
+void File::getProperties(std::string type, Stat& stat) {
 	nlohmann::json jsondata;
 	readJSON(file_object, jsondata);
 	nlohmann::json object = jsondata[type];
-	health = object["health"].get<int>();
-	mana = object["mana"].get<int>();
-	damage = object["damage"].get<int>();
-	level = object["level"].get<int>();
-	exp = object["exp"].get<int>();
-	speed = object["speed"].get<int>();
-	source = object["source"].get<std::string>();
-	map_x = object["map_x"].get<int>();
-	map_y = object["map_y"].get<int>();
+	stat.health = object["health"].get<int>();
+	stat.mana = object["mana"].get<int>();
+	stat.damage = object["damage"].get<int>();
+	stat.level = object["level"].get<int>();
+	stat.exp = object["exp"].get<int>();
+	stat.speed = object["speed"].get<int>();
+	stat.source = object["source"].get<std::string>();
+	stat.range = object["range"].get<int>();
 }
-
-
-//enum charState {
-//	IDLE,
-//	RUNNING,
-//	ATTACKING,
-//	DEATH,
-//	SPELLCAST,
-//	TAKEDAMAGE
-//	
-//};
 
 
 std::vector<std::vector<SDL_Rect>> File::getClips(std::string type) {
@@ -150,31 +138,27 @@ std::vector<std::vector<SDL_Rect>> File::getClips(std::string type) {
 	SDL_Rect temp;
 	nlohmann::json jsondata;
 	readJSON(file_object, jsondata);
-	nlohmann::json entity = jsondata["rogue_knight"];
-	std::cout << "load object finish \n";
+	nlohmann::json entity = jsondata[type];
 	nlohmann::json clips = entity["clips"];
 
-	std::cout << "load clips finish \n";
-
-	for (const auto& clip : clips) {
+	std::string state[] = { "idleFrame", "runFrame", "attackFrame", "deathFrame", "spellFrame", "takedameFrame" };
+	for (int i = 0; i < 6; i++) {
+		nlohmann::json clip = clips[state[i]];
 		std::vector<SDL_Rect> frame;
 		int count = clip["count"];
-
 		if (count == 0) {
 			continue;
 		}
 		else {
 			nlohmann::json ware = clip["srcRect"];
-			nlohmann::json present = clip["desRect"];
+			// desRect here in future
 			if (ware.is_array()) {
-				for (const auto& action : ware) {
-					//temp = { ware[i][0], ware[i][1], ware[i][2], ware[i][3] };
-					temp = { action[0], action[1], action[2], action[3] };
+				for (int i = 0; i < count; i++) {
+					temp = { ware[i][0], ware[i][1], ware[i][2], ware[i][3] };
 					frame.push_back(temp);
 				}
 			}
 		}
-
 		res.push_back(frame);
 	}
 	return res;

@@ -26,8 +26,8 @@ public:
 		std::cout << "Computer class destructor called \n";
 	}
 
-	virtual void setClip() override;
-	virtual void init() override;
+	//virtual void setClip() override;
+	//virtual void init() override;
 	//virtual void render() override;
 	void randomBotMovement();
 };
