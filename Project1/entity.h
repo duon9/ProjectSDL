@@ -17,6 +17,10 @@ public:
 	virtual void render();
 	virtual void free();
 	SDL_Renderer* renderer = nullptr;
-	short width, height;
+	//short width, height;
 	std::string name;
+	SDL_Rect srcRect;
+	SDL_Rect desRect;
+	SDL_Texture* texture = nullptr;
+	int map_x, map_y;
 };

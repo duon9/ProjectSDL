@@ -11,11 +11,12 @@ private:
 	MapName mapName = MapName::WATER_TOWN;
 	std::vector<TileLayer> map;
 	std::vector<TileSet> tileset;
-	SDL_Rect desRect = { 0, 0 , 32, 32 };
-	SDL_Rect srcRect = { 0, 0, 32, 32 };
+	SDL_Texture* texture;
+	SDL_Rect desRect = { 0, 0 , 800, 608 };
+	//SDL_Rect srcRect = { 0, 0, 800, 608 };
 
 public:
-
+	SDL_Rect srcRect = { 0, 0, 400, 608 / 2 };
 	Interface(SDL_Renderer* renderer);
 	~Interface();
 

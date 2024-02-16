@@ -103,18 +103,28 @@ struct Stat {
 	}
 };
 
+struct Frame {
+	int maxFrame;
+	int perFrame;
+	int count;
+};
+
 const int RUN_FRAMETICK = 40;
 const int ATTACK_FRAMETICK = 100;
 const int MAX_IDLE_FRAMECOUNT = 200 - 1;
 const int MAX_RUN_FRAMECOUNT = 40 - 1;
 const int MAX_ATTACK_FRAMECOUNT = 100 - 1;
 const int MAX_DEAD_FRAMECOUNT = 100 - 1;
-
+const int MAX_STATUS = 6;
 const int OBJECT_WIDTH = 64;
 const int OBJECT_HEIGHT = 64;
-
+const int SCREEN_WIDTH = 800;
+const int SCREEN_HEIGHT = 608;
 const int TILE_WIDTH = 32;
 const int TILE_HEIGHT = 32;
+
+const int MAX_VIEW_BLOCK_HORIZONTAL = 12;
+const int MAX_VIEW_BLOCK_VERTICAL = 9;
 
 const int PLAYER_SPEED = 4;
 const int PLAYER_HEALTH = 1000;
@@ -127,7 +137,7 @@ const int PLAYER_MAGIC_RESISTANCE = 1;
 
 const int SPEED = 5;
 
-const std::string TEST = "assets/.tile/testtile.png";
+const std::string TEST = "assets/.tile/tileset/testfpv.png";
 const std::string TEST1 = "assets/.tile/walls.png";
 const std::string water_town = "assets/.tile/test2.tmj";
 const std::string ROGUE = "rogue_knight";

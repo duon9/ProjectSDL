@@ -38,6 +38,7 @@ public:
 	static std::vector<std::vector<int>> readCollision(std::string path);
 	static void getProperties(std::string type, Stat& stat);
 	static std::vector<std::vector<SDL_Rect>> getClips(std::string type);
+	static void getFrameLimit(std::string type, std::vector<Frame>& frame);
 };
 // vector
 

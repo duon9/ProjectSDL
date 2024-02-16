@@ -147,6 +147,8 @@ void Object::render() {
 	else if (frameCount == MAX_DEAD_FRAMECOUNT && status == charState::DEATH) {
 		frameCount = 0;
 	}
+	//std::cout << status << std::endl;
+	//if (frameCount == frame[static_cast<int>(status)].maxFrame) frameCount = 0;
 	
 	frameCount++;
 
@@ -154,7 +156,7 @@ void Object::render() {
 		frameCount = 0;
 	}
 
-	srcRect = wareClips[static_cast<int>(status)][change()];
+	srcRect = wareClips[static_cast<int>(status)][frameCount / (frame[static_cast<int>(status)].perFrame)];
 	lastFrame = status;
 	SDL_RenderCopyEx(renderer, texture, &srcRect, &desRect, NULL, NULL, flip);
 }
@@ -173,10 +175,13 @@ int Object::change() {
 }
 
 void Object::setLocation() {
-	while (collider[map_y][map_x] == 0) {
+	/*while (collider[map_y][map_x] == 0) {
 		map_x = Math::Casuale::casuale(0, w - 1);
 		map_y = Math::Casuale::casuale(0, h - 1);
-	}
+	}*/
+
+	map_x = 12;
+	map_y = 9;
 
 	next_map_x = map_x;
 	next_map_y = map_y;
@@ -184,10 +189,16 @@ void Object::setLocation() {
 	desRect = { (((map_x - 2) * TILE_WIDTH) + (TILE_WIDTH / 2) + (OBJECT_WIDTH / 2)), ((map_y * TILE_HEIGHT) + TILE_HEIGHT - OBJECT_HEIGHT) - 10, OBJECT_WIDTH, OBJECT_HEIGHT };
 }
 
+
+
 void Object::init() {
 	colliderLoad(water_town);
 	setLocation();
 	setProperties();
 	setClip();
+	setFrameLimit();
 }
 
+void Object::setFrameLimit() {
+	File::getFrameLimit(type, frame);
+}

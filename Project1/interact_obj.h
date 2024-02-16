@@ -50,17 +50,20 @@ public:
 	//virtual void setSkill();
 	virtual void setClip();
 	virtual void setProperties();
+	virtual void setFrameLimit();
 	bool collisionHandle(std::vector<std::vector<int>> collider);
 	void colliderLoad(std::string path);
-	void move();
+	virtual void move();
 	int change();
-	void setLocation();
+	virtual void setLocation();
 	virtual void init() override;
 	virtual void render() override;
 protected:
 	int w, h;
 	std::vector<std::vector<int>> collider;
+	std::vector<Frame> frame;
 	Stat stat;
+	
 
 	std::string type;
 	std::vector<Skill> skillSet;
@@ -68,10 +71,10 @@ protected:
 	std::vector<std::vector<SDL_Rect>> wareClips;
 
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
-	SDL_Texture* texture = nullptr;
+	//SDL_Texture* texture = nullptr;
 
-	SDL_Rect srcRect;
-	SDL_Rect desRect;
+	//SDL_Rect srcRect;
+	//SDL_Rect desRect;
 
 	int frameCount;
 	int frameTick;
@@ -83,9 +86,9 @@ protected:
 	charState status = charState::IDLE;
 	charState next_status = charState::IDLE; // still use, do not delete
 
-	int x, y;
+	//int x, y;
 
-	int map_x, map_y;
+	//int map_x, map_y;
 	int next_map_x, next_map_y;
 
 	bool check_run = false;

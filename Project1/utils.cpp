@@ -121,6 +121,7 @@ std::vector<std::vector<int>> File::readCollision(std::string path) {
 void File::getProperties(std::string type, Stat& stat) {
 	nlohmann::json jsondata;
 	readJSON(file_object, jsondata);
+	//std::string state[] = { "idleFrame", "runFrame", "attackFrame", "deathFrame", "spellFrame", "takedameFrame" };
 	nlohmann::json object = jsondata[type];
 	stat.health = object["health"].get<int>();
 	stat.mana = object["mana"].get<int>();
@@ -142,7 +143,7 @@ std::vector<std::vector<SDL_Rect>> File::getClips(std::string type) {
 	nlohmann::json clips = entity["clips"];
 
 	std::string state[] = { "idleFrame", "runFrame", "attackFrame", "deathFrame", "spellFrame", "takedameFrame" };
-	for (int i = 0; i < 6; i++) {
+	for (int i = 0; i < MAX_STATUS; i++) {
 		nlohmann::json clip = clips[state[i]];
 		std::vector<SDL_Rect> frame;
 		int count = clip["count"];
@@ -162,4 +163,22 @@ std::vector<std::vector<SDL_Rect>> File::getClips(std::string type) {
 		res.push_back(frame);
 	}
 	return res;
+}
+
+void File::getFrameLimit(std::string type, std::vector<Frame>& frame) {
+	nlohmann::json jsondata;
+	readJSON(file_object, jsondata);
+	std::string state[] = { "idleFrame", "runFrame", "attackFrame", "deathFrame", "spellFrame", "takedameFrame" };
+	nlohmann::json clips = jsondata[type]["clips"];
+	for (int i = 0; i < MAX_STATUS; i++) {
+		Frame temp;
+		nlohmann::json clip = clips[state[i]];
+		temp.count = clip["count"].get<int>();
+
+		if (temp.count == 0) continue;
+
+		temp.maxFrame = clip["maxFrame"].get<int>();
+		temp.perFrame = temp.maxFrame / temp.count;
+		frame.push_back(temp);
+	}
 }

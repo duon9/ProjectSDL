@@ -40,10 +40,6 @@ namespace Math {
 
 	public:
 		static int casuale(int min, int max) {
-			//std::mt19937 rng(std::time(nullptr)); // get current time
-			//std::uniform_int_distribution<int> distribution(first, last); // get random orient
-			//int res = distribution(rng);
-			//return res;
 
 			std::random_device rd;
 			std::mt19937 gen(rd());

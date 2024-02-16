@@ -2,36 +2,31 @@
 
 void Player::handleUserEvents(SDL_Event e) {
 	if (!check_death && !check_pause) {
-		if (frameTick > 0 && (check_run == true || check_attack == true)) {
+		if (frameCount > 0) {
 			move();
-			frameTick--;
+			frameCount--;
 			return;
 		}
-		else if (frameTick == 0 && (check_run == true || check_attack == true)) {
-			check_run = false;
-			check_attack = false;
-			/*if (!keyPressed) {
-				status = next_status;
-			}*/
-
-			status = next_status;
-			*orient = { 0,0,0,0 };
+		else if (frameTick == 0 && check_run == true) {
+			status = charState::RUNNING;
+			frameCount = RUN_FRAMETICK;
+			//*orient = { 0,0,0,0 };
 		}
-		else if (!check_run || !check_attack) {
+		else if (frameTick == 0 && !check_run) {
+			status = charState::IDLE;
+			//*orient = { 0,0,0,0 };
 			switch (e.type) {
 			case SDL_KEYDOWN:
 				switch (e.key.keysym.sym) {
 				case SDLK_z:
-
-					//if (mana <= 0) {
-					//	return;
-					//}
 					frameTick = ATTACK_FRAMETICK;
 					check_attack = true;
 					status = charState::ATTACKING;
-					//health -= 500;
-					//mana -= 1;
 					break;
+
+					/*
+					* TODO: add check orient in case keyPressed and reset the reversed orient to zero
+					*/
 				case SDLK_a:
 				case SDLK_LEFT:
 					status = charState::RUNNING;
@@ -83,22 +78,59 @@ void Player::handleUserEvents(SDL_Event e) {
 				switch (e.key.keysym.sym) {
 				case SDLK_a:
 				case SDLK_LEFT:
-					next_status = charState::IDLE;
+					check_run = false;
+					*orient = { 0,0,0,0 };
+					break;
+					//next_status = charState::IDLE;
 				case SDLK_s:
 				case SDLK_DOWN:
-					next_status = charState::IDLE;
+					//next_status = charState::IDLE;
+					check_run = false;
+					*orient = { 0,0,0,0 };
+					break;
 				case SDLK_d:
 				case SDLK_RIGHT:
-					next_status = charState::IDLE;
+					//next_status = charState::IDLE;
+					check_run = false;
+					*orient = { 0,0,0,0 };
+					break;
 				case SDLK_w:
 				case SDLK_UP:
-					next_status = charState::IDLE;
+					//next_status = charState::IDLE;
+					check_run = false;
+					*orient = { 0,0,0,0 };
+					break;
 				}
+				//*orient = { 0,0,0,0 };
 				break;
 			}
 		}
 	}
 	else {
+		std::cout << "vla" << std::endl;
 		return;
+	}
+}
+
+void Player::move() {
+	if (/*collisionHandle(collider) && */!check_death && !check_pause) {
+		if (frameTick % 5 == 0) {
+			if (orient->left && check_run) {
+				/*desRect.x -= PLAYER_SPEED;*/
+				interface->srcRect.x -= stat.speed;
+			}
+			else if (orient->down && check_run) {
+				/*desRect.y += PLAYER_SPEED;*/
+				interface->srcRect.y += stat.speed;
+			}
+			else if (orient->right && check_run) {
+				/*desRect.x += PLAYER_SPEED;*/
+				interface->srcRect.x += stat.speed;
+			}
+			else if (orient->up && check_run) {
+				/*desRect.y -= PLAYER_SPEED;*/
+				interface->srcRect.y -= stat.speed;
+			}
+		}
 	}
 }
