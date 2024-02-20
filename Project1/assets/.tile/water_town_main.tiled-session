@@ -5,9 +5,9 @@
     },
     "activeFile": "C:/Users/duong/Downloads/New folder (3)/untitled.tmx",
     "expandedProjectPaths": [
+        "test_collion",
         ".",
-        "tileset",
-        "test_collion"
+        "tileset"
     ],
     "fileStates": {
         "C:/Users/duong/Downloads/New folder (3)/Attack.tsx": {
@@ -26,8 +26,8 @@
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 239.33333333333334,
-                "y": 92.66666666666666
+                "x": 238.66666666666663,
+                "y": 91.99999999999999
             }
         },
         "C:/Users/duong/ag.tsx": {

@@ -50,4 +50,10 @@ namespace Math {
 			return distribution(gen);
 		}
 	};
+	class BaseMath {
+	public:
+		static int Absolute(int num) {
+			return (num < 0) ? -num : num;
+		}
+	};
 }

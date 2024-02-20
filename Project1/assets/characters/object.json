@@ -5,7 +5,7 @@
     "damage": 400,
     "level": 1,
     "exp": 1,
-    "speed": 1,
+    "speed": 2,
     "source": "assets/characters/rogue.png",
     "range": 1,
     "clips": {
@@ -45,7 +45,7 @@
       },
       "attackFrame": {
         "count": 10,
-        "maxFrame": 100,
+        "maxFrame": 30,
         "srcRect": [
           [ 0, 96, 32, 32 ],
           [ 32, 96, 32, 32 ],

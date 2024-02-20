@@ -135,43 +135,22 @@ void Object::setProperties() {
 }
 
 void Object::render() {
-	if (frameCount == MAX_IDLE_FRAMECOUNT && status == charState::IDLE) {
-		frameCount = 0;
+
+	/*if (check_run = false && check_attack == false) {
+		if (frameCount == 0) frameCount = frame[static_cast<int>(status)].maxFrame - 1;
+		if (frameCount != 0) frameCount--;
+		srcRect = wareClips[static_cast<int>(status)][Math::BaseMath::Absolute((frameCount / frame[static_cast<int>(status)].perFrame) - (frame[static_cast<int>(status)].count - 1))];
 	}
-	else if (frameCount == MAX_RUN_FRAMECOUNT && status == charState::RUNNING) {
-		frameCount = 0;
-	}
-	else if (frameCount == MAX_ATTACK_FRAMECOUNT && status == charState::ATTACKING) {
-		frameCount = 0;
-	}
-	else if (frameCount == MAX_DEAD_FRAMECOUNT && status == charState::DEATH) {
-		frameCount = 0;
-	}
-	//std::cout << status << std::endl;
-	//if (frameCount == frame[static_cast<int>(status)].maxFrame) frameCount = 0;
-	
+	else {
+		srcRect = wareClips[static_cast<int>(status)][Math::BaseMath::Absolute((frameCount / frame[static_cast<int>(status)].perFrame) - (frame[static_cast<int>(status)].count - 1))];
+	}*/
+	//move();
+	if (status != lastStatus) frameCount = 0;
+	if (frameCount == frame[status].maxFrame - 1) frameCount = 0;
 	frameCount++;
-
-	if (status != lastFrame) {
-		frameCount = 0;
-	}
-
-	srcRect = wareClips[static_cast<int>(status)][frameCount / (frame[static_cast<int>(status)].perFrame)];
-	lastFrame = status;
+	srcRect = wareClips[status][frameCount / frame[status].perFrame];
+	lastStatus = status;
 	SDL_RenderCopyEx(renderer, texture, &srcRect, &desRect, NULL, NULL, flip);
-}
-
-int Object::change() {
-	switch (status) {
-	case charState::IDLE:
-		return frameCount / 20;
-	case charState::RUNNING:
-		return frameCount / 4;
-	case charState::ATTACKING:
-		return frameCount / 10;
-	case charState::DEATH:
-		return frameCount / 10;
-	}
 }
 
 void Object::setLocation() {
@@ -180,13 +159,13 @@ void Object::setLocation() {
 		map_y = Math::Casuale::casuale(0, h - 1);
 	}*/
 
-	map_x = 12;
-	map_y = 9;
+	map_x = 0;
+	map_y = 6;
 
-	next_map_x = map_x;
-	next_map_y = map_y;
+	//next_map_x = map_x;
+	//next_map_y = map_y;
 
-	desRect = { (((map_x - 2) * TILE_WIDTH) + (TILE_WIDTH / 2) + (OBJECT_WIDTH / 2)), ((map_y * TILE_HEIGHT) + TILE_HEIGHT - OBJECT_HEIGHT) - 10, OBJECT_WIDTH, OBJECT_HEIGHT };
+	desRect = {(((12 - 2) * TILE_WIDTH) + (TILE_WIDTH / 2) + (OBJECT_WIDTH / 2)), ((9 * TILE_HEIGHT) + TILE_HEIGHT - OBJECT_HEIGHT) - 10, OBJECT_WIDTH, OBJECT_HEIGHT };
 }
 
 

@@ -2,18 +2,29 @@
 #include <random>
 #include <ctime>
 
-TextureManagement::TextureManagement() {
-}
-
-TextureManagement::~TextureManagement() {
-}
-
 SDL_Texture* TextureManagement::LoadTexture(const std::string filename, SDL_Renderer* renderer) {
 	SDL_Surface* tempSurface = IMG_Load(filename.c_str());
 	SDL_Texture* tempTexture = SDL_CreateTextureFromSurface(renderer, tempSurface);
 	//SDL_SetTextureBlendMode(tempTexture, SDL_BLENDMODE_NONE);
 	SDL_FreeSurface(tempSurface);
 	return tempTexture;
+}
+
+SDL_Texture* TextureManagement::LoadTargetTexture(std::string filepath, SDL_Renderer* renderer) {
+	SDL_Surface* tempSurface = IMG_Load(filepath.c_str());
+	SDL_Texture* tempTexture = SDL_CreateTextureFromSurface(renderer, tempSurface);
+	//SDL_SetTextureBlendMode(tempTexture, SDL_BLENDMODE_NONE);
+	SDL_FreeSurface(tempSurface);
+	return tempTexture;
+}
+
+std::string File::augmentPath(std::string path) {
+
+	if (path[0] == '.' && path[1] == '.') {
+		path = path.substr(3);
+	}
+
+	return "assets\/.tile\/" + path;
 }
 
 void TextureManagement::Draw(SDL_Renderer* renderer, SDL_Texture* texture, SDL_Rect src, SDL_Rect dest) {

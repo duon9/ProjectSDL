@@ -144,6 +144,7 @@
     <ClCompile Include="player.cpp" />
     <ClCompile Include="skill.cpp" />
     <ClCompile Include="test.cpp" />
+    <ClCompile Include="TestObject.cpp" />
     <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +162,7 @@
     <ClInclude Include="player.h" />
     <ClInclude Include="skill.h" />
     <ClInclude Include="test.h" />
+    <ClInclude Include="TestObject.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>
   <ItemGroup>

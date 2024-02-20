@@ -10,6 +10,7 @@
 #include <vector>
 #include "skill.h"
 #include "math.h"
+#include <cmath>
 
 class Object : public Entity {
 public:
@@ -63,37 +64,27 @@ protected:
 	std::vector<std::vector<int>> collider;
 	std::vector<Frame> frame;
 	Stat stat;
-	
-
 	std::string type;
 	std::vector<Skill> skillSet;
-
 	std::vector<std::vector<SDL_Rect>> wareClips;
 
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
-	//SDL_Texture* texture = nullptr;
-
-	//SDL_Rect srcRect;
-	//SDL_Rect desRect;
 
 	int frameCount;
 	int frameTick;
-
-	charState lastFrame = charState::IDLE;
-
 	Orient* orient = new Orient();
-
+	charState lastStatus = IDLE;
 	charState status = charState::IDLE;
 	charState next_status = charState::IDLE; // still use, do not delete
-
-	//int x, y;
-
-	//int map_x, map_y;
 	int next_map_x, next_map_y;
+
+	int velo_x;
+	int velo_y;
 
 	bool check_run = false;
 	bool check_pause = false;
 	bool check_attack = false;
 	bool check_death = false;
 	bool check_take_damage = false;
+	bool isAction = false;
 };

@@ -6,7 +6,7 @@
 
 class Player : public Object
 {
-private:
+protected:
 	Interface* interface;
 public:
 
@@ -24,6 +24,7 @@ public:
 
 	//virtual void init() override;
 	virtual void move() override;
-	void handleUserEvents(SDL_Event e);
+	virtual void handleUserEvents(SDL_Event e);
+	virtual void setLocation() override;
 	/*bool collisionHandle(std::vector<std::vector<int>> collider);*/
 };

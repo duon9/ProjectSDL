@@ -27,7 +27,7 @@ void Game::init(const char* title, int _x, int _y, int _w, int _h, Uint32 flags)
 	IMG_Init(IMG_INIT_PNG);
 	TTF_Init();
 	window = SDL_CreateWindow(title, _x, _y, _w, _h, flags);
-	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE | SDL_RENDERER_PRESENTVSYNC);
 	menu = new Menu(renderer);
 	menu->init();
 	interface = new Interface(renderer);

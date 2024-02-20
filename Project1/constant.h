@@ -86,6 +86,7 @@ struct Stat {
 	int speed;
 	std::string source;
 	int range;
+	int speed_ratio;
 
 	Stat(int _health, int _mana, int _damage, int _level, int _exp, int _speed, std::string _source, int _range) {
 		health = _health;
@@ -96,6 +97,7 @@ struct Stat {
 		speed = _speed;
 		source = _source;
 		range = _range;
+		speed_ratio = 1;
 	}
 
 	Stat() {
@@ -137,9 +139,9 @@ const int PLAYER_MAGIC_RESISTANCE = 1;
 
 const int SPEED = 5;
 
-const std::string TEST = "assets/.tile/tileset/testfpv.png";
+const std::string TEST = "assets/.tile/map.png";
 const std::string TEST1 = "assets/.tile/walls.png";
-const std::string water_town = "assets/.tile/test2.tmj";
+const std::string water_town = "assets/.tile/underground.tmj";
 const std::string ROGUE = "rogue_knight";
 const std::string littleboy = "assets/characters/player.png";
 const std::string VIKING = "assets/characters/viking.png";

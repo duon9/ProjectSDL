@@ -2,135 +2,111 @@
 
 void Player::handleUserEvents(SDL_Event e) {
 	if (!check_death && !check_pause) {
-		if (frameCount > 0) {
-			move();
-			frameCount--;
-			return;
-		}
-		else if (frameTick == 0 && check_run == true) {
-			status = charState::RUNNING;
-			frameCount = RUN_FRAMETICK;
-			//*orient = { 0,0,0,0 };
-		}
-		else if (frameTick == 0 && !check_run) {
-			status = charState::IDLE;
-			//*orient = { 0,0,0,0 };
-			switch (e.type) {
-			case SDL_KEYDOWN:
-				switch (e.key.keysym.sym) {
-				case SDLK_z:
-					frameTick = ATTACK_FRAMETICK;
-					check_attack = true;
-					status = charState::ATTACKING;
-					break;
-
-					/*
-					* TODO: add check orient in case keyPressed and reset the reversed orient to zero
-					*/
-				case SDLK_a:
-				case SDLK_LEFT:
-					status = charState::RUNNING;
-					frameTick = RUN_FRAMETICK;
-					check_run = true;
-					orient->left = 1;
-					flip = SDL_FLIP_HORIZONTAL;
-					next_map_x = map_x - 1;
-					//keyPressed = true;
-					break;
-				case SDLK_d:
-				case SDLK_RIGHT:
-					status = charState::RUNNING;
-					frameTick = RUN_FRAMETICK;
-					check_run = true;
-					orient->right = 1;
-					flip = SDL_FLIP_NONE;
-					next_map_x = map_x + 1;
-					//keyPressed = true;
-
-					break;
-
-				case SDLK_w:
-				case SDLK_UP:
-					status = charState::RUNNING;
-					frameTick = RUN_FRAMETICK;
-					check_run = true;
-					orient->up = 1;
-					next_map_y = map_y - 1;
-					//keyPressed = true;
-
-					break;
-
-				case SDLK_s:
-				case SDLK_DOWN:
-					status = charState::RUNNING;
-					frameTick = RUN_FRAMETICK;
-					check_run = true;
-					orient->down = 1;
-					next_map_y = map_y + 1;
-					//keyPressed = true;
-
-					break;
-				}
-
-				//next_status = status;
+		move();
+		if (e.type == SDL_KEYDOWN) {
+			switch (e.key.keysym.sym) {
+			case SDLK_z:
+				check_attack = true;
+				status = ATTACKING;
+				frameTick = frame[status].maxFrame - 1;
 				break;
-			case SDL_KEYUP:
-				switch (e.key.keysym.sym) {
-				case SDLK_a:
-				case SDLK_LEFT:
-					check_run = false;
-					*orient = { 0,0,0,0 };
-					break;
-					//next_status = charState::IDLE;
-				case SDLK_s:
-				case SDLK_DOWN:
-					//next_status = charState::IDLE;
-					check_run = false;
-					*orient = { 0,0,0,0 };
-					break;
-				case SDLK_d:
-				case SDLK_RIGHT:
-					//next_status = charState::IDLE;
-					check_run = false;
-					*orient = { 0,0,0,0 };
-					break;
-				case SDLK_w:
-				case SDLK_UP:
-					//next_status = charState::IDLE;
-					check_run = false;
-					*orient = { 0,0,0,0 };
-					break;
-				}
-				//*orient = { 0,0,0,0 };
+
+			case SDLK_a:
+			case SDLK_LEFT:
+				status = RUNNING;
+				flip = SDL_FLIP_HORIZONTAL;
+				velo_x = /*-stat.speed_ratio * */-stat.speed;
+				break;
+			case SDLK_s:
+			case SDLK_DOWN:
+				status = RUNNING;
+				velo_y = /*stat.speed_ratio **/ stat.speed;
+				break;
+			case SDLK_d:
+			case SDLK_RIGHT:
+				status = RUNNING;
+				flip = SDL_FLIP_NONE;
+				velo_x = /*stat.speed_ratio **/ stat.speed;
+				break;
+			case SDLK_w:
+			case SDLK_UP:
+				status = RUNNING;
+				velo_y = /*-stat.speed_ratio **/ -stat.speed;
+				break;
+			default:
 				break;
 			}
 		}
-	}
-	else {
-		std::cout << "vla" << std::endl;
-		return;
+		if (e.type == SDL_KEYUP) {
+			switch (e.key.keysym.sym) {
+			case SDLK_z:
+				check_attack = false;
+				break;
+			case SDLK_a:
+			case SDLK_LEFT:
+				status = IDLE;
+				velo_x = 0;
+				//flip = SDL_FLIP_HORIZONTAL;
+				isAction = true;
+				break;
+			case SDLK_s:
+			case SDLK_DOWN:
+				status = IDLE;
+				velo_y = 0;
+				isAction = true;
+				break;
+			case SDLK_d:
+			case SDLK_RIGHT:
+				status = IDLE;
+				velo_x = 0;
+				//flip = SDL_FLIP_NONE;
+				isAction = true;
+				break;
+			case SDLK_w:
+			case SDLK_UP:
+				status = IDLE;
+				velo_y = 0;
+				isAction = true;
+				break;
+			default:break;
+			}
+		}
 	}
 }
 
 void Player::move() {
 	if (/*collisionHandle(collider) && */!check_death && !check_pause) {
-		if (frameTick % 5 == 0) {
-			if (orient->left && check_run) {
-				/*desRect.x -= PLAYER_SPEED;*/
-				interface->srcRect.x -= stat.speed;
+
+		if (frameTick > 0 && status == ATTACKING) {
+			frameTick--;
+			if (frameTick == 0) status = IDLE;
+			return;
+		} 
+
+		if (/*collisionHandle(collider) &&*/ velo_x != 0) {
+			if (interface->isCameraCollideCornerHorizontal(velo_x) || !interface->isCenterHorizontal(desRect)) {
+				desRect.x += velo_x;
 			}
-			else if (orient->down && check_run) {
-				/*desRect.y += PLAYER_SPEED;*/
-				interface->srcRect.y += stat.speed;
+			else {
+				interface->camera.x += velo_x;
 			}
-			else if (orient->right && check_run) {
-				/*desRect.x += PLAYER_SPEED;*/
-				interface->srcRect.x += stat.speed;
+		}
+
+		if (velo_y != 0) {
+			if (interface->isCameraCollideCornerVertical(velo_x) || !interface->isCenterVertical(desRect)) {
+				desRect.y += velo_y;
 			}
-			else if (orient->up && check_run) {
-				/*desRect.y -= PLAYER_SPEED;*/
-				interface->srcRect.y -= stat.speed;
+			else {
+				interface->camera.y += velo_y;
 			}
 		}
 	}
+}
+
+void Player::setLocation() {
+	map_x = 0;
+	map_y = 6;
+	desRect = { (((12 - 2) * TILE_WIDTH) + (TILE_WIDTH / 2) + (OBJECT_WIDTH / 2)), ((9 * TILE_HEIGHT) + TILE_HEIGHT - OBJECT_HEIGHT) - 10, OBJECT_WIDTH, OBJECT_HEIGHT };
+	interface->cameraInitLocation(map_x, map_y);
+	interface->cameraInitObjectLocation(map_x, map_y, desRect);
 }

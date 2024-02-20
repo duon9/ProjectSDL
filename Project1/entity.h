@@ -16,6 +16,9 @@ public:
 	virtual void init();
 	virtual void render();
 	virtual void free();
+	void updateLocation(int x_, int y_);
+	void getLocation(SDL_Rect object);
+	void setLocation(int map_x, int map_y);
 	SDL_Renderer* renderer = nullptr;
 	//short width, height;
 	std::string name;
@@ -23,4 +26,5 @@ public:
 	SDL_Rect desRect;
 	SDL_Texture* texture = nullptr;
 	int map_x, map_y;
+	int x, y; // the bottom center of object's rect
 };
