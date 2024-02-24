@@ -30,31 +30,28 @@ void Game::init(const char* title, int _x, int _y, int _w, int _h, Uint32 flags)
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE | SDL_RENDERER_PRESENTVSYNC);
 	menu = new Menu(renderer);
 	menu->init();
-	interface = new Interface(renderer);
+	interface = new Interface(renderer, map);
 	interface->init();
-	player1 = new Player(renderer, ROGUE, interface);
-	player1->init();
-	/*comp1 = new Computer(renderer, ROGUE);
-	comp1->init();*/
+	/*player1 = new Player(renderer, ROGUE, interface);
+	player1->init();*/
+	entitys = new EntityManager(renderer, &e, map, interface);
 
 }
 
 void Game::gameLoop() {
 	std::cout << "start gameLoop() Game class" << std::endl;
 	while (gamestate != GameState::EXIT) {
-		handleLogicGame();
 		handleEvents();
 		render();
 	}
 }
 
 void Game::handleEvents() {
-	SDL_Event e;
 	SDL_PollEvent(&e);
 	if (gamestate == GameState::MENU) {
 		if (menu->handleMenuEvents(e) == 1) {
 			gamestate = GameState::PLAY;
-			delete(menu);
+			delete menu;
 		}
 		else if (menu->handleMenuEvents(e) == 2) {
 			printf("Still updating");
@@ -63,7 +60,6 @@ void Game::handleEvents() {
 
 	if (gamestate == GameState::PLAY) {
 		player1->handleUserEvents(e);
-		/*comp1->randomBotMovement();*/
 	}
 }
 
@@ -78,7 +74,6 @@ void Game::render() {
 	case GameState::PLAY:
 		interface->render();
 		player1->render();
-		/*comp1->render();*/
 		break;
 
 	default:
@@ -89,6 +84,3 @@ void Game::render() {
 	SDL_Delay(1000 / 70);
 }
 
-void Game::handleLogicGame() {
-	player1->logicHandle();
-}

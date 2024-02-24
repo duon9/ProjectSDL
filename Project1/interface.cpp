@@ -1,8 +1,9 @@
 #include "interface.h"
 
-Interface::Interface(SDL_Renderer* renderer) : renderer(renderer) {
+Interface::Interface(SDL_Renderer* renderer, Map* map) {
 	std::cout << ("Interface constructor initialized") << std::endl;
-
+	this->renderer = renderer;
+	this->Imap = map;
 	// Constructor
 }
 
@@ -18,15 +19,9 @@ void Interface::init() {
 
 	std::cout << map[0].width << " " << map[0].height << std::endl;*/
 
-	/*for (const auto& row : map[0].map) {
-		for (const auto& col : row) {
-			std::cout << col << " ";
-		}
-		std::cout << std::endl;
-	}*/
-
+	std::string path = mapInterface[*Imap];
 	//texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, map[0].width, map[0].height);
-	texture = TextureManagement::LoadTexture(TEST, renderer);
+	texture = TextureManagement::LoadTexture(mapInterface[*Imap], renderer);
 	SDL_QueryTexture(texture, NULL, NULL, &map_w, &map_h);
 	std::cout << map_w << " " << map_h << std::endl;
 }
@@ -88,9 +83,6 @@ void Interface::render() {
 	TextureManagement::Draw(renderer, texture, camera, screen);
 }
 
-//assets/.tile/tileset/tilesetformattedupdate1.png
-//
-//assets\.tile\tileset\classical_temple_tiles.png
 
 
 void Interface::cameraInitObjectLocation(int map_x, int map_y, SDL_Rect& object) {
@@ -151,14 +143,14 @@ bool Interface::isCameraCollideCornerVertical(int velocity) {
 }
 
 bool Interface::isCenterHorizontal(SDL_Rect& object) {
-	if (object.x <= screen.w / 2 + 3 && object.x >= screen.w / 2 - 3) {
+	if (object.x <= screen.w / 2 + 3 - object.w / 2 && object.x >= screen.w / 2 - 3 - object.w / 2) {
 		return true;
 	}
 	return false;
 }
 
 bool Interface::isCenterVertical(SDL_Rect& object) {
-	if (object.y <= screen.h / 2 + 3 && object.y >= screen.h / 2 - 3) {
+	if (object.y <= screen.h / 2 - object.h / 2 + 3 && object.y >= screen.h / 2 - 3 - object.h / 2) {
 		return true;
 	}
 	return false;

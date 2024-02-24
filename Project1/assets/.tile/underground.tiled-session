@@ -5,14 +5,15 @@
     },
     "activeFile": "underground.tmj",
     "expandedProjectPaths": [
+        "."
     ],
     "fileStates": {
         "underground.tmj": {
-            "scale": 0.25,
-            "selectedLayer": 0,
+            "scale": 0.75,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 1408,
-                "y": 956
+                "x": 1837.333333333333,
+                "y": 836
             }
         },
         "underground/green.tsx": {
@@ -28,8 +29,10 @@
             "scaleInEditor": 1
         }
     },
+    "last.exportedFilePath": "C:/Users/duong/source/repos/Project1/Project1/assets/.tile",
     "last.imagePath": "C:/Users/duong/source/repos/Project1/Project1/assets/.tile/tileset",
     "map.height": 90,
+    "map.lastUsedExportFilter": "All Files (*)",
     "map.lastUsedFormat": "json",
     "map.width": 90,
     "openFiles": [

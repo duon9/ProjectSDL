@@ -67,84 +67,31 @@ void Object::logicHandle() {
 		check_death = true;
 		status = charState::DEATH;
 	}
-	//else if (prehealth > stat.health) {
-	//	check_take_damage = true;
-	//}
-	//else {
-	//	return;
-	//}
 }
 
-bool Object::collisionHandle(std::vector<std::vector<int>> collider) {
-	//std::cout << next_map_x << " " << next_map_y << std::endl;
-	if (next_map_x >= w || next_map_x < 0 || next_map_y >= h || next_map_y < 0) {
-		frameTick = 0;
-		check_run = false;
-		status = charState::IDLE;
-		next_map_x = map_x;
-		next_map_y = map_y;
-		*orient = { 0,0,0,0 };
-		return false;
-	}
+void Object::collisionHandle() {
 	
-	if (collider[next_map_y][next_map_x] == 0) {
-		frameTick = 0;
-		check_run = false;
-		status = charState::IDLE;
-		next_map_x = map_x;
-		next_map_y = map_y;
-		*orient = { 0,0,0,0 };
-		return false;
-	}
-	map_x = next_map_x;
-	map_y = next_map_y;
-
-	//std::cout << map_x << " " << map_y << std::endl;
-
-	return true;
 }
 
-void Object::colliderLoad(std::string path) {
+void Object::setCollision(std::string path) {
 	collider = File::readCollision(path);
-	this->w = collider[0].size();
-	this->h = collider.size();
+	collision = new Collision(collider, &desRect, nullptr, &position);
 }
 
 void Object::move() {
-	if (collisionHandle(collider) && !check_death && !check_pause) {
-		if (frameTick % 5 == 0) {
-			if (orient->left && check_run) {
-				desRect.x -= PLAYER_SPEED;
-			}
-			else if (orient->down && check_run) {
-				desRect.y += PLAYER_SPEED;
-			}
-			else if (orient->right && check_run) {
-				desRect.x += PLAYER_SPEED;
-			}
-			else if (orient->up && check_run) {
-				desRect.y -= PLAYER_SPEED;
-			}
-		}
+	if (!check_death && !check_pause) {
+
 	}
 }
 
 void Object::setProperties() {
 	File::getProperties(type, stat);
 	texture = TextureManagement::LoadTexture(stat.source, renderer);
+	position.x = 0;
+	position.y = 6 * TILE_HEIGHT;
 }
 
 void Object::render() {
-
-	/*if (check_run = false && check_attack == false) {
-		if (frameCount == 0) frameCount = frame[static_cast<int>(status)].maxFrame - 1;
-		if (frameCount != 0) frameCount--;
-		srcRect = wareClips[static_cast<int>(status)][Math::BaseMath::Absolute((frameCount / frame[static_cast<int>(status)].perFrame) - (frame[static_cast<int>(status)].count - 1))];
-	}
-	else {
-		srcRect = wareClips[static_cast<int>(status)][Math::BaseMath::Absolute((frameCount / frame[static_cast<int>(status)].perFrame) - (frame[static_cast<int>(status)].count - 1))];
-	}*/
-	//move();
 	if (status != lastStatus) frameCount = 0;
 	if (frameCount == frame[status].maxFrame - 1) frameCount = 0;
 	frameCount++;
@@ -171,11 +118,12 @@ void Object::setLocation() {
 
 
 void Object::init() {
-	colliderLoad(water_town);
+	//setCollision(water_town);
 	setLocation();
 	setProperties();
 	setClip();
 	setFrameLimit();
+	setCollision(water_town);
 }
 
 void Object::setFrameLimit() {

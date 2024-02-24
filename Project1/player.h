@@ -24,7 +24,8 @@ public:
 
 	//virtual void init() override;
 	virtual void move() override;
-	virtual void handleUserEvents(SDL_Event e);
+	virtual void handleUserEvents(SDL_Event &e);
 	virtual void setLocation() override;
+	virtual void setCollision(std::string path) override;
 	/*bool collisionHandle(std::vector<std::vector<int>> collider);*/
 };

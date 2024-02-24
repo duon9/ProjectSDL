@@ -16,7 +16,6 @@ void Computer::randomBotMovement() {
 			else if (frameTick == 0 && (check_run || check_attack)) {
 				check_run = false;
 				check_attack = false;
-				*orient = { 0,0,0,0 };
 				status = charState::IDLE;
 			}
 			else if (!check_run && !check_attack) {
@@ -29,31 +28,23 @@ void Computer::randomBotMovement() {
 						status = charState::RUNNING;
 						frameTick = RUN_FRAMETICK;
 						check_run = true;
-						orient->up = 1;
-						next_map_y = map_y - 1;
 						break;
 					case DOWN:
 						status = charState::RUNNING;
 						frameTick = RUN_FRAMETICK;
 						check_run = true;
-						orient->down = 1;
-						next_map_y = map_y + 1;
 						break;
 					case LEFT:
 						status = charState::RUNNING;
 						frameTick = RUN_FRAMETICK;
 						check_run = true;
-						orient->left = 1;
 						flip = SDL_FLIP_HORIZONTAL;
-						next_map_x = map_x - 1;
 						break;
 					case RIGHT:
 						status = charState::RUNNING;
 						frameTick = RUN_FRAMETICK;
 						check_run = true;
-						orient->right = 1;
 						flip = SDL_FLIP_NONE;
-						next_map_x = map_x + 1;
 						break;
 					default:
 						break;

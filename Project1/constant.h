@@ -29,7 +29,7 @@ struct Orient {
 	}
 };
 
-enum MapName {
+enum Map {
 	VILLAGE,
 	FRONTIER_TOWN,
 	CAPITAL,
@@ -111,6 +111,8 @@ struct Frame {
 	int count;
 };
 
+const std::string mapWare[] = {"0", "0", "0", "assets/.tile/underground.tmj" };
+
 const int RUN_FRAMETICK = 40;
 const int ATTACK_FRAMETICK = 100;
 const int MAX_IDLE_FRAMECOUNT = 200 - 1;
@@ -139,7 +141,7 @@ const int PLAYER_MAGIC_RESISTANCE = 1;
 
 const int SPEED = 5;
 
-const std::string TEST = "assets/.tile/map.png";
+const std::string TEST = "assets/.tile/underground.png";
 const std::string TEST1 = "assets/.tile/walls.png";
 const std::string water_town = "assets/.tile/underground.tmj";
 const std::string ROGUE = "rogue_knight";
@@ -147,3 +149,6 @@ const std::string littleboy = "assets/characters/player.png";
 const std::string VIKING = "assets/characters/viking.png";
 const std::string DARK = "assets/characters/dark.png";
 const std::string file_object = "assets/characters/object.json";
+
+const double TOLERANCE = 0.07;
+

@@ -9,7 +9,7 @@ class Interface {
 private:
 
 	SDL_Renderer* renderer;
-	MapName mapName = MapName::WATER_TOWN;
+	Map* map = nullptr;
 	std::vector<TileLayer> map;
 	std::vector<TileSet> tileset;
 	SDL_Texture* texture;
@@ -21,7 +21,7 @@ private:
 public:
 	SDL_Rect camera = { 0, 0, 800, 608 };
 	SDL_Rect screen = { 0, 0, 800, 608 };
-	Interface(SDL_Renderer* renderer);
+	Interface(SDL_Renderer* renderer, Map * map);
 	~Interface();
 
 	void init();

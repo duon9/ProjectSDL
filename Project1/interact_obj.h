@@ -11,6 +11,7 @@
 #include "skill.h"
 #include "math.h"
 #include <cmath>
+#include "collision.h"
 
 class Object : public Entity {
 public:
@@ -52,34 +53,33 @@ public:
 	virtual void setClip();
 	virtual void setProperties();
 	virtual void setFrameLimit();
-	bool collisionHandle(std::vector<std::vector<int>> collider);
-	void colliderLoad(std::string path);
+	void collisionHandle();
+	virtual void setCollision(std::string path);
 	virtual void move();
-	int change();
 	virtual void setLocation();
 	virtual void init() override;
 	virtual void render() override;
 protected:
-	int w, h;
 	std::vector<std::vector<int>> collider;
 	std::vector<Frame> frame;
 	Stat stat;
 	std::string type;
 	std::vector<Skill> skillSet;
 	std::vector<std::vector<SDL_Rect>> wareClips;
+	Collision* collision;
 
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
 
 	int frameCount;
 	int frameTick;
-	Orient* orient = new Orient();
 	charState lastStatus = IDLE;
-	charState status = charState::IDLE;
-	charState next_status = charState::IDLE; // still use, do not delete
-	int next_map_x, next_map_y;
-
+	charState status = IDLE;
+	charState next_status = IDLE; // still use, do not delete
+	//int next_map_x, next_map_y;
+	SDL_Point position;
 	int velo_x;
 	int velo_y;
+	
 
 	bool check_run = false;
 	bool check_pause = false;

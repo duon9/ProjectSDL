@@ -11,6 +11,7 @@
 #include "constant.h"
 #include "player.h"
 #include "computer.h"
+#include "EntityManager.h"
 
 class Game
 {
@@ -23,7 +24,7 @@ public:
 
 private:
 	void init(const char* title, int _x, int _y, int w, int h, Uint32 flags);
-
+	SDL_Event e;
 	SDL_Window* window = nullptr;
 	SDL_Renderer* renderer = nullptr;
 	int screenWidth;
@@ -31,12 +32,12 @@ private:
 	void handleEvents();
 	void gameLoop();
 	void render();
-	void handleLogicGame();
+	Map* map = new Map;
 
 
 	Menu* menu = nullptr;
 	GameState gamestate;
 	Interface* interface = nullptr;
 	Player* player1 = nullptr;
-	Computer* comp1 = nullptr;
+	EntityManager* entitys = nullptr;
 };

@@ -7,11 +7,20 @@ class Collision
 {
 public:
 	void init();
-	Collision(std::vector<std::vector<int>> collider);
+	bool isCollidingHorizontal(int velocity);
+	bool isCollidingVertical(int velocity);
+	bool isColliding(int velo_x, int velo_y);
+	bool rectColliding(SDL_Rect& object1, SDL_Rect& object2);
+	void update();
+	Collision(std::vector<std::vector<int>> collider, SDL_Rect* object, SDL_Rect* camera, SDL_Point* position);
 	~Collision();
 
 
 private:
 	int map_width, map_height;
 	std::vector<std::vector<int>> collider;
+
+	SDL_Rect* object;
+	SDL_Rect* camera;
+	SDL_Point* position;
 };
