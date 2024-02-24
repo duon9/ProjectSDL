@@ -35,7 +35,7 @@ void Game::init(const char* title, int _x, int _y, int _w, int _h, Uint32 flags)
 	/*player1 = new Player(renderer, ROGUE, interface);
 	player1->init();*/
 	entitys = new EntityManager(renderer, &e, map, interface);
-
+	entitys->init();
 }
 
 void Game::gameLoop() {
@@ -59,7 +59,9 @@ void Game::handleEvents() {
 	}
 
 	if (gamestate == GameState::PLAY) {
-		player1->handleUserEvents(e);
+		//player1->handleUserEvents(e);
+		entitys->HandleEvents();
+		//interface->handleInterfaceEvents();
 	}
 }
 
@@ -73,7 +75,8 @@ void Game::render() {
 
 	case GameState::PLAY:
 		interface->render();
-		player1->render();
+		//player1->render();
+		entitys->render();
 		break;
 
 	default:
@@ -81,6 +84,6 @@ void Game::render() {
 	}
 
 	SDL_RenderPresent(renderer);
-	SDL_Delay(1000 / 70);
+	FPScontroller::FPSlimit(60);
 }
 

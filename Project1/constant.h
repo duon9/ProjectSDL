@@ -112,6 +112,7 @@ struct Frame {
 };
 
 const std::string mapWare[] = {"0", "0", "0", "assets/.tile/underground.tmj" };
+const std::string mapInterface[] = { "0", "0", "0", "assets/.tile/underground.png" };
 
 const int RUN_FRAMETICK = 40;
 const int ATTACK_FRAMETICK = 100;
@@ -150,5 +151,5 @@ const std::string VIKING = "assets/characters/viking.png";
 const std::string DARK = "assets/characters/dark.png";
 const std::string file_object = "assets/characters/object.json";
 
-const double TOLERANCE = 0.07;
+const double TOLERANCE = 0.03;
 

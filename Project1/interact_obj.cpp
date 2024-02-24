@@ -101,16 +101,8 @@ void Object::render() {
 }
 
 void Object::setLocation() {
-	/*while (collider[map_y][map_x] == 0) {
-		map_x = Math::Casuale::casuale(0, w - 1);
-		map_y = Math::Casuale::casuale(0, h - 1);
-	}*/
-
 	map_x = 0;
 	map_y = 6;
-
-	//next_map_x = map_x;
-	//next_map_y = map_y;
 
 	desRect = {(((12 - 2) * TILE_WIDTH) + (TILE_WIDTH / 2) + (OBJECT_WIDTH / 2)), ((9 * TILE_HEIGHT) + TILE_HEIGHT - OBJECT_HEIGHT) - 10, OBJECT_WIDTH, OBJECT_HEIGHT };
 }
@@ -118,7 +110,6 @@ void Object::setLocation() {
 
 
 void Object::init() {
-	//setCollision(water_town);
 	setLocation();
 	setProperties();
 	setClip();

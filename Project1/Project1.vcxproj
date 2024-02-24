@@ -135,7 +135,11 @@
     <ClCompile Include="computer.cpp" />
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="EntityManager.cpp" />
+    <ClCompile Include="FPScontroller.cpp" />
+    <ClCompile Include="FPSparameter.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="statsBar.cpp" />
+    <ClCompile Include="label.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="math.cpp" />
     <ClCompile Include="menu.cpp" />
@@ -144,7 +148,6 @@
     <ClCompile Include="player.cpp" />
     <ClCompile Include="skill.cpp" />
     <ClCompile Include="test.cpp" />
-    <ClCompile Include="TestObject.cpp" />
     <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -153,16 +156,19 @@
     <ClInclude Include="computer.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="EntityManager.h" />
+    <ClInclude Include="FPScontroller.h" />
+    <ClInclude Include="FPSparameter.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="constant.h" />
+    <ClInclude Include="statsBar.h" />
     <ClInclude Include="interface.h" />
+    <ClInclude Include="label.h" />
     <ClInclude Include="math.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="interact_obj.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="skill.h" />
     <ClInclude Include="test.h" />
-    <ClInclude Include="TestObject.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>
   <ItemGroup>

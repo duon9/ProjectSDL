@@ -12,6 +12,7 @@
 #include "player.h"
 #include "computer.h"
 #include "EntityManager.h"
+#include "FPScontroller.h"
 
 class Game
 {
@@ -38,6 +39,6 @@ private:
 	Menu* menu = nullptr;
 	GameState gamestate;
 	Interface* interface = nullptr;
-	Player* player1 = nullptr;
+	//Player* player1 = nullptr;
 	EntityManager* entitys = nullptr;
 };

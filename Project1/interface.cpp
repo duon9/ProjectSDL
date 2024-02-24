@@ -18,10 +18,12 @@ void Interface::init() {
 	loadMap();
 
 	std::cout << map[0].width << " " << map[0].height << std::endl;*/
-
-	std::string path = mapInterface[*Imap];
+	health_display = new Bar(renderer, 25, SCREEN_HEIGHT - 30, 100, 15, {255,0,0,255});
+	mana_display = new Bar(renderer, 25, SCREEN_HEIGHT -50, 100, 15, {3,161,252,255});
+	//parameter = new FPSparameter(renderer, 25, 25, 50, 25);
+	//parameter->init();
 	//texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, map[0].width, map[0].height);
-	texture = TextureManagement::LoadTexture(mapInterface[*Imap], renderer);
+	texture = TextureManagement::LoadTexture("assets/.tile/underground.png", renderer);
 	SDL_QueryTexture(texture, NULL, NULL, &map_w, &map_h);
 	std::cout << map_w << " " << map_h << std::endl;
 }
@@ -80,10 +82,16 @@ void Interface::loadTexture() {
 }
 
 void Interface::render() {
+	//parameter->render();
 	TextureManagement::Draw(renderer, texture, camera, screen);
+	health_display->render();
+	mana_display->render();
 }
 
-
+void Interface::handleInterfaceEvents() {
+	health_display->updateBar();
+	mana_display->updateBar();
+}
 
 void Interface::cameraInitObjectLocation(int map_x, int map_y, SDL_Rect& object) {
 

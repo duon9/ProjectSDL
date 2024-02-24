@@ -17,9 +17,26 @@ void EntityManager::init() {
 		Player* player = new Player(renderer, ROGUE, interface);
 		players.push_back(player);
 	}
-	setCollision();
+	//setCollision();
+
+	for (auto& player : players) {
+		player->init();
+	}
 }
 
 void EntityManager::setCollision() {
 	collider = File::readCollision(mapWare[*map]);
+}
+
+void EntityManager::HandleEvents() {
+	for (auto& player : players) {
+		player->handleUserEvents(e);
+	}
+}
+
+void EntityManager::render() {
+
+	for (auto& player : players) {
+		player->render();
+	}
 }

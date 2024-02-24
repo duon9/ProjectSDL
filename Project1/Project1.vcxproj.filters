@@ -60,7 +60,16 @@
     <ClCompile Include="math.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TestObject.cpp">
+    <ClCompile Include="label.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FPScontroller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FPSparameter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="statsBar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -110,7 +119,16 @@
     <ClInclude Include="math.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TestObject.h">
+    <ClInclude Include="label.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FPScontroller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FPSparameter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="statsBar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

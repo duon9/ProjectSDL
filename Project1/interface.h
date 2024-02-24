@@ -4,12 +4,13 @@
 #include "entity.h"
 #include "utils.h"
 #include "constant.h"
+#include "statsBar.h"
 
 class Interface {
 private:
-
+	//healthBar* health_display = nullptr;
 	SDL_Renderer* renderer;
-	Map* map = nullptr;
+	Map* Imap = nullptr;
 	std::vector<TileLayer> map;
 	std::vector<TileSet> tileset;
 	SDL_Texture* texture;
@@ -19,6 +20,8 @@ private:
 
 
 public:
+	Bar* health_display = nullptr;
+	Bar* mana_display = nullptr;
 	SDL_Rect camera = { 0, 0, 800, 608 };
 	SDL_Rect screen = { 0, 0, 800, 608 };
 	Interface(SDL_Renderer* renderer, Map * map);
@@ -26,6 +29,7 @@ public:
 
 	void init();
 	void render();
+	void handleInterfaceEvents();
 	void loadTexture();
 	void loadMap();
 
@@ -36,4 +40,5 @@ public:
 	bool isCameraCollideCornerVertical(int velocity);
 	bool isCenterVertical(SDL_Rect& object);
 	bool isCenterHorizontal(SDL_Rect& object);
+
 };

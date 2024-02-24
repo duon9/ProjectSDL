@@ -1,8 +1,8 @@
 {
   "rogue_knight": {
-    "health": 100,
+    "health": 1000,
     "mana": 100,
-    "damage": 400,
+    "damage": 100,
     "level": 1,
     "exp": 1,
     "speed": 2,

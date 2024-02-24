@@ -13,6 +13,8 @@ Button::~Button() {
 
 	SDL_FreeSurface(buttonTextSurface);
 	SDL_DestroyTexture(buttonTextTexture);
+	//SDL_DestroyRenderer(renderer);
+	//TTF_CloseFont(font);
 }
 
 void Button::init() {
@@ -23,7 +25,7 @@ void Button::init() {
 	buttonTextSurface = TTF_RenderText_Solid(font, text.c_str(), { 0, 0, 0, 255 });
 	buttonTextTexture = SDL_CreateTextureFromSurface(renderer, buttonTextSurface);
 	buttonRect = { x, y, w, h };
-	std::cout << "buttonrect" << buttonRect.x << ' ' << buttonRect.w << std::endl;
+	//std::cout << "buttonrect" << buttonRect.x << ' ' << buttonRect.w << std::endl;
 }
 
 void Button::render() {

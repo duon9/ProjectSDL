@@ -18,8 +18,8 @@ public:
 	void render();
 	int handleMenuEvents(SDL_Event& e);
 private:
-	Button* newGame;
-	Button* loadGame;
+	Button* newGame = nullptr;
+	Button* loadGame = nullptr;
 	std::vector<Button> menuButton;
 	TTF_Font* menuFont = nullptr;
 	SDL_Renderer* renderer = nullptr;

@@ -10,7 +10,7 @@ class Button
 private:
 	SDL_Rect buttonRect;
 	SDL_Renderer* renderer;
-	TTF_Font* font;
+	TTF_Font* font = nullptr;
 	std::string text;
 	int x, y, w, h;
 	SDL_Texture* buttonTextTexture = nullptr;

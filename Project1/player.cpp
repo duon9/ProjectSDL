@@ -1,13 +1,15 @@
 #include "player.h"
 
-void Player::handleUserEvents(SDL_Event &e) {
+void Player::handleUserEvents(SDL_Event *e) {
 	if (!check_death && !check_pause) {
 		move();
-		if (e.type == SDL_KEYDOWN) {
-			switch (e.key.keysym.sym) {
+		if (e->type == SDL_KEYDOWN) {
+			switch (e->key.keysym.sym) {
 			case SDLK_z:
 				status = ATTACKING;
 				frameTick = frame[status].maxFrame - 1;
+				stat.health -= stat.damage;
+				interface->health_display->updateProperties(getHealth());
 				break;
 
 			case SDLK_a:
@@ -36,8 +38,8 @@ void Player::handleUserEvents(SDL_Event &e) {
 				break;
 			}
 		}
-		if (e.type == SDL_KEYUP) {
-			switch (e.key.keysym.sym) {
+		if (e->type == SDL_KEYUP) {
+			switch (e->key.keysym.sym) {
 			case SDLK_z:
 				//check_attack = false;
 				break;
