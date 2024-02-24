@@ -43,6 +43,8 @@ public:
 	void updateSpeed(int newSpeed);
 	void updateRange(int newRange);
 	void updateDamage(int newDamage);
+	SDL_Rect getRect();
+	void updateObjectScreenPosition(SDL_Rect *camera);
 
 	virtual void logicHandle();
 
@@ -59,6 +61,7 @@ public:
 	virtual void setLocation();
 	virtual void init() override;
 	virtual void render() override;
+
 protected:
 	std::vector<std::vector<int>> collider;
 	std::vector<Frame> frame;

@@ -1,4 +1,5 @@
 #include "interface.h"
+#include "collision.h"
 
 Interface::Interface(SDL_Renderer* renderer, Map* map) {
 	std::cout << ("Interface constructor initialized") << std::endl;

@@ -17,10 +17,19 @@ void EntityManager::init() {
 		Player* player = new Player(renderer, ROGUE, interface);
 		players.push_back(player);
 	}
+
+	for (int i = 0; i < 1; i++) {
+		Computer* computer = new Computer(renderer, ROGUE);
+		computers.push_back(computer);
+	}
 	//setCollision();
 
 	for (auto& player : players) {
 		player->init();
+	}
+
+	for (auto& computer : computers) {
+		computer->init();
 	}
 }
 
@@ -39,4 +48,19 @@ void EntityManager::render() {
 	for (auto& player : players) {
 		player->render();
 	}
+
+	for (auto& computer : computers) {
+		if (isInScreen(interface->camera, computer->getRect())) {
+			//std::cout << "bot is in rect" << std::endl;
+			computer->updateObjectScreenPosition(&interface->camera);
+			computer->render();
+		}
+		else {
+			//std::cout << "bot is not in rect" << std::endl;
+		}
+	}
+}
+
+bool EntityManager::isInScreen(SDL_Rect object1, SDL_Rect object2) {
+	return Collision::rectColliding(object1, object2);
 }

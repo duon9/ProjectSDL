@@ -101,10 +101,18 @@ void Object::render() {
 }
 
 void Object::setLocation() {
-	map_x = 0;
-	map_y = 6;
+	map_x = 1;
+	map_y = 20;
 
-	desRect = {(((12 - 2) * TILE_WIDTH) + (TILE_WIDTH / 2) + (OBJECT_WIDTH / 2)), ((9 * TILE_HEIGHT) + TILE_HEIGHT - OBJECT_HEIGHT) - 10, OBJECT_WIDTH, OBJECT_HEIGHT };
+	position.x = map_x * TILE_WIDTH;
+	position.y = map_y * TILE_HEIGHT;
+	desRect = { 0,0, OBJECT_WIDTH, OBJECT_HEIGHT };
+	
+}
+
+void Object::updateObjectScreenPosition(SDL_Rect *camera) {
+	desRect.x = position.x - camera->x;
+	desRect.y = position.y - camera->y;
 }
 
 
@@ -119,4 +127,8 @@ void Object::init() {
 
 void Object::setFrameLimit() {
 	File::getFrameLimit(type, frame);
+}
+
+SDL_Rect Object::getRect() {
+	return { position.x, position.y, desRect.w, desRect.h };
 }

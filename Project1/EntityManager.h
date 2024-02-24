@@ -29,4 +29,6 @@ public:
 	void handleUserInput();
 	void handleInteraction();
 	void HandleEvents();
+
+	bool isInScreen(SDL_Rect object1, SDL_Rect object2);
 };
