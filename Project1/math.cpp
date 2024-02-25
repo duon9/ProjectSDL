@@ -27,7 +27,7 @@ void Math::Vector::setY(double val) {
 }
 
 double Math::Vector::getDistance() {
-	return x * x + y * y;
+	return sqrt(x * x + y * y);
 }
 
 Math::Vector Math::Vector::operator+(const Math::Vector& other) {
@@ -49,3 +49,4 @@ Math::Vector Math::Vector::operator*(double scalar) {
 Math::Vector Math::Vector::operator/(double scalar) {
 	return Math::Vector(x / scalar, y / scalar);
 }
+

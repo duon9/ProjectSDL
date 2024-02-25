@@ -45,13 +45,11 @@ public:
 	void updateDamage(int newDamage);
 	SDL_Rect getRect();
 	void updateObjectScreenPosition(SDL_Rect *camera);
+	SDL_Point getPosition();
+	void listen(SDL_Event* e);
+	void attack();
 
 	virtual void logicHandle();
-
-	//virtual void collisionProcess(); // still planning
-	//virtual void spellCast(); // still planning
-
-	//virtual void setSkill();
 	virtual void setClip();
 	virtual void setProperties();
 	virtual void setFrameLimit();

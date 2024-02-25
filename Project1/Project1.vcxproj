@@ -134,6 +134,7 @@
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="computer.cpp" />
     <ClCompile Include="entity.cpp" />
+    <ClCompile Include="protocol.cpp" />
     <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="FPScontroller.cpp" />
     <ClCompile Include="FPSparameter.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="collision.h" />
     <ClInclude Include="computer.h" />
     <ClInclude Include="entity.h" />
+    <ClInclude Include="protocol.h" />
     <ClInclude Include="EntityManager.h" />
     <ClInclude Include="FPScontroller.h" />
     <ClInclude Include="FPSparameter.h" />

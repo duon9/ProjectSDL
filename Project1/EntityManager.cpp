@@ -22,7 +22,6 @@ void EntityManager::init() {
 		Computer* computer = new Computer(renderer, ROGUE);
 		computers.push_back(computer);
 	}
-	//setCollision();
 
 	for (auto& player : players) {
 		player->init();
@@ -40,6 +39,18 @@ void EntityManager::setCollision() {
 void EntityManager::HandleEvents() {
 	for (auto& player : players) {
 		player->handleUserEvents(e);
+	}
+
+	for (auto& computer : computers) {
+		computer->chaseTarget(&players);
+	}
+
+	for (auto& player : players) {
+		player->listen(e);
+	}
+
+	for (auto& computer : computers) {
+		computer->listen(e);
 	}
 }
 

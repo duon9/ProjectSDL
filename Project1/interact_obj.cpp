@@ -87,8 +87,8 @@ void Object::move() {
 void Object::setProperties() {
 	File::getProperties(type, stat);
 	texture = TextureManagement::LoadTexture(stat.source, renderer);
-	position.x = 0;
-	position.y = 6 * TILE_HEIGHT;
+	//position.x = 0;
+	//position.y = 6 * TILE_HEIGHT;
 }
 
 void Object::render() {
@@ -101,11 +101,14 @@ void Object::render() {
 }
 
 void Object::setLocation() {
-	map_x = 1;
-	map_y = 20;
+	
 
-	position.x = map_x * TILE_WIDTH;
-	position.y = map_y * TILE_HEIGHT;
+	/*position.x = Math::Casuale::casuale(0, 1000);
+	position.y = Math::Casuale::casuale(0, 1000);*/
+
+	position.x = 10 * 32;
+	position.y = 6 * 32;
+
 	desRect = { 0,0, OBJECT_WIDTH, OBJECT_HEIGHT };
 	
 }
@@ -115,9 +118,9 @@ void Object::updateObjectScreenPosition(SDL_Rect *camera) {
 	desRect.y = position.y - camera->y;
 }
 
-
-
 void Object::init() {
+	setProtocolCode();
+	setProtocol();
 	setLocation();
 	setProperties();
 	setClip();
@@ -131,4 +134,40 @@ void Object::setFrameLimit() {
 
 SDL_Rect Object::getRect() {
 	return { position.x, position.y, desRect.w, desRect.h };
+}
+
+SDL_Point Object::getPosition() {
+	return position;
+}
+
+void Object::listen(SDL_Event *e) {
+	SDL_Rect* interact = nullptr;
+	int* damage = nullptr;
+	protocol->listen(e, interact, damage);
+	if (interact == nullptr || damage == nullptr) {
+		//std::cout << "null" << std::endl;
+		return;
+	}
+	else {
+		if (collision->rectColliding(getRect(), *interact)) {
+			stat.health -= *damage;
+		}
+	}
+	delete interact;
+	delete damage;
+}
+
+void Object::attack() {
+	SDL_Rect attack = getRect();
+	if (flip = SDL_FLIP_NONE) {
+		attack.x += attack.w;
+		attack.w += stat.range * TILE_WIDTH;
+	}
+	else {
+		attack.x -= attack.w;
+		attack.w += stat.range * TILE_WIDTH;
+	}
+	std::cout << "send successed" << std::endl;
+	std::cout << attack.x << " " << attack.y << " " << attack.w << " " << attack.h << std::endl;
+	protocol->send(&attack, &stat.damage);
 }

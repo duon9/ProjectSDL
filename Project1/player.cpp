@@ -8,31 +8,40 @@ void Player::handleUserEvents(SDL_Event *e) {
 			case SDLK_z:
 				status = ATTACKING;
 				frameTick = frame[status].maxFrame - 1;
-				stat.health -= stat.damage;
-				interface->health_display->updateProperties(getHealth());
+				attack();
 				break;
-
+			case SDLK_x:
+				SDL_SetTextureAlphaMod(texture, 100);
+				isInvisible = true;
+				break;
+			case SDLK_c:
+				SDL_SetTextureAlphaMod(texture, 255);
+				isInvisible = false;
+				break;
+			case SDLK_LSHIFT:
+				stat.speed = 4;
+				break;
 			case SDLK_a:
 			case SDLK_LEFT:
 				status = RUNNING;
 				flip = SDL_FLIP_HORIZONTAL;
-				velo_x = /*-stat.speed_ratio * */-stat.speed;
+				velo_x = 1 * -stat.speed;
 				break;
 			case SDLK_s:
 			case SDLK_DOWN:
 				status = RUNNING;
-				velo_y = /*stat.speed_ratio **/ stat.speed;
+				velo_y = 1 * stat.speed;
 				break;
 			case SDLK_d:
 			case SDLK_RIGHT:
 				status = RUNNING;
 				flip = SDL_FLIP_NONE;
-				velo_x = /*stat.speed_ratio **/ stat.speed;
+				velo_x = 1 * stat.speed;
 				break;
 			case SDLK_w:
 			case SDLK_UP:
 				status = RUNNING;
-				velo_y = /*-stat.speed_ratio **/ -stat.speed;
+				velo_y = 1 * -stat.speed;
 				break;
 			default:
 				break;
@@ -42,6 +51,9 @@ void Player::handleUserEvents(SDL_Event *e) {
 			switch (e->key.keysym.sym) {
 			case SDLK_z:
 				//check_attack = false;
+				break;
+			case SDLK_LSHIFT:
+				stat.speed /= 2;
 				break;
 			case SDLK_a:
 			case SDLK_LEFT:
@@ -80,6 +92,7 @@ void Player::move() {
 			return;
 		} 
 		if (!collision->isColliding(velo_x, velo_y)) {
+
 			if (velo_x != 0) {
 				position.x += velo_x;
 				if (interface->isCameraCollideCornerHorizontal(velo_x) || !interface->isCenterHorizontal(desRect)) {
@@ -116,4 +129,8 @@ void Player::setLocation() {
 void Player::setCollision(std::string path) {
 	collider = File::readCollision(path);
 	collision = new Collision(collider, &desRect, &interface->camera, &position);
+}
+
+void Player::setProtocolCode() {
+	code = ALLY_CODE;
 }

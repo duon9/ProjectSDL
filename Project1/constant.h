@@ -139,7 +139,8 @@ const int PLAYER_MAGIC_DAMAGE = 15;
 const int PLAYER_ARMOR = 1;
 const int PLAYER_RANGE = 1;
 const int PLAYER_MAGIC_RESISTANCE = 1;
-
+const Uint32 ALLY_CODE = 100;
+const Uint32 ENEMY_CODE = 101;
 const int SPEED = 5;
 
 const std::string TEST = "assets/.tile/underground.png";

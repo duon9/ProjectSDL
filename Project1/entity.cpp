@@ -20,3 +20,11 @@ void Entity::render() {
 void Entity::free() {
 	//default
 }
+
+void Entity::setProtocolCode() {
+	code = 99;
+}
+
+void Entity::setProtocol() {
+	protocol = new Protocol(code);
+}
