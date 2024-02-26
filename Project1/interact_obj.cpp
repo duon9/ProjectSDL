@@ -92,8 +92,14 @@ void Object::setProperties() {
 }
 
 void Object::render() {
+
 	if (status != lastStatus) frameCount = 0;
-	if (frameCount == frame[status].maxFrame - 1) frameCount = 0;
+	if (frameCount == frame[status].maxFrame - 1 && status == DEATH) {
+		frameCount -= 1;
+	}
+	else if (frameCount == frame[status].maxFrame - 1) {
+		frameCount = 0;
+	}
 	frameCount++;
 	srcRect = wareClips[status][frameCount / frame[status].perFrame];
 	lastStatus = status;
@@ -143,23 +149,31 @@ SDL_Point Object::getPosition() {
 void Object::listen(SDL_Event *e) {
 	SDL_Rect* interact = nullptr;
 	int* damage = nullptr;
-	protocol->listen(e, interact, damage);
+	protocol->listen(e, &interact, &damage);
 	if (interact == nullptr || damage == nullptr) {
 		//std::cout << "null" << std::endl;
 		return;
 	}
 	else {
-		if (collision->rectColliding(getRect(), *interact)) {
+		//std::cout << "listen successed" << std::endl;
+		//std::cout << interact->x << " " << interact->y << " " << interact->w << " " << interact->h << std::endl;
+ 		if (collision->rectColliding(getRect(), *interact)) {
+			std::cout << stat.health << std::endl;
 			stat.health -= *damage;
+			if (stat.health <= 0) {
+				check_death = true;
+				status = DEATH;
+			}
 		}
+		std::cout << "end" << std::endl;
 	}
-	delete interact;
-	delete damage;
+	delete[] interact;
+	delete[] damage;
 }
 
 void Object::attack() {
 	SDL_Rect attack = getRect();
-	if (flip = SDL_FLIP_NONE) {
+	if (flip == SDL_FLIP_NONE) {
 		attack.x += attack.w;
 		attack.w += stat.range * TILE_WIDTH;
 	}
@@ -167,7 +181,7 @@ void Object::attack() {
 		attack.x -= attack.w;
 		attack.w += stat.range * TILE_WIDTH;
 	}
-	std::cout << "send successed" << std::endl;
+	//std::cout << "send successed" << std::endl;
 	std::cout << attack.x << " " << attack.y << " " << attack.w << " " << attack.h << std::endl;
 	protocol->send(&attack, &stat.damage);
 }

@@ -13,14 +13,16 @@ void Computer::randomBotMovement() {
 }
 
 void Computer::chaseTarget(std::vector<Player*>* targets) {
-	Player* victim = trackNearestTarget(targets);
-	if (victim != nullptr) {
-		//std::cout << "found player, start hunting" << std::endl;
-		moveTo(victim->getPosition());
-	}
-	else {
-		//std::cout << "not found player" << std::endl;
-		status = IDLE;
+	if (!check_death && !check_pause) {
+		Player* victim = trackNearestTarget(targets);
+		if (victim != nullptr) {
+			//std::cout << "found player, start hunting" << std::endl;
+			moveTo(victim->getPosition());
+		}
+		else {
+			//std::cout << "not found player" << std::endl;
+			status = IDLE;
+		}
 	}
 }
 

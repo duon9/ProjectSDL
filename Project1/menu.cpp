@@ -9,10 +9,11 @@ Menu::Menu(SDL_Renderer* renderer) : renderer(renderer) {
 Menu::~Menu() {
 	SDL_FreeSurface(menuSurface);
 	SDL_DestroyTexture(menuTexture);
-	//SDL_DestroyRenderer(renderer);
+	SDL_DestroyRenderer(renderer);
 	TTF_CloseFont(menuFont);
 	delete newGame;
 	delete loadGame;
+	std::cout << "Constructor Menu free" << std::endl;
 }
 
 void Menu::init() {

@@ -16,7 +16,7 @@ public:
 	}
 
 	void send(SDL_Rect* attack, int* damage);
-	void listen(SDL_Event *e, SDL_Rect *interact, int* damage);
+	void listen(SDL_Event *e, SDL_Rect **interact, int** damage);
 };
 
 // player1 100

@@ -3,9 +3,16 @@
 void Player::handleUserEvents(SDL_Event *e) {
 	if (!check_death && !check_pause) {
 		move();
+		if (e->type == SDL_USEREVENT) {
+			std::cout << "receive signal" << std::endl;
+		}
+
 		if (e->type == SDL_KEYDOWN) {
 			switch (e->key.keysym.sym) {
 			case SDLK_z:
+
+				if (status == RUNNING) return;
+
 				status = ATTACKING;
 				frameTick = frame[status].maxFrame - 1;
 				attack();
