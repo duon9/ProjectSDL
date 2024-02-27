@@ -18,9 +18,7 @@ public:
 	~Entity();
 	virtual void init();
 	virtual void render();
-	virtual void free();
 	SDL_Renderer* renderer = nullptr;
-	//short width, height;
 	Uint32 code;
 	SDL_Rect srcRect;
 	SDL_Rect desRect;

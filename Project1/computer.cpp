@@ -1,23 +1,30 @@
 #include "computer.h"
-#include "math.h"
 
-void Computer::randomBotMovement() {
-	if (!check_death && !check_pause) {
-		if (find_enemy) {
-			return;
-		}
-		else {
+//void Computer::randomBotMovement() {
+//	if (!check_death && !check_pause) {
+//		if (find_enemy) {
+//			return;
+//		}
+//		else {
+//
+//		}
+//	} 
+//}
 
-		}
-	} 
-}
-
-void Computer::chaseTarget(std::vector<Player*>* targets) {
+void Computer::chaseTarget(std::vector<Player*>& targets) {
 	if (!check_death && !check_pause) {
 		Player* victim = trackNearestTarget(targets);
 		if (victim != nullptr) {
 			//std::cout << "found player, start hunting" << std::endl;
-			moveTo(victim->getPosition());
+			if (!moveTo(victim->getPosition())) {
+				if (frameTick > 0) {
+					//status = IDLE;
+					frameTick--;
+					return;
+				}
+				status = ATTACKING;
+				attack();
+			}
 		}
 		else {
 			//std::cout << "not found player" << std::endl;
@@ -26,10 +33,10 @@ void Computer::chaseTarget(std::vector<Player*>* targets) {
 	}
 }
 
-Player* Computer::trackNearestTarget(std::vector<Player*>* targets) {
+Player* Computer::trackNearestTarget(std::vector<Player*>& targets) {
 	//std::cout << stat.health << std::endl;
-	for (auto target = targets->begin(); target != targets->end(); target++) {
-		if ((*target)->isInvisible) continue;
+	for (auto target = targets.begin(); target != targets.end(); target++) {
+		if ((*target)->isInvisible || (*target)->check_death) continue;
 		Math::Vector v = Math::Vector(position, (*target)->getPosition());
 		if (v.Math::Vector::getDistance() < (10 * TILE_WIDTH)) {
 			return *target;
@@ -38,7 +45,7 @@ Player* Computer::trackNearestTarget(std::vector<Player*>* targets) {
 	return nullptr;
 }
 
-void Computer::moveTo(SDL_Point target) {
+bool Computer::moveTo(SDL_Point target) {
 	Math::Vector v = Math::Vector(position, target);
 
 	if (v.getX() < 0) flip = SDL_FLIP_HORIZONTAL;
@@ -56,19 +63,21 @@ void Computer::moveTo(SDL_Point target) {
 			position.y += v.getY() * stat.speed;
 		}
 		//position.y += v.getY() * stat.speed;
+		return true;
 	}
 	else {
 		//std::cout << "reach target" << std::endl;
-		status = IDLE;
+		return false;
 	}
 }
 
 bool Computer::isReachDestination(Math::Vector v) {
-	if (v.getDistance() <= 1*TILE_WIDTH) {
+	if (v.getDistance() <= (int)(1.5*TILE_WIDTH)) {
 		return true;
 	}
 	return false;
 }
+
 
 void Computer::setProtocolCode() {
 	code = ENEMY_CODE;

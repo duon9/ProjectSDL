@@ -59,7 +59,8 @@ public:
 	virtual void setLocation();
 	virtual void init() override;
 	virtual void render() override;
-
+	bool check_death = false;
+	SDL_Point position;
 protected:
 	std::vector<std::vector<int>> collider;
 	std::vector<Frame> frame;
@@ -77,7 +78,7 @@ protected:
 	charState status = IDLE;
 	charState next_status = IDLE; // still use, do not delete
 	//int next_map_x, next_map_y;
-	SDL_Point position;
+	//SDL_Point position;
 	int velo_x;
 	int velo_y;
 	
@@ -85,7 +86,6 @@ protected:
 	bool check_run = false;
 	bool check_pause = false;
 	bool check_attack = false;
-	bool check_death = false;
 	bool check_take_damage = false;
 	bool isAction = false;
 };

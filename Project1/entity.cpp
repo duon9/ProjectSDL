@@ -17,9 +17,9 @@ void Entity::render() {
 	//default
 }
 
-void Entity::free() {
-	//default
-}
+//void Entity::free() {
+//	//default
+//}
 
 void Entity::setProtocolCode() {
 	code = 99;

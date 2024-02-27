@@ -1,20 +1,22 @@
 #include "player.h"
 
 void Player::handleUserEvents(SDL_Event *e) {
+	if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_r) {
+		check_death = false;
+		status = IDLE;
+		setProperties();
+	}
 	if (!check_death && !check_pause) {
 		move();
-		if (e->type == SDL_USEREVENT) {
-			std::cout << "receive signal" << std::endl;
-		}
 
 		if (e->type == SDL_KEYDOWN) {
 			switch (e->key.keysym.sym) {
 			case SDLK_z:
 
 				if (status == RUNNING) return;
-
+				if (frameTick > 0) return;
 				status = ATTACKING;
-				frameTick = frame[status].maxFrame - 1;
+				//frameTick = frame[status].maxFrame - 1;
 				attack();
 				break;
 			case SDLK_x:
@@ -24,9 +26,19 @@ void Player::handleUserEvents(SDL_Event *e) {
 			case SDLK_c:
 				SDL_SetTextureAlphaMod(texture, 255);
 				isInvisible = false;
+				//std::cout << status << std::endl;
+				//std::cout << frameTick << std::endl;
 				break;
+
+			case SDLK_r:
+				check_death = false;
+				status = IDLE;
+				setProperties();
+				break;
+
 			case SDLK_LSHIFT:
 				stat.speed = 4;
+				//stat.mana -= 1;
 				break;
 			case SDLK_a:
 			case SDLK_LEFT:
@@ -92,8 +104,19 @@ void Player::handleUserEvents(SDL_Event *e) {
 
 void Player::move() {
 	if (/*collisionHandle(collider) && */!check_death && !check_pause) {
+		// TODO: found some problem here
+		if (isInvisible == true) {
+			if (stat.mana <= 0) {
+				isInvisible = false;
+				SDL_SetTextureAlphaMod(texture, 255);
+			}
+			else {
+				stat.mana -= 1;
+			}
+			//stat.mana -= 2;
+		}
 
-		if (frameTick > 0 && status == ATTACKING) {
+		if (frameTick > 0) {
 			frameTick--;
 			if (frameTick == 0) status = IDLE;
 			return;
@@ -140,4 +163,28 @@ void Player::setCollision(std::string path) {
 
 void Player::setProtocolCode() {
 	code = ALLY_CODE;
+}
+
+void Player::handleBarDisplay() {
+	interface->mana_display->updateProperties(stat.mana);
+	interface->mana_display->updateBar();
+
+	interface->health_display->updateProperties(stat.health);
+	interface->health_display->updateBar();
+}
+
+void Player::init() {
+	setProtocolCode();
+	setProtocol();
+	setLocation();
+	setProperties();
+	setBarProperties();
+	setClip();
+	setFrameLimit();
+	setCollision(water_town);
+}
+
+void Player::setBarProperties() {
+	interface->mana_display->setProperties(stat.mana);
+	interface->health_display->setProperties(stat.health);
 }

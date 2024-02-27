@@ -90,8 +90,8 @@ void Interface::render() {
 }
 
 void Interface::handleInterfaceEvents() {
-	health_display->updateBar();
-	mana_display->updateBar();
+	//health_display->updateBar();
+	//mana_display->updateBar();
 }
 
 void Interface::cameraInitObjectLocation(int map_x, int map_y, SDL_Rect& object) {
@@ -163,4 +163,9 @@ bool Interface::isCenterVertical(SDL_Rect& object) {
 		return true;
 	}
 	return false;
+}
+
+void Interface::updateObjectScreenPosition(SDL_Point& position, SDL_Rect& object) {
+	object.x = position.x - camera.x;
+	object.y = position.y - camera.y;
 }

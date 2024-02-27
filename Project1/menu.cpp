@@ -9,7 +9,6 @@ Menu::Menu(SDL_Renderer* renderer) : renderer(renderer) {
 Menu::~Menu() {
 	SDL_FreeSurface(menuSurface);
 	SDL_DestroyTexture(menuTexture);
-	SDL_DestroyRenderer(renderer);
 	TTF_CloseFont(menuFont);
 	delete newGame;
 	delete loadGame;

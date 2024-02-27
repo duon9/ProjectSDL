@@ -18,8 +18,8 @@ void EntityManager::init() {
 		players.push_back(player);
 	}
 
-	for (int i = 0; i < 1; i++) {
-		Computer* computer = new Computer(renderer, ROGUE);
+	for (int i = 0; i < 2; i++) {
+		Computer* computer = new Computer(renderer, "minotaur");
 		computers.push_back(computer);
 	}
 
@@ -39,10 +39,11 @@ void EntityManager::setCollision() {
 void EntityManager::HandleEvents() {
 	for (auto& player : players) {
 		player->handleUserEvents(e);
+		player->handleBarDisplay();
 	}
 
 	for (auto& computer : computers) {
-		computer->chaseTarget(&players);
+		computer->chaseTarget(players);
 	}
 
 	for (auto& player : players) {
@@ -63,7 +64,8 @@ void EntityManager::render() {
 	for (auto& computer : computers) {
 		if (isInScreen(interface->camera, computer->getRect())) {
 			//std::cout << "bot is in rect" << std::endl;
-			computer->updateObjectScreenPosition(&interface->camera);
+			//computer->updateObjectScreenPosition(&interface->camera);
+			interface->updateObjectScreenPosition(computer->position, computer->desRect);
 			computer->render();
 		}
 		else {

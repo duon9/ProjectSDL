@@ -1,4 +1,5 @@
 #include "FPScontroller.h"
+#include <iostream>
 
 void FPScontroller::FPSlimit(int frameRate) {
     static Uint32 lastTime = SDL_GetTicks();
@@ -12,6 +13,7 @@ void FPScontroller::FPSlimit(int frameRate) {
 
     // Delay if frame rate is too fast
     if (elapsedTime < 1000 / frameRate) {
+        //std::cout <<60 - ((1000 / frameRate) - elapsedTime) << std::endl;
         SDL_Delay((1000 / frameRate) - elapsedTime);
     }
 

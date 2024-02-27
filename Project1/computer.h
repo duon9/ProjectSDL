@@ -3,6 +3,8 @@
 #include "interact_obj.h"
 #include "utils.h"
 #include "player.h"
+#include <vector>
+#include "math.h"
 
 enum RandomOrient {
 	UP,
@@ -27,13 +29,10 @@ public:
 		std::cout << "Computer class destructor called \n";
 	}
 
-	//virtual void setClip() override;
-	//virtual void init() override;
-	//virtual void render() override;
-	void randomBotMovement();
-	void moveTo(SDL_Point target);
+	//void randomBotMovement();
+	bool moveTo(SDL_Point target);
 	bool isReachDestination(Math::Vector v);
-	Player* trackNearestTarget(std::vector<Player*>* target);
-	void chaseTarget(std::vector<Player*>* targets);
+	Player* trackNearestTarget(std::vector<Player*>& target);
+	void chaseTarget(std::vector<Player*>& targets);
 	virtual void setProtocolCode() override;
 };

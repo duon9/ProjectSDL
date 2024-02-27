@@ -40,5 +40,5 @@ public:
 	bool isCameraCollideCornerVertical(int velocity);
 	bool isCenterVertical(SDL_Rect& object);
 	bool isCenterHorizontal(SDL_Rect& object);
-
+	void updateObjectScreenPosition(SDL_Point& position, SDL_Rect& object);
 };

@@ -109,13 +109,14 @@ void Object::render() {
 void Object::setLocation() {
 	
 
-	/*position.x = Math::Casuale::casuale(0, 1000);
-	position.y = Math::Casuale::casuale(0, 1000);*/
+	position.x = Math::Casuale::casuale(0, 1000);
+	position.y = 4 * 32;
+	/*position.y = Math::Casuale::casuale(0, 1000);*/
 
-	position.x = 10 * 32;
-	position.y = 6 * 32;
+	//position.x = 10 * 32;
+	//position.y = 6 * 32;
 
-	desRect = { 0,0, OBJECT_WIDTH, OBJECT_HEIGHT };
+	desRect = { 0,0, 124, 124};
 	
 }
 
@@ -147,28 +148,23 @@ SDL_Point Object::getPosition() {
 }
 
 void Object::listen(SDL_Event *e) {
-	SDL_Rect* interact = nullptr;
-	int* damage = nullptr;
-	protocol->listen(e, &interact, &damage);
-	if (interact == nullptr || damage == nullptr) {
-		//std::cout << "null" << std::endl;
-		return;
-	}
-	else {
-		//std::cout << "listen successed" << std::endl;
-		//std::cout << interact->x << " " << interact->y << " " << interact->w << " " << interact->h << std::endl;
- 		if (collision->rectColliding(getRect(), *interact)) {
-			std::cout << stat.health << std::endl;
-			stat.health -= *damage;
-			if (stat.health <= 0) {
-				check_death = true;
-				status = DEATH;
+	if (!check_death && !check_pause) {
+		SDL_Rect interact;
+		int dame;
+		if (protocol->listen(e, interact, dame)) {
+			if (collision->rectColliding(getRect(), interact)) {
+				//std::cout << stat.health << std::endl;
+				stat.health -= dame;
+				if (stat.health <= 0) {
+					check_death = true;
+					status = DEATH;
+				}
 			}
 		}
-		std::cout << "end" << std::endl;
+		else {
+			//protocol->clean();
+		}
 	}
-	delete[] interact;
-	delete[] damage;
 }
 
 void Object::attack() {
@@ -182,6 +178,7 @@ void Object::attack() {
 		attack.w += stat.range * TILE_WIDTH;
 	}
 	//std::cout << "send successed" << std::endl;
-	std::cout << attack.x << " " << attack.y << " " << attack.w << " " << attack.h << std::endl;
+	//std::cout << attack.x << " " << attack.y << " " << attack.w << " " << attack.h << std::endl;
 	protocol->send(&attack, &stat.damage);
+	frameTick = frame[status].maxFrame - 1;
 }

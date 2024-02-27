@@ -7,9 +7,9 @@
 class Player : public Object
 {
 protected:
-	Interface* interface;
+	Interface* interface = nullptr;
 public:
-
+	void handleBarDisplay();
 	Player(SDL_Renderer* renderer, std::string type, Interface * interface) : Object(renderer) {
 		this->renderer = renderer;
 		this->type = type;
@@ -22,7 +22,8 @@ public:
 		*/
 	}
 	bool isInvisible = false;
-	//virtual void init() override;
+	void setBarProperties();
+	virtual void init() override;
 	virtual void move() override;
 	virtual void handleUserEvents(SDL_Event *e);
 	virtual void setLocation() override;
