@@ -2,7 +2,7 @@
   "rogue_knight": {
     "health": 10000,
     "mana": 1000,
-    "damage": 10000,
+    "damage": 1000000,
     "level": 1,
     "exp": 1,
     "speed": 2,
@@ -89,12 +89,12 @@
   },
 
   "minotaur": {
-    "health": 10000,
-    "mana": 1000,
-    "damage": 100,
+    "health": 10000000,
+    "mana": 100,
+    "damage": 1000,
     "level": 1,
     "exp": 1,
-    "speed": 6,
+    "speed": 3,
     "source": "assets/characters/minotaur.png",
     "range": 2,
     "desRect": [0,0,64,64],

@@ -18,7 +18,7 @@ void EntityManager::init() {
 		players.push_back(player);
 	}
 
-	for (int i = 0; i < 2; i++) {
+	for (int i = 0; i < 100; i++) {
 		Computer* computer = new Computer(renderer, "minotaur");
 		computers.push_back(computer);
 	}

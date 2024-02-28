@@ -9,8 +9,6 @@
 #include "interface.h"
 #include "entity.h"
 #include "constant.h"
-#include "player.h"
-#include "computer.h"
 #include "EntityManager.h"
 #include "FPScontroller.h"
 

@@ -12,11 +12,12 @@
 #include "math.h"
 #include <cmath>
 #include "collision.h"
+#include "aniamted_obj.h"
 
-class Object : public Entity {
+class Object : public Animated {
 public:
 
-	Object(SDL_Renderer* renderer) : Entity(renderer) {
+	Object(SDL_Renderer* renderer) : Animated(renderer) {
 		//constructor
 
 		std::cout << "Object constructor called \n";
@@ -43,16 +44,17 @@ public:
 	void updateSpeed(int newSpeed);
 	void updateRange(int newRange);
 	void updateDamage(int newDamage);
-	SDL_Rect getRect();
+
+	//SDL_Rect getRect(); // -> Entity.
 	void updateObjectScreenPosition(SDL_Rect *camera);
-	SDL_Point getPosition();
+	//SDL_Point getPosition();
 	void listen(SDL_Event* e);
 	void attack();
 
 	virtual void logicHandle();
-	virtual void setClip();
+	//virtual void setClip(); // -> Animated
 	virtual void setProperties();
-	virtual void setFrameLimit();
+	//virtual void setFrameLimit(); //-> Animated
 	void collisionHandle();
 	virtual void setCollision(std::string path);
 	virtual void move();
@@ -60,32 +62,22 @@ public:
 	virtual void init() override;
 	virtual void render() override;
 	bool check_death = false;
-	SDL_Point position;
+	void resurrect(int time);
+	//SDL_Point position;
 protected:
 	std::vector<std::vector<int>> collider;
-	std::vector<Frame> frame;
 	Stat stat;
-	std::string type;
 	std::vector<Skill> skillSet;
-	std::vector<std::vector<SDL_Rect>> wareClips;
 	Collision* collision;
-
+	int timer = 0;
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
-
-	int frameCount;
-	int frameTick;
 	charState lastStatus = IDLE;
 	charState status = IDLE;
 	charState next_status = IDLE; // still use, do not delete
-	//int next_map_x, next_map_y;
-	//SDL_Point position;
 	int velo_x;
 	int velo_y;
-	
-
 	bool check_run = false;
 	bool check_pause = false;
 	bool check_attack = false;
 	bool check_take_damage = false;
-	bool isAction = false;
 };

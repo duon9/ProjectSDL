@@ -17,7 +17,6 @@ class Computer : public Object
 {
 private:
 	bool find_enemy = false;
-
 public:
 	Computer(SDL_Renderer* renderer, std::string type) : Object(renderer) {
 		std::cout << "Computer class constructor called \n";
@@ -35,4 +34,5 @@ public:
 	Player* trackNearestTarget(std::vector<Player*>& target);
 	void chaseTarget(std::vector<Player*>& targets);
 	virtual void setProtocolCode() override;
+	//void waitToRevive();
 };

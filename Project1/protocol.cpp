@@ -21,6 +21,7 @@ bool Protocol::listen(SDL_Event* e, SDL_Rect& interact, int& damage) {
 		if (e->user.code != Protocol::code) {
 			interact = *(static_cast<SDL_Rect*>(e->user.data1));
 			damage = *(static_cast<int*>(e->user.data2));
+			
 			return true;
 		}
 		if (e->user.code == Protocol::code) {

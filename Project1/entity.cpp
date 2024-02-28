@@ -17,14 +17,18 @@ void Entity::render() {
 	//default
 }
 
-//void Entity::free() {
-//	//default
-//}
-
 void Entity::setProtocolCode() {
 	code = 99;
 }
 
 void Entity::setProtocol() {
 	protocol = new Protocol(code);
+}
+
+SDL_Point Entity::getPosition() {
+	return position;
+}
+
+SDL_Rect Entity::getRect() {
+	return { position.x, position.y, desRect.w, desRect.h };
 }

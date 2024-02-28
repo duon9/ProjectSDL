@@ -58,10 +58,6 @@ void Object::updateDamage(int newDamage) {
 	stat.damage = newDamage;
 }
 
-void Object::setClip() {
-	wareClips = File::getClips(type);
-}
-
 void Object::logicHandle() {
 	if (stat.health <= 0) {
 		check_death = true;
@@ -87,14 +83,13 @@ void Object::move() {
 void Object::setProperties() {
 	File::getProperties(type, stat);
 	texture = TextureManagement::LoadTexture(stat.source, renderer);
-	//position.x = 0;
-	//position.y = 6 * TILE_HEIGHT;
 }
 
 void Object::render() {
 
 	if (status != lastStatus) frameCount = 0;
 	if (frameCount == frame[status].maxFrame - 1 && status == DEATH) {
+		resurrect(180);
 		frameCount -= 1;
 	}
 	else if (frameCount == frame[status].maxFrame - 1) {
@@ -110,13 +105,10 @@ void Object::setLocation() {
 	
 
 	position.x = Math::Casuale::casuale(0, 1000);
-	position.y = 4 * 32;
+	position.y = 5 * 32;
 	/*position.y = Math::Casuale::casuale(0, 1000);*/
 
-	//position.x = 10 * 32;
-	//position.y = 6 * 32;
-
-	desRect = { 0,0, 124, 124};
+	desRect = { 0,0, 100, 100};
 	
 }
 
@@ -135,25 +127,12 @@ void Object::init() {
 	setCollision(water_town);
 }
 
-void Object::setFrameLimit() {
-	File::getFrameLimit(type, frame);
-}
-
-SDL_Rect Object::getRect() {
-	return { position.x, position.y, desRect.w, desRect.h };
-}
-
-SDL_Point Object::getPosition() {
-	return position;
-}
-
 void Object::listen(SDL_Event *e) {
 	if (!check_death && !check_pause) {
 		SDL_Rect interact;
 		int dame;
 		if (protocol->listen(e, interact, dame)) {
 			if (collision->rectColliding(getRect(), interact)) {
-				//std::cout << stat.health << std::endl;
 				stat.health -= dame;
 				if (stat.health <= 0) {
 					check_death = true;
@@ -162,7 +141,6 @@ void Object::listen(SDL_Event *e) {
 			}
 		}
 		else {
-			//protocol->clean();
 		}
 	}
 }
@@ -170,15 +148,27 @@ void Object::listen(SDL_Event *e) {
 void Object::attack() {
 	SDL_Rect attack = getRect();
 	if (flip == SDL_FLIP_NONE) {
-		attack.x += attack.w;
+		attack.x += attack.w / 2;
 		attack.w += stat.range * TILE_WIDTH;
 	}
 	else {
 		attack.x -= attack.w;
 		attack.w += stat.range * TILE_WIDTH;
 	}
-	//std::cout << "send successed" << std::endl;
-	//std::cout << attack.x << " " << attack.y << " " << attack.w << " " << attack.h << std::endl;
+	
 	protocol->send(&attack, &stat.damage);
 	frameTick = frame[status].maxFrame - 1;
 }
+
+void Object::resurrect(int time) {
+	if (status == DEATH) timer++;
+	if (timer == time) {
+		std::cout << "Resurrect successed" << std::endl;
+		check_death = false;
+		status = IDLE;
+		setProperties();
+		frameCount = 0;
+		timer = 0;
+	}
+}
+

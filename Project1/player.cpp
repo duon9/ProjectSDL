@@ -149,7 +149,7 @@ void Player::move() {
 void Player::setLocation() {
 	map_x = 0;
 	map_y = 6;
-	desRect = { (((12 - 2) * TILE_WIDTH) + (TILE_WIDTH / 2) + (OBJECT_WIDTH / 2)), ((9 * TILE_HEIGHT) + TILE_HEIGHT - OBJECT_HEIGHT) - 10, OBJECT_WIDTH, OBJECT_HEIGHT };
+	desRect = { (((12 - 2) * TILE_WIDTH) + (TILE_WIDTH / 2) + (OBJECT_WIDTH / 2)), ((9 * TILE_HEIGHT) + TILE_HEIGHT - OBJECT_HEIGHT) - 10, 52, 52};
 	interface->cameraInitLocation(map_x, map_y);
 	interface->cameraInitObjectLocation(map_x, map_y, desRect);
 	position.x = interface->camera.x + desRect.x;
