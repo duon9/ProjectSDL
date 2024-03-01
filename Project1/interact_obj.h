@@ -44,17 +44,11 @@ public:
 	void updateSpeed(int newSpeed);
 	void updateRange(int newRange);
 	void updateDamage(int newDamage);
-
-	//SDL_Rect getRect(); // -> Entity.
-	void updateObjectScreenPosition(SDL_Rect *camera);
-	//SDL_Point getPosition();
 	void listen(SDL_Event* e);
 	void attack();
 
 	virtual void logicHandle();
-	//virtual void setClip(); // -> Animated
 	virtual void setProperties();
-	//virtual void setFrameLimit(); //-> Animated
 	void collisionHandle();
 	virtual void setCollision(std::string path);
 	virtual void move();
@@ -63,7 +57,6 @@ public:
 	virtual void render() override;
 	bool check_death = false;
 	void resurrect(int time);
-	//SDL_Point position;
 protected:
 	std::vector<std::vector<int>> collider;
 	Stat stat;

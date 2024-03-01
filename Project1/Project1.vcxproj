@@ -131,6 +131,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="aniamted_obj.cpp" />
+    <ClCompile Include="animated_button.cpp" />
     <ClCompile Include="button.cpp" />
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="computer.cpp" />
@@ -154,6 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="aniamted_obj.h" />
+    <ClInclude Include="animated_button.h" />
     <ClInclude Include="button.h" />
     <ClInclude Include="collision.h" />
     <ClInclude Include="computer.h" />

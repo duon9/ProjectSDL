@@ -10,6 +10,22 @@ SDL_Texture* TextureManagement::LoadTexture(const std::string filename, SDL_Rend
 	return tempTexture;
 }
 
+SDL_Texture* TextureManagement::LoadText(SDL_Renderer* renderer, TTF_Font* font, std::string text, SDL_Color color) {
+	SDL_Surface* surface = TTF_RenderText_Solid(font, text.c_str(), color);
+	SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+	SDL_FreeSurface(surface);
+	return texture;
+}
+
+void TextureManagement::loadTextRect(SDL_Texture* texture, SDL_Rect& textRect, SDL_Rect button) {
+	int w, h;
+	SDL_QueryTexture(texture, NULL, NULL, &w, &h);
+	textRect.x = button.x + button.w / 2 - w / 2;
+	textRect.y = button.y + button.h / 2;
+	textRect.w = w;
+	textRect.h = h;
+}
+
 SDL_Texture* TextureManagement::LoadTargetTexture(std::string filepath, SDL_Renderer* renderer) {
 	SDL_Surface* tempSurface = IMG_Load(filepath.c_str());
 	SDL_Texture* tempTexture = SDL_CreateTextureFromSurface(renderer, tempSurface);
@@ -29,6 +45,20 @@ std::string File::augmentPath(std::string path) {
 
 void TextureManagement::Draw(SDL_Renderer* renderer, SDL_Texture* texture, SDL_Rect src, SDL_Rect dest) {
 	SDL_RenderCopy(renderer, texture, &src, &dest);
+}
+
+void TextureManagement::FillRect(SDL_Renderer* renderer, SDL_Color color, SDL_Rect object) {
+	SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+	SDL_RenderFillRect(renderer, &object);
+}
+
+void TextureManagement::Draw(SDL_Renderer* renderer, SDL_Texture* texture, SDL_Rect src, SDL_Rect dest, SDL_RendererFlip flip) {
+	SDL_RenderCopyEx(renderer, texture, &src, &dest, NULL, NULL, flip);
+}
+
+void TextureManagement::DrawRect(SDL_Renderer* renderer, SDL_Color color, SDL_Rect object) {
+	SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+	SDL_RenderDrawRect(renderer, &object);
 }
 
 void File::readJSON(std::string path, nlohmann::json& jsondata) {
@@ -193,3 +223,19 @@ void File::getFrameLimit(std::string type, std::vector<Frame>& frame) {
 		frame.push_back(temp);
 	}
 }
+
+GameState Global::gamestate = MENU;
+
+TTF_Font* Font::loadFont(std::string path, int size) {
+	TTF_Font* font = TTF_OpenFont(path.c_str(), size);
+	return font;
+}
+
+//void Font::loadTextRect(SDL_Texture* texture, SDL_Rect& textRect, SDL_Rect button) {
+//	int w, h;
+//	SDL_QueryTexture(texture, NULL, NULL, &w, &h);
+//	textRect.x = button.x + button.w / 2 - w / 2;
+//	textRect.y = button.y + button.h / 2;
+//	textRect.w = w;
+//	textRect.h = h;
+//}

@@ -18,8 +18,13 @@ public:
 	TextureManagement();
 	~TextureManagement();
 	static SDL_Texture* LoadTexture(const std::string filename, SDL_Renderer* renderer);
+	static SDL_Texture* LoadText(SDL_Renderer* renderer, TTF_Font* font, std::string text, SDL_Color color = {0,0,0,255});
+	static void loadTextRect(SDL_Texture* texture, SDL_Rect& textRect, SDL_Rect button);
 	static void Draw(SDL_Renderer* renderer, SDL_Texture* texture, SDL_Rect src, SDL_Rect dest);
+	static void Draw(SDL_Renderer* renderer, SDL_Texture* texture, SDL_Rect src, SDL_Rect dest, SDL_RendererFlip flip);
+	static void DrawRect(SDL_Renderer* renderer, SDL_Color color, SDL_Rect object);
 	static SDL_Texture* LoadTargetTexture(const std::string filepath, SDL_Renderer* renderer);
+	static void FillRect(SDL_Renderer* renderer, SDL_Color color, SDL_Rect object);
 };
 
 class File {
@@ -39,27 +44,12 @@ public:
 	static std::vector<std::vector<SDL_Rect>> getClips(std::string type);
 	static void getFrameLimit(std::string type, std::vector<Frame>& frame);
 };
-// vector
 
-//namespace luckywheel {
-//	int ranint(int first, int last) {
-//		std::mt19937 rng(std::time(nullptr)); // get current time
-//		std::uniform_int_distribution<int> distribution(first, last); // get random orient
-//		return distribution(rng);
-//	}
-//}
+namespace Global {
+	extern GameState gamestate;
+}
 
-//void getProperties(std::string type, int& health, int& mana, int& speed, int& level, int& exp, int& damage, std::string& source, int& map_x, int& map_y) {
-//	nlohmann::json jsondata;
-//	readJSON(path, jsondata);
-//	nlohmann::json object = jsondata[type];
-//	health = object["health"].get<int>();
-//	mana = object["mana"].get<int>();
-//	damage = object["damage"].get<int>();
-//	level = object["level"].get<int>();
-//	exp = object["exp"].get<int>();
-//	speed = object["speed"].get<int>();
-//	source = object["source"].get<std::string>();
-//	map_x = object["map_x"].get<int>();
-//	map_y = object["map_y"].get<int>();
-//}
+namespace Font {
+	TTF_Font* loadFont(std::string font, int size);
+	//void loadTextRect(SDL_Texture* texture, SDL_Rect& textRect, SDL_Rect button);
+}

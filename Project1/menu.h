@@ -8,6 +8,7 @@
 #include <string>
 #include <iostream>
 #include "button.h"
+#include "animated_button.h"
 
 class Menu
 {
@@ -20,9 +21,11 @@ public:
 private:
 	Button* newGame = nullptr;
 	Button* loadGame = nullptr;
+	AnimatedButton* btn = nullptr;
 	std::vector<Button> menuButton;
 	TTF_Font* menuFont = nullptr;
 	SDL_Renderer* renderer = nullptr;
 	SDL_Surface* menuSurface = nullptr;
 	SDL_Texture* menuTexture = nullptr;
+
 };

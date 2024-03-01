@@ -19,9 +19,9 @@ void Bar::updateBar() {
 }
 
 void Bar::render() {
-    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a); 
+    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
     SDL_RenderFillRect(renderer, &statsRect);
 
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); 
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderDrawRect(renderer, &outlineRect);
 }

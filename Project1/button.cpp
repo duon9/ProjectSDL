@@ -50,7 +50,7 @@ bool Button::handleUserActions(SDL_Event& e) {
 	SDL_Point currPos = { e.motion.x, e.motion.y };
 	if (SDL_PointInRect(&currPos, &buttonRect)) {
 		if (e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT) {
-			std::cout << "button with name of: " << text << " clicked" << std::endl;
+			//std::cout << "button with name of: " << text << " clicked" << std::endl;
 			return 1;
 		}
 	}

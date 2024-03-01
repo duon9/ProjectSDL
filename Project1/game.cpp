@@ -7,7 +7,7 @@ Game::Game() {
 	renderer = nullptr;
 	screenWidth = 800;
 	screenHeight = 608;
-	gamestate = GameState::MENU;
+	Global::gamestate = GameState::MENU;
 }
 
 Game::~Game() {
@@ -40,7 +40,7 @@ void Game::init(const char* title, int _x, int _y, int _w, int _h, Uint32 flags)
 
 void Game::gameLoop() {
 	std::cout << "start gameLoop() Game class" << std::endl;
-	while (gamestate != GameState::EXIT) {
+	while (Global::gamestate != GameState::EXIT) {
 		handleEvents();
 		render();
 	}
@@ -48,9 +48,9 @@ void Game::gameLoop() {
 
 void Game::handleEvents() {
 	SDL_PollEvent(&e);
-	if (gamestate == GameState::MENU) {
+	if (Global::gamestate == GameState::MENU) {
 		if (menu->handleMenuEvents(e) == 1) {
-			gamestate = GameState::PLAY;
+			Global::gamestate = GameState::PLAY;
 			delete menu;
 		}
 		else if (menu->handleMenuEvents(e) == 2) {
@@ -58,7 +58,7 @@ void Game::handleEvents() {
 		}
 	}
 
-	if (gamestate == GameState::PLAY) {
+	if (Global::gamestate == GameState::PLAY) {
 		//player1->handleUserEvents(e);
 		entitys->HandleEvents();
 		//interface->handleInterfaceEvents();
@@ -68,7 +68,7 @@ void Game::handleEvents() {
 void Game::render() {
 	SDL_RenderClear(renderer);
 
-	switch (gamestate) {
+	switch (Global::gamestate) {
 	case GameState::MENU:
 		menu->render();
 		break;

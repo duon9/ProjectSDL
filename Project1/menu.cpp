@@ -25,7 +25,8 @@ void Menu::init() {
 
 	newGame->init();
 	loadGame->init();
-
+	//btn = new AnimatedButton(renderer, { 0,0,100, 80 }, "PLAY", menuFont);
+	//btn->init();
 	menuSurface = IMG_Load("assets/menu_back.jpg");
 
 	if (menuSurface == nullptr) std::cout << "menuSurface is null \n";

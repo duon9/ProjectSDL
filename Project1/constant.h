@@ -151,6 +151,11 @@ const std::string littleboy = "assets/characters/player.png";
 const std::string VIKING = "assets/characters/viking.png";
 const std::string DARK = "assets/characters/dark.png";
 const std::string file_object = "assets/characters/object.json";
+const std::string font1 = "assets/fonts/hlfants1.ttf";
+const std::string font2 = "assets/fonts/hlfants2.ttf";
+const std::string font3 = "assets/fonts/hlfants3.ttf";
+const std::string font4 = "assets/fonts/hlfreewr.ttf";
+
 
 const double TOLERANCE = 0.03;
 

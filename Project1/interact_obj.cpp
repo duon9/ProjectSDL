@@ -112,11 +112,6 @@ void Object::setLocation() {
 	
 }
 
-void Object::updateObjectScreenPosition(SDL_Rect *camera) {
-	desRect.x = position.x - camera->x;
-	desRect.y = position.y - camera->y;
-}
-
 void Object::init() {
 	setProtocolCode();
 	setProtocol();
