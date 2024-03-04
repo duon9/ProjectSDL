@@ -9,11 +9,7 @@
 #include <iostream>
 #include "button.h"
 #include "animated_button.h"
-//#include "zMath.h"
-//#include "zDraw.h"
-//#include "zGame.h"
-
-
+#include "header.h"
 
 #ifdef __cplusplus
 extern "C"
@@ -42,9 +38,14 @@ private:
 	//Button* newGame = nullptr;
 	//Button* loadGame = nullptr;
 	AnimatedButton* btn = nullptr;
+	AnimatedButton* load = nullptr;
+	AnimatedButton* tutorial = nullptr;
+	AnimatedButton* exit = nullptr;
+	Header* header = nullptr;
 	//std::vector<Button> menuButton;
 	TTF_Font* menuFont = nullptr;
 	TTF_Font* btnFont = nullptr;
+	TTF_Font* headerFont = nullptr;
 	SDL_Renderer* renderer = nullptr;
 	//SDL_Surface* menuSurface = nullptr;
 	//SDL_Texture* menuTexture = nullptr;

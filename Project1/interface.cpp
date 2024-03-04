@@ -111,8 +111,8 @@ void Interface::cameraInitObjectLocation(int map_x, int map_y, SDL_Rect& object)
 		object.y = map_y * TILE_HEIGHT - camera.y;
 	}
 	else {
-		object.x = screen.w / 2;
-		object.y = screen.h / 2;
+		object.x = screen.w / 2 - object.w / 2;
+		object.y = screen.h / 2 - object.h / 2;
 	}
 }
 

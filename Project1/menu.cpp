@@ -19,28 +19,39 @@ Menu::~Menu() {
 
 void Menu::init() {
 	//std::cout << "start Menu initialize" << std::endl;
-	menuFont = TTF_OpenFont("assets/fonts/test.ttf", 14);
-	btnFont = TTF_OpenFont(font1.c_str(), 20);
+	menuFont = TTF_OpenFont("assets/fonts/test.ttf", 20);
+	btnFont = TTF_OpenFont(font2.c_str(), 20);
+	headerFont = TTF_OpenFont(font2.c_str(), 120);
 	if (menuFont == nullptr) std::cout << "menu font is null " << std::endl;
 
-	//newGame = new Button(renderer, menuFont, "NEW GAME", 300, 300, 80, 50);
-	//loadGame = new Button(renderer, menuFont, "LOAD GAME", 400, 300, 80, 50);
-
-	//newGame->init();
-	//loadGame->init();
-	btn = new AnimatedButton(renderer, { 400 - 100,304 - 100,80, 60 }, "PLAY", btnFont);
+	load = new AnimatedButton(renderer, { 400 + 50,304,160, 60 }, "LOAD", menuFont);
+	btn = new AnimatedButton(renderer, { 400 - 160 - 50, 304, 160, 60 }, "PLAY", menuFont);
+	tutorial = new AnimatedButton(renderer, { 400 - 160 - 50, 304 + 30 + 60,160, 60 }, "TUTORIAL", menuFont);
+	exit = new AnimatedButton(renderer, { 400 + 50, 304 + 30 + 60, 160, 60 }, "EXIT", menuFont);
+	header = new Header(renderer, "Bastard", headerFont);
 	btn->init();
+	load->init();
+	tutorial->init();
+	exit->init();
+	header->init(); 
+	
 	init3D();
-	//menuSurface = IMG_Load("assets/menu_back.jpg");
 
-	//if (menuSurface == nullptr) std::cout << "menuSurface is null \n";
-
-	//menuTexture = SDL_CreateTextureFromSurface(renderer, menuSurface);
-	//if (menuTexture == nullptr) std::cout << "menu texture is null" << std::endl;
 }
 
 int Menu::handleMenuEvents(SDL_Event& e) {
-	btn->handleUserMouseMotion(e);
+	if (btn->handleUserMouseMotion(e)) {
+		return 1;
+	}
+	if (load->handleUserMouseMotion(e)) {
+		return 2;
+	}
+	if (tutorial->handleUserMouseMotion(e)) {
+		return 3;
+	}
+	if (exit->handleUserMouseMotion(e)) {
+		return 4;
+	}
 	/*if (newGame->handleUserActions(e)) {
 		return 1;
 	}
@@ -59,6 +70,10 @@ void Menu::render() {
 
 	background();
 	btn->render();
+	load->render();
+	tutorial->render();
+	exit->render();
+	header->render();
 }
 
 void Menu::background() {

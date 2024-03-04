@@ -13,9 +13,9 @@ const int LEFT = 2;
 const int RIGHT = 3;
 const int FRONT = 4;
 
-const int BACKGROUND_R = 0; // back ground color 15 255 155
-const int BACKGROUND_G = 0;
-const int BACKGROUND_B = 0;
+const int BACKGROUND_R = 255; // back ground color 15 255 155
+const int BACKGROUND_G = 255;
+const int BACKGROUND_B = 255;
 
 int TRANSFORMED_FRONT_I = 4 * 5;
 
@@ -23,7 +23,7 @@ SDL_Point transformedCube[CUBE_FACE_N * 5]; // CUBE_FACE_N the number of face of
 
 SDL_Color darkBackgroundTriangle = { .r = 0, .b = 0, .g = 0, .a = 250 / 3 }; // -> 0 0 0 250/3
 SDL_Color emptyBackgroundTriangle = { .r = 255, .b = 255, .g = 255, .a = 0 }; //-> 255 255 255 0
-
+SDL_Color white = { .r = 0, .g = 0, .b = 200, .a = 255 };
 TTF_Font* Sans = NULL; // font
 SDL_Color TEXT_COLOR = { 0, 0, 0 }; // text color
 
@@ -82,7 +82,7 @@ bool isPointOutsideFront(int f, int frontI) {
 void drawCubes(SDL_Renderer* renderer, Cube cubes[], int cubesLength) {
     //drawcubes
     for (int i = 0; i < cubesLength; i++) {
-        SDL_Color color = { .r = randF(0,255), .g = randF(0,255), .b = randF(0,255) };
+        SDL_Color color = { .r = randF(0,1), .g = randF(0,1), .b = randF(0,1) };
         drawCube(renderer, cubes[i], color);
     }
 }
@@ -173,7 +173,7 @@ void drawCube(SDL_Renderer* renderer, Cube cube, SDL_Color gradient) {
         SDL_Vertex triangle1[3];
         SDL_Vertex triangle2[3];
 
-        triangle1[0].color = color;
+        triangle1[0].color = color; // set equal to color if revert
         triangle1[1].color = color;
         triangle1[2].color = color;
         triangle2[0].color = color;
@@ -199,7 +199,7 @@ void drawCube(SDL_Renderer* renderer, Cube cube, SDL_Color gradient) {
         SDL_RenderGeometry(renderer, NULL, triangle1, 3, NULL, 0);
         SDL_RenderGeometry(renderer, NULL, triangle2, 3, NULL, 0);
         fadeAmount = fmin(fadeAmount * 1.5, 1);
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, fadeTowards(255, 0, fadeAmount));
+        SDL_SetRenderDrawColor(renderer, 60, 60, 60, fadeTowards(255, 0, fadeAmount)); //color of edge here;
         SDL_RenderDrawLines(renderer, linePoints, 5);
     }
 }

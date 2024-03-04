@@ -29,7 +29,13 @@ void Player::handleUserEvents(SDL_Event *e) {
 				//std::cout << status << std::endl;
 				//std::cout << frameTick << std::endl;
 				break;
-
+			case SDLK_v:
+				SDL_Point porn = getPosition();
+				std::cout << porn.x << " " << porn.y;
+				break;
+			case SDLK_b:
+				Global::gamestate = MENU;
+				break;
 			case SDLK_r:
 				check_death = false;
 				status = IDLE;
