@@ -136,6 +136,7 @@
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="computer.cpp" />
     <ClCompile Include="entity.cpp" />
+    <ClCompile Include="MapManager.cpp" />
     <ClCompile Include="protocol.cpp" />
     <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="FPScontroller.cpp" />
@@ -152,6 +153,9 @@
     <ClCompile Include="skill.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="utils.cpp" />
+    <ClCompile Include="zDraw.c" />
+    <ClCompile Include="zGame.c" />
+    <ClCompile Include="zMath.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="aniamted_obj.h" />
@@ -160,6 +164,7 @@
     <ClInclude Include="collision.h" />
     <ClInclude Include="computer.h" />
     <ClInclude Include="entity.h" />
+    <ClInclude Include="MapManager.h" />
     <ClInclude Include="protocol.h" />
     <ClInclude Include="EntityManager.h" />
     <ClInclude Include="FPScontroller.h" />
@@ -176,6 +181,9 @@
     <ClInclude Include="skill.h" />
     <ClInclude Include="test.h" />
     <ClInclude Include="utils.h" />
+    <ClInclude Include="zDraw.h" />
+    <ClInclude Include="zGame.h" />
+    <ClInclude Include="zMath.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

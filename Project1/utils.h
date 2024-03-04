@@ -9,6 +9,7 @@
 #include <nlohmann/json.hpp>
 #include <pugixml.hpp>
 #include "constant.h"
+#include <unordered_map>
 
 class TextureManagement
 {
@@ -47,6 +48,8 @@ public:
 
 namespace Global {
 	extern GameState gamestate;
+	extern Map map;
+	extern std::unordered_map<std::string, SDL_Texture*> preload;
 }
 
 namespace Font {

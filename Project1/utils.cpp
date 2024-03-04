@@ -21,7 +21,7 @@ void TextureManagement::loadTextRect(SDL_Texture* texture, SDL_Rect& textRect, S
 	int w, h;
 	SDL_QueryTexture(texture, NULL, NULL, &w, &h);
 	textRect.x = button.x + button.w / 2 - w / 2;
-	textRect.y = button.y + button.h / 2;
+	textRect.y = button.y + button.h / 2 - h / 2;
 	textRect.w = w;
 	textRect.h = h;
 }
@@ -225,6 +225,7 @@ void File::getFrameLimit(std::string type, std::vector<Frame>& frame) {
 }
 
 GameState Global::gamestate = MENU;
+
 
 TTF_Font* Font::loadFont(std::string path, int size) {
 	TTF_Font* font = TTF_OpenFont(path.c_str(), size);

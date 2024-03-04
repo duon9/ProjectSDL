@@ -81,6 +81,18 @@
     <ClCompile Include="animated_button.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MapManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zGame.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zMath.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zDraw.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -147,6 +159,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="animated_button.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MapManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zMath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zDraw.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
