@@ -29,7 +29,6 @@ bool Tutorial::handleEvents(SDL_Event e) {
 	else if (e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT) {
 		SDL_Point curr = { e.motion.x, e.motion.y };
 		if (SDL_PointInRect(&curr, &button)) {
-			//std::cout << "clicked" << std::endl;
 			return 1;
 		}
 	}
