@@ -153,6 +153,7 @@
     <ClCompile Include="player.cpp" />
     <ClCompile Include="skill.cpp" />
     <ClCompile Include="test.cpp" />
+    <ClCompile Include="tutorial.cpp" />
     <ClCompile Include="utils.cpp" />
     <ClCompile Include="zDraw.c" />
     <ClCompile Include="zGame.c" />
@@ -182,6 +183,7 @@
     <ClInclude Include="player.h" />
     <ClInclude Include="skill.h" />
     <ClInclude Include="test.h" />
+    <ClInclude Include="tutorial.h" />
     <ClInclude Include="utils.h" />
     <ClInclude Include="zDraw.h" />
     <ClInclude Include="zGame.h" />

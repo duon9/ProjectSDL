@@ -56,6 +56,13 @@ void Game::handleEvents() {
 		else if (menu->handleMenuEvents(e) == 2) {
 			printf("Still updating");
 		}
+		else if (menu->handleMenuEvents(e) == 4) {
+			Global::gamestate = GameState::EXIT;
+		}
+	}
+
+	if (e.type == SDL_QUIT) {
+		Global::gamestate = EXIT;
 	}
 
 	if (Global::gamestate == GameState::PLAY) {

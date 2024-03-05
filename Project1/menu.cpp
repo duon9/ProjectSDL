@@ -23,7 +23,7 @@ void Menu::init() {
 	btnFont = TTF_OpenFont(font2.c_str(), 20);
 	headerFont = TTF_OpenFont(font2.c_str(), 120);
 	if (menuFont == nullptr) std::cout << "menu font is null " << std::endl;
-
+	tutorialwindow = new Tutorial(renderer, menuFont);
 	load = new AnimatedButton(renderer, { 400 + 50,304,160, 60 }, "LOAD", menuFont);
 	btn = new AnimatedButton(renderer, { 400 - 160 - 50, 304, 160, 60 }, "PLAY", menuFont);
 	tutorial = new AnimatedButton(renderer, { 400 - 160 - 50, 304 + 30 + 60,160, 60 }, "TUTORIAL", menuFont);
@@ -33,25 +33,48 @@ void Menu::init() {
 	load->init();
 	tutorial->init();
 	exit->init();
-	header->init(); 
+	header->init();
+	tutorialwindow->init();
 	
 	init3D();
 
 }
 
 int Menu::handleMenuEvents(SDL_Event& e) {
-	if (btn->handleUserMouseMotion(e)) {
-		return 1;
+	if (isOpen) {
+		if (tutorialwindow->handleEvents(e)) {
+			isOpen = false;
+			return 0;
+		}
 	}
-	if (load->handleUserMouseMotion(e)) {
-		return 2;
+	else {
+		if (btn->handleUserMouseMotion(e)) {
+			return 1;
+		}
+		if (load->handleUserMouseMotion(e)) {
+			return 2;
+		}
+		if (tutorial->handleUserMouseMotion(e)) {
+			isOpen = true;
+			return 0;
+		}
+		if (exit->handleUserMouseMotion(e)) {
+			return 4;
+		}
 	}
-	if (tutorial->handleUserMouseMotion(e)) {
-		return 3;
-	}
-	if (exit->handleUserMouseMotion(e)) {
-		return 4;
-	}
+	//if (btn->handleUserMouseMotion(e)) {
+	//	return 1;
+	//}
+	//if (load->handleUserMouseMotion(e)) {
+	//	return 2;
+	//}
+	//if (tutorial->handleUserMouseMotion(e)) {
+	//	isOpen = true;
+	//	return 0;
+	//}
+	//if (exit->handleUserMouseMotion(e)) {
+	//	return 4;
+	//}
 	/*if (newGame->handleUserActions(e)) {
 		return 1;
 	}
@@ -62,18 +85,19 @@ int Menu::handleMenuEvents(SDL_Event& e) {
 }
 
 void Menu::render() {
-	// std::cout << "start menu render" << std::endl;
-	//static SDL_Rect menuRect = { 0, 0, 800, 600 };
-	//SDL_RenderCopy(renderer, menuTexture, NULL, &menuRect);
-	//newGame->render();
-	//loadGame->render();
 
 	background();
-	btn->render();
-	load->render();
-	tutorial->render();
-	exit->render();
-	header->render();
+	if (isOpen) {
+		//std::cout << "isopne" << std::endl;
+		tutorialwindow->render();
+	}
+	else {
+		btn->render();
+		load->render();
+		tutorial->render();
+		exit->render();
+		header->render();
+	}
 }
 
 void Menu::background() {

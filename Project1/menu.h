@@ -1,15 +1,11 @@
 #pragma once
 
-#include <SDL.h>
-#include <SDL_image.h>
-#include <SDL_ttf.h>
-#include <SDL_mixer.h>
 #include <vector>
-#include <string>
 #include <iostream>
 #include "button.h"
 #include "animated_button.h"
 #include "header.h"
+#include "tutorial.h"
 
 #ifdef __cplusplus
 extern "C"
@@ -35,8 +31,8 @@ public:
 	void background();
 	void init3D();
 private:
-	//Button* newGame = nullptr;
-	//Button* loadGame = nullptr;
+	bool isOpen = false;
+	Tutorial* tutorialwindow = nullptr;
 	AnimatedButton* btn = nullptr;
 	AnimatedButton* load = nullptr;
 	AnimatedButton* tutorial = nullptr;
@@ -47,8 +43,6 @@ private:
 	TTF_Font* btnFont = nullptr;
 	TTF_Font* headerFont = nullptr;
 	SDL_Renderer* renderer = nullptr;
-	//SDL_Surface* menuSurface = nullptr;
-	//SDL_Texture* menuTexture = nullptr;
 	Uint64 now, last;
 	double deltaTime;
 	int cubesLength;

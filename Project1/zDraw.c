@@ -23,7 +23,7 @@ SDL_Point transformedCube[CUBE_FACE_N * 5]; // CUBE_FACE_N the number of face of
 
 SDL_Color darkBackgroundTriangle = { .r = 0, .b = 0, .g = 0, .a = 250 / 3 }; // -> 0 0 0 250/3
 SDL_Color emptyBackgroundTriangle = { .r = 255, .b = 255, .g = 255, .a = 0 }; //-> 255 255 255 0
-SDL_Color white = { .r = 0, .g = 0, .b = 200, .a = 255 };
+SDL_Color white = { .r = 255, .g = 255, .b = 255, .a = 255 };
 TTF_Font* Sans = NULL; // font
 SDL_Color TEXT_COLOR = { 0, 0, 0 }; // text color
 
@@ -82,7 +82,7 @@ bool isPointOutsideFront(int f, int frontI) {
 void drawCubes(SDL_Renderer* renderer, Cube cubes[], int cubesLength) {
     //drawcubes
     for (int i = 0; i < cubesLength; i++) {
-        SDL_Color color = { .r = randF(0,1), .g = randF(0,1), .b = randF(0,1) };
+        SDL_Color color = { .r = 255, .g = 255, .b = 255, .a = 0 };
         drawCube(renderer, cubes[i], color);
     }
 }

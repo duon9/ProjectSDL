@@ -4,7 +4,7 @@
 #include <math.h>
 #include "zMath.h"
 
-const float PLAYER_INITIAL_SPEED = 100;
+const float PLAYER_INITIAL_SPEED = 200;
 const float BASE_TURN_SPEED = 30;
 
 const int CUBE_AMOUNT = 100; // number of cube appear on screen in one second

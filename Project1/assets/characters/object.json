@@ -6,7 +6,7 @@
     "level": 1,
     "exp": 1,
     "speed": 2,
-    "source": "assets/characters/rogue.png",
+    "source": "assets/characters/rogue2.png",
     "range": 1,
     "clips": {
       "idleFrame": {
@@ -95,7 +95,7 @@
     "level": 1,
     "exp": 1,
     "speed": 3,
-    "source": "assets/characters/minotaur.png",
+    "source": "assets/characters/minotaur2.png",
     "range": 2,
     "desRect": [ 0, 0, 64, 64 ],
     "clips": {
