@@ -34,3 +34,4 @@ bool Tutorial::handleEvents(SDL_Event e) {
 	}
 	return false;
 }
+

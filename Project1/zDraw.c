@@ -105,7 +105,7 @@ void drawCube(SDL_Renderer* renderer, Cube cube, SDL_Color gradient) {
         int orgCubeI = f * 4;    // The way our cube is defined, a face has four cornes
         int transCubeI = f * 5;  // The way our transformed cube is defined, a face has 5 corners (last one connects back to the firt one)
         for (int p = 0; p < 4; p++) {
-            Point point = cube[orgCubeI + p];
+            Point point = cube[orgCubeI + p]; // problem here
             SDL_Point sPoint = { screenX(transform3Dto2D(point.x, point.z)), screenY(transform3Dto2D(point.y, point.z)) };
             transformedCube[transCubeI + p] = sPoint;
         }

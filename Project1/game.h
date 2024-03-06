@@ -40,3 +40,4 @@ private:
 	//Player* player1 = nullptr;
 	EntityManager* entitys = nullptr;
 };
+
