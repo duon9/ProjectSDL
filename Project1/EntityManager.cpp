@@ -17,7 +17,7 @@ void EntityManager::init() {
 		Player* player = new Player(renderer, ROGUE, interface);
 		players.push_back(player);
 	}
-
+	// 
 	for (int i = 0; i < 1; i++) {
 		Computer* computer = new Computer(renderer, "minotaur");
 		computers.push_back(computer);

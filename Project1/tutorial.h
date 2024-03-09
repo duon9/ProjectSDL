@@ -15,6 +15,7 @@ public:
 	void init();
 	void render();
 	bool handleEvents(SDL_Event e);
+	void test();
 
 private:
 	SDL_Renderer* renderer = nullptr;
@@ -24,5 +25,6 @@ private:
 	SDL_Texture* texture = nullptr;
 	SDL_Texture* text1 = nullptr;
 	SDL_Texture* text2 = nullptr;
+
 };
 

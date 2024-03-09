@@ -1,5 +1,7 @@
 #pragma once
 #include "entity.h"
+#include "sfx.h"
+
 class Animated : public Entity
 {
 public:
@@ -12,8 +14,10 @@ public:
 
 	virtual void setClip(); // -> Animated
 	virtual void setFrameLimit(); //-> Animated
+	//void setSFX(); //sound
 
 protected:
+	std::vector<SFX> SFXs;
 	std::vector<Frame> frame; //-> Animated
 	std::vector<std::vector<SDL_Rect>> wareClips; //-> Animated
 	int frameCount; //-> Animated

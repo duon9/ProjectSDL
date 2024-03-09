@@ -13,6 +13,7 @@ void Tutorial::init() {
 void Tutorial::render() {
 	TextureManagement::FillRect(renderer, { 50,50,50, 150 }, object);
 	SDL_RenderCopy(renderer, texture, NULL, &button);
+	test();
 }
 
 bool Tutorial::handleEvents(SDL_Event e) {
@@ -35,3 +36,25 @@ bool Tutorial::handleEvents(SDL_Event e) {
 	return false;
 }
 
+void Tutorial::test() {
+	SDL_Vertex vertex_1 = { {10.5, 10.5}, {255, 0, 0, 255}, {1, 1} };
+	SDL_Vertex vertex_2 = { {20.5, 10.5}, {255, 0, 0, 255}, {1, 1} };
+	SDL_Vertex vertex_3 = { {10.5, 20.5}, {255, 0, 0, 255}, {1, 1} };
+
+	// Put them into array
+
+	SDL_Vertex vertices[] = {
+		vertex_1,
+		vertex_2,
+		vertex_3
+	};
+
+	// Set renderer color
+
+	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+
+	// Render red triangle
+
+	SDL_RenderGeometry(renderer, texture, vertices, 3, NULL, 0);
+
+}

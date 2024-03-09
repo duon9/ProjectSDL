@@ -28,6 +28,8 @@ void Menu::init() {
 	btn = new AnimatedButton(renderer, { 400 - 160 - 50, 304, 160, 60 }, "PLAY", menuFont);
 	tutorial = new AnimatedButton(renderer, { 400 - 160 - 50, 304 + 30 + 60,160, 60 }, "TUTORIAL", menuFont);
 	exit = new AnimatedButton(renderer, { 400 + 50, 304 + 30 + 60, 160, 60 }, "EXIT", menuFont);
+	music = new SFX();
+	music->add("assets/audio/music-game.wav");
 	header = new Header(renderer, "Bastard", headerFont);
 	btn->init();
 	load->init();
@@ -37,7 +39,7 @@ void Menu::init() {
 	tutorialwindow->init();
 	
 	init3D();
-
+	music->play();
 }
 
 int Menu::handleMenuEvents(SDL_Event& e) {
@@ -62,25 +64,6 @@ int Menu::handleMenuEvents(SDL_Event& e) {
 			return 4;
 		}
 	}
-	//if (btn->handleUserMouseMotion(e)) {
-	//	return 1;
-	//}
-	//if (load->handleUserMouseMotion(e)) {
-	//	return 2;
-	//}
-	//if (tutorial->handleUserMouseMotion(e)) {
-	//	isOpen = true;
-	//	return 0;
-	//}
-	//if (exit->handleUserMouseMotion(e)) {
-	//	return 4;
-	//}
-	/*if (newGame->handleUserActions(e)) {
-		return 1;
-	}
-	else if (loadGame->handleUserActions(e)) {
-		return 2;
-	}*/
 	return 0;
 }
 

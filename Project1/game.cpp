@@ -21,7 +21,7 @@ void Game::run() {
 
 void Game::init(const char* title, int _x, int _y, int _w, int _h, Uint32 flags) {
 	std::cout << "start initialize Game class" << std::endl;
-
+	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
 	SDL_Init(SDL_INIT_EVERYTHING);
 	IMG_Init(IMG_INIT_JPG);
 	IMG_Init(IMG_INIT_PNG);
@@ -32,14 +32,11 @@ void Game::init(const char* title, int _x, int _y, int _w, int _h, Uint32 flags)
 	menu->init();
 	interface = new Interface(renderer, map);
 	interface->init();
-	/*player1 = new Player(renderer, ROGUE, interface);
-	player1->init();*/
 	entitys = new EntityManager(renderer, &e, map, interface);
 	entitys->init();
 }
 
 void Game::gameLoop() {
-	std::cout << "start gameLoop() Game class" << std::endl;
 	while (Global::gamestate != GameState::EXIT) {
 		handleEvents();
 		render();

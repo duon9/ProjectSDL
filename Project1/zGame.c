@@ -143,6 +143,9 @@ int gameFrame(float deltaTime, Cube cubes[], int* cubesLength) {
     if (keyState[SDL_SCANCODE_LSHIFT]) {
         zSpeed *= 10;
     }
+    if (keyState[SDL_SCANCODE_RSHIFT]) { // ->->->
+        zSpeed *= -10;
+    }
 
     for (int i = 0; i < (*cubesLength); i++) {
         if ((cubes[i][0].z + zSpeed) < 1.5) { // if cube is away 1.5 pixel from the screen remove cube and update the cubeRemoved(int)

@@ -1,13 +1,8 @@
 #pragma once
 #include "entity.h"
-#include <SDL.h>
-#include <SDL_image.h>
-#include <SDL_mixer.h>
-#include <SDL_ttf.h>
 #include "utils.h"
 #include <iostream>
 #include "constant.h"
-#include <vector>
 #include "skill.h"
 #include "math.h"
 #include <cmath>

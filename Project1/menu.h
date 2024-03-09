@@ -6,6 +6,7 @@
 #include "animated_button.h"
 #include "header.h"
 #include "tutorial.h"
+#include "sfx.h"
 
 #ifdef __cplusplus
 extern "C"
@@ -31,6 +32,7 @@ public:
 	void background();
 	void init3D();
 private:
+	SFX* music = nullptr;
 	bool isOpen = false;
 	Tutorial* tutorialwindow = nullptr;
 	AnimatedButton* btn = nullptr;

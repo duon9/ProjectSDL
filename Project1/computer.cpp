@@ -1,16 +1,5 @@
 #include "computer.h"
 
-//void Computer::randomBotMovement() {
-//	if (!check_death && !check_pause) {
-//		if (find_enemy) {
-//			return;
-//		}
-//		else {
-//
-//		}
-//	} 
-//}
-
 void Computer::chaseTarget(std::vector<Player*>& targets) {
 	if (!check_death && !check_pause) {
 		Player* victim = trackNearestTarget(targets);
@@ -72,7 +61,7 @@ bool Computer::moveTo(SDL_Point target) {
 }
 
 bool Computer::isReachDestination(Math::Vector v) {
-	if (v.getDistance() <= (int)(1.5*TILE_WIDTH)) {
+	if (v.getDistance() <= (int)(5*TILE_WIDTH)) {
 		return true;
 	}
 	return false;
