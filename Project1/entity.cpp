@@ -32,3 +32,7 @@ SDL_Point Entity::getPosition() {
 SDL_Rect Entity::getRect() {
 	return { position.x, position.y, desRect.w, desRect.h };
 }
+
+int Entity::getLayer() {
+	return position.y + desRect.h;
+}

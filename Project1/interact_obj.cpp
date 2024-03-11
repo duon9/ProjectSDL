@@ -135,8 +135,6 @@ void Object::listen(SDL_Event *e) {
 				}
 			}
 		}
-		else {
-		}
 	}
 }
 

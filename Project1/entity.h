@@ -34,5 +34,5 @@ public:
 	void setProtocol();
 	SDL_Point position;
 	SDL_Rect getRect();
-	
+	int getLayer();
 };
