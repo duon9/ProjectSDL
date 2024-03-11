@@ -9,20 +9,23 @@ Menu::Menu(SDL_Renderer* renderer) : renderer(renderer) {
 }
 
 Menu::~Menu() {
-	//SDL_FreeSurface(menuSurface);
-	//SDL_DestroyTexture(menuTexture);
 	TTF_CloseFont(menuFont);
-	//delete newGame;
-	//delete loadGame;
+	TTF_CloseFont(headerFont);
+	delete btn;
+	delete load;
+	delete tutorial;
+	delete exit;
+	delete header;
+	delete tutorialwindow;
+	delete music;
 	std::cout << "Constructor Menu free" << std::endl;
 }
 
 void Menu::init() {
 	//std::cout << "start Menu initialize" << std::endl;
 	menuFont = TTF_OpenFont("assets/fonts/test.ttf", 20);
-	btnFont = TTF_OpenFont(font2.c_str(), 20);
+	//btnFont = TTF_OpenFont(font2.c_str(), 20);
 	headerFont = TTF_OpenFont(font2.c_str(), 120);
-	if (menuFont == nullptr) std::cout << "menu font is null " << std::endl;
 	tutorialwindow = new Tutorial(renderer, menuFont);
 	load = new AnimatedButton(renderer, { 400 + 50,304,160, 60 }, "LOAD", menuFont);
 	btn = new AnimatedButton(renderer, { 400 - 160 - 50, 304, 160, 60 }, "PLAY", menuFont);
@@ -43,6 +46,7 @@ void Menu::init() {
 }
 
 int Menu::handleMenuEvents(SDL_Event& e) {
+
 	if (isOpen) {
 		if (tutorialwindow->handleEvents(e)) {
 			isOpen = false;

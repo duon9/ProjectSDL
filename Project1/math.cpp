@@ -10,6 +10,14 @@ Math::Vector::Vector(SDL_Point point1, SDL_Point point2) {
 	this->y = point2.y - point1.y;
 }
 
+void Math::Vector::normalize() {
+	int len = getDistance();
+	if (len != 0) {
+		x /= len;
+		y /= len;
+	}
+}
+
 double Math::Vector::getX() const {
 	return x;
 }

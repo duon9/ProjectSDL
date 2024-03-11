@@ -49,7 +49,8 @@ public:
 namespace Global {
 	extern GameState gamestate;
 	extern Map map;
-	extern std::unordered_map<std::string, SDL_Texture*> preload;
+	//extern std::unordered_map<std::string, SDL_Texture*> preload;
+	//extern SDL_Renderer* renderer;
 }
 
 namespace Font {

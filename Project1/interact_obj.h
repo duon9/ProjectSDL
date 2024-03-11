@@ -61,10 +61,9 @@ protected:
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
 	charState lastStatus = IDLE;
 	charState status = IDLE;
-	charState next_status = IDLE; // still use, do not delete
+	//charState next_status = IDLE; // still use, do not delete
 	int velo_x;
 	int velo_y;
-	bool check_run = false;
 	bool check_pause = false;
 	bool check_attack = false;
 	bool check_take_damage = false;

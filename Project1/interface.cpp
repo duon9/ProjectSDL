@@ -26,7 +26,7 @@ void Interface::init() {
 	//texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, map[0].width, map[0].height);
 	texture = TextureManagement::LoadTexture("assets/.tile/underground.png", renderer);
 	SDL_QueryTexture(texture, NULL, NULL, &map_w, &map_h);
-	std::cout << map_w << " " << map_h << std::endl;
+	//std::cout << map_w << " " << map_h << std::endl;
 }
 
 void Interface::loadMap() {
@@ -123,11 +123,17 @@ void Interface::cameraInitLocation(int map_x, int map_y) {
 	else if (map_x * TILE_WIDTH + (screen.w / 2) > map_w) {
 		camera.x = map_w - screen.w;
 	}
+	else {
+		camera.x = map_x * TILE_WIDTH - screen.w / 2;
+	}
 	if (map_y * TILE_HEIGHT < (screen.h / 2)) {
 		camera.y = 0;
 	}
 	else if (map_y * TILE_HEIGHT + (screen.h / 2) > map_h) {
 		camera.y = map_h - screen.h;
+	}
+	else {
+		camera.y = map_y * TILE_HEIGHT - screen.h / 2;
 	}
 }
 

@@ -11,7 +11,9 @@ public:
 		this->content = content;
 		this->font = font;
 	}
-	~Header();
+	~Header() {
+		SDL_DestroyTexture(texture);
+	}
 	void init();
 	void render();
 	void setRectPosition();

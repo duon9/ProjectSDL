@@ -14,7 +14,7 @@ void SFX::init() {
 }
 
 void SFX::play() {
-	Mix_PlayChannel(-1, sound, 0);
+	Mix_PlayChannel(-1, sound, -1);
 }
 
 bool SFX::add(std::string path) {

@@ -16,17 +16,14 @@ enum Option {
 };
 
 struct Orient {
-	int up = 0;
-	int down = 0;
-	int left = 0;
-	int right = 0;
+	bool up = 0, down = 0, left = 0, right = 0;
 
-	Orient(int _up = 0, int _down = 0, int _left = 0, int _right = 0) {
+	/*Orient(int _up = 0, int _down = 0, int _left = 0, int _right = 0) {
 		up = _up;
 		down = _down;
 		left = _left;
 		right = _right;
-	}
+	}*/
 };
 
 enum Map {

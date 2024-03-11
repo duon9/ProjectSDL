@@ -19,6 +19,7 @@ namespace Math {
 		void setY(double val);
 
 		double getDistance();
+		void normalize();
 		static double getDistance(SDL_Point point1, SDL_Point point2);
 		Vector operator+(const Vector& other);
 		Vector operator-(const Vector& other);

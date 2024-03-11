@@ -226,7 +226,6 @@ void File::getFrameLimit(std::string type, std::vector<Frame>& frame) {
 
 GameState Global::gamestate = MENU;
 
-
 TTF_Font* Font::loadFont(std::string path, int size) {
 	TTF_Font* font = TTF_OpenFont(path.c_str(), size);
 	return font;

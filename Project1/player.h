@@ -3,13 +3,17 @@
 #include "constant.h"
 #include "utils.h"
 #include "interface.h"
+#include "sfx.h"
 
 class Player : public Object
 {
 protected:
 	Interface* interface = nullptr;
+	SFX* attackSound = new SFX();
+	SFX* runSound = new SFX();
+	Orient orient;
 public:
-	void handleBarDisplay();
+	
 	Player(SDL_Renderer* renderer, std::string type, Interface * interface) : Object(renderer) {
 		this->renderer = renderer;
 		this->type = type;
@@ -21,8 +25,10 @@ public:
 		*Destructor
 		*/
 	}
+	void handleBarDisplay();
 	bool isInvisible = false;
 	void setBarProperties();
+	void setSFX();
 	virtual void init() override;
 	virtual void move() override;
 	virtual void handleUserEvents(SDL_Event *e);
