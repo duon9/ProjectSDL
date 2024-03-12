@@ -108,7 +108,7 @@ void Object::setLocation() {
 	position.y = 5 * 32;
 	/*position.y = Math::Casuale::casuale(0, 1000);*/
 
-	desRect = { 0,0, 100, 100};
+	desRect = { 0,0, 54, 54};
 	
 }
 

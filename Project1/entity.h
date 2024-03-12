@@ -22,10 +22,8 @@ public:
 	~Entity();
 	virtual void init();
 	virtual void render();
-	//void setTexture();
 	SDL_Point getPosition();
 	//SDL_Renderer* renderer = nullptr;
-	//Uint32 code;
 	SDL_Rect srcRect;
 	SDL_Rect desRect;
 	//SDL_Texture* texture = nullptr;
@@ -35,4 +33,5 @@ public:
 	SDL_Point position;
 	SDL_Rect getRect();
 	int getLayer();
+	Uint32 getProtocolCode();
 };

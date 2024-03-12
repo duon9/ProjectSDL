@@ -1,5 +1,7 @@
 #include "EntityManager.h"
 
+#define COMPUTER_CODE 101
+
 EntityManager::EntityManager(SDL_Renderer* renderer, SDL_Event *e, Map* map, Interface* interface) {
 	this->renderer = renderer;
 	this->e = e;
@@ -21,7 +23,7 @@ void EntityManager::init() {
 	}
 	// 
 	for (int i = 0; i < 1; i++) {
-		Computer* computer = new Computer(renderer, "minotaur");
+		Computer* computer = new Computer(renderer,ROGUE);
 		computer->init();
 		computers.push_back(computer);
 		layers.push_back(computer);
@@ -47,7 +49,7 @@ void EntityManager::HandleEvents() {
 	}
 
 	for (auto& computer : computers) {
-		computer->chaseTarget(players);
+		//computer->chaseTarget(players);
 	}
 
 	for (auto& player : players) {
@@ -60,16 +62,17 @@ void EntityManager::HandleEvents() {
 }
 
 void EntityManager::render() {
+	//std::sort(layers.begin(), layers.end(), compare);
 	sortLayer();
 	for (const auto& entity : layers) {
-		if (typeid(entity) == typeid(Computer*)) {
+		if (entity->getProtocolCode() == COMPUTER_CODE) {
 			if (isInScreen(interface->camera, entity->getRect())) {
 				interface->updateObjectScreenPosition(entity->position, entity->desRect);
 				entity->render();
 			}
-			else {
-				entity->render();
-			}
+		}
+		else {
+			entity->render();
 		}
 	}
 
@@ -98,11 +101,11 @@ bool EntityManager::compare(Entity* a, Entity* b) {
 
 void EntityManager::sortLayer() {
 	int n = layers.size();
-	for (int i = 0; i < n; i++) {
+	for (int i = 1; i < n; i++) { 
 		Entity* key = layers[i];
-		int j = i + 1;
+		int j = i - 1;
 
-		while (j >= 0 && layers[j]->getLayer() < key->getLayer()) {
+		while (j >= 0 && layers[j]->getLayer() > key->getLayer()) { 
 			layers[j + 1] = layers[j];
 			j -= 1;
 		}

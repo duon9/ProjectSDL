@@ -36,3 +36,7 @@ SDL_Rect Entity::getRect() {
 int Entity::getLayer() {
 	return position.y + desRect.h;
 }
+
+Uint32 Entity::getProtocolCode() {
+	return code;
+}
