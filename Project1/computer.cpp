@@ -71,3 +71,5 @@ bool Computer::isReachDestination(Math::Vector v) {
 void Computer::setProtocolCode() {
 	code = ENEMY_CODE;
 }
+
+

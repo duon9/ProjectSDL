@@ -8,9 +8,12 @@
 #include <iostream>
 #include "constant.h"
 #include "protocol.h"
+#include "math.h"
 
 class Entity
 {
+private:
+	static SDL_Texture* vessel;
 protected:
 	Protocol* protocol = nullptr;
 	SDL_Renderer* renderer = nullptr;
@@ -22,11 +25,12 @@ public:
 	~Entity();
 	virtual void init();
 	virtual void render();
+	virtual void setLocation();
+	void setX();
+	static void setTexture(std::string path, SDL_Renderer*renderer);
 	SDL_Point getPosition();
-	//SDL_Renderer* renderer = nullptr;
 	SDL_Rect srcRect;
 	SDL_Rect desRect;
-	//SDL_Texture* texture = nullptr;
 	int map_x, map_y;
 	virtual void setProtocolCode();
 	void setProtocol();

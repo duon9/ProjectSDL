@@ -5,16 +5,16 @@
     },
     "activeFile": "underground.tmj",
     "expandedProjectPaths": [
-        ".",
-        "test_collion"
+        "test_collion",
+        "."
     ],
     "fileStates": {
         "underground.tmj": {
-            "scale": 0.5,
+            "scale": 1,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 1430,
-                "y": 1146
+                "x": 1060,
+                "y": 1566
             }
         },
         "underground/green.tsx": {

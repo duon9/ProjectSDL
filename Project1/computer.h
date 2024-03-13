@@ -31,6 +31,7 @@ public:
 	//void randomBotMovement();
 	bool moveTo(SDL_Point target);
 	bool isReachDestination(Math::Vector v);
+	bool isInAttackRange();
 	Player* trackNearestTarget(std::vector<Player*>& target);
 	void chaseTarget(std::vector<Player*>& targets);
 	virtual void setProtocolCode() override;

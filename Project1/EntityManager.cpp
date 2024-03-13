@@ -1,6 +1,9 @@
 #include "EntityManager.h"
 
 #define COMPUTER_CODE 101
+#define MAX_PLAYER_COUNT 1
+#define MAX_MINOTAUR_COUNT 1
+#define MAX_COLUMN_COUNT 1
 
 EntityManager::EntityManager(SDL_Renderer* renderer, SDL_Event *e, Map* map, Interface* interface) {
 	this->renderer = renderer;
@@ -15,27 +18,32 @@ EntityManager::~EntityManager() {
 }
 
 void EntityManager::init() {
-	for (int i = 0; i < 1; i++) {
+	for (int i = 0; i < MAX_PLAYER_COUNT; i++) {
 		Player* player = new Player(renderer, ROGUE, interface);
 		player->init();
 		players.push_back(player);
 		layers.push_back(player);
 	}
 	// 
-	for (int i = 0; i < 1; i++) {
-		Computer* computer = new Computer(renderer,ROGUE);
+	for (int i = 0; i < MAX_MINOTAUR_COUNT; i++) {
+		Computer* computer = new Computer(renderer,"minotaur");
 		computer->init();
 		computers.push_back(computer);
 		layers.push_back(computer);
 	}
 
-	//for (auto& player : players) {
-	//	player->init();
-	//}
+	Entity::setTexture("assets/characters/test.png", renderer);
+	for (int i = 0; i < MAX_COLUMN_COUNT; i++) {
+		Entity* ent = new Entity(renderer);
+		ent->init();
+		layers.push_back(ent);
+	}
 
-	//for (auto& computer : computers) {
-	//	computer->init();
-	//}
+	Entity* ens = new Entity(renderer);
+	ens->init();
+	ens->setLocation();
+	ens->setX();
+	layers.push_back(ens);
 }
 
 void EntityManager::setCollision() {
@@ -49,7 +57,7 @@ void EntityManager::HandleEvents() {
 	}
 
 	for (auto& computer : computers) {
-		//computer->chaseTarget(players);
+		computer->chaseTarget(players);
 	}
 
 	for (auto& player : players) {
@@ -65,7 +73,7 @@ void EntityManager::render() {
 	//std::sort(layers.begin(), layers.end(), compare);
 	sortLayer();
 	for (const auto& entity : layers) {
-		if (entity->getProtocolCode() == COMPUTER_CODE) {
+		if (entity->getProtocolCode() == COMPUTER_CODE || entity->getProtocolCode() == 99) {
 			if (isInScreen(interface->camera, entity->getRect())) {
 				interface->updateObjectScreenPosition(entity->position, entity->desRect);
 				entity->render();
@@ -75,20 +83,6 @@ void EntityManager::render() {
 			entity->render();
 		}
 	}
-
-	/*for (auto& player : players) {
-		player->render();
-	}
-
-	for (auto& computer : computers) {
-		if (isInScreen(interface->camera, computer->getRect())) {
-			interface->updateObjectScreenPosition(computer->position, computer->desRect);
-			computer->render();
-		}
-	}*/
-
-	//typeid()
-
 }
 
 bool EntityManager::isInScreen(SDL_Rect object1, SDL_Rect object2) {

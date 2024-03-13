@@ -47,7 +47,7 @@ public:
 	void collisionHandle();
 	virtual void setCollision(std::string path);
 	virtual void move();
-	virtual void setLocation();
+	virtual void setLocation() override;
 	virtual void init() override;
 	virtual void render() override;
 	bool check_death = false;

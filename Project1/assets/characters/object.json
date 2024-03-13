@@ -2,12 +2,14 @@
   "rogue_knight": {
     "health": 10000,
     "mana": 1000,
-    "damage": 100000000,
+    "damage": 400,
     "level": 1,
     "exp": 1,
     "speed": 2,
     "source": "assets/characters/rogue2.png",
     "range": 1,
+    "width": 54,
+    "height": 54,
     "clips": {
       "idleFrame": {
         "count": 10,
@@ -87,9 +89,8 @@
       }
     }
   },
-
   "minotaur": {
-    "health": 10000000,
+    "health": 10000,
     "mana": 100,
     "damage": 1000,
     "level": 1,
@@ -98,6 +99,8 @@
     "source": "assets/characters/minotaur2.png",
     "range": 2,
     "desRect": [ 0, 0, 64, 64 ],
+    "width": 54,
+    "height": 54,
     "clips": {
       "idleFrame": {
         "count": 5,
@@ -152,6 +155,95 @@
           [ 288, 864, 96, 96 ],
           [ 384, 864, 96, 96 ],
           [ 480, 864, 96, 96 ]
+        ],
+        "desRect": "NULL"
+      },
+      "spellFrame": {
+        "count": 0,
+        "maxFrame": 0
+      },
+      "takedameFrame": {
+        "count": 0,
+        "maxFrame": 0
+      }
+    }
+  },
+
+  "test": {
+    "health": 10000,
+    "mana": 1000,
+    "damage": 100000000,
+    "level": 1,
+    "exp": 1,
+    "speed": 2,
+    "source": "assets/characters/test.png",
+    "range": 1,
+    "clips": {
+      "idleFrame": {
+        "count": 0,
+        "maxFrame": 0,
+        "srcRect": [
+          [ 0, 0, 32, 32 ],
+          [ 32, 0, 32, 32 ],
+          [ 64, 0, 32, 32 ],
+          [ 96, 0, 32, 32 ],
+          [ 128, 0, 32, 32 ],
+          [ 160, 0, 32, 32 ],
+          [ 192, 0, 32, 32 ],
+          [ 224, 0, 32, 32 ],
+          [ 256, 0, 32, 32 ],
+          [ 288, 0, 32, 32 ]
+        ],
+        "desRect": "NULL"
+      },
+      "runFrame": {
+        "count": 0,
+        "maxFrame": 0,
+        "srcRect": [
+          [ 0, 64, 32, 32 ],
+          [ 32, 64, 32, 32 ],
+          [ 64, 64, 32, 32 ],
+          [ 96, 64, 32, 32 ],
+          [ 128, 64, 32, 32 ],
+          [ 160, 64, 32, 32 ],
+          [ 192, 64, 32, 32 ],
+          [ 224, 64, 32, 32 ],
+          [ 256, 64, 32, 32 ],
+          [ 288, 64, 32, 32 ]
+        ],
+        "desRect": "NULL"
+      },
+      "attackFrame": {
+        "count": 0,
+        "maxFrame": 0,
+        "srcRect": [
+          [ 0, 96, 32, 32 ],
+          [ 32, 96, 32, 32 ],
+          [ 64, 96, 32, 32 ],
+          [ 96, 96, 32, 32 ],
+          [ 128, 96, 32, 32 ],
+          [ 160, 96, 32, 32 ],
+          [ 192, 96, 32, 32 ],
+          [ 224, 96, 32, 32 ],
+          [ 256, 96, 32, 32 ],
+          [ 288, 96, 32, 32 ]
+        ],
+        "desRect": "NULL"
+      },
+      "deathFrame": {
+        "count": 0,
+        "maxFrame": 0,
+        "srcRect": [
+          [ 0, 128, 32, 32 ],
+          [ 32, 128, 32, 32 ],
+          [ 64, 128, 32, 32 ],
+          [ 96, 128, 32, 32 ],
+          [ 128, 128, 32, 32 ],
+          [ 160, 128, 32, 32 ],
+          [ 192, 128, 32, 32 ],
+          [ 224, 128, 32, 32 ],
+          [ 256, 128, 32, 32 ],
+          [ 288, 128, 32, 32 ]
         ],
         "desRect": "NULL"
       },

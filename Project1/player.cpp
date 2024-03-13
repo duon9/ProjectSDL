@@ -38,7 +38,7 @@ void Player::handleUserEvents(SDL_Event *e) {
 				break;
 			case SDLK_a:
 			case SDLK_LEFT:
-				if (orient.right == 1 && status != ATTACKING && frameTick > 0) return;
+				if (orient.right == 1 || status == ATTACKING || frameTick > 0) return;
 				if (lastStatus != RUNNING) runSound->play();
 				orient.left = 1;
 				status = RUNNING;
@@ -47,7 +47,7 @@ void Player::handleUserEvents(SDL_Event *e) {
 				break;
 			case SDLK_s:
 			case SDLK_DOWN:
-				if (orient.up == 1 && status != ATTACKING && frameTick > 0) return;
+				if (orient.up == 1 || status == ATTACKING || frameTick > 0) return;
 				if (lastStatus != RUNNING) runSound->play();
 				orient.down = 1;
 				status = RUNNING;
@@ -55,7 +55,7 @@ void Player::handleUserEvents(SDL_Event *e) {
 				break;
 			case SDLK_d:
 			case SDLK_RIGHT:
-				if (orient.left == 1 && status != ATTACKING && frameTick > 0) return;
+				if (orient.left == 1 || status == ATTACKING || frameTick > 0) return;
 				if (lastStatus != RUNNING) runSound->play();
 				orient.right = 1;
 				status = RUNNING;
@@ -64,7 +64,7 @@ void Player::handleUserEvents(SDL_Event *e) {
 				break;
 			case SDLK_w:
 			case SDLK_UP:
-				if (orient.down == 1 && status != ATTACKING && frameTick > 0) return;
+				if (orient.down == 1 || status == ATTACKING || frameTick > 0) return;
 				if (lastStatus != RUNNING) runSound->play();
 				orient.up = 1;
 				status = RUNNING;

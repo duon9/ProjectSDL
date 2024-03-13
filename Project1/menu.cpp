@@ -8,6 +8,8 @@ Menu::Menu(SDL_Renderer* renderer) : renderer(renderer) {
 	std::cout << "Constructor Menu started" << std::endl;
 }
 
+// delete menu
+
 Menu::~Menu() {
 	TTF_CloseFont(menuFont);
 	TTF_CloseFont(headerFont);

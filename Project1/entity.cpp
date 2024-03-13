@@ -1,5 +1,7 @@
 #include "entity.h"
 
+SDL_Texture* Entity::vessel = nullptr;
+
 Entity::Entity(SDL_Renderer* renderer) : renderer(renderer) {
 	//constructor
 	std::cout << "Entity constructor initialize" << std::endl;
@@ -10,11 +12,13 @@ Entity::~Entity() {
 }
 
 void Entity::init() {
-	//default
+	setLocation();
+	setProtocol();
+	setProtocolCode();
 }
 
 void Entity::render() {
-	//default
+	SDL_RenderCopy(renderer, vessel, NULL, &desRect);
 }
 
 void Entity::setProtocolCode() {
@@ -39,4 +43,20 @@ int Entity::getLayer() {
 
 Uint32 Entity::getProtocolCode() {
 	return code;
+}
+
+void Entity::setTexture(std::string path, SDL_Renderer* renderer) {
+	Entity::vessel = TextureManagement::LoadTexture(path, renderer);
+}
+
+void Entity::setLocation() {
+	position.x = Math::Casuale::casuale(0, 50) * TILE_WIDTH;
+	position.y = Math::Casuale::casuale(0, 50) * TILE_WIDTH;
+
+	desRect = { 0,0, 32, 91 };
+}
+
+void Entity::setX() {
+	position.x = 54 * 32;
+	position.y = 30 * 32;
 }
