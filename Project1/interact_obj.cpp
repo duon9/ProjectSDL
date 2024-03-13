@@ -1,5 +1,7 @@
 #include "interact_obj.h"
 
+std::vector<std::vector<int>> Object::collider;
+
 
 int Object::getHealth() {
 	return stat.health;
@@ -65,13 +67,9 @@ void Object::logicHandle() {
 	}
 }
 
-void Object::collisionHandle() {
-	
-}
-
-void Object::setCollision(std::string path) {
-	collider = File::readCollision(path);
-	collision = new Collision(collider, &desRect, nullptr, &position);
+void Object::setCollision() {
+	//collider = File::readCollision(path);
+	collision = new Collision(Object::collider, &desRect, nullptr, &position);
 }
 
 void Object::move() {
@@ -119,7 +117,7 @@ void Object::init() {
 	setProperties();
 	setClip();
 	setFrameLimit();
-	setCollision(water_town);
+	setCollision();
 }
 
 void Object::listen(SDL_Event *e) {

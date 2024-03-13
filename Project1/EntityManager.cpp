@@ -18,6 +18,9 @@ EntityManager::~EntityManager() {
 }
 
 void EntityManager::init() {
+
+	Object::collider = File::readCollision(water_town);
+
 	for (int i = 0; i < MAX_PLAYER_COUNT; i++) {
 		Player* player = new Player(renderer, ROGUE, interface);
 		player->init();

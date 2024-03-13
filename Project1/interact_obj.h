@@ -44,16 +44,16 @@ public:
 
 	virtual void logicHandle();
 	virtual void setProperties();
-	void collisionHandle();
-	virtual void setCollision(std::string path);
+	virtual void setCollision();
 	virtual void move();
 	virtual void setLocation() override;
 	virtual void init() override;
 	virtual void render() override;
 	bool check_death = false;
 	void resurrect(int time);
+	static std::vector<std::vector<int>> collider;
 protected:
-	std::vector<std::vector<int>> collider;
+	//std::vector<std::vector<int>> collider;
 	Stat stat;
 	std::vector<Skill> skillSet;
 	Collision* collision;

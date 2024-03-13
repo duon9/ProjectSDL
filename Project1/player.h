@@ -33,7 +33,7 @@ public:
 	virtual void move() override;
 	virtual void handleUserEvents(SDL_Event *e);
 	virtual void setLocation() override;
-	virtual void setCollision(std::string path) override;
+	virtual void setCollision() override;
 	virtual void setProtocolCode() override;
 	/*bool collisionHandle(std::vector<std::vector<int>> collider);*/
 };

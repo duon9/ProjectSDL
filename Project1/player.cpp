@@ -182,9 +182,9 @@ void Player::setLocation() {
 	position.y = interface->camera.y + desRect.y;
 }
 
-void Player::setCollision(std::string path) {
-	collider = File::readCollision(path);
-	collision = new Collision(collider, &desRect, &interface->camera, &position);
+void Player::setCollision() {
+	//collider = File::readCollision(path);
+	collision = new Collision(Object::collider, &desRect, &interface->camera, &position);
 }
 
 void Player::setProtocolCode() {
@@ -213,7 +213,7 @@ void Player::init() {
 	setBarProperties();
 	setClip();
 	setFrameLimit();
-	setCollision(water_town);
+	setCollision();
 }
 
 void Player::setBarProperties() {
