@@ -25,6 +25,8 @@ public:
 		*Destructor
 		*/
 	}
+
+	static SDL_Texture* texture;
 	void handleBarDisplay();
 	bool isInvisible = false;
 	void setBarProperties();
@@ -35,5 +37,4 @@ public:
 	virtual void setLocation() override;
 	virtual void setCollision() override;
 	virtual void setProtocolCode() override;
-	/*bool collisionHandle(std::vector<std::vector<int>> collider);*/
 };

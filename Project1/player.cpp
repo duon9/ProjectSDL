@@ -2,6 +2,8 @@
 
 #define check (!orient.up && !orient.down && !orient.left && !orient.right)
 
+SDL_Texture* Player::texture = nullptr;
+
 void Player::handleUserEvents(SDL_Event *e) {
 	if (!check_death && !check_pause) {
 		move();
