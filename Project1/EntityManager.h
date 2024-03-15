@@ -34,4 +34,6 @@ public:
 	bool compare(Entity* a, Entity* b);
 	void sortLayer();
 	bool isInScreen(SDL_Rect object1, SDL_Rect object2);
+	void reload();
 };
+

@@ -143,3 +143,9 @@ bool Collision::rectColliding(SDL_Rect object1, SDL_Rect object2) {
 
 	return false;
 }
+
+void Collision::reload(std::vector<std::vector<int>> collider) {
+	this->map_width = collider[0].size();
+	this->map_height = collider.size();
+	this->collider = collider;
+}

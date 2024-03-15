@@ -11,6 +11,7 @@ public:
 	bool isCollidingVertical(int velocity);
 	bool isColliding(int velo_x, int velo_y);
 	static bool rectColliding(SDL_Rect object1, SDL_Rect object2);
+	void reload(std::vector<std::vector<int>> collider);
 	Collision(std::vector<std::vector<int>> collider, SDL_Rect* object, SDL_Rect* camera, SDL_Point* position);
 	~Collision();
 

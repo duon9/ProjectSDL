@@ -31,10 +31,13 @@ public:
 	bool isInvisible = false;
 	void setBarProperties();
 	void setSFX();
+	void reload();
 	virtual void init() override;
 	virtual void move() override;
 	virtual void handleUserEvents(SDL_Event *e);
 	virtual void setLocation() override;
+	void setLocation(int x, int y);
 	virtual void setCollision() override;
 	virtual void setProtocolCode() override;
+	void changeMap();
 };

@@ -184,6 +184,16 @@ void Player::setLocation() {
 	position.y = interface->camera.y + desRect.y;
 }
 
+void Player::setLocation(int x, int y) {
+	map_x = x / TILE_WIDTH;
+	map_y = y / TILE_HEIGHT;
+	//setSize(64, 64);
+	interface->cameraInitLocation(map_x, map_y);
+	interface->cameraInitObjectLocation(map_x, map_y, desRect);
+	position.x = interface->camera.x + desRect.x;
+	position.y = interface->camera.y + desRect.y;
+}
+
 void Player::setCollision() {
 	//collider = File::readCollision(path);
 	collision = new Collision(Object::collider, &desRect, &interface->camera, &position);
@@ -222,4 +232,13 @@ void Player::init() {
 void Player::setBarProperties() {
 	interface->mana_display->setProperties(stat.mana);
 	interface->health_display->setProperties(stat.health);
+}
+
+void Player::reload() {
+	collision->reload(Object::collider);
+	setLocation(0, 6 * 32);
+}
+
+void Player::changeMap() {
+
 }

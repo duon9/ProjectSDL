@@ -55,22 +55,31 @@ void EntityManager::setCollision() {
 }
 
 void EntityManager::HandleEvents() {
+
+	if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_f) {
+		Object::collider = File::readCollision(water_town);
+		interface->reload();
+		for (auto& player : players) {
+			player->reload();
+		}
+	}
+
 	for (auto& player : players) {
 		player->handleUserEvents(e);
 		player->handleBarDisplay();
 	}
 
-	for (auto& computer : computers) {
-		computer->chaseTarget(players);
-	}
+	//for (auto& computer : computers) {
+	//	computer->chaseTarget(players);
+	//}
 
 	for (auto& player : players) {
 		player->listen(e);
 	}
 
-	for (auto& computer : computers) {
-		computer->listen(e);
-	}
+	//for (auto& computer : computers) {
+	//	computer->listen(e);
+	//}
 }
 
 void EntityManager::render() {
@@ -109,4 +118,9 @@ void EntityManager::sortLayer() {
 		}
 		layers[j + 1] = key;
 	}
+}
+
+void EntityManager::reload() {
+	Object::collider = File::readCollision(water_town);
+
 }

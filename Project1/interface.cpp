@@ -67,6 +67,12 @@ void Interface::loadMap() {
 	//TextureManagement::Draw(renderer, texture, srcRect, desRect);
 }
 
+void Interface::reload() {
+	SDL_DestroyTexture(texture);
+	texture = TextureManagement::LoadTexture(TEST, renderer);
+	SDL_QueryTexture(texture, NULL, NULL, &map_w, &map_h);
+}
+
 void Interface::loadTexture() {
 	for (auto it = tileset.begin(); it != tileset.end(); it++) {
 		std::cout << File::augmentPath(it->source) << std::endl;
