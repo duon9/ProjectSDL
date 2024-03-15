@@ -175,9 +175,9 @@ void Player::move() {
 }
 
 void Player::setLocation() {
-	map_x = 32;
-	map_y = 32;
-	desRect = { (((12 - 2) * TILE_WIDTH) + (TILE_WIDTH / 2) + (OBJECT_WIDTH / 2)), ((9 * TILE_HEIGHT) + TILE_HEIGHT - OBJECT_HEIGHT) - 10, 52, 52};
+	map_x = 1;
+	map_y = 1;
+	//setSize(64, 64);
 	interface->cameraInitLocation(map_x, map_y);
 	interface->cameraInitObjectLocation(map_x, map_y, desRect);
 	position.x = interface->camera.x + desRect.x;
@@ -207,6 +207,7 @@ void Player::setSFX() {
 }
 
 void Player::init() {
+	setSize(54, 54);
 	setSFX();
 	setProtocolCode();
 	setProtocol();

@@ -15,6 +15,7 @@ void Entity::init() {
 	setLocation();
 	setProtocol();
 	setProtocolCode();
+	setSize(32, 91);
 }
 
 void Entity::render() {
@@ -53,10 +54,14 @@ void Entity::setLocation() {
 	position.x = Math::Casuale::casuale(0, 50) * TILE_WIDTH;
 	position.y = Math::Casuale::casuale(0, 50) * TILE_WIDTH;
 
-	desRect = { 0,0, 32, 91 };
 }
 
-void Entity::setX() {
-	position.x = 54 * 32;
-	position.y = 30 * 32;
+void Entity::setLocation(SDL_Point location) {
+	position.x = location.x;
+	position.y = location.y;
+}
+
+void Entity::setSize(int w, int h) {
+	desRect.w = w;
+	desRect.h = h;
 }

@@ -105,6 +105,9 @@
     <ClCompile Include="Static.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="teleporter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -195,6 +198,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Static.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="teleporter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

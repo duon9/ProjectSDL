@@ -10,11 +10,11 @@
     ],
     "fileStates": {
         "underground.tmj": {
-            "scale": 1,
+            "scale": 0.25,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 1060,
-                "y": 1566
+                "x": 2794,
+                "y": 1296
             }
         },
         "underground/green.tsx": {
@@ -31,11 +31,11 @@
         }
     },
     "last.exportedFilePath": "C:/Users/duong/source/repos/Project1/Project1/assets/.tile",
-    "last.imagePath": "C:/Users/duong/source/repos/Project1/Project1/assets/.tile/tileset",
-    "map.height": 90,
-    "map.lastUsedExportFilter": "All Files (*)",
+    "last.imagePath": "C:/Users/duong/Downloads/Pixel Art Top Down - Basic/Texture",
+    "map.height": 30,
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
     "map.lastUsedFormat": "json",
-    "map.width": 90,
+    "map.width": 30,
     "openFiles": [
         "underground.tmj",
         "underground/green.tsx",

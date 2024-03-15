@@ -3,7 +3,7 @@
 #define COMPUTER_CODE 101
 #define MAX_PLAYER_COUNT 1
 #define MAX_MINOTAUR_COUNT 1
-#define MAX_COLUMN_COUNT 1
+#define MAX_COLUMN_COUNT 10
 
 EntityManager::EntityManager(SDL_Renderer* renderer, SDL_Event *e, Map* map, Interface* interface) {
 	this->renderer = renderer;
@@ -19,7 +19,7 @@ EntityManager::~EntityManager() {
 
 void EntityManager::init() {
 
-	Object::collider = File::readCollision(water_town);
+	Object::collider = File::readCollision(grey);
 
 	Player::texture = TextureManagement::LoadTexture("assets/characters/rogue2.png", renderer);
 
@@ -30,25 +30,24 @@ void EntityManager::init() {
 		layers.push_back(player);
 	}
 	// 
-	for (int i = 0; i < MAX_MINOTAUR_COUNT; i++) {
-		Computer* computer = new Computer(renderer,"minotaur");
-		computer->init();
-		computers.push_back(computer);
-		layers.push_back(computer);
-	}
+	//for (int i = 0; i < MAX_MINOTAUR_COUNT; i++) {
+	//	Computer* computer = new Computer(renderer,"minotaur");
+	//	computer->init();
+	//	computers.push_back(computer);
+	//	layers.push_back(computer);
+	//}
 
-	Entity::setTexture("assets/characters/test.png", renderer);
-	for (int i = 0; i < MAX_COLUMN_COUNT; i++) {
-		Entity* ent = new Entity(renderer);
-		ent->init();
-		layers.push_back(ent);
-	}
+	//Entity::setTexture("assets/characters/test.png", renderer);
+	//for (int i = 0; i < MAX_COLUMN_COUNT; i++) {
+	//	Entity* ent = new Entity(renderer);
+	//	ent->init();
+	//	layers.push_back(ent);
+	//}
 
-	Entity* ens = new Entity(renderer);
-	ens->init();
-	ens->setLocation();
-	ens->setX();
-	layers.push_back(ens);
+	//Entity* ens = new Entity(renderer);
+	//ens->init();
+	//ens->setLocation({54*32,30*32});
+	//layers.push_back(ens);
 }
 
 void EntityManager::setCollision() {

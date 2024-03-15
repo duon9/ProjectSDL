@@ -154,6 +154,7 @@
     <ClCompile Include="interact_obj.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="skill.cpp" />
+    <ClCompile Include="teleporter.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="tutorial.cpp" />
     <ClCompile Include="utils.cpp" />
@@ -186,6 +187,7 @@
     <ClInclude Include="interact_obj.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="skill.h" />
+    <ClInclude Include="teleporter.h" />
     <ClInclude Include="test.h" />
     <ClInclude Include="tutorial.h" />
     <ClInclude Include="utils.h" />

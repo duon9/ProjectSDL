@@ -26,7 +26,8 @@ public:
 	virtual void init();
 	virtual void render();
 	virtual void setLocation();
-	void setX();
+	void setLocation(SDL_Point location);
+	void setSize(int w, int h);
 	static void setTexture(std::string path, SDL_Renderer*renderer);
 	SDL_Point getPosition();
 	SDL_Rect srcRect;

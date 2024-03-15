@@ -143,6 +143,7 @@ const int SPEED = 5;
 const std::string TEST = "assets/.tile/underground.png";
 const std::string TEST1 = "assets/.tile/walls.png";
 const std::string water_town = "assets/.tile/underground.tmj";
+const std::string grey = "assets/.tile/republic_grey.tmj";
 const std::string ROGUE = "rogue_knight";
 const std::string littleboy = "assets/characters/player.png";
 const std::string VIKING = "assets/characters/viking.png";
