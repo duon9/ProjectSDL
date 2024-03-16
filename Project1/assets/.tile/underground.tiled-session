@@ -3,8 +3,9 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "underground.tmj",
+    "activeFile": "underground/untitleeqd.tmj",
     "expandedProjectPaths": [
+        "underground",
         "test_collion",
         "."
     ],
@@ -13,13 +14,17 @@
             "scale": 0.25,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 2794,
-                "y": 1296
+                "x": 2906,
+                "y": 1284
             }
         },
         "underground/green.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "underground/player.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 3
         },
         "underground/sewer.tsx": {
             "scaleInDock": 1,
@@ -28,26 +33,44 @@
         "underground/tilesetformattedupdate1.tsx": {
             "scaleInDock": 0.75,
             "scaleInEditor": 1
+        },
+        "underground/untitleeqd.tmj": {
+            "scale": 2,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 129.25,
+                "y": 111.5
+            }
         }
     },
     "last.exportedFilePath": "C:/Users/duong/source/repos/Project1/Project1/assets/.tile",
-    "last.imagePath": "C:/Users/duong/Downloads/Pixel Art Top Down - Basic/Texture",
-    "map.height": 30,
+    "last.imagePath": "C:/Users/duong/source/repos/Project1/Project1/assets/characters",
+    "map.height": 900,
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
     "map.lastUsedFormat": "json",
-    "map.width": 30,
+    "map.tileHeight": 1,
+    "map.tileWidth": 1,
+    "map.width": 900,
     "openFiles": [
         "underground.tmj",
         "underground/green.tsx",
         "underground/sewer.tsx",
-        "underground/tilesetformattedupdate1.tsx"
+        "underground/tilesetformattedupdate1.tsx",
+        "underground/untitleeqd.tmj",
+        "underground/player.tsx"
     ],
     "project": "underground.tiled-project",
     "recentFiles": [
-        "underground/tilesetformattedupdate1.tsx",
-        "underground/sewer.tsx",
+        "underground.tmj",
         "underground/green.tsx",
-        "underground.tmj"
+        "underground/sewer.tsx",
+        "underground/tilesetformattedupdate1.tsx",
+        "underground/player.tsx",
+        "underground/untitleeqd.tmj"
     ],
-    "tileset.lastUsedFormat": "tsx"
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 1,
+        "width": 1
+    }
 }

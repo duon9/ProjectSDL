@@ -2,6 +2,7 @@
 #include "player.h"
 #include "constant.h"
 #include "minotaur.h"
+#include "little.h"
 
 
 class EntityManager

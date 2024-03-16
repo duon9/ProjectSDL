@@ -103,11 +103,11 @@ void Object::render() {
 void Object::setLocation() {
 	
 
-	position.x = Math::Casuale::casuale(0, 1000);
-	position.y = 5 * 32;
+	position.x = Math::Casuale::casuale(0, 500);
+	position.y = Math::Casuale::casuale(0, 500);
 	/*position.y = Math::Casuale::casuale(0, 1000);*/
 
-	desRect = { 0,0, 54, 54};
+	//desRect = { 0,0, 54, 54};
 	
 }
 
@@ -144,8 +144,9 @@ void Object::attack() {
 		attack.w += stat.range * TILE_WIDTH;
 	}
 	else {
-		attack.x -= attack.w;
-		attack.w += stat.range * TILE_WIDTH;
+		attack.x += attack.w / 2;
+		attack.x -= stat.range * TILE_WIDTH;
+		attack.w += stat.range * TILE_WIDTH / 2;
 	}
 	
 	protocol->send(&attack, &stat.damage);

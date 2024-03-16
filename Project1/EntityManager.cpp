@@ -22,6 +22,8 @@ void EntityManager::init() {
 
 	Player::vessel = TextureManagement::LoadTexture("assets/characters/rogue2.png", renderer);
 	Minotaur::vessel = TextureManagement::LoadTexture("assets/characters/minotaur.png", renderer);
+	Little::vessel = TextureManagement::LoadTexture("assets/characters/little.png", renderer);
+
 	player = new Player(renderer, ROGUE, interface);
 	player->init();
 	layers.push_back(player);
@@ -142,5 +144,12 @@ void EntityManager::setComputer() {
 		computer->init();
 		computers.push_back(computer);
 		layers.push_back(computer);
+	}
+
+	for (int i = 0; i < 100; i++) {
+		Little* li = new Little(renderer);
+		li->init();
+		computers.push_back(li);
+		layers.push_back(li);
 	}
 }

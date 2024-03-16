@@ -6,8 +6,8 @@
     "level": 1,
     "exp": 1,
     "speed": 2,
-    "source": "assets/characters/rogue2.png",
-    "range": 1,
+    "source": "assets/characters/rogue.png",
+    "range": 0.5,
     "width": 54,
     "height": 54,
     "clips": {
@@ -97,7 +97,7 @@
     "exp": 1,
     "speed": 3,
     "source": "assets/characters/minotaur2.png",
-    "range": 2,
+    "range": 1,
     "desRect": [ 0, 0, 64, 64 ],
     "width": 100,
     "height": 100,
@@ -244,6 +244,76 @@
           [ 224, 128, 32, 32 ],
           [ 256, 128, 32, 32 ],
           [ 288, 128, 32, 32 ]
+        ],
+        "desRect": "NULL"
+      },
+      "spellFrame": {
+        "count": 0,
+        "maxFrame": 0
+      },
+      "takedameFrame": {
+        "count": 0,
+        "maxFrame": 0
+      }
+    }
+  },
+  "little": {
+    "health": 1,
+    "mana": 100,
+    "damage": 1000,
+    "level": 1,
+    "exp": 1,
+    "speed": 2,
+    "source": "assets/characters/little.png",
+    "range": 0.5,
+    "desRect": [ 0, 0, 64, 64 ],
+    "width": 64,
+    "height": 64,
+    "clips": {
+      "idleFrame": {
+        "count": 6,
+        "maxFrame": 60,
+        "srcRect": [
+          [ 0, 0, 40, 40 ],
+          [ 40, 0, 40, 40 ],
+          [ 80, 0, 40, 40 ],
+          [ 120, 0, 40, 40 ],
+          [ 160, 0, 40, 40 ],
+          [ 200, 0, 40, 40 ]
+        ],
+        "desRect": "NULL"
+      },
+      "runFrame": {
+        "count": 6,
+        "maxFrame": 60,
+        "srcRect": [
+          [ 0, 40, 40, 40 ],
+          [ 40, 40, 40, 40 ],
+          [ 80, 40, 40, 40 ],
+          [ 120, 40, 40, 40 ],
+          [ 160, 40, 40, 40 ],
+          [ 200, 40, 40, 40 ]
+        ],
+        "desRect": "NULL"
+      },
+      "attackFrame": {
+        "count": 4,
+        "maxFrame": 40,
+        "srcRect": [
+          [ 0, 80, 40, 40 ],
+          [ 40, 80, 50, 40 ],
+          [ 90, 80, 40, 40 ],
+          [ 120, 80, 40, 40 ]
+        ],
+        "desRect": "NULL"
+      },
+      "deathFrame": {
+        "count": 3,
+        "maxFrame": 30,
+        "srcRect": [
+          [ 0, 120, 40, 40 ],
+          [ 40, 120, 40, 40 ],
+          [ 80, 120, 40, 40 ]
         ],
         "desRect": "NULL"
       },

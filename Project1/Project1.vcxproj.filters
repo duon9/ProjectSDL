@@ -111,6 +111,9 @@
     <ClCompile Include="minotaur.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="little.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -207,6 +210,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="minotaur.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="little.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
