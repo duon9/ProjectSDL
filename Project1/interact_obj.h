@@ -53,6 +53,7 @@ public:
 	void resurrect(int time);
 	static std::vector<std::vector<int>> collider;
 protected:
+	//std::vector<std::vector<int>> collider;
 	Stat stat;
 	std::vector<Skill> skillSet;
 	Collision* collision;
@@ -60,6 +61,7 @@ protected:
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
 	charState lastStatus = IDLE;
 	charState status = IDLE;
+	//charState next_status = IDLE; // still use, do not delete
 	int velo_x;
 	int velo_y;
 	bool check_pause = false;

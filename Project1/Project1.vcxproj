@@ -138,6 +138,7 @@
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="header.cpp" />
     <ClCompile Include="MapManager.cpp" />
+    <ClCompile Include="minotaur.cpp" />
     <ClCompile Include="protocol.cpp" />
     <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="FPScontroller.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="entity.h" />
     <ClInclude Include="header.h" />
     <ClInclude Include="MapManager.h" />
+    <ClInclude Include="minotaur.h" />
     <ClInclude Include="protocol.h" />
     <ClInclude Include="EntityManager.h" />
     <ClInclude Include="FPScontroller.h" />
