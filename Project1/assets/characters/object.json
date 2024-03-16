@@ -99,8 +99,8 @@
     "source": "assets/characters/minotaur2.png",
     "range": 2,
     "desRect": [ 0, 0, 64, 64 ],
-    "width": 54,
-    "height": 54,
+    "width": 100,
+    "height": 100,
     "clips": {
       "idleFrame": {
         "count": 5,

@@ -20,8 +20,8 @@ void EntityManager::init() {
 
 	Object::collider = File::readCollision(grey);
 
-	Player::texture = TextureManagement::LoadTexture("assets/characters/rogue2.png", renderer);
-
+	Player::vessel = TextureManagement::LoadTexture("assets/characters/rogue2.png", renderer);
+	Minotaur::vessel = TextureManagement::LoadTexture("assets/characters/minotaur.png", renderer);
 	player = new Player(renderer, ROGUE, interface);
 	player->init();
 	layers.push_back(player);
@@ -46,16 +46,20 @@ void EntityManager::HandleEvents() {
 	if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_f) {
 		if (map == GREYYARD) {
 			clean();
-			setComputer();
+			//setComputer();
 			Object::collider = File::readCollision(water_town);
+			setComputer();
+
 			interface->reload(TEST);
 			player->reload();
 			map = LIBRARY;
 		}
 		else {
 			clean();
-			setComputer();
+			//setComputer();
 			Object::collider = File::readCollision(grey);
+			setComputer();
+
 			interface->reload(greyyard);
 			player->reload();
 			map = GREYYARD;
@@ -132,8 +136,9 @@ void EntityManager::clean() {
 }
 
 void EntityManager::setComputer() {
+
 	for (int i = 0; i < MAX_MINOTAUR_COUNT; i++) {
-		Computer* computer = new Computer(renderer, "minotaur");
+		Minotaur* computer = new Minotaur(renderer);
 		computer->init();
 		computers.push_back(computer);
 		layers.push_back(computer);

@@ -86,6 +86,8 @@ struct Stat {
 	std::string source;
 	int range;
 	int speed_ratio;
+	int width;
+	int height;
 
 	Stat(int _health, int _mana, int _damage, int _level, int _exp, int _speed, std::string _source, int _range) {
 		health = _health;

@@ -7,6 +7,8 @@
 
 class Player : public Object
 {
+private:
+	//static SDL_Texture* vessel;
 protected:
 	Interface* interface = nullptr;
 	SFX* attackSound = new SFX();
@@ -26,7 +28,8 @@ public:
 		*/
 	}
 
-	static SDL_Texture* texture;
+	static SDL_Texture* vessel;
+
 	void handleBarDisplay();
 	bool isInvisible = false;
 	void setBarProperties();
@@ -39,5 +42,5 @@ public:
 	void setLocation(int x, int y);
 	virtual void setCollision() override;
 	virtual void setProtocolCode() override;
-	void changeMap();
+	virtual void draw() override;
 };

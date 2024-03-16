@@ -80,7 +80,7 @@ void Object::move() {
 
 void Object::setProperties() {
 	File::getProperties(type, stat);
-	texture = TextureManagement::LoadTexture(stat.source, renderer);
+	setSize(stat.width, stat.height);
 }
 
 void Object::render() {
@@ -96,7 +96,8 @@ void Object::render() {
 	frameCount++;
 	srcRect = wareClips[status][frameCount / frame[status].perFrame];
 	lastStatus = status;
-	SDL_RenderCopyEx(renderer, texture, &srcRect, &desRect, NULL, NULL, flip);
+	//SDL_RenderCopyEx(renderer, texture, &srcRect, &desRect, NULL, NULL, flip);
+	draw();
 }
 
 void Object::setLocation() {
@@ -154,7 +155,7 @@ void Object::attack() {
 void Object::resurrect(int time) {
 	if (status == DEATH) timer++;
 	if (timer == time) {
-		std::cout << "Resurrect successed" << std::endl;
+		//std::cout << "Resurrect successed" << std::endl;
 		check_death = false;
 		status = IDLE;
 		setProperties();
@@ -163,3 +164,6 @@ void Object::resurrect(int time) {
 	}
 }
 
+void Object::draw() {
+	SDL_RenderCopyEx(renderer, texture, &srcRect, &desRect, NULL, NULL, flip);
+}

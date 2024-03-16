@@ -49,6 +49,7 @@ public:
 	virtual void setLocation() override;
 	virtual void init() override;
 	virtual void render() override;
+	virtual void draw();
 	bool check_death = false;
 	void resurrect(int time);
 	static std::vector<std::vector<int>> collider;
@@ -61,7 +62,7 @@ protected:
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
 	charState lastStatus = IDLE;
 	charState status = IDLE;
-	//charState next_status = IDLE; // still use, do not delete
+
 	int velo_x;
 	int velo_y;
 	bool check_pause = false;

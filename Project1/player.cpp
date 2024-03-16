@@ -2,7 +2,7 @@
 
 #define check (!orient.up && !orient.down && !orient.left && !orient.right)
 
-SDL_Texture* Player::texture = nullptr;
+SDL_Texture* Player::vessel = nullptr;
 
 void Player::handleUserEvents(SDL_Event *e) {
 	if (!check_death && !check_pause) {
@@ -239,6 +239,6 @@ void Player::reload() {
 	setLocation(0, 6 * 32);
 }
 
-void Player::changeMap() {
-
+void Player::draw() {
+	SDL_RenderCopyEx(renderer, Player::vessel, &srcRect, &desRect, NULL, NULL, flip);
 }

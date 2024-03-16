@@ -172,6 +172,8 @@ void File::getProperties(std::string type, Stat& stat) {
 	stat.speed = object["speed"].get<int>();
 	stat.source = object["source"].get<std::string>();
 	stat.range = object["range"].get<int>();
+	stat.width = object["width"].get<int>();
+	stat.height = object["height"].get<int>();
 }
 
 

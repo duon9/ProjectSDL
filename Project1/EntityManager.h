@@ -1,11 +1,7 @@
 #pragma once
-#include <vector>
 #include "player.h"
-#include "computer.h"
-#include "utils.h"
 #include "constant.h"
-#include "collision.h"
-#include <algorithm>
+#include "minotaur.h"
 
 
 class EntityManager
