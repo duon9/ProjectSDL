@@ -67,9 +67,9 @@ void Interface::loadMap() {
 	//TextureManagement::Draw(renderer, texture, srcRect, desRect);
 }
 
-void Interface::reload() {
+void Interface::reload(std::string path) {
 	SDL_DestroyTexture(texture);
-	texture = TextureManagement::LoadTexture(TEST, renderer);
+	texture = TextureManagement::LoadTexture(path, renderer);
 	SDL_QueryTexture(texture, NULL, NULL, &map_w, &map_h);
 }
 

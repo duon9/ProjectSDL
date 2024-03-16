@@ -1,11 +1,9 @@
 #include "computer.h"
 
-void Computer::chaseTarget(std::vector<Player*>& targets) {
+void Computer::chaseTarget(Player* target) {
 	if (!check_death && !check_pause) {
-		Player* victim = trackNearestTarget(targets);
-		if (victim != nullptr) {
-			//std::cout << "found player, start hunting" << std::endl;
-			if (!moveTo(victim->getPosition())) {
+		if (trackNearestTarget(target)) {
+			if (!moveTo(target->getPosition())) {
 				if (frameTick > 0) {
 					//status = IDLE;
 					frameTick--;
@@ -22,16 +20,20 @@ void Computer::chaseTarget(std::vector<Player*>& targets) {
 	}
 }
 
-Player* Computer::trackNearestTarget(std::vector<Player*>& targets) {
+bool Computer::trackNearestTarget(Player* target) {
 	//std::cout << stat.health << std::endl;
-	for (auto target = targets.begin(); target != targets.end(); target++) {
+	/*for (auto target = targets.begin(); target != targets.end(); target++) {
 		if ((*target)->isInvisible || (*target)->check_death) continue;
 		Math::Vector v = Math::Vector(position, (*target)->getPosition());
 		if (v.Math::Vector::getDistance() < (10 * TILE_WIDTH)) {
 			return *target;
 		}
-	}
-	return nullptr;
+	}*/
+
+	if (target->isInvisible || target->check_death) return false;
+	Math::Vector v = Math::Vector(position, target->getPosition());
+	if (v.Math::Vector::getDistance() < (10 * TILE_WIDTH)) return true;
+	return false;
 }
 
 bool Computer::moveTo(SDL_Point target) {

@@ -32,8 +32,8 @@ public:
 	bool moveTo(SDL_Point target);
 	bool isReachDestination(Math::Vector v);
 	bool isInAttackRange();
-	Player* trackNearestTarget(std::vector<Player*>& target);
-	void chaseTarget(std::vector<Player*>& targets);
+	bool trackNearestTarget(Player* target);
+	void chaseTarget(Player* target);
 	virtual void setProtocolCode() override;
 	//void waitToRevive();
 };

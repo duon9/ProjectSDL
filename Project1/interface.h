@@ -40,5 +40,5 @@ public:
 	bool isCenterVertical(SDL_Rect& object);
 	bool isCenterHorizontal(SDL_Rect& object);
 	void updateObjectScreenPosition(SDL_Point& position, SDL_Rect& object);
-	void reload();
+	void reload(std::string path);
 };

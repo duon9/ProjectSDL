@@ -14,11 +14,11 @@ private:
 	SDL_Renderer* renderer = nullptr;
 	SDL_Event* e = nullptr;
 	std::vector<std::vector<int>> collider;
-	std::vector<Player*> players;
+	Player* player = nullptr;
 	std::vector<Computer*> computers;
 	std::vector<Entity*> layers;
-	Map* map = nullptr;
 	Interface* interface = nullptr;
+	Map map = GREYYARD;
 	
 public:
 
@@ -27,13 +27,11 @@ public:
 
 	void init();
 	void render();
-	void setCollision();
-	void handleUserInput();
-	void handleInteraction();
 	void HandleEvents();
-	bool compare(Entity* a, Entity* b);
 	void sortLayer();
 	bool isInScreen(SDL_Rect object1, SDL_Rect object2);
 	void reload();
+	void clean();
+	void setComputer();
 };
 

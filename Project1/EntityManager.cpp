@@ -8,7 +8,6 @@
 EntityManager::EntityManager(SDL_Renderer* renderer, SDL_Event *e, Map* map, Interface* interface) {
 	this->renderer = renderer;
 	this->e = e;
-	this->map = map;
 	this->interface = interface;
 	std::cout << "EntityManager constructor called \n";
 }
@@ -23,19 +22,11 @@ void EntityManager::init() {
 
 	Player::texture = TextureManagement::LoadTexture("assets/characters/rogue2.png", renderer);
 
-	for (int i = 0; i < MAX_PLAYER_COUNT; i++) {
-		Player* player = new Player(renderer, ROGUE, interface);
-		player->init();
-		players.push_back(player);
-		layers.push_back(player);
-	}
-	// 
-	//for (int i = 0; i < MAX_MINOTAUR_COUNT; i++) {
-	//	Computer* computer = new Computer(renderer,"minotaur");
-	//	computer->init();
-	//	computers.push_back(computer);
-	//	layers.push_back(computer);
-	//}
+	player = new Player(renderer, ROGUE, interface);
+	player->init();
+	layers.push_back(player);
+	 
+	setComputer();
 
 	//Entity::setTexture("assets/characters/test.png", renderer);
 	//for (int i = 0; i < MAX_COLUMN_COUNT; i++) {
@@ -50,36 +41,39 @@ void EntityManager::init() {
 	//layers.push_back(ens);
 }
 
-void EntityManager::setCollision() {
-	collider = File::readCollision(mapWare[*map]);
-}
-
 void EntityManager::HandleEvents() {
 
 	if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_f) {
-		Object::collider = File::readCollision(water_town);
-		interface->reload();
-		for (auto& player : players) {
+		if (map == GREYYARD) {
+			clean();
+			setComputer();
+			Object::collider = File::readCollision(water_town);
+			interface->reload(TEST);
 			player->reload();
+			map = LIBRARY;
+		}
+		else {
+			clean();
+			setComputer();
+			Object::collider = File::readCollision(grey);
+			interface->reload(greyyard);
+			player->reload();
+			map = GREYYARD;
 		}
 	}
 
-	for (auto& player : players) {
-		player->handleUserEvents(e);
-		player->handleBarDisplay();
+	player->handleUserEvents(e);
+	player->handleBarDisplay();
+
+	for (auto& computer : computers) {
+		computer->chaseTarget(player);
 	}
 
-	//for (auto& computer : computers) {
-	//	computer->chaseTarget(players);
-	//}
+	player->listen(e);
 
-	for (auto& player : players) {
-		player->listen(e);
+	for (auto& computer : computers) {
+		computer->listen(e);
 	}
-
-	//for (auto& computer : computers) {
-	//	computer->listen(e);
-	//}
 }
 
 void EntityManager::render() {
@@ -102,9 +96,6 @@ bool EntityManager::isInScreen(SDL_Rect object1, SDL_Rect object2) {
 	return Collision::rectColliding(object1, object2);
 }
 
-bool EntityManager::compare(Entity* a, Entity* b) {
-	return a->getLayer() > b->getLayer();
-}
 
 void EntityManager::sortLayer() {
 	int n = layers.size();
@@ -122,5 +113,29 @@ void EntityManager::sortLayer() {
 
 void EntityManager::reload() {
 	Object::collider = File::readCollision(water_town);
+}
 
+void EntityManager::clean() {
+	for (int i = 0; i < (int)computers.size(); i++) {
+		delete computers[i];
+	}
+	computers.clear();
+
+	for (int i = 0; i < (int)layers.size(); i++)
+	{
+		if (layers[i]->getProtocolCode() == 99) {
+			delete layers[i];
+		}
+	}
+	layers.clear();
+	layers.push_back(player);
+}
+
+void EntityManager::setComputer() {
+	for (int i = 0; i < MAX_MINOTAUR_COUNT; i++) {
+		Computer* computer = new Computer(renderer, "minotaur");
+		computer->init();
+		computers.push_back(computer);
+		layers.push_back(computer);
+	}
 }
