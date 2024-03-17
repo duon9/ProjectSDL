@@ -140,6 +140,7 @@
     <ClCompile Include="little.cpp" />
     <ClCompile Include="MapManager.cpp" />
     <ClCompile Include="minotaur.cpp" />
+    <ClCompile Include="Missle.cpp" />
     <ClCompile Include="NightBorne.cpp" />
     <ClCompile Include="protocol.cpp" />
     <ClCompile Include="EntityManager.cpp" />
@@ -161,6 +162,7 @@
     <ClCompile Include="test.cpp" />
     <ClCompile Include="tutorial.cpp" />
     <ClCompile Include="utils.cpp" />
+    <ClCompile Include="WaterBall.cpp" />
     <ClCompile Include="zDraw.c" />
     <ClCompile Include="zGame.c" />
     <ClCompile Include="zMath.c" />
@@ -176,6 +178,7 @@
     <ClInclude Include="little.h" />
     <ClInclude Include="MapManager.h" />
     <ClInclude Include="minotaur.h" />
+    <ClInclude Include="Missle.h" />
     <ClInclude Include="NightBorne.h" />
     <ClInclude Include="protocol.h" />
     <ClInclude Include="EntityManager.h" />
@@ -197,6 +200,7 @@
     <ClInclude Include="test.h" />
     <ClInclude Include="tutorial.h" />
     <ClInclude Include="utils.h" />
+    <ClInclude Include="WaterBall.h" />
     <ClInclude Include="zDraw.h" />
     <ClInclude Include="zGame.h" />
     <ClInclude Include="zMath.h" />

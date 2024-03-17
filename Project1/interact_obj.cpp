@@ -145,7 +145,6 @@ void Object::listen(SDL_Event *e) {
 				stat.health -= dame;
 				if (stat.health <= 0) {
 					check_death = true;
-					death();
 					status = DEATH;
 				}
 			}

@@ -330,10 +330,10 @@
   "night": {
     "health": 1,
     "mana": 100,
-    "damage": 1000,
+    "damage": 100000,
     "level": 1,
     "exp": 1,
-    "speed": 2,
+    "speed": 5,
     "source": "assets/characters/little.png",
     "range": 1,
     "desRect": [ 0, 0, 64, 64 ],

@@ -1,6 +1,12 @@
 #include "computer.h"
 
 void Computer::chaseTarget(Player* target) {
+
+	if (check_death) {
+		death();
+		return;
+	}
+
 	if (!check_death && !check_pause) {
 		if (trackNearestTarget(target)) {
 			if (!moveTo(target->getPosition())) {

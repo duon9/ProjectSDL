@@ -117,6 +117,12 @@
     <ClCompile Include="NightBorne.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Missle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WaterBall.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -219,6 +225,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="NightBorne.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Missle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WaterBall.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
