@@ -3,6 +3,7 @@
 #include "constant.h"
 #include "minotaur.h"
 #include "little.h"
+#include "NightBorne.h"
 
 
 class EntityManager

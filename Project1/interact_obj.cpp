@@ -87,7 +87,7 @@ void Object::render() {
 
 	if (status != lastStatus) frameCount = 0;
 	if (frameCount == frame[status].maxFrame - 1 && status == DEATH) {
-		resurrect(180);
+		afterDeath();
 		frameCount -= 1;
 	}
 	else if (frameCount == frame[status].maxFrame - 1) {
@@ -97,6 +97,19 @@ void Object::render() {
 	srcRect = wareClips[status][frameCount / frame[status].perFrame];
 	lastStatus = status;
 	//SDL_RenderCopyEx(renderer, texture, &srcRect, &desRect, NULL, NULL, flip);
+	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+	SDL_RenderDrawRect(renderer, &desRect);
+
+	SDL_Rect attack = getRect();
+	if (flip == SDL_FLIP_NONE) {
+		attack.x += (attack.w / 2);
+		attack.w = (stat.range * TILE_WIDTH);
+	}
+	else if (flip == SDL_FLIP_HORIZONTAL) {
+		attack.x = desRect.x - (attack.w / 2);
+		attack.w = (stat.range * TILE_WIDTH / 2);
+	}
+
 	draw();
 }
 
@@ -126,10 +139,13 @@ void Object::listen(SDL_Event *e) {
 		SDL_Rect interact;
 		int dame;
 		if (protocol->listen(e, interact, dame)) {
-			if (collision->rectColliding(getRect(), interact)) {
+			SDL_Rect rec = getRect();
+			if (SDL_HasIntersection(&interact, &rec)) {
+				std::cout << "in rect" << std::endl;
 				stat.health -= dame;
 				if (stat.health <= 0) {
 					check_death = true;
+					death();
 					status = DEATH;
 				}
 			}
@@ -140,14 +156,14 @@ void Object::listen(SDL_Event *e) {
 void Object::attack() {
 	SDL_Rect attack = getRect();
 	if (flip == SDL_FLIP_NONE) {
-		attack.x += attack.w / 2;
-		attack.w += stat.range * TILE_WIDTH;
+		attack.x += (attack.w / 2);
+		attack.w = (stat.range * TILE_WIDTH);
 	}
-	else {
-		attack.x += attack.w / 2;
-		attack.x -= stat.range * TILE_WIDTH;
-		attack.w += stat.range * TILE_WIDTH / 2;
+	else if (flip == SDL_FLIP_HORIZONTAL) {
+		attack.x += (attack.w / 2 - (stat.range * TILE_WIDTH));
+		attack.w = (stat.range * TILE_WIDTH);
 	}
+
 	
 	protocol->send(&attack, &stat.damage);
 	frameTick = frame[status].maxFrame - 1;
@@ -167,4 +183,12 @@ void Object::resurrect(int time) {
 
 void Object::draw() {
 	SDL_RenderCopyEx(renderer, texture, &srcRect, &desRect, NULL, NULL, flip);
+}
+
+void Object::death() {
+	return;
+}
+
+void Object::afterDeath() {
+	return;
 }

@@ -140,6 +140,7 @@
     <ClCompile Include="little.cpp" />
     <ClCompile Include="MapManager.cpp" />
     <ClCompile Include="minotaur.cpp" />
+    <ClCompile Include="NightBorne.cpp" />
     <ClCompile Include="protocol.cpp" />
     <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="FPScontroller.cpp" />
@@ -175,6 +176,7 @@
     <ClInclude Include="little.h" />
     <ClInclude Include="MapManager.h" />
     <ClInclude Include="minotaur.h" />
+    <ClInclude Include="NightBorne.h" />
     <ClInclude Include="protocol.h" />
     <ClInclude Include="EntityManager.h" />
     <ClInclude Include="FPScontroller.h" />

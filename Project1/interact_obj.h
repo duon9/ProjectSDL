@@ -50,6 +50,8 @@ public:
 	virtual void init() override;
 	virtual void render() override;
 	virtual void draw();
+	virtual void death();
+	virtual void afterDeath();
 	bool check_death = false;
 	void resurrect(int time);
 	static std::vector<std::vector<int>> collider;

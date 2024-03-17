@@ -2,7 +2,7 @@
 
 #define COMPUTER_CODE 101
 #define MAX_PLAYER_COUNT 1
-#define MAX_MINOTAUR_COUNT 1
+#define MAX_MINOTAUR_COUNT 0
 #define MAX_COLUMN_COUNT 10
 
 EntityManager::EntityManager(SDL_Renderer* renderer, SDL_Event *e, Map* map, Interface* interface) {
@@ -20,27 +20,16 @@ void EntityManager::init() {
 
 	Object::collider = File::readCollision(grey);
 
-	Player::vessel = TextureManagement::LoadTexture("assets/characters/rogue2.png", renderer);
+	Little::vessel = TextureManagement::LoadTexture("assets/characters/rogue2.png", renderer);
 	Minotaur::vessel = TextureManagement::LoadTexture("assets/characters/minotaur.png", renderer);
-	Little::vessel = TextureManagement::LoadTexture("assets/characters/little.png", renderer);
+	NightBorne::vessel = TextureManagement::LoadTexture("assets/characters/NightBorne.png", renderer);
+	Player::vessel = TextureManagement::LoadTexture("assets/characters/little.png", renderer);
 
-	player = new Player(renderer, ROGUE, interface);
+	player = new Player(renderer, "little", interface);
 	player->init();
 	layers.push_back(player);
 	 
 	setComputer();
-
-	//Entity::setTexture("assets/characters/test.png", renderer);
-	//for (int i = 0; i < MAX_COLUMN_COUNT; i++) {
-	//	Entity* ent = new Entity(renderer);
-	//	ent->init();
-	//	layers.push_back(ent);
-	//}
-
-	//Entity* ens = new Entity(renderer);
-	//ens->init();
-	//ens->setLocation({54*32,30*32});
-	//layers.push_back(ens);
 }
 
 void EntityManager::HandleEvents() {
@@ -146,8 +135,15 @@ void EntityManager::setComputer() {
 		layers.push_back(computer);
 	}
 
-	for (int i = 0; i < 100; i++) {
-		Little* li = new Little(renderer);
+	for (int i = 0; i < 1; i++) {
+		Little* li = new Little(renderer, ROGUE);
+		li->init();
+		computers.push_back(li);
+		layers.push_back(li);
+	}
+
+	for (int i = 0; i < 1; i++) {
+		NightBorne* li = new NightBorne(renderer);
 		li->init();
 		computers.push_back(li);
 		layers.push_back(li);

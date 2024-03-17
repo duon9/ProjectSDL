@@ -149,3 +149,33 @@ void Collision::reload(std::vector<std::vector<int>> collider) {
 	this->map_height = collider.size();
 	this->collider = collider;
 }
+
+bool Collision::rectCollidingVertical(SDL_Rect object1, SDL_Rect object2) {
+	int left_a = object1.x;
+	int right_a = object1.x + object1.w;
+	int top_a = object1.y;
+	int bottom_a = object1.y + object1.h;
+
+	int left_b = object2.x;
+	int right_b = object2.x + object2.w;
+	int top_b = object2.y;
+	int bottom_b = object2.y + object2.h;
+
+	// Check if object1 is between top and bottom of object2 vertically
+	if ((top_a > top_b && top_a < bottom_b) || (bottom_a > top_b && bottom_a < bottom_b)) {
+		// Check if left or right side of object1 collides with object2
+		if ((left_a > left_b && left_a < right_b) || (right_a > left_b && right_a < right_b)) {
+			return true;
+		}
+	}
+
+	// Check if object2 is between top and bottom of object1 vertically
+	if ((top_b > top_a && top_b < bottom_a) || (bottom_b > top_a && bottom_b < bottom_a)) {
+		// Check if left or right side of object2 collides with object1
+		if ((left_b > left_a && left_b < right_a) || (right_b > left_a && right_b < right_a)) {
+			return true;
+		}
+	}
+
+	return false;
+}
