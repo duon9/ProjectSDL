@@ -194,6 +194,7 @@ std::vector<std::vector<SDL_Rect>> File::getClips(std::string type) {
 			continue;
 		}
 		else {
+			std::cout << state[i] << std::endl;
 			nlohmann::json ware = clip["srcRect"];
 			// desRect here in future
 			if (ware.is_array()) {

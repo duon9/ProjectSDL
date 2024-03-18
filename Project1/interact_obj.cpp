@@ -131,8 +131,8 @@ void Object::listen(SDL_Event *e) {
 		if (protocol->listen(e, interact, dame)) {
 			SDL_Rect rec = getRect();
 			if (SDL_HasIntersection(&interact, &rec)) {
-				std::cout << "in rect" << std::endl;
 				stat.health -= dame;
+				status = TAKEDAMAGE;
 				if (stat.health <= 0) {
 					check_death = true;
 					status = DEATH;

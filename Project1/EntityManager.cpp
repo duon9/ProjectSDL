@@ -142,10 +142,10 @@ void EntityManager::setComputer() {
 		layers.push_back(li);
 	}
 
-	for (int i = 0; i < 1; i++) {
-		NightBorne* li = new NightBorne(renderer);
-		li->init();
-		computers.push_back(li);
-		layers.push_back(li);
-	}
+	//for (int i = 0; i < 1; i++) {
+	//	NightBorne* li = new NightBorne(renderer);
+	//	li->init();
+	//	computers.push_back(li);
+	//	layers.push_back(li);
+	//}
 }

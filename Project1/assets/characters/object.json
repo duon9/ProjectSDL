@@ -322,8 +322,14 @@
         "maxFrame": 0
       },
       "takedameFrame": {
-        "count": 0,
-        "maxFrame": 0
+        "count": 3,
+        "maxFrame": 30,
+        "srcRect": [
+          [ 0, 0, 40, 35 ],
+          [ 40, 0, 40, 35 ],
+          [ 80, 0, 40, 35 ]
+        ],
+        "desRect": "NULL"
       }
     }
   },
@@ -429,7 +435,7 @@
     }
   },
   "skeleton": {
-    "health": 100,
+    "health": 100000000,
     "mana": 2000,
     "damage": 100,
     "level": 1,
@@ -496,8 +502,14 @@
         "maxFrame": 0
       },
       "takedameFrame": {
-        "count": 0,
-        "maxFrame": 0
+        "count": 3,
+        "maxFrame": 30,
+        "srcRect": [
+          [ 0, 180, 64, 50 ],
+          [ 64, 180, 64, 50 ],
+          [ 128, 180, 64, 50 ]
+        ],
+        "desRect": "NULL"
       }
     }
   }
