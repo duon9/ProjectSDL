@@ -148,6 +148,7 @@
     <ClCompile Include="FPSparameter.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="sfx.cpp" />
+    <ClCompile Include="skeleton.cpp" />
     <ClCompile Include="Static.cpp" />
     <ClCompile Include="statsBar.cpp" />
     <ClCompile Include="label.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="constant.h" />
     <ClInclude Include="sfx.h" />
+    <ClInclude Include="skeleton.h" />
     <ClInclude Include="Static.h" />
     <ClInclude Include="statsBar.h" />
     <ClInclude Include="interface.h" />

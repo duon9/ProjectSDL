@@ -24,7 +24,7 @@ void EntityManager::init() {
 	Minotaur::vessel = TextureManagement::LoadTexture("assets/characters/minotaur.png", renderer);
 	NightBorne::vessel = TextureManagement::LoadTexture("assets/characters/NightBorne.png", renderer);
 	Player::vessel = TextureManagement::LoadTexture("assets/characters/little.png", renderer);
-
+	Skeleton::vessel = TextureManagement::LoadTexture("assets/characters/skeleton.png", renderer);
 	player = new Player(renderer, "little", interface);
 	player->init();
 	layers.push_back(player);
@@ -135,8 +135,8 @@ void EntityManager::setComputer() {
 		layers.push_back(computer);
 	}
 
-	for (int i = 0; i < 1; i++) {
-		Little* li = new Little(renderer, ROGUE);
+	for (int i = 0; i < 5; i++) {
+		Skeleton* li = new Skeleton(renderer);
 		li->init();
 		computers.push_back(li);
 		layers.push_back(li);

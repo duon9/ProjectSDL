@@ -97,18 +97,8 @@ void Object::render() {
 	srcRect = wareClips[status][frameCount / frame[status].perFrame];
 	lastStatus = status;
 	//SDL_RenderCopyEx(renderer, texture, &srcRect, &desRect, NULL, NULL, flip);
-	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-	SDL_RenderDrawRect(renderer, &desRect);
-
-	SDL_Rect attack = getRect();
-	if (flip == SDL_FLIP_NONE) {
-		attack.x += (attack.w / 2);
-		attack.w = (stat.range * TILE_WIDTH);
-	}
-	else if (flip == SDL_FLIP_HORIZONTAL) {
-		attack.x = desRect.x - (attack.w / 2);
-		attack.w = (stat.range * TILE_WIDTH / 2);
-	}
+	/*SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+	SDL_RenderDrawRect(renderer, &desRect);*/
 
 	draw();
 }

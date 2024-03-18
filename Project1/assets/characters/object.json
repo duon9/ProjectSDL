@@ -329,13 +329,13 @@
   },
   "night": {
     "health": 1,
-    "mana": 100,
-    "damage": 100000,
+    "mana": 2000,
+    "damage": 100,
     "level": 1,
     "exp": 1,
     "speed": 5,
     "source": "assets/characters/little.png",
-    "range": 1,
+    "range": 2.5,
     "desRect": [ 0, 0, 64, 64 ],
     "width": 160,
     "height": 150,
@@ -415,6 +415,79 @@
           [ 1600, 320, 80, 75 ],
           [ 1680, 320, 80, 75 ],
           [ 1760, 320, 80, 75 ]
+        ],
+        "desRect": "NULL"
+      },
+      "spellFrame": {
+        "count": 0,
+        "maxFrame": 0
+      },
+      "takedameFrame": {
+        "count": 0,
+        "maxFrame": 0
+      }
+    }
+  },
+  "skeleton": {
+    "health": 100,
+    "mana": 2000,
+    "damage": 100,
+    "level": 1,
+    "exp": 1,
+    "speed": 1,
+    "source": "assets/characters/little.png",
+    "range": 1,
+    "desRect": [ 0, 0, 64, 64 ],
+    "width": 96,
+    "height": 75,
+    "clips": {
+      "idleFrame": {
+        "count": 6,
+        "maxFrame": 60,
+        "srcRect": [
+          [ 0, 0, 64, 50 ],
+          [ 64, 0, 64, 50 ],
+          [ 128, 0, 64, 50 ],
+          [ 192, 0, 64, 50 ],
+          [ 256, 0, 64, 50 ],
+          [ 320, 0, 64, 50 ]
+        ],
+        "desRect": "NULL"
+      },
+      "runFrame": {
+        "count": 6,
+        "maxFrame": 60,
+        "srcRect": [
+          [ 0, 60, 64, 50 ],
+          [ 64, 60, 64, 50 ],
+          [ 128, 60, 64, 50 ],
+          [ 192, 60, 64, 50 ],
+          [ 256, 60, 64, 50 ],
+          [ 320, 60, 64, 50 ]
+        ],
+        "desRect": "NULL"
+      },
+      "attackFrame": {
+        "count": 5,
+        "maxFrame": 50,
+        "srcRect": [
+          [ 0, 120, 64, 50 ],
+          [ 64, 120, 64, 50 ],
+          [ 128, 120, 64, 50 ],
+          [ 192, 120, 64, 50 ],
+          [ 256, 120, 64, 50 ]
+        ],
+        "desRect": "NULL"
+      },
+      "deathFrame": {
+        "count": 5,
+        "maxFrame": 50,
+        "srcRect": [
+          [ 0, 240, 64, 50 ],
+          [ 64, 240, 64, 50 ],
+          [ 128, 240, 64, 50 ],
+          [ 192, 240, 64, 50 ],
+          [ 256, 240, 64, 50 ]
         ],
         "desRect": "NULL"
       },

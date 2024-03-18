@@ -1,5 +1,8 @@
 #pragma once
 #include "computer.h"
+#define START_EXPLOSION 130 
+#define END_EXPLOSION 180
+
 class NightBorne : public Computer
 {
 private:

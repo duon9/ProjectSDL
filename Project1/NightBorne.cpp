@@ -7,13 +7,13 @@ void NightBorne::draw() {
 }
 
 void NightBorne::death() {
-	if (timer >= 230) return;
+	if (timer >= 180) return;
 	timer++;
 
-	if (timer <= 180 && timer >= 130) {
+	if (timer <= END_EXPLOSION && timer >= START_EXPLOSION) {
 		
 		SDL_Rect rect = getRect();
-		int damage = stat.damage * 10;
+		int damage = stat.mana;
 		protocol->send(&rect, &damage);
 	}
 	/*SDL_Rect rect = getRect();

@@ -123,6 +123,9 @@
     <ClCompile Include="WaterBall.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="skeleton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -231,6 +234,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="WaterBall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="skeleton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

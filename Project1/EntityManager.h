@@ -4,7 +4,7 @@
 #include "minotaur.h"
 #include "little.h"
 #include "NightBorne.h"
-
+#include "skeleton.h"
 
 class EntityManager
 {
