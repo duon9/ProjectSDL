@@ -15,6 +15,12 @@ enum Option {
 	SETTING
 };
 
+enum MissleState {
+	FORMATION,
+	FINAL,
+	IMPACT
+};
+
 struct Orient {
 	bool up = 0, down = 0, left = 0, right = 0;
 

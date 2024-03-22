@@ -260,7 +260,7 @@
   "little": {
     "health": 100000,
     "mana": 100,
-    "damage": 1000,
+    "damage": 5000,
     "level": 1,
     "exp": 1,
     "speed": 2,
@@ -435,7 +435,7 @@
     }
   },
   "skeleton": {
-    "health": 100000000,
+    "health": 10000,
     "mana": 2000,
     "damage": 100,
     "level": 1,

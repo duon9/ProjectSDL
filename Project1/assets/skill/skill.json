@@ -1,0 +1,295 @@
+//// Lipstick.cpp : This file contains the 'main' function. Program execution begins and ends there.
+////
+
+//#include <iostream>
+//#include <cmath>
+//#include <SDL.h>
+//#include <SDL_image.h>
+//#include <vector>
+//#include "Player.h"
+//#define MAX_FORMATION_FRAME 20
+//#define MAX_FINAL_FRAME 80
+//#define MAX_IMPACT_FRAME 80
+
+//#define PER_FORMATION_FRAME 5
+//#define PER_FINAL_FRAME 5
+//#define PER_IMPACT_FRAME 5
+
+//bool quit = false;
+//SDL_Window* window = nullptr;
+//SDL_Renderer* renderer = nullptr;
+
+//SDL_Texture* LoadTexture() {
+//    SDL_Surface* surface = IMG_Load("water.png");
+//    SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+//    SDL_FreeSurface(surface);
+//    return texture;
+//}
+
+//std::vector<std::vector<SDL_Rect>> LoadClips() {
+//    std::vector<SDL_Rect> formation;
+//    std::vector<SDL_Rect> final;
+//    std::vector<SDL_Rect> impact;
+//    std::vector<std::vector<SDL_Rect>> res;
+//    //std::vector<SDL_Rect> impact;
+
+//    formation.push_back({ 0,0,64,64 });
+//    formation.push_back({ 64,0,64,64 });
+//    formation.push_back({ 128,0,64,64 });
+//    formation.push_back({ 192, 0, 64,64 });
+//    final.push_back({ 256, 0, 64,64 });
+//    final.push_back({ 0, 64, 64,64 });
+//    final.push_back({ 64, 64, 64,64 });
+//    final.push_back({ 128, 64, 64,64 });
+//    final.push_back({ 192, 64, 64,64 });
+//    final.push_back({ 256, 64, 64,64 });
+//    final.push_back({ 0, 128, 64,64 });
+//    final.push_back({ 64, 128, 64,64 });
+//    final.push_back({ 128, 128, 64,64 });
+//    final.push_back({ 192, 128, 64,64 });
+//    final.push_back({ 256, 128, 64,64 });
+//    final.push_back({ 0, 192, 64,64 });
+//    final.push_back({ 64, 192, 64,64 });
+//    final.push_back({ 128, 192, 64,64 });
+//    final.push_back({ 192, 192, 64,64 });
+//    final.push_back({ 256, 192, 64,64 });
+//    //final.push_back({ 0, 0, 256,64 });
+//    impact.push_back({ 0,320,64,64 });
+//    impact.push_back({ 64,320,64,64 });
+//    impact.push_back({ 128,320,64,64 });
+//    impact.push_back({ 192, 320, 64,64 });
+//    impact.push_back({ 0,384,64,64 });
+//    impact.push_back({ 64,384,64,64 });
+//    impact.push_back({ 128,384,64,64 });
+//    impact.push_back({ 192, 384, 64,64 });
+//    impact.push_back({ 0,448,64,64 });
+//    impact.push_back({ 64,448,64,64 });
+//    impact.push_back({ 128,448,64,64 });
+//    impact.push_back({ 192, 448, 64,64 });
+//    impact.push_back({ 0,512,64,64 });
+//    impact.push_back({ 64,512,64,64 });
+//    impact.push_back({ 128,512,64,64 });
+//    impact.push_back({ 192, 512, 64,64 });
+
+//    res.push_back(formation);
+//    res.push_back(final);
+//    res.push_back(impact);
+//    return res;
+//}
+
+//enum SkillState {
+//    FORMATION,
+//    FINAL,
+//    IMPACT
+//};
+
+//SDL_Rect wall = { 700, 0, 100, 100 };
+
+//SDL_Rect walloc = { 500, 300, 100, 100 };
+
+//SDL_Rect wallsoc = { 300, 500, 100, 100 };
+
+//void move(SDL_Rect& r, int screenHeight, int& direction) {
+//    int speed = 1;
+
+//    r.y += direction * speed;
+
+//    if (r.y < 0) {
+//        r.y = 0; 
+//        direction = 1; 
+//    }
+
+//    if (r.y + r.h > screenHeight) {
+//        r.y = screenHeight - r.h; 
+//        direction = -1; 
+//    }
+//}
+
+//struct Ball {
+//    std::vector<std::vector<SDL_Rect>> wareClips;
+//    SDL_Texture* texture = nullptr;
+//    SkillState state = FORMATION;
+//    SDL_Rect des = {0,304, 64,64};
+//    SDL_Rect src;
+//    SDL_RendererFlip flip = SDL_FLIP_NONE;
+//    int frameCount = 0;
+//    bool isCollide = false;
+//    Ball() {
+//        wareClips = LoadClips();
+//        texture = LoadTexture();
+//    }
+    
+//    void render() {
+//        frameCount++;
+//        if (state == FORMATION || state == FINAL) {
+//            if (frameCount < MAX_FORMATION_FRAME) {
+//                state = FORMATION;
+//                src = wareClips[FORMATION][frameCount / PER_FORMATION_FRAME];
+//            }
+//            else {
+//                state = FINAL;
+//                if (frameCount >= MAX_FORMATION_FRAME + MAX_FINAL_FRAME) {
+//                    frameCount = MAX_FORMATION_FRAME;
+//                }
+//                src = wareClips[FINAL][(frameCount - MAX_FORMATION_FRAME) / PER_FINAL_FRAME];
+//            }
+//        }
+//        if (state == IMPACT) {
+//            if (frameCount < MAX_IMPACT_FRAME) {
+//                src = wareClips[IMPACT][(frameCount/ PER_IMPACT_FRAME)];
+//            }
+//            else {
+//                return;
+//            }
+//        }
+//        /*if (frameCount < MAX_FORMATION_FRAME) {
+//            state = FORMATION;
+//            src = wareClips[FORMATION][frameCount / PER_FORMATION_FRAME];
+//        }
+//        else {
+//            state = FINAL;
+//            if (frameCount >= MAX_FORMATION_FRAME + MAX_FINAL_FRAME) {
+//                frameCount = MAX_FORMATION_FRAME;
+//            }
+//            src = wareClips[FINAL][(frameCount - MAX_FORMATION_FRAME) / PER_FINAL_FRAME];
+//        }*/
+
+//        SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+//        SDL_RenderDrawRect(renderer, &des);
+//       // SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+//        SDL_RenderCopyEx(renderer, texture, &src, &des, NULL, NULL, flip);
+//    }
+
+//    void fly() {
+//        if (state == FINAL) {
+//            if (frameCount) {
+//                des.x+=3;
+//            }
+//        }
+//    }
+
+//    void handleEvent() {
+//        SDL_Point p = { des.x + des.w / 2, des.y + des.h / 2 };
+//        if (SDL_PointInRect(&p, &wall) || SDL_PointInRect(&p, &walloc) || SDL_PointInRect(&p, &wallsoc)) {
+//            if (isCollide == false) {
+//                frameCount = 0;
+//                state = IMPACT;
+//                isCollide = true;
+//            }
+//            else {
+//                return;
+//            }
+//        }
+//    }
+//};
+
+//std::vector<Ball> manager;
+
+//void HandleEvent(SDL_Event& e) {
+//    switch (e.type) {
+//    case SDL_QUIT:
+//        quit = true;
+//        break;
+//    case SDL_KEYDOWN:
+//        if (e.key.keysym.sym == SDLK_SPACE) {
+//            Ball ball = Ball();
+//            manager.push_back(ball);
+//        }
+//        break;
+//    }
+
+
+//}
+
+////SDL_Texture* LoadTexture() {
+////    SDL_Surface* surface = IMG_Load("water.png");
+////    SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+////    SDL_FreeSurface(surface);
+////    return texture;
+////}
+////
+////std::vector<std::vector<SDL_Rect>> LoadClips() {
+////    std::vector<SDL_Rect> formation;
+////    std::vector<SDL_Rect> final;
+////    std::vector<std::vector<SDL_Rect>> res;
+////    //std::vector<SDL_Rect> impact;
+////
+////    formation.push_back({ 0,0,64,64 });
+////    formation.push_back({ 64,0,64,64 });
+////    formation.push_back({ 128,0,64,64 });
+////
+////    final.push_back({ 192, 0, 64,64 });
+////    final.push_back({ 256, 0, 64,64 });
+////    final.push_back({ 0, 64, 64,64 });
+////    final.push_back({ 64, 64, 64,64 });
+////    final.push_back({ 128, 64, 64,64 });
+////    final.push_back({ 192, 64, 64,64 });
+////    final.push_back({ 256, 64, 64,64 });
+////    final.push_back({ 0, 128, 64,64 });
+////    final.push_back({ 64, 128, 64,64 });
+////    final.push_back({ 128, 128, 64,64 });
+////    final.push_back({ 192, 128, 64,64 });
+////    final.push_back({ 256, 128, 64,64 });
+////    final.push_back({ 0, 192, 64,64 });
+////    final.push_back({ 64, 192, 64,64 });
+////    final.push_back({ 128, 192, 64,64 });
+////    final.push_back({ 192, 192, 64,64 });
+////    final.push_back({ 256, 192, 64,64 });
+////    final.push_back({ 0, 0, 156,64 });
+////
+////    res.push_back(formation);
+////    res.push_back(final);
+////    return res;
+////}
+////
+////void cast() {
+////
+////}
+//int direction = 1;
+//int der = 1;
+//int da = 1;
+//int main(int argc, char* argv[])
+//{
+//    SDL_Init(SDL_INIT_EVERYTHING);
+//    IMG_Init(IMG_INIT_PNG);
+//    window = SDL_CreateWindow("Teset", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 608, SDL_WINDOW_SHOWN);
+//    renderer = SDL_CreateRenderer(window, -1, 0);
+
+//    Player player = Player(renderer);
+
+//    SDL_Event e;
+
+//    while (!quit) {
+//        SDL_PollEvent(&e);
+//        HandleEvent(e);
+//        move(wall, 608, direction);
+//        move(walloc, 608, der);
+//        move(wallsoc, 608, da);
+
+//        SDL_RenderClear(renderer);
+
+//        /*move(wall, 608, direction);
+//        move(walloc, 608, der);
+//        move(wallsoc, 608, da);*/
+
+//        for (auto& ball : manager) {
+//            ball.render();
+//            ball.fly();
+//            ball.handleEvent();
+//        }
+//        SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+//        SDL_RenderDrawRect(renderer, &wall);
+
+//        SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+//        SDL_RenderDrawRect(renderer, &walloc);
+
+//        SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+//        SDL_RenderDrawRect(renderer, &wallsoc);
+//        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+//        SDL_RenderPresent(renderer);
+//        SDL_Delay(1000/120);
+//    }
+
+//    SDL_Quit();
+//    return 0;
+//}

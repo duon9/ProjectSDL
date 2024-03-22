@@ -118,6 +118,23 @@ void Player::handleUserEvents(SDL_Event *e) {
 			default:break;
 			}
 		}
+
+		if (e->type == SDL_MOUSEMOTION) {
+			if (e->motion.x > desRect.x + desRect.w / 2) flip = SDL_FLIP_NONE;
+			else flip = SDL_FLIP_HORIZONTAL;
+		}
+
+		if (e->type == SDL_MOUSEBUTTONDOWN) {
+			if (e->button.button == SDL_BUTTON_LEFT) {
+				if (status == RUNNING) return;
+				if (frameTick > 0) return;
+				status = ATTACKING;
+				//frameTick = frame[status].maxFrame - 1;
+				attackSound->play();
+				attack();
+			}
+		}
+
 		if (check && frameTick == 0) status = IDLE;
 	}
 }
