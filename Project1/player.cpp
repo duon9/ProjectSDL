@@ -134,8 +134,10 @@ void Player::handleUserEvents(SDL_Event *e) {
 				attack();
 			}
 			if (e->button.button == SDL_BUTTON_RIGHT) {
-				WaterBall* ball = new WaterBall(renderer, getPosition(), getCursorPosition(e), code);
+				WaterBall* ball = new WaterBall(renderer, { desRect.x, desRect.y }, { e->motion.x, e->motion.y }, { interface->camera.x, interface->camera.y }, code);
+				//std::cout << "final create ball" << std::endl;
 				global::missles.push_back(ball);
+				//std::cout << "final push ball" << std::endl;
 			}
 		}
 

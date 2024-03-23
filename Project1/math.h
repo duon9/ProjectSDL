@@ -3,6 +3,9 @@
 #include <SDL.h>
 #include <random>
 #include <ctime>
+#include <cmath>
+#include <math.h>
+#define PI 3.14159265358979323846f
 
 namespace Math {
 	class Vector {
@@ -17,7 +20,7 @@ namespace Math {
 
 		void setX(double val);
 		void setY(double val);
-
+		double countAngle();
 		double getDistance();
 		void normalize();
 		static double getDistance(SDL_Point point1, SDL_Point point2);

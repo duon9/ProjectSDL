@@ -9,7 +9,7 @@
 #define PER_IMPACT_FRAME 5
 #define PATH "assets/skill/water.png"
 
-std::vector<std::vector<SDL_Rect>> WaterBall::wareClips;
+std::vector<std::vector<SDL_Rect>> WaterBall::clips;
 SDL_Texture* WaterBall::vessel = nullptr;
 
 void WaterBall::loadClips() {
@@ -55,11 +55,19 @@ void WaterBall::loadClips() {
     impact.push_back({ 128,512,64,64 });
     impact.push_back({ 192, 512, 64,64 });
 
-    WaterBall::wareClips.push_back(formation);
-    WaterBall::wareClips.push_back(final);
-    WaterBall::wareClips.push_back(impact);
+    WaterBall::clips.push_back(formation);
+    /*std::cout << formation.size() << std::endl;
+    std::cout << final.size() << std::endl;
+    std::cout << impact.size() << std::endl;*/
+
+    WaterBall::clips.push_back(final);
+    WaterBall::clips.push_back(impact);
 }
 
 void WaterBall::loadTexture(SDL_Renderer* renderer) {
     WaterBall::vessel = TextureManagement::LoadTexture(PATH, renderer);
+}
+
+void WaterBall::draw() {
+    SDL_RenderCopyEx(renderer, vessel, &srcRect, &desRect, angle, NULL, SDL_FLIP_NONE);
 }

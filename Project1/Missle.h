@@ -1,10 +1,11 @@
 #pragma once
 #include "aniamted_obj.h"
 #include "math.h"
+#include "constant.h"
 class Missle : public Animated
 {
 protected:
-	MissleState status = FORMATION;
+	MissleState state = FORMATION;
 	double angle = 0;
 	bool isCollide = false;
 	Uint32 code;
@@ -13,13 +14,16 @@ protected:
 public:
 	
 
-	Missle(SDL_Renderer* renderer, SDL_Point currPos, SDL_Point desPos, Uint32 code) : Animated(renderer) {
-		desRect.x = 64;
-		desRect.y = 64;
+	Missle(SDL_Renderer* renderer, SDL_Point currPos, SDL_Point desPos, SDL_Point camera, Uint32 code) : Animated(renderer) {
+		desRect.w = MISSLE_WIDTH;
+		desRect.h = MISSLE_HEIGHT;
 		this->code = code;
 		this->v = Math::Vector(currPos, desPos);
 		desRect.x = currPos.x;
 		desRect.y = currPos.y;
+		position.x = camera.x + currPos.x;
+		position.y = camera.y + currPos.y;
+		this->angle = v.countAngle();
 		this->v.normalize();
 	}
 
@@ -31,5 +35,6 @@ public:
 	virtual void render() override;
 	virtual void draw();
 	virtual void handleEffect();
+	void projectile();
 };
 

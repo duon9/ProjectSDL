@@ -167,3 +167,13 @@ const std::string greyyard = "assets/map/republic_grey.png";
 
 const double TOLERANCE = 0.03;
 
+#define MISSLE_WIDTH 64
+#define MISSLE_HEIGHT 64
+
+#define MAX_FORMATION_FRAME 20
+#define MAX_FINAL_FRAME 80
+#define MAX_IMPACT_FRAME 80
+
+#define PER_FORMATION_FRAME 5
+#define PER_FINAL_FRAME 5
+#define PER_IMPACT_FRAME 5

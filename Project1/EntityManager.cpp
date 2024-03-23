@@ -69,6 +69,10 @@ void EntityManager::HandleEvents() {
 	for (auto& computer : computers) {
 		computer->listen(e);
 	}
+
+	for (auto& object : global::missles) {
+		object->projectile();
+	}
 }
 
 void EntityManager::render() {
@@ -84,6 +88,11 @@ void EntityManager::render() {
 		else {
 			entity->render();
 		}
+	}
+
+	for (auto& object : global::missles) {
+		interface->updateObjectScreenPosition(object->position, object->desRect);
+		object->render(); // error
 	}
 }
 
@@ -128,12 +137,12 @@ void EntityManager::clean() {
 
 void EntityManager::setComputer() {
 
-	for (int i = 0; i < MAX_MINOTAUR_COUNT; i++) {
+	/*for (int i = 0; i < MAX_MINOTAUR_COUNT; i++) {
 		Minotaur* computer = new Minotaur(renderer);
 		computer->init();
 		computers.push_back(computer);
 		layers.push_back(computer);
-	}
+	}*/
 
 	for (int i = 0; i < 5; i++) {
 		Skeleton* li = new Skeleton(renderer);
