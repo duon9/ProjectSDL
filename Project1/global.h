@@ -3,7 +3,7 @@
 #include <vector>
 
 namespace global {
-	extern std::vector<Missle> missles;
+	extern std::vector<Missle*> missles;
 }
 
 

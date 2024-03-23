@@ -4,6 +4,8 @@
 #include "utils.h"
 #include "interface.h"
 #include "sfx.h"
+#include "WaterBall.h"
+#include "global.h"
 
 class Player : public Object
 {
@@ -43,4 +45,6 @@ public:
 	virtual void setCollision() override;
 	virtual void setProtocolCode() override;
 	virtual void draw() override;
+	virtual void setAbility() override;
+	SDL_Point getCursorPosition(SDL_Event* e);
 };

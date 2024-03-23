@@ -181,3 +181,7 @@ void Object::death() {
 void Object::afterDeath() {
 	return;
 }
+
+void Object::setAbility() {
+	return;
+}

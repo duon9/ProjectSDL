@@ -133,6 +133,10 @@ void Player::handleUserEvents(SDL_Event *e) {
 				attackSound->play();
 				attack();
 			}
+			if (e->button.button == SDL_BUTTON_RIGHT) {
+				WaterBall* ball = new WaterBall(renderer, getPosition(), getCursorPosition(e), code);
+				global::missles.push_back(ball);
+			}
 		}
 
 		if (check && frameTick == 0) status = IDLE;
@@ -234,6 +238,7 @@ void Player::setSFX() {
 }
 
 void Player::init() {
+	setAbility();
 	setSize(54, 54);
 	setSFX();
 	setProtocolCode();
@@ -258,4 +263,13 @@ void Player::reload() {
 
 void Player::draw() {
 	SDL_RenderCopyEx(renderer, Player::vessel, &srcRect, &desRect, NULL, NULL, flip);
+}
+
+void Player::setAbility() {
+	WaterBall::loadClips();
+	WaterBall::loadTexture(renderer);
+}
+
+SDL_Point Player::getCursorPosition(SDL_Event* e) {
+	return { e->motion.x + interface->camera.x, e->motion.y + interface->camera.y };
 }

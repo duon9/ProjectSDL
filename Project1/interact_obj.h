@@ -41,7 +41,7 @@ public:
 	void updateDamage(int newDamage);
 	void listen(SDL_Event* e);
 	void attack();
-
+	virtual void setAbility();
 	virtual void logicHandle();
 	virtual void setProperties();
 	virtual void setCollision();

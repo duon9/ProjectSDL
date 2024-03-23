@@ -1,3 +1,3 @@
 #include "global.h"
 
-std::vector<Missle> global::missles;
+std::vector<Missle*> global::missles;
