@@ -34,7 +34,8 @@ public:
 	virtual void init() override;
 	virtual void render() override;
 	virtual void draw();
-	virtual void handleEffect();
+	virtual void handleEffect(SDL_Rect target);
+	virtual bool isCollision(SDL_Rect target);
 	void projectile();
 };
 

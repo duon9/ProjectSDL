@@ -59,7 +59,7 @@ Math::Vector Math::Vector::operator/(double scalar) {
 }
 
 double Math::Vector::countAngle() {
-	double rad = atan2(x, y);
+	double rad = atan2(y, x);
 	double deg = rad * 180 / PI;
 	if (deg < 360) deg += 360;
 	return deg;

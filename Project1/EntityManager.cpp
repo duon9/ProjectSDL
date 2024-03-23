@@ -71,6 +71,10 @@ void EntityManager::HandleEvents() {
 	}
 
 	for (auto& object : global::missles) {
+		for (auto& entity : layers) {
+			if (entity->getProtocolCode() == ALLY_CODE) continue;
+			else object->handleEffect(entity->getRect());
+		}
 		object->projectile();
 	}
 }
@@ -151,10 +155,10 @@ void EntityManager::setComputer() {
 		layers.push_back(li);
 	}
 
-	for (int i = 0; i < 1; i++) {
+	/*for (int i = 0; i < 1; i++) {
 		NightBorne* li = new NightBorne(renderer);
 		li->init();
 		computers.push_back(li);
 		layers.push_back(li);
-	}
+	}*/
 }
