@@ -39,4 +39,5 @@ public:
 	SDL_Rect getRect();
 	int getLayer();
 	Uint32 getProtocolCode();
+	virtual void handleMissle(int damage);
 };

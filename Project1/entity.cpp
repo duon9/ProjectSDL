@@ -65,3 +65,7 @@ void Entity::setSize(int w, int h) {
 	desRect.w = w;
 	desRect.h = h;
 }
+
+void Entity::handleMissle(int damage) {
+
+}

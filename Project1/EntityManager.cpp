@@ -73,7 +73,13 @@ void EntityManager::HandleEvents() {
 	for (auto& object : global::missles) {
 		for (auto& entity : layers) {
 			if (entity->getProtocolCode() == ALLY_CODE) continue;
-			else object->handleEffect(entity->getRect());
+			else {
+				object->handleEffect(entity->getRect());
+				if (object->getCollideState()) {
+					entity->handleMissle(object->getDamage());
+					break;
+				}
+			}
 		}
 		object->projectile();
 	}

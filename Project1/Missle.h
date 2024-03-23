@@ -11,6 +11,7 @@ protected:
 	Uint32 code;
 	int speed = 5;
 	Math::Vector v;
+	int damage = 1000;
 public:
 	
 
@@ -36,6 +37,8 @@ public:
 	virtual void draw();
 	virtual void handleEffect(SDL_Rect target);
 	virtual bool isCollision(SDL_Rect target);
+	int getDamage();
+	bool getCollideState();
 	void projectile();
 };
 

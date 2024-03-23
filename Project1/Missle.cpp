@@ -33,9 +33,12 @@ void Missle::init() {
 }
 
 void Missle::handleEffect(SDL_Rect target) {
-	if (isCollision(target)) {
-		state = IMPACT;
-		isCollide = true;
+	if (!isCollide) {
+		if (isCollision(target)) {
+			state = IMPACT;
+			isCollide = true;
+			frameCount = 0;
+		}
 	}
 }
 
@@ -57,4 +60,12 @@ void Missle::setAngle(double angle) {
 bool Missle::isCollision(SDL_Rect target) {
 	SDL_Point center = { position.x + desRect.w / 2, position.y + desRect.h / 2 };
 	return SDL_PointInRect(&center, &target);
+}
+
+int Missle::getDamage() {
+	return damage;
+}
+
+bool Missle::getCollideState() {
+	return isCollide;
 }

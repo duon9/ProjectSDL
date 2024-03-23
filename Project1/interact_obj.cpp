@@ -185,3 +185,12 @@ void Object::afterDeath() {
 void Object::setAbility() {
 	return;
 }
+
+void Object::handleMissle(int damage) {
+	stat.health -= damage;
+	status = TAKEDAMAGE;
+	if (stat.health <= 0) {
+		check_death = true;
+		status = DEATH;
+	}
+}
