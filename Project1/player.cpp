@@ -10,14 +10,8 @@ void Player::handleUserEvents(SDL_Event *e) {
 		if (e->type == SDL_KEYDOWN) {
 			switch (e->key.keysym.sym) {
 			case SDLK_z:
-
-				if (status == RUNNING) return;
-				if (frameTick > 0) return;
-				status = ATTACKING;
-				//frameTick = frame[status].maxFrame - 1;
-				attackSound->play();
-				attack();
-				break;
+				if (magic < MAX_TYPE) magic++;
+				else magic = 1;
 			case SDLK_x:
 				if (!isInvisible) {
 					SDL_SetTextureAlphaMod(texture, 100);
@@ -129,15 +123,24 @@ void Player::handleUserEvents(SDL_Event *e) {
 				if (status == RUNNING) return;
 				if (frameTick > 0) return;
 				status = ATTACKING;
-				//frameTick = frame[status].maxFrame - 1;
 				attackSound->play();
 				attack();
 			}
 			if (e->button.button == SDL_BUTTON_RIGHT) {
-				WaterBall* ball = new WaterBall(renderer, { desRect.x, desRect.y }, { e->motion.x, e->motion.y }, { interface->camera.x, interface->camera.y }, code);
-				//std::cout << "final create ball" << std::endl;
-				global::missles.push_back(ball);
-				//std::cout << "final push ball" << std::endl;
+				switch (magic) {
+				case 1:
+				{
+					FireBall* balls = new FireBall(renderer, { desRect.x, desRect.y }, { e->motion.x, e->motion.y }, { interface->camera.x, interface->camera.y }, code);
+					global::missles.push_back(balls);
+					break;
+				}
+				case 2:
+				{
+					WaterBall* ball = new WaterBall(renderer, { desRect.x, desRect.y }, { e->motion.x, e->motion.y }, { interface->camera.x, interface->camera.y }, code);
+					global::missles.push_back(ball);
+					break;
+				}
+				}
 			}
 		}
 
@@ -270,6 +273,10 @@ void Player::draw() {
 void Player::setAbility() {
 	WaterBall::loadClips();
 	WaterBall::loadTexture(renderer);
+
+	FireBall::loadClips();
+	FireBall::loadTexture(renderer);
+
 }
 
 SDL_Point Player::getCursorPosition(SDL_Event* e) {

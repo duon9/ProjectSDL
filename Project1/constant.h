@@ -116,6 +116,16 @@ struct Frame {
 	int maxFrame;
 	int perFrame;
 	int count;
+
+	Frame(int max, int per, int cnt) {
+		maxFrame = max;
+		perFrame = per;
+		count = cnt;
+	}
+
+	Frame() {
+
+	}
 };
 
 const std::string mapWare[] = {"0", "0", "0", "assets/.tile/underground.tmj" };

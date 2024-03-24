@@ -5,7 +5,10 @@
 #include "interface.h"
 #include "sfx.h"
 #include "WaterBall.h"
+#include "FireBall.h"
 #include "global.h"
+
+#define MAX_TYPE 2
 
 class Player : public Object
 {
@@ -16,6 +19,7 @@ protected:
 	SFX* attackSound = new SFX();
 	SFX* runSound = new SFX();
 	Orient orient;
+	int magic = 1;
 public:
 	
 	Player(SDL_Renderer* renderer, std::string type, Interface * interface) : Object(renderer) {

@@ -1,15 +1,9 @@
 #include "WaterBall.h"
 
-#define MAX_FORMATION_FRAME 20
-#define MAX_FINAL_FRAME 80
-#define MAX_IMPACT_FRAME 80
-
-#define PER_FORMATION_FRAME 5
-#define PER_FINAL_FRAME 5
-#define PER_IMPACT_FRAME 5
 #define PATH "assets/skill/water.png"
 
 std::vector<std::vector<SDL_Rect>> WaterBall::clips;
+std::vector<Frame> WaterBall::limits;
 SDL_Texture* WaterBall::vessel = nullptr;
 
 void WaterBall::loadClips() {
@@ -55,6 +49,10 @@ void WaterBall::loadClips() {
     impact.push_back({ 128,512,64,64 });
     impact.push_back({ 192, 512, 64,64 });
 
+    Frame formations = Frame(20, 5, 4);
+    Frame finals = Frame(64, 4, 16);
+    Frame impacts = Frame(80, 5, 16);
+
     WaterBall::clips.push_back(formation);
     /*std::cout << formation.size() << std::endl;
     std::cout << final.size() << std::endl;
@@ -62,6 +60,10 @@ void WaterBall::loadClips() {
 
     WaterBall::clips.push_back(final);
     WaterBall::clips.push_back(impact);
+
+    limits.push_back(formations);
+    limits.push_back(finals);
+    limits.push_back(impacts);
 }
 
 void WaterBall::loadTexture(SDL_Renderer* renderer) {
