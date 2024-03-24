@@ -139,6 +139,7 @@
     <ClCompile Include="FireBall.cpp" />
     <ClCompile Include="global.cpp" />
     <ClCompile Include="header.cpp" />
+    <ClCompile Include="IceLancet.cpp" />
     <ClCompile Include="little.cpp" />
     <ClCompile Include="MapManager.cpp" />
     <ClCompile Include="minotaur.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="FireBall.h" />
     <ClInclude Include="global.h" />
     <ClInclude Include="header.h" />
+    <ClInclude Include="IceLancet.h" />
     <ClInclude Include="little.h" />
     <ClInclude Include="MapManager.h" />
     <ClInclude Include="minotaur.h" />

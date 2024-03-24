@@ -140,6 +140,12 @@ void Player::handleUserEvents(SDL_Event *e) {
 					global::missles.push_back(ball);
 					break;
 				}
+				case 3:
+				{
+					IceLancet* ball = new IceLancet(renderer, { desRect.x, desRect.y }, { e->motion.x, e->motion.y }, { interface->camera.x, interface->camera.y }, code);
+					global::missles.push_back(ball);
+					break;
+				}
 				}
 			}
 		}
@@ -276,6 +282,9 @@ void Player::setAbility() {
 
 	FireBall::loadClips();
 	FireBall::loadTexture(renderer);
+
+	IceLancet::loadClips();
+	IceLancet::loadTexture(renderer);
 
 }
 
