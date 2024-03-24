@@ -8,7 +8,6 @@ protected:
 	MissleState state = FORMATION;
 	double angle = 0;
 	bool isCollide = false;
-	Uint32 code;
 	int speed = 5;
 	Math::Vector v;
 	int damage = 1000;

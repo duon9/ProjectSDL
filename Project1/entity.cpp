@@ -67,5 +67,9 @@ void Entity::setSize(int w, int h) {
 }
 
 void Entity::handleMissle(int damage) {
+	return;
+}
 
+void Entity::handleLogic() {
+	return;
 }

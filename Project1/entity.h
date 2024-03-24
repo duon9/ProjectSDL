@@ -26,6 +26,7 @@ public:
 	virtual void init();
 	virtual void render();
 	virtual void setLocation();
+	virtual void handleLogic();
 	void setLocation(SDL_Point location);
 	void setSize(int w, int h);
 	static void setTexture(std::string path, SDL_Renderer*renderer);

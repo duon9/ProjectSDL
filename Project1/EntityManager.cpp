@@ -65,18 +65,23 @@ void EntityManager::HandleEvents() {
 	}
 
 	player->listen(e);
+	player->handleLogic();
 
 	for (auto& computer : computers) {
 		computer->listen(e);
+		computer->handleLogic();
 	}
 
 	for (auto& object : global::missles) {
-		object->projectile();
+		if (object->getCollideState()) {
+			continue;
+		}
+		else object->projectile();
 		for (auto& entity : layers) {
-			if (entity->getProtocolCode() == ALLY_CODE) continue;
+			if (entity->getProtocolCode() == object->getProtocolCode() || entity->check_death == true) continue;
 			else {
 				object->handleEffect(entity->getRect());
-				if (object->getCollideState()) {
+				if (object->getCollideState() == true) {
 					entity->handleMissle(object->getDamage());
 					break;
 				}
@@ -168,3 +173,15 @@ void EntityManager::setComputer() {
 		layers.push_back(li);
 	}*/
 }
+
+//void Object::handleLogic() {
+//	if (stat.health < 0) {
+//		status = DEATH;
+//		check_death = true;
+//	}
+//	else if (stat.health < lastHealth) {
+//		status = TAKEDAMAGE;
+//		frameTick = 30;
+//	}
+//	lastHealth = stat.health;
+//}

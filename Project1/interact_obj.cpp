@@ -132,11 +132,11 @@ void Object::listen(SDL_Event *e) {
 			SDL_Rect rec = getRect();
 			if (SDL_HasIntersection(&interact, &rec)) {
 				stat.health -= dame;
-				status = TAKEDAMAGE;
+				/*status = TAKEDAMAGE;
 				if (stat.health <= 0) {
 					check_death = true;
 					status = DEATH;
-				}
+				}*/
 			}
 		}
 	}
@@ -188,9 +188,20 @@ void Object::setAbility() {
 
 void Object::handleMissle(int damage) {
 	stat.health -= damage;
-	status = TAKEDAMAGE;
+	/*status = TAKEDAMAGE;
 	if (stat.health <= 0) {
 		check_death = true;
 		status = DEATH;
+	}*/
+}
+
+void Object::handleLogic() {
+	if (stat.health < 0) {
+		status = DEATH;
+		check_death = true;
 	}
+	else if (stat.health < lastHealth) {
+		status = TAKEDAMAGE;
+	}
+	lastHealth = stat.health;
 }

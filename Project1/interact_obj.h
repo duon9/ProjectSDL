@@ -41,6 +41,7 @@ public:
 	void updateDamage(int newDamage);
 	void listen(SDL_Event* e);
 	void attack();
+	virtual void handleLogic() override;
 	virtual void setAbility();
 	virtual void logicHandle();
 	virtual void setProperties();
@@ -59,6 +60,7 @@ public:
 protected:
 	//std::vector<std::vector<int>> collider;
 	Stat stat;
+	int lastHealth;
 	std::vector<Skill> skillSet;
 	Collision* collision;
 	int timer = 0;
