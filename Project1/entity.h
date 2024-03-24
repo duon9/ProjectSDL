@@ -36,6 +36,7 @@ public:
 	virtual void setProtocolCode();
 	void setProtocol();
 	SDL_Point position;
+	bool check_death = false;
 	SDL_Rect getRect();
 	int getLayer();
 	Uint32 getProtocolCode();

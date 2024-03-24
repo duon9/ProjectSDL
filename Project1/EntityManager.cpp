@@ -71,6 +71,7 @@ void EntityManager::HandleEvents() {
 	}
 
 	for (auto& object : global::missles) {
+		object->projectile();
 		for (auto& entity : layers) {
 			if (entity->getProtocolCode() == ALLY_CODE) continue;
 			else {
@@ -81,7 +82,6 @@ void EntityManager::HandleEvents() {
 				}
 			}
 		}
-		object->projectile();
 	}
 }
 
