@@ -7,9 +7,10 @@
 #include "WaterBall.h"
 #include "FireBall.h"
 #include "IceLancet.h"
+#include "HolySpear.h"
 #include "global.h"
 
-#define MAX_TYPE 3
+#define MAX_TYPE 4
 
 class Player : public Object
 {

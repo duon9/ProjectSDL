@@ -12,6 +12,7 @@ void Player::handleUserEvents(SDL_Event *e) {
 			case SDLK_z:
 				if (magic < MAX_TYPE) magic++;
 				else magic = 1;
+				break;
 			case SDLK_x:
 				if (!isInvisible) {
 					SDL_SetTextureAlphaMod(texture, 100);
@@ -38,7 +39,7 @@ void Player::handleUserEvents(SDL_Event *e) {
 				if (lastStatus != RUNNING) runSound->play();
 				orient.left = 1;
 				status = RUNNING;
-				flip = SDL_FLIP_HORIZONTAL;
+				//flip = SDL_FLIP_HORIZONTAL;
 				velo_x = -1;
 				break;
 			case SDLK_s:
@@ -55,7 +56,7 @@ void Player::handleUserEvents(SDL_Event *e) {
 				if (lastStatus != RUNNING) runSound->play();
 				orient.right = 1;
 				status = RUNNING;
-				flip = SDL_FLIP_NONE;
+				//flip = SDL_FLIP_NONE;
 				velo_x = 1;
 				break;
 			case SDLK_w:
@@ -146,6 +147,14 @@ void Player::handleUserEvents(SDL_Event *e) {
 					global::missles.push_back(ball);
 					break;
 				}
+				case 4:
+				{
+					HolySpear* ball = new HolySpear(renderer, { desRect.x, desRect.y }, { e->motion.x, e->motion.y }, { interface->camera.x, interface->camera.y }, code);
+					global::missles.push_back(ball);
+					break;
+				}
+				default:
+					break;
 				}
 			}
 		}
@@ -286,6 +295,8 @@ void Player::setAbility() {
 	IceLancet::loadClips();
 	IceLancet::loadTexture(renderer);
 
+	HolySpear::loadClips();
+	HolySpear::loadTexture(renderer);
 }
 
 SDL_Point Player::getCursorPosition(SDL_Event* e) {
