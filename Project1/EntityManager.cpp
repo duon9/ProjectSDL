@@ -72,6 +72,10 @@ void EntityManager::HandleEvents() {
 		computer->handleLogic();
 	}
 
+	for (auto& teleporter : global::teleporters) {
+		teleporter->isTeleport(player->getRect());
+	}
+
 	for (auto& object : global::missles) {
 		if (object->getCollideState()) {
 			continue;
@@ -108,6 +112,11 @@ void EntityManager::render() {
 	for (auto& object : global::missles) {
 		interface->updateObjectScreenPosition(object->position, object->desRect);
 		object->render(); // error
+	}
+
+	for (auto& teleporter : global::teleporters) {
+		interface->updateObjectScreenPosition(teleporter->position, teleporter->desRect);
+		teleporter->render();
 	}
 }
 
@@ -172,6 +181,12 @@ void EntityManager::setComputer() {
 		computers.push_back(li);
 		layers.push_back(li);
 	}*/
+	for (int i = 0; i < 1; i++) {
+		Teleporter* teleporter = new Teleporter(renderer);
+		teleporter->init();
+		global::teleporters.push_back(teleporter);
+	}
+
 }
 
 //void Object::handleLogic() {

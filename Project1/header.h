@@ -23,6 +23,6 @@ private:
 	TTF_Font* font = nullptr;
 	SDL_Texture* texture = nullptr;
 	SDL_Rect textRect;
-	SDL_Color color = { 0,0,0,255 };
+	SDL_Color color = { 255,255,255,255 };
 };
 

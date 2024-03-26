@@ -14,8 +14,7 @@ public:
 
 	}
 	virtual void init() override;
-	void teleport();
-
-
+	virtual void render() override;
+	bool isTeleport(SDL_Rect object);
 };
 

@@ -7,6 +7,7 @@
 #include "header.h"
 #include "tutorial.h"
 #include "sfx.h"
+#include "EarthPlanet.h"
 
 #ifdef __cplusplus
 extern "C"
@@ -32,6 +33,7 @@ public:
 	void background();
 	void init3D();
 private:
+	EarthPlanet* earth = nullptr;
 	SFX* music = nullptr;
 	bool isOpen = false;
 	Tutorial* tutorialwindow = nullptr;

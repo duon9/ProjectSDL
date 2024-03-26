@@ -135,8 +135,10 @@
     <ClCompile Include="button.cpp" />
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="computer.cpp" />
+    <ClCompile Include="EarthPlanet.cpp" />
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="FireBall.cpp" />
+    <ClCompile Include="galaxy.cpp" />
     <ClCompile Include="global.cpp" />
     <ClCompile Include="header.cpp" />
     <ClCompile Include="HolySpear.cpp" />
@@ -179,8 +181,10 @@
     <ClInclude Include="button.h" />
     <ClInclude Include="collision.h" />
     <ClInclude Include="computer.h" />
+    <ClInclude Include="EarthPlanet.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="FireBall.h" />
+    <ClInclude Include="galaxy.h" />
     <ClInclude Include="global.h" />
     <ClInclude Include="header.h" />
     <ClInclude Include="HolySpear.h" />
