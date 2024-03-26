@@ -159,19 +159,19 @@ void EntityManager::setComputer() {
 		layers.push_back(computer);
 	}*/
 
-	for (int i = 0; i < 5; i++) {
+	for (int i = 0; i < 10; i++) {
 		Skeleton* li = new Skeleton(renderer);
 		li->init();
 		computers.push_back(li);
 		layers.push_back(li);
 	}
 
-	for (int i = 0; i < 1; i++) {
+	/*for (int i = 0; i < 1; i++) {
 		NightBorne* li = new NightBorne(renderer);
 		li->init();
 		computers.push_back(li);
 		layers.push_back(li);
-	}
+	}*/
 }
 
 //void Object::handleLogic() {

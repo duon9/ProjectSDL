@@ -14,14 +14,7 @@ void Player::handleUserEvents(SDL_Event *e) {
 				else magic = 1;
 				break;
 			case SDLK_x:
-				if (!isInvisible) {
-					SDL_SetTextureAlphaMod(texture, 100);
-					isInvisible = true;
-				}
-				else {
-					SDL_SetTextureAlphaMod(texture, 255);
-					isInvisible = false;
-				}
+				std::cout << position.x << " " << position.y;
 				break;
 			case SDLK_r:
 				check_death = false;
@@ -35,7 +28,7 @@ void Player::handleUserEvents(SDL_Event *e) {
 				break;
 			case SDLK_a:
 			case SDLK_LEFT:
-				if (orient.right == 1 || status == ATTACKING || frameTick > 0) return;
+				if (orient.right == 1 || status == ATTACKING) return;
 				if (lastStatus != RUNNING) runSound->play();
 				orient.left = 1;
 				status = RUNNING;
@@ -44,7 +37,7 @@ void Player::handleUserEvents(SDL_Event *e) {
 				break;
 			case SDLK_s:
 			case SDLK_DOWN:
-				if (orient.up == 1 || status == ATTACKING || frameTick > 0) return;
+				if (orient.up == 1 || status == ATTACKING) return;
 				if (lastStatus != RUNNING) runSound->play();
 				orient.down = 1;
 				status = RUNNING;
@@ -52,7 +45,7 @@ void Player::handleUserEvents(SDL_Event *e) {
 				break;
 			case SDLK_d:
 			case SDLK_RIGHT:
-				if (orient.left == 1 || status == ATTACKING || frameTick > 0) return;
+				if (orient.left == 1 || status == ATTACKING) return;
 				if (lastStatus != RUNNING) runSound->play();
 				orient.right = 1;
 				status = RUNNING;
@@ -61,7 +54,7 @@ void Player::handleUserEvents(SDL_Event *e) {
 				break;
 			case SDLK_w:
 			case SDLK_UP:
-				if (orient.down == 1 || status == ATTACKING || frameTick > 0) return;
+				if (orient.down == 1 || status == ATTACKING) return;
 				if (lastStatus != RUNNING) runSound->play();
 				orient.up = 1;
 				status = RUNNING;
@@ -166,17 +159,6 @@ void Player::handleUserEvents(SDL_Event *e) {
 void Player::move() {
 	if (/*collisionHandle(collider) && */!check_death && !check_pause) {
 		// TODO: found some problem here
-		if (isInvisible == true) {
-			if (stat.mana <= 0) {
-				isInvisible = false;
-				SDL_SetTextureAlphaMod(texture, 255);
-			}
-			else {
-				stat.mana -= 1;
-			}
-			//stat.mana -= 2;
-		}
-
 		if (frameTick > 0) {
 			frameTick--;
 			if (frameTick == 0) {

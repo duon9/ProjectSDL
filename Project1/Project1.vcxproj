@@ -151,6 +151,7 @@
     <ClCompile Include="FPScontroller.cpp" />
     <ClCompile Include="FPSparameter.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="Ray.cpp" />
     <ClCompile Include="sfx.cpp" />
     <ClCompile Include="skeleton.cpp" />
     <ClCompile Include="Static.cpp" />
@@ -195,6 +196,7 @@
     <ClInclude Include="FPSparameter.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="constant.h" />
+    <ClInclude Include="Ray.h" />
     <ClInclude Include="sfx.h" />
     <ClInclude Include="skeleton.h" />
     <ClInclude Include="Static.h" />
