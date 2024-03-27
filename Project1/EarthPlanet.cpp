@@ -5,9 +5,8 @@ void EarthPlanet::loadClips() {
 		for (int j = 0; j < 15; j++) {
 			clips.push_back({ j * SIZE, i * SIZE, SIZE, SIZE });
 		}
-	}
-	for (int i = 0; i < 4; i++) {
 		luff.push_back(clips);
+		clips.clear();
 	}
 }
 
@@ -35,15 +34,15 @@ void EarthPlanet::render() {
 		SDL_RenderCopy(renderer, texture1, &srcRect, &desRect);
 	}
 	else if (c >= HALFCOUNT && r < HALFCOUNT) {
-		srcRect = luff[r][c];
+		srcRect = luff[r][c - HALFCOUNT];
 		SDL_RenderCopy(renderer, texture2, &srcRect, &desRect);
 	}
 	else if (c < HALFCOUNT && r >= HALFCOUNT) {
-		srcRect = luff[r][c];
+		srcRect = luff[r - HALFCOUNT][c];
 		SDL_RenderCopy(renderer, texture3, &srcRect, &desRect);
 	}
 	else if (r >= HALFCOUNT && c >= HALFCOUNT) {
-		srcRect = luff[r][c];
+		srcRect = luff[r-HALFCOUNT][c-HALFCOUNT];
 		SDL_RenderCopy(renderer, texture4, &srcRect, &desRect);
 	}
 
