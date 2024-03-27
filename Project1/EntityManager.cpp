@@ -75,8 +75,8 @@ void EntityManager::HandleEvents() {
 	for (auto& teleporter : global::teleporters) {
 		if (teleporter->isTeleport(player->getEntityCenterPoint())) {
 			if (map == teleporter->getCurrentMap()) {
-				map = teleporter->getDestination();
 				clean();
+				map = teleporter->getDestination();
 				//setComputer();
 				Object::collider = File::readCollision(teleporter->getColliderPath());
 				interface->reload(teleporter->getInterfacePath());
@@ -155,6 +155,10 @@ void EntityManager::reload() {
 }
 
 void EntityManager::clean() {
+
+	/*for (auto& teleporter : global::teleporters) {
+		delete teleporter;
+	}*/
 	global::teleporters.clear();
 	for (int i = 0; i < (int)computers.size(); i++) {
 		delete computers[i];
@@ -199,7 +203,7 @@ void EntityManager::setComputer() {
 		teleporter->setMap(Map::LIBRARY);
 		teleporter->setColliderPath(grey);
 		teleporter->setDestination(Map::GREYYARD);
-		teleporter->setDestinationPoint({ 906,589 });
+		teleporter->setDestinationPoint({ 916,615 });
 		teleporter->setInterfacePath(greyyard);
 		teleporter->setLocation({ -90,6*32 });
 		global::teleporters.push_back(teleporter);
