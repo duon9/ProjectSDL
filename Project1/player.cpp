@@ -207,9 +207,9 @@ void Player::setLocation() {
 	position.y = interface->camera.y + desRect.y;
 }
 
-void Player::setLocation(int x, int y) {
-	map_x = x / TILE_WIDTH;
-	map_y = y / TILE_HEIGHT;
+void Player::setLocation(SDL_Point p) {
+	map_x = p.x / TILE_WIDTH;
+	map_y = p.y / TILE_HEIGHT;
 	//setSize(64, 64);
 	interface->cameraInitLocation(map_x, map_y);
 	interface->cameraInitObjectLocation(map_x, map_y, desRect);
@@ -260,7 +260,6 @@ void Player::setBarProperties() {
 
 void Player::reload() {
 	collision->reload(Object::collider);
-	setLocation(0, 6 * 32);
 }
 
 void Player::draw() {

@@ -47,7 +47,7 @@ public:
 	virtual void move() override;
 	virtual void handleUserEvents(SDL_Event *e);
 	virtual void setLocation() override;
-	void setLocation(int x, int y);
+	void setLocation(SDL_Point p);
 	virtual void setCollision() override;
 	virtual void setProtocolCode() override;
 	virtual void draw() override;

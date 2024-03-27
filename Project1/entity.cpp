@@ -73,3 +73,7 @@ void Entity::handleMissle(int damage) {
 void Entity::handleLogic() {
 	return;
 }
+
+SDL_Point Entity::getEntityCenterPoint() {
+	return { position.x + desRect.w / 2, position.y + desRect.h / 2 };
+}

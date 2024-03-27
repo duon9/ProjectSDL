@@ -73,7 +73,18 @@ void EntityManager::HandleEvents() {
 	}
 
 	for (auto& teleporter : global::teleporters) {
-		teleporter->isTeleport(player->getRect());
+		if (teleporter->isTeleport(player->getEntityCenterPoint())) {
+			if (map == teleporter->getCurrentMap()) {
+				map = teleporter->getDestination();
+				clean();
+				//setComputer();
+				Object::collider = File::readCollision(teleporter->getColliderPath());
+				interface->reload(teleporter->getInterfacePath());
+				player->reload();
+				player->setLocation(teleporter->getDestinationPoint());
+				setComputer();
+			}
+		}
 	}
 
 	for (auto& object : global::missles) {
@@ -144,6 +155,7 @@ void EntityManager::reload() {
 }
 
 void EntityManager::clean() {
+	global::teleporters.clear();
 	for (int i = 0; i < (int)computers.size(); i++) {
 		delete computers[i];
 	}
@@ -181,22 +193,26 @@ void EntityManager::setComputer() {
 		computers.push_back(li);
 		layers.push_back(li);
 	}*/
-	for (int i = 0; i < 1; i++) {
+	if (map == LIBRARY) {
 		Teleporter* teleporter = new Teleporter(renderer);
 		teleporter->init();
+		teleporter->setMap(Map::LIBRARY);
+		teleporter->setColliderPath(grey);
+		teleporter->setDestination(Map::GREYYARD);
+		teleporter->setDestinationPoint({ 906,589 });
+		teleporter->setInterfacePath(greyyard);
+		teleporter->setLocation({ -90,6*32 });
 		global::teleporters.push_back(teleporter);
 	}
-
+	if (map == GREYYARD) {
+		Teleporter* teleporter = new Teleporter(renderer);
+		teleporter->init();
+		teleporter->setMap(Map::GREYYARD);
+		teleporter->setColliderPath(water_town);
+		teleporter->setDestination(Map::LIBRARY);
+		teleporter->setDestinationPoint({ 0,6*32 });
+		teleporter->setInterfacePath(TEST);
+		teleporter->setLocation({ 950,589 });
+		global::teleporters.push_back(teleporter);
+	}
 }
-
-//void Object::handleLogic() {
-//	if (stat.health < 0) {
-//		status = DEATH;
-//		check_death = true;
-//	}
-//	else if (stat.health < lastHealth) {
-//		status = TAKEDAMAGE;
-//		frameTick = 30;
-//	}
-//	lastHealth = stat.health;
-//}

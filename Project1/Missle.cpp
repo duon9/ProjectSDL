@@ -43,7 +43,7 @@ void Missle::handleEffect(SDL_Rect target) {
 }
 
 void Missle::projectile() {
-	if (state == FINAL || state == FORMATION) {
+	if (state == FINAL /*|| state == FORMATION*/) {
 		position.x += v.getX() * speed;
 		position.y += v.getY() * speed;
 	}
