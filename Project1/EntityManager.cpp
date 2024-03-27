@@ -183,12 +183,16 @@ void EntityManager::setComputer() {
 		computers.push_back(computer);
 		layers.push_back(computer);
 	}*/
+	if (map == TAVERN) {
 
-	for (int i = 0; i < 10; i++) {
-		Skeleton* li = new Skeleton(renderer);
-		li->init();
-		computers.push_back(li);
-		layers.push_back(li);
+	}
+	else {
+		for (int i = 0; i < 10; i++) {
+			Skeleton* li = new Skeleton(renderer);
+			li->init();
+			computers.push_back(li);
+			layers.push_back(li);
+		}
 	}
 
 	/*for (int i = 0; i < 1; i++) {
@@ -208,7 +212,7 @@ void EntityManager::setComputer() {
 		teleporter->setLocation({ -90,6*32 });
 		global::teleporters.push_back(teleporter);
 	}
-	if (map == GREYYARD) {
+	else if (map == GREYYARD) {
 		Teleporter* teleporter = new Teleporter(renderer);
 		teleporter->init();
 		teleporter->setMap(Map::GREYYARD);
@@ -217,6 +221,27 @@ void EntityManager::setComputer() {
 		teleporter->setDestinationPoint({ 0,6*32 });
 		teleporter->setInterfacePath(TEST);
 		teleporter->setLocation({ 950,589 });
+		global::teleporters.push_back(teleporter);
+
+		Teleporter* teleporter2 = new Teleporter(renderer);
+		teleporter2->init();
+		teleporter2->setMap(Map::GREYYARD);
+		teleporter2->setColliderPath(tavern_collision);
+		teleporter2->setDestination(Map::TAVERN);
+		teleporter2->setDestinationPoint({ 12 * 32,12 * 32 });
+		teleporter2->setInterfacePath(tavern_interface);
+		teleporter2->setLocation({ 0,10 * 32 });
+		global::teleporters.push_back(teleporter2);
+	}
+	else if (map == TAVERN) {
+		Teleporter* teleporter = new Teleporter(renderer);
+		teleporter->init();
+		teleporter->setMap(Map::TAVERN);
+		teleporter->setColliderPath(grey);
+		teleporter->setDestination(Map::GREYYARD);
+		teleporter->setDestinationPoint({ 0,6 * 32 });
+		teleporter->setInterfacePath(greyyard);
+		teleporter->setLocation({ 12 * 32, 20 * 32 });
 		global::teleporters.push_back(teleporter);
 	}
 }

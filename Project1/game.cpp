@@ -86,7 +86,7 @@ void Game::render() {
 	default:
 		break;
 	}
-
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderPresent(renderer);
 	FPScontroller::FPSlimit(60);
 }

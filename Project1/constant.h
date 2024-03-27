@@ -43,6 +43,7 @@ enum Map {
 	FROST_HILL,
 	ELF_WOOD,
 	DWARF_FORTRESS,
+	TAVERN
 };
 
 enum charState {
@@ -174,7 +175,8 @@ const std::string font2 = "assets/fonts/hlfants2.ttf";
 const std::string font3 = "assets/fonts/hlfants3.ttf";
 const std::string font4 = "assets/fonts/hlfreewr.ttf";
 const std::string greyyard = "assets/map/republic_grey.png";
-
+const std::string tavern_interface = "assets/map/tavern.png";
+const std::string tavern_collision = "assets/map/tavern.tmj";
 const double TOLERANCE = 0.03;
 
 #define MISSLE_WIDTH 64
