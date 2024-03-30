@@ -27,6 +27,17 @@ public:
 		this->v.normalize();
 	}
 
+	Missle(SDL_Renderer* renderer, SDL_Point currPos, SDL_Point desPos, Uint32 code) : Animated(renderer) {
+		desRect.w = MISSLE_WIDTH;
+		desRect.h = MISSLE_HEIGHT;
+		this->code = code;
+		this->v = Math::Vector(currPos, desPos);
+		position.x = currPos.x;
+		position.y = currPos.y;
+		this->angle = v.countAngle();
+		this->v.normalize();
+	}
+
 	~Missle() {
 
 	}

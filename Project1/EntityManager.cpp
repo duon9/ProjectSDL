@@ -25,6 +25,7 @@ void EntityManager::init() {
 	NightBorne::vessel = TextureManagement::LoadTexture("assets/characters/NightBorne.png", renderer);
 	Player::vessel = TextureManagement::LoadTexture("assets/characters/little.png", renderer);
 	Skeleton::vessel = TextureManagement::LoadTexture("assets/characters/skeleton.png", renderer);
+	FireWorm::vessel = TextureManagement::LoadTexture("assets/characters/fireworm.png", renderer);
 	player = new Player(renderer, "little", interface);
 	player->init();
 	layers.push_back(player);
@@ -191,18 +192,25 @@ void EntityManager::setComputer() {
 		layers.push_back(guard);
 	}
 	else {
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 0; i++) {
 			Skeleton* li = new Skeleton(renderer);
 			li->init();
 			computers.push_back(li);
 			layers.push_back(li);
 		}
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 0; i++) {
 			NightBorne* li = new NightBorne(renderer);
 			li->init();
 			computers.push_back(li);
 			layers.push_back(li);
 		}
+		for (int i = 0; i < 1; i++) {
+			FireWorm* li = new FireWorm(renderer);
+			li->init();
+			computers.push_back(li);
+			layers.push_back(li);
+		}
+
 	}
 
 	if (map == LIBRARY) {

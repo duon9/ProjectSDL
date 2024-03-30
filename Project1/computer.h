@@ -33,7 +33,7 @@ public:
 	bool isReachDestination(Math::Vector v);
 	bool isInAttackRange();
 	bool trackNearestTarget(Player* target);
-	void chaseTarget(Player* target);
+	virtual void chaseTarget(Player* target);
 	virtual void setProtocolCode() override;
 	//void waitToRevive();
 };
