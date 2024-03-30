@@ -51,9 +51,8 @@ void Entity::setTexture(std::string path, SDL_Renderer* renderer) {
 }
 
 void Entity::setLocation() {
-	position.x = Math::Casuale::casuale(0, 50) * TILE_WIDTH;
-	position.y = Math::Casuale::casuale(0, 50) * TILE_WIDTH;
-
+	position.x = Math::Casuale::casuale(0, 500);
+	position.y = Math::Casuale::casuale(0, 500);
 }
 
 void Entity::setLocation(SDL_Point location) {

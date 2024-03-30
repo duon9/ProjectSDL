@@ -138,6 +138,8 @@
     <ClCompile Include="EarthPlanet.cpp" />
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="FireBall.cpp" />
+    <ClCompile Include="FireBomb.cpp" />
+    <ClCompile Include="FireWorm.cpp" />
     <ClCompile Include="galaxy.cpp" />
     <ClCompile Include="global.cpp" />
     <ClCompile Include="header.cpp" />
@@ -148,6 +150,7 @@
     <ClCompile Include="minotaur.cpp" />
     <ClCompile Include="Missle.cpp" />
     <ClCompile Include="NightBorne.cpp" />
+    <ClCompile Include="npc_guard.cpp" />
     <ClCompile Include="protocol.cpp" />
     <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="FPScontroller.cpp" />
@@ -184,6 +187,8 @@
     <ClInclude Include="EarthPlanet.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="FireBall.h" />
+    <ClInclude Include="FireBomb.h" />
+    <ClInclude Include="FireWorm.h" />
     <ClInclude Include="galaxy.h" />
     <ClInclude Include="global.h" />
     <ClInclude Include="header.h" />
@@ -194,6 +199,7 @@
     <ClInclude Include="minotaur.h" />
     <ClInclude Include="Missle.h" />
     <ClInclude Include="NightBorne.h" />
+    <ClInclude Include="npc_guard.h" />
     <ClInclude Include="protocol.h" />
     <ClInclude Include="EntityManager.h" />
     <ClInclude Include="FPScontroller.h" />

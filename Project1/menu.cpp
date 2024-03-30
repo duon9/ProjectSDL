@@ -34,18 +34,18 @@ void Menu::init() {
 	tutorial = new AnimatedButton(renderer, { 400 - 160 - 50, 304 + 30 + 60,160, 60 }, "TUTORIAL", menuFont);
 	exit = new AnimatedButton(renderer, { 400 + 50, 304 + 30 + 60, 160, 60 }, "EXIT", menuFont);
 	music = new SFX();
-	earth = new EarthPlanet(renderer);
+	//earth = new EarthPlanet(renderer);
 	music->add("assets/audio/music-game.wav");
 	header = new Header(renderer, "Bastard", headerFont);
 	btn->init();
 	load->init();
-	earth->init();
+	//earth->init();
 	tutorial->init();
 	exit->init();
 	header->init();
 	tutorialwindow->init();
 	
-	init3D();
+	//init3D();
 	music->play();
 }
 
@@ -93,9 +93,9 @@ void Menu::render() {
 }
 
 void Menu::background() {
-	earth->render();
-	/*last = now;
-	now = SDL_GetTicks();
+	//earth->render();
+	//last = now;
+	/*now = SDL_GetTicks();
 	gameFrame(deltaTime, cubes, &cubesLength);
 	draw(renderer);
 	drawCubes(renderer, cubes, cubesLength);

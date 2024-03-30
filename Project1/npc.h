@@ -13,6 +13,7 @@ public:
 	~NPC() {
 
 	}
-	virtual void setProtocolCode() override;
+	//virtual void setProtocolCode() override;
+	
 };
 

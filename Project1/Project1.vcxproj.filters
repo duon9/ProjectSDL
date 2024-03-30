@@ -147,6 +147,15 @@
     <ClCompile Include="EarthPlanet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="npc_guard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FireBomb.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FireWorm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -279,6 +288,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EarthPlanet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="npc_guard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FireBomb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FireWorm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

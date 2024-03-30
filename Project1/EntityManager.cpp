@@ -126,8 +126,8 @@ void EntityManager::render() {
 	}
 
 	for (auto& teleporter : global::teleporters) {
-		interface->updateObjectScreenPosition(teleporter->position, teleporter->desRect);
-		teleporter->render();
+		/*interface->updateObjectScreenPosition(teleporter->position, teleporter->desRect);
+		teleporter->render();*/
 	}
 }
 
@@ -159,6 +159,7 @@ void EntityManager::clean() {
 	/*for (auto& teleporter : global::teleporters) {
 		delete teleporter;
 	}*/
+	global::missles.clear();
 	global::teleporters.clear();
 	for (int i = 0; i < (int)computers.size(); i++) {
 		delete computers[i];
@@ -184,7 +185,10 @@ void EntityManager::setComputer() {
 		layers.push_back(computer);
 	}*/
 	if (map == TAVERN) {
-
+		Guard* guard = new Guard(renderer);
+		guard->init();
+		guard->setLocation({ 15 * 32, 15 * 32 });
+		layers.push_back(guard);
 	}
 	else {
 		for (int i = 0; i < 10; i++) {
@@ -193,14 +197,14 @@ void EntityManager::setComputer() {
 			computers.push_back(li);
 			layers.push_back(li);
 		}
+		for (int i = 0; i < 1; i++) {
+			NightBorne* li = new NightBorne(renderer);
+			li->init();
+			computers.push_back(li);
+			layers.push_back(li);
+		}
 	}
 
-	/*for (int i = 0; i < 1; i++) {
-		NightBorne* li = new NightBorne(renderer);
-		li->init();
-		computers.push_back(li);
-		layers.push_back(li);
-	}*/
 	if (map == LIBRARY) {
 		Teleporter* teleporter = new Teleporter(renderer);
 		teleporter->init();
@@ -228,9 +232,9 @@ void EntityManager::setComputer() {
 		teleporter2->setMap(Map::GREYYARD);
 		teleporter2->setColliderPath(tavern_collision);
 		teleporter2->setDestination(Map::TAVERN);
-		teleporter2->setDestinationPoint({ 12 * 32,12 * 32 });
+		teleporter2->setDestinationPoint({ 594 + 22,904 });
 		teleporter2->setInterfacePath(tavern_interface);
-		teleporter2->setLocation({ 0,10 * 32 });
+		teleporter2->setLocation({ -90,10 * 32 });
 		global::teleporters.push_back(teleporter2);
 	}
 	else if (map == TAVERN) {
@@ -239,9 +243,10 @@ void EntityManager::setComputer() {
 		teleporter->setMap(Map::TAVERN);
 		teleporter->setColliderPath(grey);
 		teleporter->setDestination(Map::GREYYARD);
-		teleporter->setDestinationPoint({ 0,6 * 32 });
+		teleporter->setDestinationPoint({ 0,350 });
 		teleporter->setInterfacePath(greyyard);
-		teleporter->setLocation({ 12 * 32, 20 * 32 });
+		teleporter->setLocation({ 592 + 16, 900 + 30 });
+		teleporter->setSize(32, 32);
 		global::teleporters.push_back(teleporter);
 	}
 }

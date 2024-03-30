@@ -103,16 +103,16 @@ void Object::render() {
 	draw();
 }
 
-void Object::setLocation() {
-	
-
-	position.x = Math::Casuale::casuale(0, 500);
-	position.y = Math::Casuale::casuale(0, 500);
-	/*position.y = Math::Casuale::casuale(0, 1000);*/
-
-	//desRect = { 0,0, 54, 54};
-	
-}
+//void Object::setLocation() {
+//	
+//
+//	position.x = Math::Casuale::casuale(0, 500);
+//	position.y = Math::Casuale::casuale(0, 500);
+//	/*position.y = Math::Casuale::casuale(0, 1000);*/
+//
+//	//desRect = { 0,0, 54, 54};
+//	
+//}
 
 void Object::init() {
 	setProtocolCode();

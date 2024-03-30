@@ -5,7 +5,7 @@
 #include "little.h"
 #include "NightBorne.h"
 #include "skeleton.h"
-
+#include "npc_guard.h"
 class EntityManager
 {
 private:

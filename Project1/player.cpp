@@ -146,6 +146,11 @@ void Player::handleUserEvents(SDL_Event *e) {
 					global::missles.push_back(ball);
 					break;
 				}
+				case 5:
+				{
+					FireBomb* ball = new FireBomb(renderer, { desRect.x, desRect.y }, { e->motion.x, e->motion.y }, { interface->camera.x, interface->camera.y }, code);
+					global::missles.push_back(ball);
+				}
 				default:
 					break;
 				}
@@ -278,6 +283,9 @@ void Player::setAbility() {
 
 	HolySpear::loadClips();
 	HolySpear::loadTexture(renderer);
+
+	FireBomb::loadClips();
+	FireBomb::loadTexture(renderer);
 }
 
 SDL_Point Player::getCursorPosition(SDL_Event* e) {

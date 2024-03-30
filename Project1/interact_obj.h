@@ -47,7 +47,7 @@ public:
 	virtual void setProperties();
 	virtual void setCollision();
 	virtual void move();
-	virtual void setLocation() override;
+	/*virtual void setLocation() override;*/
 	virtual void init() override;
 	virtual void render() override;
 	virtual void draw();
