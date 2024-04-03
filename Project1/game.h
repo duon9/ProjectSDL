@@ -12,6 +12,7 @@
 #include "EntityManager.h"
 #include "FPScontroller.h"
 #include "utils.h"
+#include "global.h"
 
 class Game
 {
@@ -25,8 +26,8 @@ public:
 private:
 	void init(const char* title, int _x, int _y, int w, int h, Uint32 flags);
 	SDL_Event e;
-	SDL_Window* window = nullptr;
-	SDL_Renderer* renderer = nullptr;
+	//SDL_Window* window = nullptr;
+	//SDL_Renderer* renderer = nullptr;
 	int screenWidth;
 	int screenHeight;
 	void handleEvents();

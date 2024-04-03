@@ -3,8 +3,8 @@
 Game::Game() {
 	std::cout << "Constructor Game started" << std::endl;
 
-	window = nullptr;
-	renderer = nullptr;
+	global::window = nullptr;
+	global::renderer = nullptr;
 	screenWidth = 800;
 	screenHeight = 608;
 	Global::gamestate = GameState::MENU;
@@ -20,19 +20,18 @@ void Game::run() {
 }
 
 void Game::init(const char* title, int _x, int _y, int _w, int _h, Uint32 flags) {
-	std::cout << "start initialize Game class" << std::endl;
 	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
 	SDL_Init(SDL_INIT_EVERYTHING);
 	IMG_Init(IMG_INIT_JPG);
 	IMG_Init(IMG_INIT_PNG);
 	TTF_Init();
-	window = SDL_CreateWindow(title, _x, _y, _w, _h, flags);
-	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE | SDL_RENDERER_PRESENTVSYNC);
-	menu = new Menu(renderer);
+	global::window = SDL_CreateWindow(title, _x, _y, _w, _h, flags);
+	global::renderer = SDL_CreateRenderer(global::window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE | SDL_RENDERER_PRESENTVSYNC);
+	menu = new Menu(global::renderer);
 	menu->init();
-	interface = new Interface(renderer, map);
+	interface = new Interface(global::renderer, map);
 	interface->init();
-	entitys = new EntityManager(renderer, &e, map, interface);
+	entitys = new EntityManager(global::renderer, &e, map, interface);
 	entitys->init();
 }
 
@@ -70,7 +69,7 @@ void Game::handleEvents() {
 }
 
 void Game::render() {
-	SDL_RenderClear(renderer);
+	SDL_RenderClear(global::renderer);
 
 	switch (Global::gamestate) {
 	case GameState::MENU:
@@ -86,8 +85,8 @@ void Game::render() {
 	default:
 		break;
 	}
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-	SDL_RenderPresent(renderer);
+	SDL_SetRenderDrawColor(global::renderer, 0, 0, 0, 255);
+	SDL_RenderPresent(global::renderer);
 	FPScontroller::FPSlimit(60);
 }
 

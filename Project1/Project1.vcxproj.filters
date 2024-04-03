@@ -159,6 +159,12 @@
     <ClCompile Include="dialogue_box.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LTexture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LBitmapFont.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -303,6 +309,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="dialogue_box.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LTexture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LBitmapFont.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
