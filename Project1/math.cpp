@@ -35,7 +35,7 @@ void Math::Vector::setY(double val) {
 }
 
 double Math::Vector::getDistance() {
-	return sqrt(x * x + y * y);
+	return sqrt(pow(x,2) + pow(y,2));
 }
 
 Math::Vector Math::Vector::operator+(const Math::Vector& other) {

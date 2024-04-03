@@ -72,7 +72,7 @@ void Player::handleUserEvents(SDL_Event *e) {
 			case SDLK_a:
 			case SDLK_LEFT:
 				//status = IDLE;
-				runSound->stop();
+				//runSound->stop();
 				velo_x = 0;
 				orient.left = 0;
 				//velo_x = 0;
@@ -81,7 +81,7 @@ void Player::handleUserEvents(SDL_Event *e) {
 			case SDLK_s:
 			case SDLK_DOWN:
 				//status = IDLE;
-				runSound->stop();
+				//runSound->stop();
 				orient.down = 0;
 				velo_y = 0;
 		
@@ -91,14 +91,14 @@ void Player::handleUserEvents(SDL_Event *e) {
 			case SDLK_RIGHT:
 				//status = IDLE;
 				//velo_x = 0;
-				runSound->stop();
+				//runSound->stop();
 				orient.right = 0;
 				velo_x = 0;
 				break;
 			case SDLK_w:
 			case SDLK_UP:
 				//status = IDLE;
-				runSound->stop();
+				//runSound->stop();
 				orient.up = 0;
 				velo_y = 0;
 				//velo_y = 0;
@@ -157,7 +157,10 @@ void Player::handleUserEvents(SDL_Event *e) {
 			}
 		}
 
-		if (check && frameTick == 0) status = IDLE;
+		if (check && frameTick == 0) {
+			status = IDLE;
+			runSound->stop();
+		}
 	}
 }
 

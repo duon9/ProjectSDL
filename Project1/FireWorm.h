@@ -1,6 +1,7 @@
 #pragma once
 #include "computer.h"
 #include "FireBomb.h"
+#include "FireBall.h"
 
 class FireWorm : public Computer
 {

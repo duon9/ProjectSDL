@@ -26,6 +26,7 @@ Menu::~Menu() {
 void Menu::init() {
 	//std::cout << "start Menu initialize" << std::endl;
 	menuFont = TTF_OpenFont("assets/fonts/test.ttf", 20);
+	landscape = TextureManagement::LoadTexture("assets/menu/background.png", renderer);
 	//btnFont = TTF_OpenFont(font2.c_str(), 20);
 	headerFont = TTF_OpenFont(font2.c_str(), 120);
 	tutorialwindow = new Tutorial(renderer, menuFont);
@@ -93,6 +94,7 @@ void Menu::render() {
 }
 
 void Menu::background() {
+	SDL_RenderCopy(renderer, landscape, NULL, NULL);
 	//earth->render();
 	//last = now;
 	/*now = SDL_GetTicks();

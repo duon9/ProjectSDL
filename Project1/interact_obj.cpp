@@ -64,6 +64,7 @@ void Object::logicHandle() {
 	if (stat.health <= 0) {
 		check_death = true;
 		status = charState::DEATH;
+		//death();
 	}
 }
 

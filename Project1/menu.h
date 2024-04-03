@@ -33,6 +33,7 @@ public:
 	void background();
 	void init3D();
 private:
+	SDL_Texture* landscape = nullptr;
 	EarthPlanet* earth = nullptr;
 	SFX* music = nullptr;
 	bool isOpen = false;

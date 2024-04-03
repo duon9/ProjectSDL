@@ -16,7 +16,9 @@ enum RandomOrient {
 class Computer : public Object
 {
 private:
-	bool find_enemy = false;
+
+protected:
+	int range = 30;
 public:
 	Computer(SDL_Renderer* renderer, std::string type) : Object(renderer) {
 		std::cout << "Computer class constructor called \n";

@@ -190,6 +190,14 @@ void EntityManager::setComputer() {
 		guard->init();
 		guard->setLocation({ 15 * 32, 15 * 32 });
 		layers.push_back(guard);
+
+		for (int i = 0; i < 1; i++) {
+			Skeleton* li = new Skeleton(renderer);
+			li->init();
+			li->setLocation({ 20 * 32,20 * 32 });
+			computers.push_back(li);
+			layers.push_back(li);
+		}
 	}
 	else {
 		for (int i = 0; i < 0; i++) {

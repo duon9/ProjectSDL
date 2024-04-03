@@ -156,6 +156,9 @@
     <ClCompile Include="FireWorm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="dialogue_box.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -297,6 +300,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FireWorm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dialogue_box.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

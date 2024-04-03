@@ -27,18 +27,9 @@ void Computer::chaseTarget(Player* target) {
 }
 
 bool Computer::trackNearestTarget(Player* target) {
-	//std::cout << stat.health << std::endl;
-	/*for (auto target = targets.begin(); target != targets.end(); target++) {
-		if ((*target)->isInvisible || (*target)->check_death) continue;
-		Math::Vector v = Math::Vector(position, (*target)->getPosition());
-		if (v.Math::Vector::getDistance() < (10 * TILE_WIDTH)) {
-			return *target;
-		}
-	}*/
-
 	if (target->isInvisible || target->check_death) return false;
 	Math::Vector v = Math::Vector(position, target->getPosition());
-	if (v.Math::Vector::getDistance() < (10 * TILE_WIDTH)) return true;
+	if (v.Math::Vector::getDistance() < (range * TILE_WIDTH)) return true;
 	return false;
 }
 
@@ -52,12 +43,21 @@ bool Computer::moveTo(SDL_Point target) {
 		v = v / v.getDistance();
 
 		if (!collision->isCollidingHorizontal(v.getX() * stat.speed)) {
-			position.x += v.getX() * stat.speed;
+			//std::cout << position.x + stat.speed * v.getX() << std::endl;
+			position.x = position.x + (v.getX() * stat.speed); // speed should > 1 to prevent error
+			//std::cout << "X: " << position.x << std::endl;
+		}
+		else {
+			std::cout << "BlockX" << std::endl;
 		}
 		//position.x += v.getX() * stat.speed;
 
 		if (!collision->isCollidingVertical(v.getY() * stat.speed)) {
-			position.y += v.getY() * stat.speed;
+			//std::cout << stat.speed * v.getY() << std::endl;
+			position.y = position.y + (v.getY() * stat.speed); // speed should > 1 to prevent error
+		}
+		else {
+			std::cout << "BlockY" << std::endl;
 		}
 		//position.y += v.getY() * stat.speed;
 		return true;
@@ -69,7 +69,7 @@ bool Computer::moveTo(SDL_Point target) {
 }
 
 bool Computer::isReachDestination(Math::Vector v) {
-	if (v.getDistance() <= (int)(5*TILE_WIDTH)) {
+	if (v.getDistance() <= (int)(stat.range*TILE_WIDTH)) {
 		return true;
 	}
 	return false;

@@ -135,6 +135,7 @@
     <ClCompile Include="button.cpp" />
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="computer.cpp" />
+    <ClCompile Include="dialogue_box.cpp" />
     <ClCompile Include="EarthPlanet.cpp" />
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="FireBall.cpp" />
@@ -184,6 +185,7 @@
     <ClInclude Include="button.h" />
     <ClInclude Include="collision.h" />
     <ClInclude Include="computer.h" />
+    <ClInclude Include="dialogue_box.h" />
     <ClInclude Include="EarthPlanet.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="FireBall.h" />

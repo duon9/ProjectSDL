@@ -6,7 +6,7 @@ class Animated : public Entity
 {
 public:
 	Animated(SDL_Renderer* renderer) : Entity(renderer) {
-		SDL_Log("Animated constructor called \n");
+		//SDL_Log("Animated constructor called \n");
 	}
 	~Animated() {
 		SDL_Log("Animated destructor called \n");
