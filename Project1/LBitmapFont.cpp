@@ -225,3 +225,48 @@ void LBitmapFont::renderText(int x, int y, std::string text)
 		}
 	}
 }
+
+void LBitmapFont::show() {
+
+	if (curr == content.size()) return;
+	SDL_SetRenderTarget(global::renderer, target);
+	if (curr == 0) TextureManagement::FillRect(global::renderer, { 0,255, 0, 255 }, { 0,0,800,200 });
+	if (mFontTexture.getWidth() > 0)
+	{
+		//Temp offsets
+		//curX = 0, curY = 0;
+
+		if (content[curr] == ' ')
+		{
+			curX += mSpace;
+		}
+		else if (content[curr] == '\n')
+		{
+			curY += mNewLine;
+			curX = 0;
+		}
+		else
+		{
+			int ascii = (unsigned char)content[curr];
+
+			mFontTexture.render(curX, curY, &mChars[ascii]);
+
+			curX += mChars[ascii].w + 1;
+		}
+	}
+
+	SDL_SetRenderTarget(global::renderer, NULL);
+	curr++;
+}
+
+void LBitmapFont::present() {
+	SDL_Rect des = { 0,0, 800, 200 };
+	SDL_SetRenderDrawColor(global::renderer, 0, 255, 255, 255);
+	SDL_RenderCopy(global::renderer, target, NULL, &des);
+}
+
+void LBitmapFont::setCurr() {
+	curr = 0;
+	curX = 0;
+	curY = 0;
+}

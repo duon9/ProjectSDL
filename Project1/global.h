@@ -8,6 +8,7 @@ namespace global {
 	extern std::vector<Teleporter*> teleporters;
 	extern SDL_Renderer* renderer;
 	extern SDL_Window* window;
+	extern SDL_Event e;
 }
 
 

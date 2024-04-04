@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include <vector>
 #include <iostream>
+#include "protocol.h"
 
 class DialogueBox
 {
@@ -20,10 +21,6 @@ public:
 	~DialogueBox() {
 
 	}
-
-	void add(std::string content);
-	void show();
-	void next();
 
 };
 

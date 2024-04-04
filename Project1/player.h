@@ -10,6 +10,7 @@
 #include "HolySpear.h"
 #include "FireBomb.h"
 #include "global.h"
+#include "LBitmapFont.h"
 
 #define MAX_TYPE 5
 
@@ -23,6 +24,7 @@ protected:
 	SFX* runSound = new SFX();
 	Orient orient;
 	int magic = 1;
+	//LBitmapFont llma;
 public:
 	
 	Player(SDL_Renderer* renderer, std::string type, Interface * interface) : Object(renderer) {

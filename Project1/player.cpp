@@ -17,9 +17,7 @@ void Player::handleUserEvents(SDL_Event *e) {
 				std::cout << position.x << " " << position.y;
 				break;
 			case SDLK_r:
-				check_death = false;
-				status = IDLE;
-				setProperties();
+				//llma.setCurr();
 				break;
 
 			case SDLK_LSHIFT:
@@ -259,6 +257,8 @@ void Player::init() {
 	setClip();
 	setFrameLimit();
 	setCollision();
+
+	//llma.buildFont("assets/dialogue/lazyfont.png");
 }
 
 void Player::setBarProperties() {
@@ -272,6 +272,8 @@ void Player::reload() {
 
 void Player::draw() {
 	SDL_RenderCopyEx(renderer, Player::vessel, &srcRect, &desRect, NULL, NULL, flip);
+	/*llma.show();
+	llma.present();*/
 }
 
 void Player::setAbility() {

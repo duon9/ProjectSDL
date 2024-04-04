@@ -31,7 +31,7 @@ void Game::init(const char* title, int _x, int _y, int _w, int _h, Uint32 flags)
 	menu->init();
 	interface = new Interface(global::renderer, map);
 	interface->init();
-	entitys = new EntityManager(global::renderer, &e, map, interface);
+	entitys = new EntityManager(global::renderer, &global::e, map, interface);
 	entitys->init();
 }
 
@@ -43,21 +43,21 @@ void Game::gameLoop() {
 }
 
 void Game::handleEvents() {
-	SDL_PollEvent(&e);
+	SDL_PollEvent(&global::e);
 	if (Global::gamestate == GameState::MENU) {
-		if (menu->handleMenuEvents(e) == 1) {
+		if (menu->handleMenuEvents(global::e) == 1) {
 			Global::gamestate = GameState::PLAY;
 			delete menu;
 		}
-		else if (menu->handleMenuEvents(e) == 2) {
+		else if (menu->handleMenuEvents(global::e) == 2) {
 			printf("Still updating");
 		}
-		else if (menu->handleMenuEvents(e) == 4) {
+		else if (menu->handleMenuEvents(global::e) == 4) {
 			Global::gamestate = GameState::EXIT;
 		}
 	}
 
-	if (e.type == SDL_QUIT) {
+	if (global::e.type == SDL_QUIT) {
 		Global::gamestate = EXIT;
 	}
 
