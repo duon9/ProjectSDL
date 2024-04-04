@@ -39,7 +39,7 @@ public:
 	void updateSpeed(int newSpeed);
 	void updateRange(int newRange);
 	void updateDamage(int newDamage);
-	void listen(SDL_Event* e);
+	virtual void listen(SDL_Event* e);
 	void attack();
 	virtual void handleLogic() override;
 	virtual void setAbility();

@@ -92,8 +92,14 @@ void Interface::loadTexture() {
 void Interface::render() {
 	//parameter->render();
 	TextureManagement::Draw(renderer, texture, camera, screen);
+	/*health_display->render();
+	mana_display->render();*/
+}
+
+void Interface::renderUpward() {
 	health_display->render();
 	mana_display->render();
+	box.render();
 }
 
 void Interface::handleInterfaceEvents() {

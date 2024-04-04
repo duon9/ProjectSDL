@@ -19,6 +19,8 @@ void Player::handleUserEvents(SDL_Event *e) {
 			case SDLK_r:
 				//llma.setCurr();
 				break;
+			case SDLK_e:
+				protocol->send(getPosition());
 
 			case SDLK_LSHIFT:
 				stat.speed = 4;

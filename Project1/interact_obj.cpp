@@ -133,11 +133,6 @@ void Object::listen(SDL_Event *e) {
 			SDL_Rect rec = getRect();
 			if (SDL_HasIntersection(&interact, &rec)) {
 				stat.health -= dame;
-				/*status = TAKEDAMAGE;
-				if (stat.health <= 0) {
-					check_death = true;
-					status = DEATH;
-				}*/
 			}
 		}
 	}

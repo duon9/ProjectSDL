@@ -3,6 +3,7 @@
 #include "utils.h"
 #include "constant.h"
 #include "statsBar.h"
+#include "dialogue_box.h"
 //#include "computer.h"
 
 class Interface {
@@ -16,7 +17,7 @@ private:
 	SDL_Rect desRect = { 0, 0 , 32, 32 };
 	SDL_Rect srcRect = { 0, 0, 32, 32 };
 	int map_w, map_h;
-
+	DialogueBox& box = DialogueBox::getInstance();
 
 public:
 	Bar* health_display = nullptr;
@@ -28,6 +29,7 @@ public:
 
 	void init();
 	void render();
+	void renderUpward();
 	void handleInterfaceEvents();
 	void loadTexture();
 	void loadMap();

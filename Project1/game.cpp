@@ -80,6 +80,7 @@ void Game::render() {
 		interface->render();
 		//player1->render();
 		entitys->render();
+		interface->renderUpward();
 		break;
 
 	default:

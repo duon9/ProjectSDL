@@ -88,6 +88,10 @@ void EntityManager::HandleEvents() {
 		}
 	}
 
+	for (auto& npc : npcs) {
+		npc->listen(&global::e);
+	}
+
 	for (auto& object : global::missles) {
 		if (object->getCollideState()) {
 			continue;
@@ -167,6 +171,10 @@ void EntityManager::clean() {
 	}
 	computers.clear();
 
+	for (int i = 0; i < (int)npcs.size(); i++) {
+		delete npcs[i];
+	}
+	npcs.clear();
 	for (int i = 0; i < (int)layers.size(); i++)
 	{
 		if (layers[i]->getProtocolCode() == 99) {
@@ -190,6 +198,7 @@ void EntityManager::setComputer() {
 		guard->init();
 		guard->setLocation({ 15 * 32, 15 * 32 });
 		layers.push_back(guard);
+		npcs.push_back(guard);
 
 		for (int i = 0; i < 1; i++) {
 			Skeleton* li = new Skeleton(renderer);
