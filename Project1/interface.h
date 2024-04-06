@@ -4,6 +4,7 @@
 #include "constant.h"
 #include "statsBar.h"
 #include "dialogue_box.h"
+#include "pauseWindow.h"
 //#include "computer.h"
 
 class Interface {
@@ -18,6 +19,7 @@ private:
 	SDL_Rect srcRect = { 0, 0, 32, 32 };
 	int map_w, map_h;
 	DialogueBox& box = DialogueBox::getInstance();
+	PauseWindow& pw = PauseWindow::getInstance();
 
 public:
 	Bar* health_display = nullptr;

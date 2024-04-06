@@ -7,3 +7,4 @@ SDL_Renderer* global::renderer = nullptr;
 SDL_Window* global::window = nullptr;
 SDL_Event global::e;
 bool global::isPause = false;
+bool global::isEscape = false;

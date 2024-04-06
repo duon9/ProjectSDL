@@ -62,8 +62,16 @@ void Game::handleEvents() {
 	}
 
 	if (global::e.type == SDL_KEYDOWN && global::e.key.keysym.sym == SDLK_ESCAPE) {
-		if (global::isPause) global::isPause = false;
-		else global::isPause = true;
+		if (global::isPause) {
+			global::isEscape = false;
+			global::isPause = false;
+		}
+		else {
+			global::isEscape = true;
+			global::isPause = true;
+		}
+
+
 	}
 
 	if (Global::gamestate == GameState::PLAY) {

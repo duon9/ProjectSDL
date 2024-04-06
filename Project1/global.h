@@ -10,6 +10,7 @@ namespace global {
 	extern SDL_Window* window;
 	extern SDL_Event e;
 	extern bool isPause;
+	extern bool isEscape;
 
 }
 
