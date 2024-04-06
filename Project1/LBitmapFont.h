@@ -16,16 +16,18 @@ public:
 	//Shows the text
 	void renderText(int x, int y, std::string text);
 
-	void show();
+	void show(SDL_Texture* target, std::string content);
 	void present();
 	void setCurr();
+	void setLocation(SDL_Point target);
 
 private:
 	int curr = 0;
 	int curX = 0;
 	int curY = 0;
-	SDL_Texture* target = SDL_CreateTexture(global::renderer, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_TARGET, 800, 200);
-	std::string content = "Hello frome heaven, you look so cute, I am the grand chancellor of \n the republic";
+	//SDL_Texture* target = SDL_CreateTexture(global::renderer, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_TARGET, 800, 200);
+	std::string content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+	std::string next_content = "fuck you bitch, get out of my tavern";
 	//The font texture
 	LTexture mFontTexture;
 

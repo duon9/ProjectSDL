@@ -17,7 +17,10 @@ void Protocol::send(SDL_Rect* interact, int* damage) {
 	//eventsCleanQueue.push_back(std::make_pair(code, std::make_pair(static_cast<SDL_Rect*>(message.user.data1), static_cast<int*>(message.user.data2))));
 }
 
-void Protocol::send(SDL_Point point) {
+// 0 is hide
+// 1 is show
+
+void Protocol::send(SDL_Point point, bool query) {
 	//std::cout << "g1" << std::endl;
 	SDL_Event message;
 	message.type = SDL_USEREVENT;
@@ -25,6 +28,7 @@ void Protocol::send(SDL_Point point) {
 	message.user.windowID = 0;
 	message.user.code = DIALOGUE_CODE;
 	message.user.data1 = static_cast<void*>(new SDL_Point(point));
+	message.user.data2 = static_cast<void*>(new bool(query));
 	SDL_PushEvent(&message);
 }
 
@@ -48,12 +52,12 @@ bool Protocol::listen(SDL_Event* e, SDL_Rect& interact, int& damage) {
 	return false;
 }
 
-bool Protocol::receive(SDL_Event *e, SDL_Point& point) {
+bool Protocol::receive(SDL_Event *e, SDL_Point& point, bool& query) {
 	if (e->type == SDL_USEREVENT) {
 		//std::cout << "listen found signal" << std::endl;
 		if (e->user.code == DIALOGUE_CODE) {
 			point = *(static_cast<SDL_Point*>(e->user.data1));
-			
+			query = *(static_cast<bool*>(e->user.data2));
 
 			return true;
 		}

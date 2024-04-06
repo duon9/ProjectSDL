@@ -5,7 +5,10 @@
 SDL_Texture* Player::vessel = nullptr;
 
 void Player::handleUserEvents(SDL_Event *e) {
-	if (!check_death && !check_pause) {
+
+	if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_e) protocol->send(getPosition(), true);
+	if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_q) protocol->send(getPosition(), false);
+	if (!check_death && !global::isPause) {
 		move();
 		if (e->type == SDL_KEYDOWN) {
 			switch (e->key.keysym.sym) {
@@ -19,9 +22,12 @@ void Player::handleUserEvents(SDL_Event *e) {
 			case SDLK_r:
 				//llma.setCurr();
 				break;
-			case SDLK_e:
-				protocol->send(getPosition());
-
+			/*case SDLK_e:
+				protocol->send(getPosition(), true);
+				break;
+			case SDLK_q:
+				protocol->send(getPosition(), false);
+				break;*/
 			case SDLK_LSHIFT:
 				stat.speed = 4;
 				//stat.mana -= 1;

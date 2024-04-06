@@ -18,9 +18,9 @@ public:
 	}
 
 	void send(SDL_Rect* attack, int* damage);
-	void send(SDL_Point position);
+	void send(SDL_Point position, bool query);
 	bool listen(SDL_Event *e, SDL_Rect& interact, int& damage);
-	bool receive(SDL_Event* e, SDL_Point& point);
+	bool receive(SDL_Event* e, SDL_Point& point, bool& query);
 	void clean();
 };
 

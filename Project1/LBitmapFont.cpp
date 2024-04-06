@@ -226,7 +226,7 @@ void LBitmapFont::renderText(int x, int y, std::string text)
 	}
 }
 
-void LBitmapFont::show() {
+void LBitmapFont::show(SDL_Texture* target, std::string content) {
 
 	if (curr == content.size()) return;
 	SDL_SetRenderTarget(global::renderer, target);
@@ -262,11 +262,16 @@ void LBitmapFont::show() {
 void LBitmapFont::present() {
 	SDL_Rect des = { 0,0, 800, 200 };
 	SDL_SetRenderDrawColor(global::renderer, 0, 255, 255, 255);
-	SDL_RenderCopy(global::renderer, target, NULL, &des);
+	//SDL_RenderCopy(global::renderer, target, NULL, &des);
 }
 
 void LBitmapFont::setCurr() {
 	curr = 0;
 	curX = 0;
 	curY = 0;
+}
+
+void LBitmapFont::setLocation(SDL_Point target) {
+	curX = target.x;
+	curY = target.y;
 }
