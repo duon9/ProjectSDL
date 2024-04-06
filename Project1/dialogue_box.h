@@ -7,24 +7,23 @@
 
 #define BOX_X 50
 #define BOX_Y 0
-#define BOX_WIDTH 600
+#define BOX_WIDTH 700
 #define BOX_HEIGHT 100
 
 class DialogueBox
 {
 private:
 	LBitmapFont lbmp;
-	std::string content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
-	std::string next_content = "fuck you bitch, get out of my tavern";
-	std::string current;
 	std::vector<std::string> contents;
+	//std::string next_content = "fuck you bitch, get out of my tavern";
+	//std::string current;
+	int content = 0;
 	SDL_Texture* texture = SDL_CreateTexture(global::renderer, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_TARGET, BOX_WIDTH, BOX_HEIGHT);
 	bool isShow = false;
 	DialogueBox() {
 		setBackground();
 		lbmp.buildFont("assets/dialogue/lazyfont.png");
 		lbmp.setLocation({ 0, 0});
-		current = content;
 	}
 
 	DialogueBox(const DialogueBox&) = delete;
@@ -34,12 +33,14 @@ private:
 	SDL_Rect src;
 	
 public:
+
+	std::string box_target;
 	static DialogueBox& getInstance() {
 		static DialogueBox instance;
 		return instance;
 	}
 
-	void updateContent(std::vector<std::string> contents);
+	//void updateContent(std::vector<std::string> contents);
 	void show();
 	void hide();
 	void next();
@@ -48,5 +49,6 @@ public:
 	void clear();
 	void resetContent();
 	void setBackground();
+	void addDialogue(std::vector<std::string> contents);
 };
 

@@ -61,6 +61,11 @@ void Game::handleEvents() {
 		Global::gamestate = EXIT;
 	}
 
+	if (global::e.type == SDL_KEYDOWN && global::e.key.keysym.sym == SDLK_ESCAPE) {
+		if (global::isPause) global::isPause = false;
+		else global::isPause = true;
+	}
+
 	if (Global::gamestate == GameState::PLAY) {
 		//player1->handleUserEvents(e);
 		entitys->HandleEvents();

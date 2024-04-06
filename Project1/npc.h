@@ -5,8 +5,9 @@
 
 class NPC : public Object
 {
-private:
+protected:
 	DialogueBox& box = DialogueBox::getInstance();
+	std::vector<std::string> dialogue;
 public:
 	NPC(SDL_Renderer* renderer, std::string type) : Object(renderer) {
 		this->type = type;

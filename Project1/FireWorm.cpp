@@ -7,7 +7,7 @@ void FireWorm::draw() {
 }
 
 void FireWorm::chaseTarget(Player* target) {
-	if (!check_death && !check_pause) {
+	if (!check_death && !global::isPause) {
 		if (trackNearestTarget(target)) {
 			if (!moveTo(target->getPosition())) {
 				if (frameTick > 0) {

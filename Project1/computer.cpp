@@ -7,7 +7,7 @@ void Computer::chaseTarget(Player* target) {
 		return;
 	}
 
-	if (!check_death && !check_pause) {
+	if (!check_death && !global::isPause) {
 		if (trackNearestTarget(target)) {
 			if (!moveTo(target->getPosition())) {
 				if (frameTick > 0) {

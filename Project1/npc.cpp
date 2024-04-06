@@ -5,9 +5,15 @@ void NPC::listen(SDL_Event* e) {
 		SDL_Point point;
 		bool query;
 		if (protocol->receive(e, point, query)) {
-
 			Math::Vector v = Math::Vector(getPosition(), point);
 			if (v.getDistance() < 32 * 2) {
+				if (box.box_target == type) {
+
+				}
+				else {
+					box.addDialogue(dialogue);
+					box.box_target = type;
+				}
 				if (query) {
 					box.show();
 					//global::isPause = true;
@@ -16,7 +22,7 @@ void NPC::listen(SDL_Event* e) {
 					box.hide();
 					box.resetContent();
 					box.clear();
-					global::isPause = false;
+					//global::isPause = false;
 				}
 			}
 		}

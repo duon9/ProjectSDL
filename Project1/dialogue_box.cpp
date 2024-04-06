@@ -10,6 +10,7 @@ void DialogueBox::show() {
 }
 
 void DialogueBox::hide() {
+	global::isPause = false;
 	isShow = false;
 }
 
@@ -17,12 +18,12 @@ void DialogueBox::render() {
 	//if (isShow) TextureManagement::FillRect(global::renderer, { 0,255,0,255 }, { BOX_X, BOX_Y, BOX_WIDTH, BOX_HEIGHT });
 	if (isShow) {
 		SDL_RenderCopy(global::renderer, texture, NULL, &des);
-		lbmp.show(texture, current);
+		lbmp.show(texture, contents[content]);
 	}
 }
 
 void DialogueBox::next() {
-	if (current == next_content) {
+	if (content == contents.size() - 1) {
 		global::isPause = false;
 		resetContent();
 		clear();
@@ -31,7 +32,7 @@ void DialogueBox::next() {
 		return;
 	}
 	clear();
-	current = next_content;
+	content++;
 }
 
 void DialogueBox::setBackground() {
@@ -56,5 +57,9 @@ void DialogueBox::clear() {
 }
 
 void DialogueBox::resetContent() {
-	current = content;
+	content = 0;
+}
+
+void DialogueBox::addDialogue(std::vector<std::string> contents) {
+	this->contents = contents;
 }
