@@ -18,7 +18,7 @@ public:
 
 	void show(SDL_Texture* target, std::string content);
 	void present();
-	void setCurr();
+	void setCurr(SDL_Point point);
 	void setLocation(SDL_Point target);
 
 private:

@@ -8,6 +8,7 @@
 #include <cmath>
 #include "collision.h"
 #include "aniamted_obj.h"
+#include "global.h"
 
 class Object : public Animated {
 public:

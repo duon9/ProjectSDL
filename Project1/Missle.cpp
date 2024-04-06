@@ -1,4 +1,5 @@
 #include "Missle.h"
+#include "global.h"
 
 
 void Missle::render() {
@@ -43,6 +44,7 @@ void Missle::handleEffect(SDL_Rect target) {
 }
 
 void Missle::projectile() {
+	if (global::isPause) return;
 	if (state == FINAL /*|| state == FORMATION*/) {
 		position.x += v.getX() * speed;
 		position.y += v.getY() * speed;

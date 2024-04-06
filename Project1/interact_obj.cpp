@@ -85,7 +85,7 @@ void Object::setProperties() {
 }
 
 void Object::render() {
-
+	//if (global::isPause) return;
 	if (status != lastStatus) frameCount = 0;
 	if (frameCount == frame[status].maxFrame - 1 && status == DEATH) {
 		afterDeath();
@@ -167,6 +167,7 @@ void Object::resurrect(int time) {
 }
 
 void Object::draw() {
+	//if (global::isPause) return;
 	SDL_RenderCopyEx(renderer, texture, &srcRect, &desRect, NULL, NULL, flip);
 }
 

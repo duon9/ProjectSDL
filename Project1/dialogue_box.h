@@ -9,6 +9,8 @@
 #define BOX_Y 0
 #define BOX_WIDTH 700
 #define BOX_HEIGHT 100
+#define cursorx 50
+#define cursory 0
 
 class DialogueBox
 {
@@ -23,7 +25,7 @@ private:
 	DialogueBox() {
 		setBackground();
 		lbmp.buildFont("assets/dialogue/lazyfont.png");
-		lbmp.setLocation({ 0, 0});
+		lbmp.setLocation({ cursorx, cursory});
 	}
 
 	DialogueBox(const DialogueBox&) = delete;

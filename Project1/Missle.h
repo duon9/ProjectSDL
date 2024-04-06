@@ -2,6 +2,7 @@
 #include "aniamted_obj.h"
 #include "math.h"
 #include "constant.h"
+//#include "global.h"
 class Missle : public Animated
 {
 protected:

@@ -99,6 +99,7 @@ void Interface::render() {
 void Interface::renderUpward() {
 	health_display->render();
 	mana_display->render();
+	//SDL_SetRenderDrawColor(global::renderer, 255, 255, 255, 255);
 	box.render();
 }
 

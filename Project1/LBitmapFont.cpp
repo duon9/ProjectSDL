@@ -230,7 +230,7 @@ void LBitmapFont::show(SDL_Texture* target, std::string content) {
 
 	if (curr == content.size()) return;
 	SDL_SetRenderTarget(global::renderer, target);
-	if (curr == 0) TextureManagement::FillRect(global::renderer, { 0,255, 0, 255 }, { 0,0,800,200 });
+	if (curr == 0) TextureManagement::FillRect(global::renderer, { 255,255, 255, 255 }, { 0,0,800,200 });
 	if (mFontTexture.getWidth() > 0)
 	{
 		//Temp offsets
@@ -265,10 +265,10 @@ void LBitmapFont::present() {
 	//SDL_RenderCopy(global::renderer, target, NULL, &des);
 }
 
-void LBitmapFont::setCurr() {
+void LBitmapFont::setCurr(SDL_Point point) {
 	curr = 0;
-	curX = 0;
-	curY = 0;
+	curX = point.x;
+	curY = point.y;
 }
 
 void LBitmapFont::setLocation(SDL_Point target) {

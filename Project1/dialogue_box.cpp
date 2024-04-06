@@ -38,8 +38,8 @@ void DialogueBox::next() {
 void DialogueBox::setBackground() {
 	SDL_SetRenderTarget(global::renderer, texture);
 
-	SDL_SetRenderDrawColor(global::renderer, 0, 255, 0, 0);
-	SDL_RenderClear(global::renderer);
+	//SDL_SetRenderDrawColor(global::renderer, 255, 255, 255, 255);
+	//SDL_RenderClear(global::renderer);
 
 	SDL_SetRenderTarget(global::renderer, NULL);
 }
@@ -50,10 +50,10 @@ void DialogueBox::present() {
 
 void DialogueBox::clear() {
 	//setBackground();
-	SDL_SetRenderTarget(global::renderer, texture);
-	SDL_RenderClear(global::renderer);
-	SDL_SetRenderTarget(global::renderer, NULL);
-	lbmp.setCurr();
+	//SDL_SetRenderTarget(global::renderer, texture);
+	////SDL_RenderClear(global::renderer);
+	//SDL_SetRenderTarget(global::renderer, NULL);
+	lbmp.setCurr({cursorx, cursory});
 }
 
 void DialogueBox::resetContent() {
