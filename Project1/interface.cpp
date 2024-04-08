@@ -13,21 +13,14 @@ Interface::~Interface() {
 }
 
 void Interface::init() {
-	/*map = File::loadMap(water_town);
-	tileset = File::loadTile(water_town);
-	loadTexture();
-	loadMap();
-
-	std::cout << map[0].width << " " << map[0].height << std::endl;*/
+	dark = SDL_CreateTexture(global::renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, SCREEN_WIDTH, SCREEN_HEIGHT);
+	SDL_SetTextureBlendMode(dark, SDL_BLENDMODE_MOD);
+	light = TextureManagement::LoadTexture("assets/vfx/lighting.png", global::renderer);
+	SDL_SetTextureBlendMode(light, SDL_BLENDMODE_ADD);
 	health_display = new Bar(renderer, 25, SCREEN_HEIGHT - 30, 100, 15, {255,0,0,255});
 	mana_display = new Bar(renderer, 25, SCREEN_HEIGHT -50, 100, 15, {3,161,252,255});
-	//parameter = new FPSparameter(renderer, 25, 25, 50, 25);
-	//parameter->init();
-	//texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, map[0].width, map[0].height);
-	//texture = TextureManagement::LoadTexture("assets/.tile/underground.png", renderer);
 	texture = TextureManagement::LoadTexture("assets/map/republic_grey.png", renderer);
 	SDL_QueryTexture(texture, NULL, NULL, &map_w, &map_h);
-	//std::cout << map_w << " " << map_h << std::endl;
 }
 
 void Interface::loadMap() {
@@ -97,11 +90,27 @@ void Interface::render() {
 }
 
 void Interface::renderUpward() {
+	light2D();
 	health_display->render();
 	mana_display->render();
 	//SDL_SetRenderDrawColor(global::renderer, 255, 255, 255, 255);
 	box.render();
 	pw.render();
+}
+
+void Interface::light2D() {
+	if (global::isDark) {
+		SDL_SetRenderTarget(global::renderer, dark);
+		SDL_RenderClear(global::renderer);
+		SDL_RenderCopy(global::renderer, light, NULL, &global::lightRect);
+		SDL_SetRenderTarget(global::renderer, NULL);
+		SDL_RenderCopy(global::renderer, dark, NULL, NULL);
+	}
+	/*SDL_SetRenderTarget(global::renderer, dark);
+	SDL_RenderClear(global::renderer);
+	SDL_RenderCopy(global::renderer, light, NULL, &global::lightRect);
+	SDL_SetRenderTarget(global::renderer, NULL);
+	SDL_RenderCopy(global::renderer, dark, NULL, NULL);*/
 }
 
 void Interface::handleInterfaceEvents() {

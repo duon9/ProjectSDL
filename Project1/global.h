@@ -11,7 +11,8 @@ namespace global {
 	extern SDL_Event e;
 	extern bool isPause;
 	extern bool isEscape;
-
+	extern bool isDark;
+	extern SDL_Rect lightRect;
 }
 
 

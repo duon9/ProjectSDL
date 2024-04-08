@@ -10,6 +10,7 @@
 class Interface {
 private:
 	//healthBar* health_display = nullptr;
+	//SDL_Rect lightRect = { 0,0,360,360 };
 	SDL_Renderer* renderer;
 	Map* Imap = nullptr;
 	std::vector<TileLayer> map;
@@ -20,7 +21,8 @@ private:
 	int map_w, map_h;
 	DialogueBox& box = DialogueBox::getInstance();
 	PauseWindow& pw = PauseWindow::getInstance();
-
+	SDL_Texture* dark = nullptr;
+	SDL_Texture* light = nullptr;
 public:
 	Bar* health_display = nullptr;
 	Bar* mana_display = nullptr;
@@ -45,4 +47,5 @@ public:
 	bool isCenterHorizontal(SDL_Rect& object);
 	void updateObjectScreenPosition(SDL_Point& position, SDL_Rect& object);
 	void reload(std::string path);
+	void light2D();
 };
