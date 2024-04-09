@@ -200,7 +200,7 @@ void EntityManager::setComputer() {
 		layers.push_back(guard);
 		npcs.push_back(guard);
 
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 0; i++) {
 			Skeleton* li = new Skeleton(renderer);
 			li->init();
 			li->setLocation({ 20 * 32,20 * 32 });
@@ -209,7 +209,7 @@ void EntityManager::setComputer() {
 		}
 	}
 	else {
-		for (int i = 0; i < 0; i++) {
+		for (int i = 0; i < 10; i++) {
 			Skeleton* li = new Skeleton(renderer);
 			li->init();
 			computers.push_back(li);
@@ -221,7 +221,7 @@ void EntityManager::setComputer() {
 			computers.push_back(li);
 			layers.push_back(li);
 		}
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 0; i++) {
 			FireWorm* li = new FireWorm(renderer);
 			li->init();
 			computers.push_back(li);

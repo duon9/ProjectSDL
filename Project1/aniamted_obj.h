@@ -14,6 +14,7 @@ public:
 
 	virtual void setClip(); // -> Animated
 	virtual void setFrameLimit(); //-> Animated
+	virtual void setLumination();
 	//void setSFX(); //sound
 
 protected:

@@ -50,6 +50,6 @@ public:
 	virtual bool isCollision(SDL_Rect target);
 	int getDamage();
 	bool getCollideState();
-	void projectile();
+	virtual void projectile();
 };
 

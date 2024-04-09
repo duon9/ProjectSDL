@@ -123,6 +123,7 @@ void Object::init() {
 	setClip();
 	setFrameLimit();
 	setCollision();
+	setLumination();
 }
 
 void Object::listen(SDL_Event *e) {

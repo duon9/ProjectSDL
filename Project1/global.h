@@ -13,6 +13,7 @@ namespace global {
 	extern bool isEscape;
 	extern bool isDark;
 	extern SDL_Rect lightRect;
+	extern std::vector<SDL_Rect*> lighthouse;
 }
 
 

@@ -1,5 +1,5 @@
 #include "FireBall.h"
-
+#include "global.h"
 #define PATH "assets/skill/fire.png"
 
 std::vector<std::vector<SDL_Rect>> FireBall::clips;
@@ -43,4 +43,18 @@ void FireBall::loadTexture(SDL_Renderer* renderer) {
 
 void FireBall::draw() {
     SDL_RenderCopyEx(renderer, vessel, &srcRect, &desRect, angle, NULL, SDL_FLIP_NONE);
+}
+
+void FireBall::projectile() {
+    if (global::isPause) return;
+    if (state == FINAL /*|| state == FORMATION*/) {
+        position.x += v.getX() * speed;
+        position.y += v.getY() * speed;
+        lumi->x = desRect.x + desRect.w / 2 - 180;
+        lumi->y = desRect.y + desRect.h / 2 - 180;
+    }
+}
+
+void FireBall::push() {
+    global::lighthouse.push_back(lumi);
 }

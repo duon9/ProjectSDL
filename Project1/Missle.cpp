@@ -71,3 +71,4 @@ int Missle::getDamage() {
 bool Missle::getCollideState() {
 	return isCollide;
 }
+

@@ -18,6 +18,7 @@ class Player : public Object
 {
 private:
 	//static SDL_Texture* vessel;
+	SDL_Rect* lumi = nullptr;
 protected:
 	Interface* interface = nullptr;
 	SFX* attackSound = new SFX();
@@ -55,5 +56,6 @@ public:
 	virtual void setProtocolCode() override;
 	virtual void draw() override;
 	virtual void setAbility() override;
+	virtual void setLumination() override;
 	SDL_Point getCursorPosition(SDL_Event* e);
 };

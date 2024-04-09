@@ -102,7 +102,10 @@ void Interface::light2D() {
 	if (global::isDark) {
 		SDL_SetRenderTarget(global::renderer, dark);
 		SDL_RenderClear(global::renderer);
-		SDL_RenderCopy(global::renderer, light, NULL, &global::lightRect);
+		//SDL_RenderCopy(global::renderer, light, NULL, &global::lightRect);
+		for (auto lumi : global::lighthouse) {
+			SDL_RenderCopy(global::renderer, light, NULL, lumi);
+		}
 		SDL_SetRenderTarget(global::renderer, NULL);
 		SDL_RenderCopy(global::renderer, dark, NULL, NULL);
 	}

@@ -191,7 +191,7 @@ void Player::move() {
 					position.x += velo_x;
 					if (interface->isCameraCollideCornerHorizontal(velo_x) || !interface->isCenterHorizontal(desRect)) {
 						desRect.x += velo_x;
-						global::lightRect.x = desRect.x + desRect.w / 2 - 180;
+						lumi->x = desRect.x + desRect.w / 2 - 180;
 					}
 					else {
 						interface->camera.x += velo_x;
@@ -202,7 +202,7 @@ void Player::move() {
 					position.y += velo_y;
 					if (interface->isCameraCollideCornerVertical(velo_y) || !interface->isCenterVertical(desRect)) {
 						desRect.y += velo_y;
-						global::lightRect.y = desRect.y + desRect.h / 2 - 180;
+						lumi->y = desRect.y + desRect.h / 2 - 180;
 					}
 					else {
 						interface->camera.y += velo_y;
@@ -221,8 +221,8 @@ void Player::setLocation() {
 	interface->cameraInitObjectLocation(map_x, map_y, desRect);
 	position.x = interface->camera.x + desRect.x;
 	position.y = interface->camera.y + desRect.y;
-	global::lightRect.x = desRect.x + desRect.w / 2 - 180;
-	global::lightRect.y = desRect.y + desRect.h / 2 - 180;
+	/*global::lightRect.x = desRect.x + desRect.w / 2 - 180;
+	global::lightRect.y = desRect.y + desRect.h / 2 - 180;*/
 }
 
 void Player::setLocation(SDL_Point p) {
@@ -233,8 +233,10 @@ void Player::setLocation(SDL_Point p) {
 	interface->cameraInitObjectLocation(map_x, map_y, desRect);
 	position.x = interface->camera.x + desRect.x;
 	position.y = interface->camera.y + desRect.y;
-	global::lightRect.x = desRect.x + desRect.w / 2 - 180;
-	global::lightRect.y = desRect.y + desRect.h / 2 - 180;
+	lumi->x = desRect.x + desRect.w / 2 - 180;
+	lumi->y = desRect.y + desRect.h / 2 - 180;
+	lumi->w = 360;
+	lumi->h = 360;
 }
 
 void Player::setCollision() {
@@ -271,7 +273,7 @@ void Player::init() {
 	setClip();
 	setFrameLimit();
 	setCollision();
-
+	setLumination();
 	//llma.buildFont("assets/dialogue/lazyfont.png");
 }
 
@@ -309,4 +311,13 @@ void Player::setAbility() {
 
 SDL_Point Player::getCursorPosition(SDL_Event* e) {
 	return { e->motion.x + interface->camera.x, e->motion.y + interface->camera.y };
+}
+
+void Player::setLumination() {
+	lumi = new SDL_Rect();
+	lumi->x = desRect.x + desRect.w / 2 - 180;
+	lumi->y = desRect.y + desRect.h / 2 - 180;
+	lumi->w = 360;
+	lumi->h = 360;
+	global::lighthouse.push_back(lumi);
 }

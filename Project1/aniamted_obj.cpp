@@ -7,3 +7,7 @@ void Animated::setFrameLimit() {
 void Animated::setClip() {
 	wareClips = File::getClips(type);
 }
+
+void Animated::setLumination() {
+
+}
