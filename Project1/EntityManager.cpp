@@ -19,7 +19,8 @@ EntityManager::~EntityManager() {
 void EntityManager::init() {
 
 	Object::collider = File::readCollision(grey);
-
+	Portal::loadClip();
+	Portal::loadTexture();
 	Little::vessel = TextureManagement::LoadTexture("assets/characters/rogue2.png", renderer);
 	Minotaur::vessel = TextureManagement::LoadTexture("assets/characters/minotaur.png", renderer);
 	NightBorne::vessel = TextureManagement::LoadTexture("assets/characters/NightBorne.png", renderer);
@@ -120,8 +121,8 @@ void EntityManager::render() {
 				entity->render();
 			}
 			else {
-				entity->desRect.x = -1000;
-				entity->desRect.y = -1000;
+				//entity->desRect.x = -1000;
+				//entity->desRect.y = -1000;
 			}
 		}
 		else {
@@ -213,7 +214,7 @@ void EntityManager::setComputer() {
 		}
 	}
 	else {
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 0; i++) {
 			Skeleton* li = new Skeleton(renderer);
 			li->init();
 			computers.push_back(li);
@@ -225,7 +226,7 @@ void EntityManager::setComputer() {
 			computers.push_back(li);
 			layers.push_back(li);
 		}
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 0; i++) {
 			FireWorm* li = new FireWorm(renderer);
 			li->init();
 			computers.push_back(li);
@@ -242,7 +243,7 @@ void EntityManager::setComputer() {
 		teleporter->setDestination(Map::GREYYARD);
 		teleporter->setDestinationPoint({ 916,615 });
 		teleporter->setInterfacePath(greyyard);
-		teleporter->setLocation({ -90,6*32 });
+		teleporter->setLocation({ -90,6 * 32 });
 		global::teleporters.push_back(teleporter);
 	}
 	else if (map == GREYYARD) {
@@ -251,7 +252,7 @@ void EntityManager::setComputer() {
 		teleporter->setMap(Map::GREYYARD);
 		teleporter->setColliderPath(water_town);
 		teleporter->setDestination(Map::LIBRARY);
-		teleporter->setDestinationPoint({ 0,6*32 });
+		teleporter->setDestinationPoint({ 0,6 * 32 });
 		teleporter->setInterfacePath(TEST);
 		teleporter->setLocation({ 950,589 });
 		global::teleporters.push_back(teleporter);
@@ -265,6 +266,17 @@ void EntityManager::setComputer() {
 		teleporter2->setInterfacePath(tavern_interface);
 		teleporter2->setLocation({ -90,10 * 32 });
 		global::teleporters.push_back(teleporter2);
+
+		Portal* portal = new Portal();
+		portal->init();
+		portal->setMap(Map::GREYYARD);
+		portal->setColliderPath(tavern_collision);
+		portal->setDestination(Map::TAVERN);
+		portal->setDestinationPoint({ 594 + 22,904 });
+		portal->setInterfacePath(tavern_interface);
+		portal->setLocation({ 100,100  });
+		global::teleporters.push_back(portal);
+		layers.push_back(portal);
 	}
 	else if (map == TAVERN) {
 		Teleporter* teleporter = new Teleporter(renderer);

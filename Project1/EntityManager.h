@@ -7,6 +7,7 @@
 #include "skeleton.h"
 #include "npc_guard.h"
 #include "FireWorm.h"
+#include "portal.h"
 class EntityManager
 {
 private:

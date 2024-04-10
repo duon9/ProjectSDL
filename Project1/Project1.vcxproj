@@ -156,6 +156,7 @@
     <ClCompile Include="npc.cpp" />
     <ClCompile Include="npc_guard.cpp" />
     <ClCompile Include="pauseWindow.cpp" />
+    <ClCompile Include="portal.cpp" />
     <ClCompile Include="protocol.cpp" />
     <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="FPScontroller.cpp" />
@@ -210,6 +211,7 @@
     <ClInclude Include="npc.h" />
     <ClInclude Include="npc_guard.h" />
     <ClInclude Include="pauseWindow.h" />
+    <ClInclude Include="portal.h" />
     <ClInclude Include="protocol.h" />
     <ClInclude Include="EntityManager.h" />
     <ClInclude Include="FPScontroller.h" />
