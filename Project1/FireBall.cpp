@@ -50,11 +50,23 @@ void FireBall::projectile() {
     if (state == FINAL /*|| state == FORMATION*/) {
         position.x += v.getX() * speed;
         position.y += v.getY() * speed;
-        lumi->x = desRect.x + desRect.w / 2 - 180;
-        lumi->y = desRect.y + desRect.h / 2 - 180;
+        lumi->x = desRect.x + desRect.w / 2 - lumi->w / 2;
+        lumi->y = desRect.y + desRect.h / 2 - lumi->h / 2;
     }
 }
 
 void FireBall::push() {
     global::lighthouse.push_back(lumi);
+}
+
+void FireBall::handleEffect(SDL_Rect target) {
+    if (!isCollide) {
+        if (isCollision(target)) {
+            state = IMPACT;
+            isCollide = true;
+            frameCount = 0;
+            lumi->w = 0;
+            lumi->h = 0;
+        }
+    }
 }

@@ -119,6 +119,10 @@ void EntityManager::render() {
 				interface->updateObjectScreenPosition(entity->position, entity->desRect);
 				entity->render();
 			}
+			else {
+				entity->desRect.x = -1000;
+				entity->desRect.y = -1000;
+			}
 		}
 		else {
 			entity->render();
@@ -221,7 +225,7 @@ void EntityManager::setComputer() {
 			computers.push_back(li);
 			layers.push_back(li);
 		}
-		for (int i = 0; i < 0; i++) {
+		for (int i = 0; i < 1; i++) {
 			FireWorm* li = new FireWorm(renderer);
 			li->init();
 			computers.push_back(li);
