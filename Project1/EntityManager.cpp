@@ -274,7 +274,7 @@ void EntityManager::setComputer() {
 		portal->setDestination(Map::TAVERN);
 		portal->setDestinationPoint({ 594 + 22,904 });
 		portal->setInterfacePath(tavern_interface);
-		portal->setLocation({ 100,100  });
+		portal->setLocation({ 705, 195 });
 		global::teleporters.push_back(portal);
 		layers.push_back(portal);
 	}

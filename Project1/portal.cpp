@@ -5,8 +5,10 @@ SDL_Texture* Portal::vessel = nullptr;
 std::vector<SDL_Rect> Portal::clips;
 
 void Portal::loadTexture() {
-	
-	vessel = TextureManagement::LoadTexture("assets/characters/portal.png", global::renderer);
+	SDL_Surface* surface = IMG_Load("assets/characters/portal.png");
+	SDL_SetColorKey(surface, SDL_TRUE, SDL_MapRGB(surface->format, 0, 0, 0));
+	vessel = SDL_CreateTextureFromSurface(global::renderer, surface);
+	SDL_FreeSurface(surface);
 }
 
 void Portal::render() {
@@ -45,5 +47,5 @@ void Portal::loadClip() {
 void Portal::init() {
 	desRect.w = 100;
 	desRect.h = 100;
-	code = 99;
+	code = 101;
 }
