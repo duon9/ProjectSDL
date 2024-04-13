@@ -48,7 +48,7 @@ bool Computer::moveTo(SDL_Point target) {
 			//std::cout << "X: " << position.x << std::endl;
 		}
 		else {
-			std::cout << "BlockX" << std::endl;
+			//std::cout << "BlockX" << std::endl;
 		}
 		//position.x += v.getX() * stat.speed;
 
@@ -57,7 +57,7 @@ bool Computer::moveTo(SDL_Point target) {
 			position.y = position.y + (v.getY() * stat.speed); // speed should > 1 to prevent error
 		}
 		else {
-			std::cout << "BlockY" << std::endl;
+			//std::cout << "BlockY" << std::endl;
 		}
 		//position.y += v.getY() * stat.speed;
 		return true;

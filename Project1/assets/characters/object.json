@@ -442,7 +442,7 @@
     }
   },
   "skeleton": {
-    "health": 10000,
+    "health": 100000,
     "mana": 2000,
     "damage": 1,
     "level": 1,

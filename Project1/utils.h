@@ -41,7 +41,7 @@ public:
 	static std::vector<TileSet> loadTile(std::string path);
 	static void readXML(std::string path, std::string& source, int& col);
 	static std::vector<std::vector<int>> readCollision(std::string path);
-	static void getProperties(std::string type, Stat& stat);
+	static void getProperties(std::string type, Stat* stat);
 	static std::vector<std::vector<SDL_Rect>> getClips(std::string type);
 	static void getFrameLimit(std::string type, std::vector<Frame>* frame);
 };

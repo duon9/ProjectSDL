@@ -159,21 +159,21 @@ std::vector<std::vector<int>> File::readCollision(std::string path) {
 	return res;
 }
 
-void File::getProperties(std::string type, Stat& stat) {
+void File::getProperties(std::string type, Stat* stat) {
 	nlohmann::json jsondata;
 	readJSON(file_object, jsondata);
 	//std::string state[] = { "idleFrame", "runFrame", "attackFrame", "deathFrame", "spellFrame", "takedameFrame" };
 	nlohmann::json object = jsondata[type];
-	stat.health = object["health"].get<int>();
-	stat.mana = object["mana"].get<int>();
-	stat.damage = object["damage"].get<int>();
-	stat.level = object["level"].get<int>();
-	stat.exp = object["exp"].get<int>();
-	stat.speed = object["speed"].get<int>();
-	stat.source = object["source"].get<std::string>();
-	stat.range = object["range"].get<int>();
-	stat.width = object["width"].get<int>();
-	stat.height = object["height"].get<int>();
+	stat->health = object["health"].get<int>();
+	stat->mana = object["mana"].get<int>();
+	stat->damage = object["damage"].get<int>();
+	stat->level = object["level"].get<int>();
+	stat->exp = object["exp"].get<int>();
+	stat->speed = object["speed"].get<int>();
+	stat->source = object["source"].get<std::string>();
+	stat->range = object["range"].get<int>();
+	stat->width = object["width"].get<int>();
+	stat->height = object["height"].get<int>();
 }
 
 

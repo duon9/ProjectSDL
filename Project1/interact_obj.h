@@ -55,6 +55,7 @@ public:
 	virtual void death();
 	virtual void afterDeath();
 	virtual void handleMissle(int damage) override;
+	//virtual void loadTexture() override;
 	//bool check_death = false;
 	void resurrect(int time);
 	static std::vector<std::vector<int>> collider;

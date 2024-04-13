@@ -80,7 +80,19 @@ void Object::move() {
 }
 
 void Object::setProperties() {
-	File::getProperties(type, stat);
+	//File::getProperties(type, stat);
+	//setSize(stat->width, stat->height);
+
+	if (global::stats[type] == nullptr) {
+		global::stats[type] = new Stat();
+		File::getProperties(type, global::stats[type]);
+		stat = *global::stats[type];
+	}
+	else {
+		stat = *global::stats[type];
+	}
+
+
 	setSize(stat.width, stat.height);
 }
 
@@ -194,7 +206,7 @@ void Object::handleMissle(int damage) {
 }
 
 void Object::handleLogic() {
-	if (stat.health < 0) {
+	if (stat.health <= 0) {
 		status = DEATH;
 		check_death = true;
 	}

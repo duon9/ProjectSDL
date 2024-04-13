@@ -214,7 +214,7 @@ void EntityManager::setComputer() {
 		}
 	}
 	else {
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 100; i++) {
 			Skeleton* li = new Skeleton(renderer);
 			li->init();
 			computers.push_back(li);
