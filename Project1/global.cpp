@@ -11,3 +11,4 @@ bool global::isEscape = false;
 bool global::isDark = false;
 std::vector<SDL_Rect*> global::lighthouse;
 SDL_Rect global::lightRect = { 0,0,360,360 };
+std::unordered_map<std::string, SDL_Texture*> global::resources;

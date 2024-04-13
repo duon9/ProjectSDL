@@ -61,8 +61,18 @@ void Interface::loadMap() {
 }
 
 void Interface::reload(std::string path) {
-	SDL_DestroyTexture(texture);
-	texture = TextureManagement::LoadTexture(path, renderer);
+	//SDL_DestroyTexture(texture);
+	
+	if (global::resources[path] == nullptr) {
+		global::resources[path] = TextureManagement::LoadTexture(path, renderer);
+		texture = global::resources[path];
+		std::cout << "load new texture" << std::endl;
+	}
+	else {
+		texture = global::resources[path];
+		std::cout << "load preload texture" << std::endl;
+	}
+	//texture = TextureManagement::LoadTexture(path, renderer);
 	SDL_QueryTexture(texture, NULL, NULL, &map_w, &map_h);
 }
 

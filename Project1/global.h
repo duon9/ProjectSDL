@@ -2,6 +2,7 @@
 #include "Missle.h"
 #include "teleporter.h"
 #include <vector>
+#include <unordered_map>
 
 namespace global {
 	extern std::vector<Missle*> missles;
@@ -14,6 +15,8 @@ namespace global {
 	extern bool isDark;
 	extern SDL_Rect lightRect;
 	extern std::vector<SDL_Rect*> lighthouse;
+	extern std::unordered_map<std::string, SDL_Texture*> resources;
+	//extern std::unordered_map<std::string, Stat*>
 }
 
 
