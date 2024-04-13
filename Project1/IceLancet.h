@@ -10,8 +10,8 @@ private:
 	const static int damage = 10000;
 public:
 	IceLancet(SDL_Renderer* renderer, SDL_Point currPos, SDL_Point desPos, SDL_Point camera, Uint32 code) : Missle(renderer, currPos, desPos, camera, code) {
-		wareClips = IceLancet::clips;
-		frame = IceLancet::limits;
+		wareClips = &IceLancet::clips;
+		frame = &IceLancet::limits;
 		desRect.w = 72;
 		desRect.h = 48;
 	}

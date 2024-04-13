@@ -12,8 +12,8 @@ private:
 	
 public:
 	FireBall(SDL_Renderer* renderer, SDL_Point currPos, SDL_Point desPos, SDL_Point camera, Uint32 code) : Missle(renderer, currPos, desPos, camera, code) {
-		wareClips = FireBall::clips;
-		frame = FireBall::limits;
+		wareClips = &FireBall::clips;
+		frame = &FireBall::limits;
 		speed = 5;
 		lumi = new SDL_Rect();
 		lumi->w = 360;

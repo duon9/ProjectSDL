@@ -129,6 +129,12 @@ struct Frame {
 	}
 };
 
+struct Property {
+	Stat* stat;
+	Frame* frame;
+	std::vector<std::vector<SDL_Rect>>* wareClips;
+};
+
 const std::string mapWare[] = {"0", "0", "0", "assets/.tile/underground.tmj" };
 const std::string mapInterface[] = { "0", "0", "0", "assets/.tile/underground.png" };
 

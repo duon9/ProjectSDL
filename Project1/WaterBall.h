@@ -9,8 +9,8 @@ private:
 	static SDL_Texture* vessel;
 public:
 	WaterBall(SDL_Renderer* renderer, SDL_Point currPos, SDL_Point desPos, SDL_Point camera, Uint32 code) : Missle(renderer, currPos, desPos, camera, code) {
-		wareClips = WaterBall::clips;
-		frame = WaterBall::limits;
+		wareClips = &WaterBall::clips;
+		frame = &WaterBall::limits;
 		damage = 100000;
 	}
 

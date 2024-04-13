@@ -12,3 +12,6 @@ bool global::isDark = false;
 std::vector<SDL_Rect*> global::lighthouse;
 SDL_Rect global::lightRect = { 0,0,360,360 };
 std::unordered_map<std::string, SDL_Texture*> global::resources;
+std::unordered_map<std::string, std::vector<Frame>*> global::frames;
+std::unordered_map<std::string, Stat*> global::stats;
+std::unordered_map<std::string, std::vector<std::vector<SDL_Rect>>*> global::clips;

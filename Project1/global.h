@@ -16,7 +16,9 @@ namespace global {
 	extern SDL_Rect lightRect;
 	extern std::vector<SDL_Rect*> lighthouse;
 	extern std::unordered_map<std::string, SDL_Texture*> resources;
-	//extern std::unordered_map<std::string, Stat*>
+	extern std::unordered_map<std::string, std::vector<Frame>*> frames;
+	extern std::unordered_map<std::string, Stat*> stats;
+	extern std::unordered_map<std::string, std::vector<std::vector<SDL_Rect>>*> clips;
 }
 
 

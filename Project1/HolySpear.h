@@ -10,8 +10,8 @@ private:
 	const static int damage = 10000;
 public:
 	HolySpear(SDL_Renderer* renderer, SDL_Point currPos, SDL_Point desPos, SDL_Point camera, Uint32 code) : Missle(renderer, currPos, desPos, camera, code) {
-		wareClips = HolySpear::clips;
-		frame = HolySpear::limits;
+		wareClips = &HolySpear::clips;
+		frame = &HolySpear::limits;
 		speed = 15;
 	}
 

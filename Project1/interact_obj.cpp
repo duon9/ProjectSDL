@@ -87,15 +87,15 @@ void Object::setProperties() {
 void Object::render() {
 	//if (global::isPause) return;
 	if (status != lastStatus) frameCount = 0;
-	if (frameCount == frame[status].maxFrame - 1 && status == DEATH) {
+	if (frameCount == (*frame)[status].maxFrame - 1 && status == DEATH) {
 		afterDeath();
 		frameCount -= 1;
 	}
-	else if (frameCount == frame[status].maxFrame - 1) {
+	else if (frameCount == (*frame)[status].maxFrame - 1) {
 		frameCount = 0;
 	}
 	frameCount++;
-	srcRect = wareClips[status][frameCount / frame[status].perFrame];
+	srcRect = (*wareClips)[status][frameCount / (*frame)[status].perFrame];
 	lastStatus = status;
 	//SDL_RenderCopyEx(renderer, texture, &srcRect, &desRect, NULL, NULL, flip);
 	/*SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
@@ -152,7 +152,7 @@ void Object::attack() {
 
 	
 	protocol->send(&attack, &stat.damage);
-	frameTick = frame[status].maxFrame - 1;
+	frameTick = (*frame)[status].maxFrame - 1;
 }
 
 void Object::resurrect(int time) {

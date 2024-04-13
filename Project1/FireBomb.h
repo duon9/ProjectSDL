@@ -10,8 +10,8 @@ class FireBomb : public Missle
 	SDL_Rect* lumi = nullptr;
 public:
 	FireBomb(SDL_Renderer* renderer, SDL_Point currPos, SDL_Point desPos, SDL_Point camera, Uint32 code) : Missle(renderer, currPos, desPos, camera, code) {
-		wareClips = FireBomb::clips;
-		frame = FireBomb::limits;
+		wareClips = &FireBomb::clips;
+		frame = &FireBomb::limits;
 		desRect.w = 100;
 		desRect.h = 100;
 		lumi = new SDL_Rect();

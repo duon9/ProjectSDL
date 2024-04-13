@@ -270,8 +270,9 @@ void Player::init() {
 	setLocation();
 	setProperties();
 	setBarProperties();
-	setClip();
 	setFrameLimit();
+	setClip();
+	//setFrameLimit();
 	setCollision();
 	setLumination();
 	//llma.buildFont("assets/dialogue/lazyfont.png");

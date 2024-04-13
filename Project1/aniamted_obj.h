@@ -18,8 +18,8 @@ public:
 	//void setSFX(); //sound
 
 protected:
-	std::vector<Frame> frame; //-> Animated
-	std::vector<std::vector<SDL_Rect>> wareClips; //-> Animated
+	std::vector<Frame>* frame; //-> Animated
+	std::vector<std::vector<SDL_Rect>>* wareClips; //-> Animated
 	int frameCount; //-> Animated
 	int frameTick; // -> Animated
 

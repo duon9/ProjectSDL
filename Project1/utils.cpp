@@ -209,7 +209,7 @@ std::vector<std::vector<SDL_Rect>> File::getClips(std::string type) {
 	return res;
 }
 
-void File::getFrameLimit(std::string type, std::vector<Frame>& frame) {
+void File::getFrameLimit(std::string type, std::vector<Frame>* frame) {
 	nlohmann::json jsondata;
 	readJSON(file_object, jsondata);
 	std::string state[] = { "idleFrame", "runFrame", "attackFrame", "deathFrame", "spellFrame", "takedameFrame" };
@@ -223,7 +223,7 @@ void File::getFrameLimit(std::string type, std::vector<Frame>& frame) {
 
 		temp.maxFrame = clip["maxFrame"].get<int>();
 		temp.perFrame = temp.maxFrame / temp.count;
-		frame.push_back(temp);
+		frame->push_back(temp);
 	}
 }
 

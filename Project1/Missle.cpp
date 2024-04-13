@@ -5,21 +5,21 @@
 void Missle::render() {
 	frameCount++;
 	if (state == FORMATION || state == FINAL) {
-	    if (frameCount < frame[FORMATION].maxFrame) {
+	    if (frameCount < (*frame)[FORMATION].maxFrame) {
 	        state = FORMATION;
-	        srcRect = wareClips[FORMATION][frameCount / frame[FORMATION].perFrame];
+	        srcRect = (*wareClips)[FORMATION][frameCount / (*frame)[FORMATION].perFrame];
 	    }
 	    else {
 	        state = FINAL;
-	        if (frameCount >= frame[FORMATION].maxFrame + frame[FINAL].maxFrame) {
-	            frameCount = frame[FORMATION].maxFrame;
+	        if (frameCount >= (*frame)[FORMATION].maxFrame + (*frame)[FINAL].maxFrame) {
+	            frameCount = (*frame)[FORMATION].maxFrame;
 	        }
-	        srcRect = wareClips[FINAL][(frameCount - frame[FORMATION].maxFrame) / frame[FINAL].perFrame];
+	        srcRect = (*wareClips)[FINAL][(frameCount - (*frame)[FORMATION].maxFrame) / (*frame)[FINAL].perFrame];
 	    }
 	}
 	if (state == IMPACT) {
-	    if (frameCount < frame[IMPACT].maxFrame) {
-	        srcRect = wareClips[IMPACT][(frameCount/ frame[IMPACT].perFrame)];
+	    if (frameCount < (*frame)[IMPACT].maxFrame) {
+	        srcRect = (*wareClips)[IMPACT][(frameCount/ (*frame)[IMPACT].perFrame)];
 	    }
 	    else {
 	        return;

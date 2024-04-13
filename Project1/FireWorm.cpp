@@ -28,7 +28,7 @@ void FireWorm::chaseTarget(Player* target) {
 					return;
 				}
 				status = ATTACKING;
-				frameTick = frame[status].maxFrame;
+				frameTick = (*frame)[status].maxFrame;
 			}
 		}
 		else {
