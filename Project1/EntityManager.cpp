@@ -36,31 +36,31 @@ void EntityManager::init() {
 
 void EntityManager::HandleEvents() {
 
-	if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_f) {
-		if (map == GREYYARD) {
-			clean();
-			//setComputer();
-			Object::collider = File::readCollision(water_town);
-			setComputer();
+	//if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_f) {
+	//	if (map == GREYYARD) {
+	//		clean();
+	//		//setComputer();
+	//		Object::collider = File::readCollision(water_town);
+	//		setComputer();
 
-			interface->reload(TEST);
-			player->reload();
-			map = LIBRARY;
-		}
-		else {
-			clean();
-			//setComputer();
-			Object::collider = File::readCollision(grey);
-			setComputer();
+	//		interface->reload(TEST);
+	//		player->reload();
+	//		map = LIBRARY;
+	//	}
+	//	else {
+	//		clean();
+	//		//setComputer();
+	//		Object::collider = File::readCollision(grey);
+	//		setComputer();
 
-			interface->reload(greyyard);
-			player->reload();
-			map = GREYYARD;
-		}
-	}
+	//		interface->reload(greyyard);
+	//		player->reload();
+	//		map = GREYYARD;
+	//	}
+	//}
 
 	player->handleUserEvents(e);
-	player->handleBarDisplay();
+	//player->handleBarDisplay();
 
 	for (auto& computer : computers) {
 		computer->chaseTarget(player);
@@ -85,6 +85,7 @@ void EntityManager::HandleEvents() {
 				player->reload();
 				player->setLocation(teleporter->getDestinationPoint());
 				setComputer();
+				global::lighthouse.clear();
 			}
 		}
 	}
@@ -109,6 +110,8 @@ void EntityManager::HandleEvents() {
 			}
 		}
 	}
+
+	player->handleBarDisplay();
 }
 
 void EntityManager::render() {
@@ -214,7 +217,7 @@ void EntityManager::setComputer() {
 		}
 	}
 	else {
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < 0; i++) {
 			Skeleton* li = new Skeleton(renderer);
 			li->init();
 			computers.push_back(li);
@@ -226,7 +229,7 @@ void EntityManager::setComputer() {
 			computers.push_back(li);
 			layers.push_back(li);
 		}
-		for (int i = 0; i < 0; i++) {
+		for (int i = 0; i < 1; i++) {
 			FireWorm* li = new FireWorm(renderer);
 			li->init();
 			computers.push_back(li);
