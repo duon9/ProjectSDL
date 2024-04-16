@@ -149,6 +149,7 @@
     <ClCompile Include="LBitmapFont.cpp" />
     <ClCompile Include="little.cpp" />
     <ClCompile Include="LTexture.cpp" />
+    <ClCompile Include="MaceSkeleton.cpp" />
     <ClCompile Include="MapManager.cpp" />
     <ClCompile Include="minotaur.cpp" />
     <ClCompile Include="Missle.cpp" />
@@ -204,6 +205,7 @@
     <ClInclude Include="LBitmapFont.h" />
     <ClInclude Include="little.h" />
     <ClInclude Include="LTexture.h" />
+    <ClInclude Include="MaceSkeleton.h" />
     <ClInclude Include="MapManager.h" />
     <ClInclude Include="minotaur.h" />
     <ClInclude Include="Missle.h" />

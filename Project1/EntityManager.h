@@ -8,6 +8,7 @@
 #include "npc_guard.h"
 #include "FireWorm.h"
 #include "portal.h"
+#include "MaceSkeleton.h"
 class EntityManager
 {
 private:
@@ -34,5 +35,6 @@ public:
 	void reload();
 	void clean();
 	void setComputer();
+	void setMapLogic();
 };
 

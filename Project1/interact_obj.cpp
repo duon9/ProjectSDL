@@ -135,6 +135,7 @@ void Object::init() {
 	setClip();
 	setFrameLimit();
 	setCollision();
+	setTexture();
 	setLumination();
 }
 
@@ -214,4 +215,14 @@ void Object::handleLogic() {
 		status = TAKEDAMAGE;
 	}
 	lastHealth = stat.health;
+}
+
+void Object::setTexture() {
+	if (global::resources[type] == nullptr) {
+		global::resources[type] = TextureManagement::LoadTexture(stat.source, global::renderer);
+		texture = global::resources[type];
+	}
+	else {
+		texture = global::resources[type];
+	}
 }

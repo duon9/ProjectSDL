@@ -179,3 +179,7 @@ bool Collision::rectCollidingVertical(SDL_Rect object1, SDL_Rect object2) {
 
 	return false;
 }
+
+SDL_Point Collision::atBlock() {
+	return {0,0};
+}

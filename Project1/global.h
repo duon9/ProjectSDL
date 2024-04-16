@@ -13,6 +13,7 @@ namespace global {
 	extern bool isPause;
 	extern bool isEscape;
 	extern bool isDark;
+	extern bool isHaveArcane;
 	extern SDL_Rect lightRect;
 	extern std::vector<SDL_Rect*> lighthouse;
 	extern std::unordered_map<std::string, SDL_Texture*> resources;

@@ -27,5 +27,6 @@ void Animated::setClip() {
 }
 
 void Animated::setLumination() {
-
+	
 }
+

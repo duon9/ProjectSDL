@@ -2,9 +2,9 @@
 
 SDL_Texture* FireWorm::vessel = nullptr;
 
-void FireWorm::draw() {
-	SDL_RenderCopyEx(renderer, FireWorm::vessel, &srcRect, &desRect, NULL, NULL, flip);
-}
+//void FireWorm::draw() {
+//	SDL_RenderCopyEx(renderer, FireWorm::vessel, &srcRect, &desRect, NULL, NULL, flip);
+//}
 
 void FireWorm::chaseTarget(Player* target) {
 	if (!check_death && !global::isPause) {

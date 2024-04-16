@@ -80,4 +80,14 @@ void Computer::setProtocolCode() {
 	code = ENEMY_CODE;
 }
 
+bool Computer::moveToBlock(SDL_Point block) {
+	if (moveTo({ block.x * 32 + 16, block.y * 32 + 16 }) == true) {
+		return true;
+	}
+	return false;
+}
+
+SDL_Point Computer::shortestSmartPath() {
+	return { 0,0 };
+}
 

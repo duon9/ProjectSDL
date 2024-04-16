@@ -43,5 +43,5 @@ public:
 	int getLayer();
 	Uint32 getProtocolCode();
 	virtual void handleMissle(int damage);
-	//virtual void loadTexture();
+	virtual void setTexture();
 };

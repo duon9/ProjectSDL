@@ -76,3 +76,7 @@ void Entity::handleLogic() {
 SDL_Point Entity::getEntityCenterPoint() {
 	return { position.x + desRect.w / 2, position.y + desRect.h / 2 };
 }
+
+void Entity::setTexture() {
+
+}

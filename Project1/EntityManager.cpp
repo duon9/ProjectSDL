@@ -21,12 +21,12 @@ void EntityManager::init() {
 	Object::collider = File::readCollision(grey);
 	Portal::loadClip();
 	Portal::loadTexture();
-	Little::vessel = TextureManagement::LoadTexture("assets/characters/rogue2.png", renderer);
-	Minotaur::vessel = TextureManagement::LoadTexture("assets/characters/minotaur.png", renderer);
-	NightBorne::vessel = TextureManagement::LoadTexture("assets/characters/NightBorne.png", renderer);
-	Player::vessel = TextureManagement::LoadTexture("assets/characters/little.png", renderer);
-	Skeleton::vessel = TextureManagement::LoadTexture("assets/characters/skeleton.png", renderer);
-	FireWorm::vessel = TextureManagement::LoadTexture("assets/characters/fireworm.png", renderer);
+	//Little::vessel = TextureManagement::LoadTexture("assets/characters/rogue2.png", renderer);
+	//Minotaur::vessel = TextureManagement::LoadTexture("assets/characters/minotaur.png", renderer);
+	//NightBorne::vessel = TextureManagement::LoadTexture("assets/characters/NightBorne.png", renderer);
+	//Player::vessel = TextureManagement::LoadTexture("assets/characters/little.png", renderer);
+	//Skeleton::vessel = TextureManagement::LoadTexture("assets/characters/skeleton.png", renderer);
+	//FireWorm::vessel = TextureManagement::LoadTexture("assets/characters/fireworm.png", renderer);
 	player = new Player(renderer, "little", interface);
 	player->init();
 	layers.push_back(player);
@@ -86,6 +86,7 @@ void EntityManager::HandleEvents() {
 				player->setLocation(teleporter->getDestinationPoint());
 				setComputer();
 				global::lighthouse.clear();
+				setMapLogic();
 			}
 		}
 	}
@@ -248,6 +249,13 @@ void EntityManager::setComputer() {
 		teleporter->setInterfacePath(greyyard);
 		teleporter->setLocation({ -90,6 * 32 });
 		global::teleporters.push_back(teleporter);
+
+		for (int i = 0; i < 10; i++) {
+			MaceSkeleton* li = new MaceSkeleton(renderer);
+			li->init();
+			computers.push_back(li);
+			layers.push_back(li);
+		}
 	}
 	else if (map == GREYYARD) {
 		Teleporter* teleporter = new Teleporter(renderer);
@@ -293,4 +301,20 @@ void EntityManager::setComputer() {
 		teleporter->setSize(32, 32);
 		global::teleporters.push_back(teleporter);
 	}
+}
+
+void EntityManager::setMapLogic() {
+	if (map == LIBRARY) {
+		global::isDark = true;
+	}
+	else {
+		global::isDark = false;
+	}
+	if (map == TAVERN) {
+		global::isHaveArcane = false;
+	}
+	else {
+		global::isHaveArcane = true;
+	}
+
 }

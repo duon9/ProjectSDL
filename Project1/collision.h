@@ -10,6 +10,7 @@ public:
 	bool isCollidingHorizontal(int velocity);
 	bool isCollidingVertical(int velocity);
 	bool isColliding(int velo_x, int velo_y);
+	SDL_Point atBlock();
 	static bool rectColliding(SDL_Rect object1, SDL_Rect object2);
 	static bool rectCollidingVertical(SDL_Rect object1, SDL_Rect object2);
 	void reload(std::vector<std::vector<int>> collider);

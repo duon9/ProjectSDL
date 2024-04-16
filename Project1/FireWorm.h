@@ -16,7 +16,7 @@ public:
 
 	}
 	static SDL_Texture* vessel;
-	virtual void draw() override;
+	//virtual void draw() override;
 	virtual void chaseTarget(Player* target) override;
 };
 

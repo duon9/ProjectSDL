@@ -126,7 +126,7 @@ void Player::handleUserEvents(SDL_Event *e) {
 				attackSound->play();
 				attack();
 			}
-			if (e->button.button == SDL_BUTTON_RIGHT) {
+			if (e->button.button == SDL_BUTTON_RIGHT && global::isHaveArcane) {
 				switch (magic) {
 				case 1:
 				{
@@ -272,10 +272,9 @@ void Player::init() {
 	setBarProperties();
 	setFrameLimit();
 	setClip();
-	//setFrameLimit();
 	setCollision();
+	setTexture();
 	setLumination();
-	//llma.buildFont("assets/dialogue/lazyfont.png");
 }
 
 void Player::setBarProperties() {
@@ -287,11 +286,11 @@ void Player::reload() {
 	collision->reload(Object::collider);
 }
 
-void Player::draw() {
-	SDL_RenderCopyEx(renderer, Player::vessel, &srcRect, &desRect, NULL, NULL, flip);
-	/*llma.show();
-	llma.present();*/
-}
+//void Player::draw() {
+//	SDL_RenderCopyEx(renderer, Player::vessel, &srcRect, &desRect, NULL, NULL, flip);
+//	/*llma.show();
+//	llma.present();*/
+//}
 
 void Player::setAbility() {
 	WaterBall::loadClips();
