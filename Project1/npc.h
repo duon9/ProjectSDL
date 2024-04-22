@@ -18,5 +18,6 @@ public:
 	}
 	//virtual void setProtocolCode() override;
 	virtual void listen(SDL_Event* e) override;
+	virtual void update();
 };
 

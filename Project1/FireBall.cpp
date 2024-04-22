@@ -52,6 +52,11 @@ void FireBall::projectile() {
         position.y += v.getY() * speed;
         lumi->x = desRect.x + desRect.w / 2 - lumi->w / 2;
         lumi->y = desRect.y + desRect.h / 2 - lumi->h / 2;
+        //lumi->x+=3;
+        //lumi->w-=3;
+
+        //lumi->y+=3;
+        //lumi->h-=3;
     }
 }
 
@@ -68,5 +73,20 @@ void FireBall::handleEffect(SDL_Rect target) {
             lumi->w = 0;
             lumi->h = 0;
         }
+    }
+    else {
+        //fade();
+    }
+}
+
+void FireBall::fade() {
+    if (lumi->w > 0) {
+        lumi->x += 3;
+        lumi->w -= 3;
+    }
+
+    if (lumi->h > 0) {
+        lumi->y += 3;
+        lumi->h -= 3;
     }
 }

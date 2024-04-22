@@ -28,3 +28,7 @@ void NPC::listen(SDL_Event* e) {
 		}
 	}
 }
+
+void NPC::update() {
+
+}

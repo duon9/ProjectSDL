@@ -29,6 +29,7 @@ public:
 	}
 	static void loadClips();
 	static void loadTexture(SDL_Renderer* renderer);
+	void fade();
 	virtual void draw() override;
 	virtual void projectile() override;
 	virtual void handleEffect(SDL_Rect target) override;

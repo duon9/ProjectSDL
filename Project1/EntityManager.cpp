@@ -93,6 +93,7 @@ void EntityManager::HandleEvents() {
 
 	for (auto& npc : npcs) {
 		npc->listen(&global::e);
+		npc->update();
 	}
 
 	for (auto& object : global::missles) {
@@ -230,7 +231,7 @@ void EntityManager::setComputer() {
 			computers.push_back(li);
 			layers.push_back(li);
 		}
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 0; i++) {
 			FireWorm* li = new FireWorm(renderer);
 			li->init();
 			computers.push_back(li);
@@ -281,10 +282,10 @@ void EntityManager::setComputer() {
 		Portal* portal = new Portal();
 		portal->init();
 		portal->setMap(Map::GREYYARD);
-		portal->setColliderPath(tavern_collision);
-		portal->setDestination(Map::TAVERN);
-		portal->setDestinationPoint({ 594 + 22,904 });
-		portal->setInterfacePath(tavern_interface);
+		portal->setColliderPath(arrakis_collider);
+		portal->setDestination(Map::SAND);
+		portal->setDestinationPoint({ 672, 428 });
+		portal->setInterfacePath(arrakis);
 		portal->setLocation({ 705, 195 });
 		global::teleporters.push_back(portal);
 		layers.push_back(portal);
@@ -304,7 +305,7 @@ void EntityManager::setComputer() {
 }
 
 void EntityManager::setMapLogic() {
-	if (map == LIBRARY) {
+	if (map == LIBRARY || map == TAVERN) {
 		global::isDark = true;
 	}
 	else {

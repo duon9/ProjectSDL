@@ -11,8 +11,9 @@
 #include "FireBomb.h"
 #include "global.h"
 #include "LBitmapFont.h"
+#include "LightingEagle.h"
 
-#define MAX_TYPE 5
+#define MAX_TYPE 6
 
 class Player : public Object
 {
