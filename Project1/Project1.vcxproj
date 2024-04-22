@@ -179,6 +179,8 @@
     <ClCompile Include="skill.cpp" />
     <ClCompile Include="teleporter.cpp" />
     <ClCompile Include="test.cpp" />
+    <ClCompile Include="timer.cpp" />
+    <ClCompile Include="TimerManager.cpp" />
     <ClCompile Include="tutorial.cpp" />
     <ClCompile Include="utils.cpp" />
     <ClCompile Include="WaterBall.cpp" />
@@ -236,6 +238,8 @@
     <ClInclude Include="skill.h" />
     <ClInclude Include="teleporter.h" />
     <ClInclude Include="test.h" />
+    <ClInclude Include="timer.h" />
+    <ClInclude Include="TimerManager.h" />
     <ClInclude Include="tutorial.h" />
     <ClInclude Include="utils.h" />
     <ClInclude Include="WaterBall.h" />

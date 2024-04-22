@@ -8,6 +8,14 @@ enum GameState {
 	PAUSE
 };
 
+
+
+enum Effect {
+	HPDrain,
+	MPDrain,
+	SLOW
+};
+
 enum Option {
 	START,
 	LOAD,
