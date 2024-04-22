@@ -128,6 +128,7 @@ void Object::render() {
 //}
 
 void Object::init() {
+	setRandomId();
 	setProtocolCode();
 	setProtocol();
 	setLocation();
@@ -197,16 +198,17 @@ void Object::setAbility() {
 	return;
 }
 
-void Object::handleMissle(int damage) {
+void Object::handleMissle(int damage, Effect effect) {
 	stat.health -= damage;
-	/*status = TAKEDAMAGE;
-	if (stat.health <= 0) {
-		check_death = true;
-		status = DEATH;
-	}*/
+	this->effect = effect;
+	TimerManager::createTimer(id, 10000);
 }
 
 void Object::handleLogic() {
+	if (this->effect != NONE) {
+		handleMissleEffect();
+	}
+
 	if (stat.health <= 0) {
 		status = DEATH;
 		check_death = true;
@@ -225,4 +227,21 @@ void Object::setTexture() {
 	else {
 		texture = global::resources[type];
 	}
+}
+
+void Object::handleMissleEffect() {
+	Timer* time = TimerManager::getTimer(id);
+	if (time != nullptr) {
+		if (time->getElapsedTime() > 0) {
+			if (effect == HPDrain) stat.health -= 10;
+			if (effect == MPDrain) stat.mana -= 10;
+		}
+	}
+	else {
+		effect = NONE;
+	}
+}
+
+void Object::setRandomId() {
+	id = Math::Casuale::casuale(1, 30000);
 }

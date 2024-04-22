@@ -106,7 +106,7 @@ void EntityManager::HandleEvents() {
 			else {
 				object->handleEffect(entity->getRect());
 				if (object->getCollideState() == true) {
-					entity->handleMissle(object->getDamage());
+					entity->handleMissle(object->getDamage(), object->getEffect());
 					break;
 				}
 			}
@@ -231,7 +231,7 @@ void EntityManager::setComputer() {
 			computers.push_back(li);
 			layers.push_back(li);
 		}
-		for (int i = 0; i < 0; i++) {
+		for (int i = 0; i < 1; i++) {
 			FireWorm* li = new FireWorm(renderer);
 			li->init();
 			computers.push_back(li);

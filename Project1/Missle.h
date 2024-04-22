@@ -12,6 +12,7 @@ protected:
 	int speed = 5;
 	Math::Vector v;
 	int damage = 1000;
+	Effect effect = NONE;
 public:
 	
 
@@ -51,5 +52,6 @@ public:
 	int getDamage();
 	bool getCollideState();
 	virtual void projectile();
+	Effect getEffect();
 };
 

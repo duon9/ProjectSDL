@@ -269,6 +269,7 @@ void Player::setSFX() {
 }
 
 void Player::init() {
+	setRandomId();
 	setAbility();
 	setSize(54, 54);
 	setSFX();

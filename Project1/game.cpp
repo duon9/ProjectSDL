@@ -37,6 +37,7 @@ void Game::init(const char* title, int _x, int _y, int _w, int _h, Uint32 flags)
 
 void Game::gameLoop() {
 	while (Global::gamestate != GameState::EXIT) {
+		TimerManager::updateAllTimers();
 		handleEvents();
 		render();
 	}

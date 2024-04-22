@@ -9,6 +9,7 @@
 #include "collision.h"
 #include "aniamted_obj.h"
 #include "global.h"
+#include "TimerManager.h"
 
 class Object : public Animated {
 public:
@@ -42,27 +43,27 @@ public:
 	void updateDamage(int newDamage);
 	virtual void listen(SDL_Event* e);
 	void attack();
+	void setRandomId();
 	virtual void handleLogic() override;
 	virtual void setAbility();
 	virtual void logicHandle();
 	virtual void setProperties();
 	virtual void setCollision();
 	virtual void move();
-	/*virtual void setLocation() override;*/
 	virtual void init() override;
 	virtual void render() override;
 	virtual void draw();
 	virtual void death();
 	virtual void afterDeath();
-	virtual void handleMissle(int damage) override;
+	virtual void handleMissle(int damage, Effect effect = NONE) override;
+	void handleMissleEffect();
 	virtual void setTexture() override;
-	//virtual void loadTexture() override;
-	//bool check_death = false;
 	void resurrect(int time);
 	static std::vector<std::vector<int>> collider;
 protected:
-	//std::vector<std::vector<int>> collider;
 	Stat stat;
+	Effect effect;
+	int id;
 	int lastHealth;
 	std::vector<Skill> skillSet;
 	Collision* collision;

@@ -72,3 +72,7 @@ bool Missle::getCollideState() {
 	return isCollide;
 }
 
+Effect Missle::getEffect() {
+	return effect;
+}
+

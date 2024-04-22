@@ -1,5 +1,7 @@
 #include "TimerManager.h"
 
+std::map<int, Timer*> TimerManager::timers;
+
 Timer* TimerManager::getTimer(int id) {
     if (timers.find(id) != timers.end()) {
         return timers[id];

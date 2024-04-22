@@ -5,15 +5,15 @@
 
 class TimerManager {
 private:
-    std::map<int, Timer*> timers;
+    static std::map<int, Timer*> timers;
 
 public:
-    Timer* getTimer(int id);
+    static Timer* getTimer(int id);
 
-    Timer* createTimer(int id, Uint32 duration);
+    static Timer* createTimer(int id, Uint32 duration);
 
-    void destroyTimer(int id);
+    static void destroyTimer(int id);
 
-    void updateAllTimers();
+    static void updateAllTimers();
 };
 

@@ -11,6 +11,7 @@ enum GameState {
 
 
 enum Effect {
+	NONE,
 	HPDrain,
 	MPDrain,
 	SLOW

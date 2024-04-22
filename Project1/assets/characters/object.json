@@ -258,7 +258,7 @@
     }
   },
   "little": {
-    "health": 100000000,
+    "health": 10000,
     "mana": 100,
     "damage": 5000,
     "level": 1,
@@ -569,7 +569,7 @@
   "fireworm": {
     "health": 100000,
     "mana": 1,
-    "damage": 10000,
+    "damage": 100,
     "level": 1,
     "exp": 1,
     "speed": 2,
