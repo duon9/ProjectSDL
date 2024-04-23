@@ -36,29 +36,6 @@ void EntityManager::init() {
 
 void EntityManager::HandleEvents() {
 
-	//if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_f) {
-	//	if (map == GREYYARD) {
-	//		clean();
-	//		//setComputer();
-	//		Object::collider = File::readCollision(water_town);
-	//		setComputer();
-
-	//		interface->reload(TEST);
-	//		player->reload();
-	//		map = LIBRARY;
-	//	}
-	//	else {
-	//		clean();
-	//		//setComputer();
-	//		Object::collider = File::readCollision(grey);
-	//		setComputer();
-
-	//		interface->reload(greyyard);
-	//		player->reload();
-	//		map = GREYYARD;
-	//	}
-	//}
-
 	player->handleUserEvents(e);
 	//player->handleBarDisplay();
 

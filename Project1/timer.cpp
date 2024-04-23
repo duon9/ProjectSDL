@@ -19,3 +19,8 @@ void Timer::update() {
 bool Timer::isExpired() const {
     return elapsedTime >= duration;
 }
+
+void Timer::reset(Uint32 duration) {
+    start();
+    this->duration = duration;
+}

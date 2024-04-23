@@ -20,5 +20,7 @@ public:
     void update();
 
     bool isExpired() const;
+
+    void reset(Uint32 duration);
 };
 

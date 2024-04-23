@@ -10,9 +10,14 @@ Timer* TimerManager::getTimer(int id) {
 }
 
 Timer* TimerManager::createTimer(int id, Uint32 duration) {
-    Timer* timer = new Timer(duration);
-    timers[id] = timer;
-    return timer;
+    if (timers.find(id) == timers.end()) {
+        Timer* timer = new Timer(duration);
+        timers[id] = timer;
+        return timer;
+    }
+    else {
+        timers[id]->reset(duration);
+    }
 }
 
 void TimerManager::destroyTimer(int id) {
