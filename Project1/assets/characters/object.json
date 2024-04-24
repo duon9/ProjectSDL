@@ -258,7 +258,7 @@
     }
   },
   "little": {
-    "health": 10000,
+    "health": 100000,
     "mana": 100,
     "damage": 5000,
     "level": 1,
@@ -666,9 +666,9 @@
     }
   },
   "mace": {
-    "health": 100000,
+    "health": 1000,
     "mana": 1,
-    "damage": 100000,
+    "damage": 10,
     "level": 1,
     "exp": 1,
     "speed": 3,
@@ -759,6 +759,136 @@
           [ 640, 64, 64, 64 ],
           [ 704, 64, 64, 64 ],
           [ 768, 64, 64, 64 ]
+        ],
+        "desRect": "NULL"
+      }
+    }
+  },
+  "obelisk": {
+    "health": 1,
+    "mana": 1,
+    "damage": 1,
+    "level": 1,
+    "exp": 1,
+    "speed": 1,
+    "source": "assets/characters/obelisk.png",
+    "range": 1,
+    "desRect": [ 0, 0, 64, 64 ],
+    "width": 64,
+    "height": 128,
+    "clips": {
+      "idleFrame": {
+        "count": 13,
+        "maxFrame": 130,
+        "srcRect": [
+          [ 0, 0, 200, 400 ],
+          [ 200, 0, 200, 400 ],
+          [ 400, 0, 200, 400 ],
+          [ 600, 0, 200, 400 ],
+          [ 800, 0, 200, 400 ],
+          [ 1000, 0, 200, 400 ],
+          [ 1200, 0, 200, 400 ],
+          [ 1400, 0, 200, 400 ],
+          [ 1600, 0, 200, 400 ],
+          [ 1800, 0, 200, 400 ],
+          [ 2000, 0, 200, 400 ],
+          [ 2200, 0, 200, 400 ],
+          [ 2400, 0, 200, 400 ]
+        ],
+        "desRect": "NULL"
+      },
+      "runFrame": {
+        "count": 0,
+        "maxFrame": 0
+      },
+      "attackFrame": {
+        "count": 0,
+        "maxFrame": 0
+      },
+      "deathFrame": {
+        "count": 0,
+        "maxFrame": 0
+      },
+      "spellFrame": {
+        "count": 0,
+        "maxFrame": 0
+      },
+      "takedameFrame": {
+        "count": 0,
+        "maxFrame": 0
+      }
+    }
+  },
+  "slime": {
+    "health": 1000,
+    "mana": 1,
+    "damage": 100,
+    "level": 1,
+    "exp": 1,
+    "speed": 3,
+    "source": "assets/characters/slime.png",
+    "range": 2,
+    "desRect": [ 0, 0, 64, 64 ],
+    "width": 32,
+    "height": 25,
+    "clips": {
+      "idleFrame": {
+        "count": 4,
+        "maxFrame": 40,
+        "srcRect": [
+          [ 0, 0, 32, 25 ],
+          [ 32, 0, 32, 25 ],
+          [ 64, 0, 32, 25 ],
+          [ 96, 0, 32, 25 ]
+        ],
+        "desRect": "NULL"
+      },
+      "runFrame": {
+        "count": 4,
+        "maxFrame": 40,
+        "srcRect": [
+          [ 128, 0, 32, 25 ],
+          [ 160, 0, 32, 25 ],
+          [ 192, 0, 32, 25 ],
+          [ 224, 0, 32, 25 ]
+        ],
+        "desRect": "NULL"
+      },
+      "attackFrame": {
+        "count": 5,
+        "maxFrame": 50,
+        "srcRect": [
+          [ 0, 25, 32, 25 ],
+          [ 32, 25, 32, 25 ],
+          [ 64, 25, 32, 25 ],
+          [ 96, 25, 32, 25 ],
+          [ 128, 25, 32, 25 ]
+        ],
+        "desRect": "NULL"
+      },
+      "takedameFrame": {
+        "count": 3,
+        "maxFrame": 30,
+        "srcRect": [
+          [ 160, 25, 32, 25 ],
+          [ 192, 25, 32, 25 ],
+          [ 224, 25, 32, 25 ]
+        ],
+        "desRect": "NULL"
+      },
+      "spellFrame": {
+        "count": 0,
+        "maxFrame": 0
+      },
+      "deathFrame": {
+        "count": 5,
+        "maxFrame": 50,
+        "srcRect": [
+          [ 0, 50, 32, 25 ],
+          [ 32, 50, 32, 25 ],
+          [ 64, 50, 32, 25 ],
+          [ 96, 50, 32, 25 ],
+          [ 128, 50, 32, 25 ]
         ],
         "desRect": "NULL"
       }

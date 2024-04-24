@@ -9,6 +9,8 @@
 #include "FireWorm.h"
 #include "portal.h"
 #include "MaceSkeleton.h"
+#include "obelisk.h"
+
 class EntityManager
 {
 private:

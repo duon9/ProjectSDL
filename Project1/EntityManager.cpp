@@ -174,18 +174,23 @@ void EntityManager::clean() {
 
 void EntityManager::setComputer() {
 
-	/*for (int i = 0; i < MAX_MINOTAUR_COUNT; i++) {
-		Minotaur* computer = new Minotaur(renderer);
-		computer->init();
-		computers.push_back(computer);
-		layers.push_back(computer);
-	}*/
+	if (map == GREYYARD) {
+		Obelisk* obelisk = new Obelisk(global::renderer);
+		obelisk->init();
+		obelisk->setLocation({ 320, 320 });
+		layers.push_back(obelisk);
+		npcs.push_back(obelisk);
+	}
+
+
 	if (map == TAVERN) {
 		Guard* guard = new Guard(renderer);
 		guard->init();
 		guard->setLocation({ 15 * 32, 15 * 32 });
 		layers.push_back(guard);
 		npcs.push_back(guard);
+
+	
 
 		for (int i = 0; i < 0; i++) {
 			Skeleton* li = new Skeleton(renderer);
@@ -210,6 +215,13 @@ void EntityManager::setComputer() {
 		}
 		for (int i = 0; i < 1; i++) {
 			FireWorm* li = new FireWorm(renderer);
+			li->init();
+			computers.push_back(li);
+			layers.push_back(li);
+		}
+
+		for (int i = 0; i < 10; i++) {
+			Computer* li = new Computer(global::renderer, "slime");
 			li->init();
 			computers.push_back(li);
 			layers.push_back(li);
