@@ -1,4 +1,5 @@
 #include "IceLancet.h"
+#include "global.h"
 
 #define PATH "assets/skill/ice.png"
 
@@ -57,4 +58,17 @@ void IceLancet::loadTexture(SDL_Renderer* renderer) {
 
 void IceLancet::draw() {
     SDL_RenderCopyEx(renderer, vessel, &srcRect, &desRect, angle, NULL, SDL_FLIP_NONE);
+}
+
+void IceLancet::handleEffect(SDL_Rect target) {
+    if (!isCollide) {
+        if (isCollision(target)) {
+            state = IMPACT;
+            isCollide = true;
+            frameCount = 0;
+            Ice* ice = new Ice(renderer);
+            global::dtiles.push_back(ice);
+            global::layers.push_back(ice);
+        }
+    }
 }

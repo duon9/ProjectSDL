@@ -135,9 +135,11 @@
     <ClCompile Include="button.cpp" />
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="computer.cpp" />
+    <ClCompile Include="damageTile.cpp" />
     <ClCompile Include="dialogue_box.cpp" />
     <ClCompile Include="EarthPlanet.cpp" />
     <ClCompile Include="entity.cpp" />
+    <ClCompile Include="Fire.cpp" />
     <ClCompile Include="FireBall.cpp" />
     <ClCompile Include="FireBomb.cpp" />
     <ClCompile Include="FireWorm.cpp" />
@@ -145,6 +147,7 @@
     <ClCompile Include="global.cpp" />
     <ClCompile Include="header.cpp" />
     <ClCompile Include="HolySpear.cpp" />
+    <ClCompile Include="Ice.cpp" />
     <ClCompile Include="IceLancet.cpp" />
     <ClCompile Include="LBitmapFont.cpp" />
     <ClCompile Include="LightingEagle.cpp" />
@@ -194,9 +197,11 @@
     <ClInclude Include="button.h" />
     <ClInclude Include="collision.h" />
     <ClInclude Include="computer.h" />
+    <ClInclude Include="damageTile.h" />
     <ClInclude Include="dialogue_box.h" />
     <ClInclude Include="EarthPlanet.h" />
     <ClInclude Include="entity.h" />
+    <ClInclude Include="Fire.h" />
     <ClInclude Include="FireBall.h" />
     <ClInclude Include="FireBomb.h" />
     <ClInclude Include="FireWorm.h" />
@@ -204,6 +209,7 @@
     <ClInclude Include="global.h" />
     <ClInclude Include="header.h" />
     <ClInclude Include="HolySpear.h" />
+    <ClInclude Include="Ice.h" />
     <ClInclude Include="IceLancet.h" />
     <ClInclude Include="LBitmapFont.h" />
     <ClInclude Include="LightingEagle.h" />

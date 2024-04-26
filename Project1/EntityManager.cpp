@@ -21,15 +21,9 @@ void EntityManager::init() {
 	Object::collider = File::readCollision(grey);
 	Portal::loadClip();
 	Portal::loadTexture();
-	//Little::vessel = TextureManagement::LoadTexture("assets/characters/rogue2.png", renderer);
-	//Minotaur::vessel = TextureManagement::LoadTexture("assets/characters/minotaur.png", renderer);
-	//NightBorne::vessel = TextureManagement::LoadTexture("assets/characters/NightBorne.png", renderer);
-	//Player::vessel = TextureManagement::LoadTexture("assets/characters/little.png", renderer);
-	//Skeleton::vessel = TextureManagement::LoadTexture("assets/characters/skeleton.png", renderer);
-	//FireWorm::vessel = TextureManagement::LoadTexture("assets/characters/fireworm.png", renderer);
 	player = new Player(renderer, "little", interface);
 	player->init();
-	layers.push_back(player);
+	global::layers.push_back(player);
 	 
 	setComputer();
 }
@@ -78,7 +72,7 @@ void EntityManager::HandleEvents() {
 			continue;
 		}
 		else object->projectile();
-		for (auto& entity : layers) {
+		for (auto& entity : global::layers) {
 			if (entity->getProtocolCode() == object->getProtocolCode() || entity->check_death == true) continue;
 			else {
 				object->handleEffect(entity->getRect());
@@ -96,7 +90,7 @@ void EntityManager::HandleEvents() {
 void EntityManager::render() {
 	//std::sort(layers.begin(), layers.end(), compare);
 	sortLayer();
-	for (const auto& entity : layers) {
+	for (const auto& entity : global::layers) {
 		if (entity->getProtocolCode() == COMPUTER_CODE || entity->getProtocolCode() == 99) {
 			if (isInScreen(interface->camera, entity->getRect())) {
 				interface->updateObjectScreenPosition(entity->position, entity->desRect);
@@ -129,16 +123,16 @@ bool EntityManager::isInScreen(SDL_Rect object1, SDL_Rect object2) {
 
 
 void EntityManager::sortLayer() {
-	int n = layers.size();
+	int n = global::layers.size();
 	for (int i = 1; i < n; i++) { 
-		Entity* key = layers[i];
+		Entity* key = global::layers[i];
 		int j = i - 1;
 
-		while (j >= 0 && layers[j]->getLayer() > key->getLayer()) { 
-			layers[j + 1] = layers[j];
+		while (j >= 0 && global::layers[j]->getLayer() > key->getLayer()) { 
+			global::layers[j + 1] = global::layers[j];
 			j -= 1;
 		}
-		layers[j + 1] = key;
+		global::layers[j + 1] = key;
 	}
 }
 
@@ -162,14 +156,14 @@ void EntityManager::clean() {
 		delete npcs[i];
 	}
 	npcs.clear();
-	for (int i = 0; i < (int)layers.size(); i++)
+	for (int i = 0; i < (int)global::layers.size(); i++)
 	{
-		if (layers[i]->getProtocolCode() == 99) {
-			delete layers[i];
+		if (global::layers[i]->getProtocolCode() == 99) {
+			delete global::layers[i];
 		}
 	}
-	layers.clear();
-	layers.push_back(player);
+	global::layers.clear();
+	global::layers.push_back(player);
 }
 
 void EntityManager::setComputer() {
@@ -178,7 +172,7 @@ void EntityManager::setComputer() {
 		Obelisk* obelisk = new Obelisk(global::renderer);
 		obelisk->init();
 		obelisk->setLocation({ 320, 320 });
-		layers.push_back(obelisk);
+		global::layers.push_back(obelisk);
 		npcs.push_back(obelisk);
 	}
 
@@ -187,7 +181,7 @@ void EntityManager::setComputer() {
 		Guard* guard = new Guard(renderer);
 		guard->init();
 		guard->setLocation({ 15 * 32, 15 * 32 });
-		layers.push_back(guard);
+		global::layers.push_back(guard);
 		npcs.push_back(guard);
 
 	
@@ -197,7 +191,7 @@ void EntityManager::setComputer() {
 			li->init();
 			li->setLocation({ 20 * 32,20 * 32 });
 			computers.push_back(li);
-			layers.push_back(li);
+			global::layers.push_back(li);
 		}
 	}
 	else {
@@ -205,26 +199,26 @@ void EntityManager::setComputer() {
 			Skeleton* li = new Skeleton(renderer);
 			li->init();
 			computers.push_back(li);
-			layers.push_back(li);
+			global::layers.push_back(li);
 		}
 		for (int i = 0; i < 0; i++) {
 			NightBorne* li = new NightBorne(renderer);
 			li->init();
 			computers.push_back(li);
-			layers.push_back(li);
+			global::layers.push_back(li);
 		}
 		for (int i = 0; i < 1; i++) {
 			FireWorm* li = new FireWorm(renderer);
 			li->init();
 			computers.push_back(li);
-			layers.push_back(li);
+			global::layers.push_back(li);
 		}
 
 		for (int i = 0; i < 10; i++) {
 			Computer* li = new Computer(global::renderer, "slime");
 			li->init();
 			computers.push_back(li);
-			layers.push_back(li);
+			global::layers.push_back(li);
 		}
 
 	}
@@ -244,7 +238,7 @@ void EntityManager::setComputer() {
 			MaceSkeleton* li = new MaceSkeleton(renderer);
 			li->init();
 			computers.push_back(li);
-			layers.push_back(li);
+			global::layers.push_back(li);
 		}
 	}
 	else if (map == GREYYARD) {
@@ -277,7 +271,7 @@ void EntityManager::setComputer() {
 		portal->setInterfacePath(arrakis);
 		portal->setLocation({ 705, 195 });
 		global::teleporters.push_back(portal);
-		layers.push_back(portal);
+		global::layers.push_back(portal);
 	}
 	else if (map == TAVERN) {
 		Teleporter* teleporter = new Teleporter(renderer);
@@ -290,6 +284,18 @@ void EntityManager::setComputer() {
 		teleporter->setLocation({ 592 + 16, 900 + 30 });
 		teleporter->setSize(32, 32);
 		global::teleporters.push_back(teleporter);
+	}
+	else if (map == Map::SAND) {
+		Portal* portal = new Portal();
+		portal->init();
+		portal->setMap(Map::SAND);
+		portal->setColliderPath(grey);
+		portal->setDestination(Map::GREYYARD);
+		portal->setDestinationPoint({ 13 * 32, 10 * 32 });
+		portal->setInterfacePath(greyyard);
+		portal->setLocation({ 100, 100 });
+		global::teleporters.push_back(portal);
+		global::layers.push_back(portal);
 	}
 }
 

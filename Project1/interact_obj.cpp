@@ -232,14 +232,14 @@ void Object::setTexture() {
 void Object::handleMissleEffect() {
 	Timer* time = TimerManager::getTimer(id);
 	if (time != nullptr) {
-		std::cout << "y" << std::endl;
+		//std::cout << "y" << std::endl;
 		if (time->getElapsedTime() > 0) {
 			if (effect == HPDrain) stat.health -= 10;
 			if (effect == MPDrain) stat.mana -= 10;
 		}
 	}
 	else {
-		std::cout << "x" << std::endl;
+		//std::cout << "x" << std::endl;
 		effect = NONE;
 	}
 }

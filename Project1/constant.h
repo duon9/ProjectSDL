@@ -8,7 +8,11 @@ enum GameState {
 	PAUSE
 };
 
-
+enum TileState {
+	FORMATIONS,
+	INFINITE,
+	ENDING
+};
 
 enum Effect {
 	NONE,
@@ -32,13 +36,6 @@ enum MissleState {
 
 struct Orient {
 	bool up = 0, down = 0, left = 0, right = 0;
-
-	/*Orient(int _up = 0, int _down = 0, int _left = 0, int _right = 0) {
-		up = _up;
-		down = _down;
-		left = _left;
-		right = _right;
-	}*/
 };
 
 enum Map {
@@ -119,7 +116,7 @@ struct Stat {
 	}
 
 	Stat() {
-		std::cout << "Stat called \n";
+		
 	}
 };
 

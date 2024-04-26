@@ -20,7 +20,7 @@ private:
 	Player* player = nullptr;
 	std::vector<Computer*> computers;
 	std::vector<NPC*> npcs;
-	std::vector<Entity*> layers;
+	//std::vector<Entity*> layers;
 	Interface* interface = nullptr;
 	Map map = GREYYARD;
 	

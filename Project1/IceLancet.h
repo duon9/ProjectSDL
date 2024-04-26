@@ -1,5 +1,6 @@
 #pragma once
 #include "Missle.h"
+#include "Ice.h"
 
 class IceLancet : public Missle
 {
@@ -22,5 +23,6 @@ public:
 	static void loadClips();
 	static void loadTexture(SDL_Renderer* renderer);
 	virtual void draw() override;
+	virtual void handleEffect(SDL_Rect target) override;
 };
 

@@ -1,10 +1,13 @@
 #pragma once
 #include "Missle.h"
 #include "teleporter.h"
+#include "damageTile.h"
 #include <vector>
 #include <unordered_map>
 
 namespace global {
+	extern std::vector<Entity*> layers;
+	extern std::vector<damageTile*> dtiles;
 	extern std::vector<Missle*> missles;
 	extern std::vector<Teleporter*> teleporters;
 	extern SDL_Renderer* renderer;
