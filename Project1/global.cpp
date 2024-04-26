@@ -18,3 +18,4 @@ std::unordered_map<std::string, Stat*> global::stats;
 std::unordered_map<std::string, std::vector<std::vector<SDL_Rect>>*> global::clips;
 std::vector<damageTile*> global::dtiles;
 std::vector<Entity*> global::layers;
+//std::vector<std::vector<int>> global::collider;

@@ -904,8 +904,8 @@
     "source": "assets/skill/iceTile.png",
     "range": 2,
     "desRect": [ 0, 0, 64, 64 ],
-    "width": 32,
-    "height": 25,
+    "width": 64,
+    "height": 64,
     "clips": {
       "idleFrame": {
         "count": 15,

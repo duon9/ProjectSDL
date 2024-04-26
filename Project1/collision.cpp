@@ -1,5 +1,9 @@
 #include "collision.h"
 
+std::vector<std::vector<int>> Collision::collider;
+int Collision::map_width;
+int Collision::map_height;
+
 Collision::Collision(std::vector<std::vector<int>> collider, SDL_Rect* object, SDL_Rect* camera, SDL_Point *position) {
 
 	/**
@@ -182,4 +186,11 @@ bool Collision::rectCollidingVertical(SDL_Rect object1, SDL_Rect object2) {
 
 SDL_Point Collision::atBlock() {
 	return {0,0};
+}
+
+void Collision::update(SDL_Point point) {
+	//if (point.x < map_width && point.y < map_height && point.x >= 0 && point.y >= 0) {
+		Collision::collider[point.x][point.y] = 0;
+	//}
+	//Collision::collider[point.x][point.y] = 0;
 }

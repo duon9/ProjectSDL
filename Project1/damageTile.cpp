@@ -10,16 +10,28 @@ void damageTile::init() {
 }
 
 void damageTile::render() {
-	if (status != lastStatus) frameCount = 0;
-	if (frameCount == (*frame)[status].maxFrame - 1 && status == DEATH) {
-		frameCount -= 1;
-	}
-	else if (frameCount == (*frame)[status].maxFrame - 1) {
-		frameCount = 0;
-	}
 	frameCount++;
-	srcRect = (*wareClips)[status][frameCount / (*frame)[status].perFrame];
-	lastStatus = status;
+	if (status == FORMATIONS || status == FINAL) {
+		if (frameCount < (*frame)[FORMATION].maxFrame) {
+			status = FORMATIONS;
+			srcRect = (*wareClips)[FORMATION][frameCount / (*frame)[FORMATIONS].perFrame];
+		}
+		else {
+			status = INFINITE;
+			if (frameCount >= (*frame)[FORMATIONS].maxFrame + (*frame)[INFINITE].maxFrame) {
+				frameCount = (*frame)[FORMATIONS].maxFrame;
+			}
+			srcRect = (*wareClips)[FINAL][(frameCount - (*frame)[FORMATIONS].maxFrame) / (*frame)[INFINITE].perFrame];
+		}
+	}
+	if (status == ENDING) {
+		if (frameCount < (*frame)[ENDING].maxFrame) {
+			srcRect = (*wareClips)[ENDING][(frameCount / (*frame)[ENDING].perFrame)];
+		}
+		else {
+			return;
+		}
+	}
 	SDL_RenderCopy(global::renderer, texture, &srcRect, &desRect);
 }
 

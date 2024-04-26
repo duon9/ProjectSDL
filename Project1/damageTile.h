@@ -5,6 +5,7 @@
 class damageTile : public Animated
 {
 protected:
+	//std::string type;
 	Effect effect;
 	int damage;
 	Stat stat;
@@ -13,7 +14,8 @@ protected:
 	TileState lastStatus;
 public:
 	damageTile(SDL_Renderer* renderer, std::string type) : Animated(renderer) {
-		code = 16;
+		code = 99;
+		this->type = type;
 	}
 
 	~damageTile() {

@@ -67,6 +67,7 @@ void IceLancet::handleEffect(SDL_Rect target) {
             isCollide = true;
             frameCount = 0;
             Ice* ice = new Ice(renderer);
+            ice->setLocation({ position.x, position.y });
             global::dtiles.push_back(ice);
             global::layers.push_back(ice);
         }

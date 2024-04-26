@@ -23,6 +23,7 @@ namespace global {
 	extern std::unordered_map<std::string, std::vector<Frame>*> frames;
 	extern std::unordered_map<std::string, Stat*> stats;
 	extern std::unordered_map<std::string, std::vector<std::vector<SDL_Rect>>*> clips;
+	//extern std::vector<std::vector<int>> collider;
 }
 
 

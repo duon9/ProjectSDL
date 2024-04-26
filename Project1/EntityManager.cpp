@@ -77,7 +77,7 @@ void EntityManager::HandleEvents() {
 			else {
 				object->handleEffect(entity->getRect());
 				if (object->getCollideState() == true) {
-					entity->handleMissle(object->getDamage(), object->getEffect());
+					//entity->handleMissle(10, NONE);
 					break;
 				}
 			}
@@ -95,10 +95,6 @@ void EntityManager::render() {
 			if (isInScreen(interface->camera, entity->getRect())) {
 				interface->updateObjectScreenPosition(entity->position, entity->desRect);
 				entity->render();
-			}
-			else {
-				//entity->desRect.x = -1000;
-				//entity->desRect.y = -1000;
 			}
 		}
 		else {
