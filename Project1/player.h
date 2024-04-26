@@ -48,6 +48,7 @@ public:
 	void setBarProperties();
 	void setSFX();
 	void reload();
+	SDL_Point getExactPosition();
 	virtual void init() override;
 	virtual void move() override;
 	virtual void handleUserEvents(SDL_Event *e);

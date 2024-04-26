@@ -70,7 +70,7 @@ void Object::logicHandle() {
 
 void Object::setCollision() {
 	//collider = File::readCollision(path);
-	collision = new Collision(Object::collider, &desRect, nullptr, &position);
+	collision = new Collision(&desRect, nullptr, &position);
 }
 
 void Object::move() {

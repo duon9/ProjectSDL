@@ -8,7 +8,7 @@ private:
 public:
 	Ice(SDL_Renderer* renderer) : damageTile(renderer, "iceTile") {
 		init();
-		create();
+		//create();
 	}
 
 	~Ice() {

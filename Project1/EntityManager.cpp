@@ -18,7 +18,8 @@ EntityManager::~EntityManager() {
 
 void EntityManager::init() {
 
-	Object::collider = File::readCollision(grey);
+	Collision::collider = File::readCollision(grey);
+	Collision::reload();
 	Portal::loadClip();
 	Portal::loadTexture();
 	player = new Player(renderer, "little", interface);
@@ -51,9 +52,10 @@ void EntityManager::HandleEvents() {
 				clean();
 				map = teleporter->getDestination();
 				//setComputer();
-				Object::collider = File::readCollision(teleporter->getColliderPath());
+				Collision::collider = File::readCollision(teleporter->getColliderPath());
+				Collision::reload();
 				interface->reload(teleporter->getInterfacePath());
-				player->reload();
+				//player->reload();
 				player->setLocation(teleporter->getDestinationPoint());
 				setComputer();
 				global::lighthouse.clear();
@@ -88,7 +90,8 @@ void EntityManager::HandleEvents() {
 }
 
 void EntityManager::render() {
-	//std::sort(layers.begin(), layers.end(), compare);
+
+
 	sortLayer();
 	for (const auto& entity : global::layers) {
 		if (entity->getProtocolCode() == COMPUTER_CODE || entity->getProtocolCode() == 99) {
@@ -203,14 +206,14 @@ void EntityManager::setComputer() {
 			computers.push_back(li);
 			global::layers.push_back(li);
 		}
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 0; i++) {
 			FireWorm* li = new FireWorm(renderer);
 			li->init();
 			computers.push_back(li);
 			global::layers.push_back(li);
 		}
 
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 0; i++) {
 			Computer* li = new Computer(global::renderer, "slime");
 			li->init();
 			computers.push_back(li);

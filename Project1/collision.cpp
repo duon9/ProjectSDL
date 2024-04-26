@@ -4,18 +4,13 @@ std::vector<std::vector<int>> Collision::collider;
 int Collision::map_width;
 int Collision::map_height;
 
-Collision::Collision(std::vector<std::vector<int>> collider, SDL_Rect* object, SDL_Rect* camera, SDL_Point *position) {
+Collision::Collision(SDL_Rect* object, SDL_Rect* camera, SDL_Point *position) {
 
 	/**
 	* constructor
 	*/
-
-	std::cout << "collision class constructor called" << std::endl;
-	this->collider = collider;
 	this->object = object;
 	this->position = position;
-	this->map_width = collider[0].size();
-	this->map_height = collider.size();
 }
 
 Collision::~Collision() {
@@ -23,7 +18,6 @@ Collision::~Collision() {
 	/**
 	* destructor
 	*/
-
 	std::cout << "collision class destructor called" << std::endl;
 }
 
@@ -148,10 +142,10 @@ bool Collision::rectColliding(SDL_Rect object1, SDL_Rect object2) {
 	return false;
 }
 
-void Collision::reload(std::vector<std::vector<int>> collider) {
-	this->map_width = collider[0].size();
-	this->map_height = collider.size();
-	this->collider = collider;
+void Collision::reload() {
+	map_width = collider[0].size();
+	map_height = collider.size();
+	//this->collider = collider;
 }
 
 bool Collision::rectCollidingVertical(SDL_Rect object1, SDL_Rect object2) {

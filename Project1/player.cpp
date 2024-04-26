@@ -17,7 +17,7 @@ void Player::handleUserEvents(SDL_Event *e) {
 				else magic = 1;
 				break;
 			case SDLK_x:
-				std::cout << position.x << " " << position.y;
+				std::cout << position.x << " " << position.y << std::endl;
 				break;
 			case SDLK_r:
 				//llma.setCurr();
@@ -248,7 +248,7 @@ void Player::setLocation(SDL_Point p) {
 
 void Player::setCollision() {
 	//collider = File::readCollision(path);
-	collision = new Collision(Object::collider, &desRect, &interface->camera, &position);
+	collision = new Collision(&desRect, &interface->camera, &position);
 }
 
 void Player::setProtocolCode() {
@@ -291,7 +291,7 @@ void Player::setBarProperties() {
 }
 
 void Player::reload() {
-	collision->reload(Object::collider);
+	//collision->reload(Object::collider);
 }
 
 //void Player::draw() {
@@ -331,4 +331,8 @@ void Player::setLumination() {
 	global::lightRect.w = 360;
 	global::lightRect.h = 360;
 	//global::lighthouse.push_back(lumi);
+}
+
+SDL_Point Player::getExactPosition() {
+	return { interface->camera.x + desRect.x, interface->camera.y + desRect.y };
 }

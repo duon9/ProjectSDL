@@ -4,7 +4,7 @@ SDL_Texture* Entity::vessel = nullptr;
 
 Entity::Entity(SDL_Renderer* renderer) : renderer(renderer) {
 	//constructor
-	std::cout << "Entity constructor initialize" << std::endl;
+	//std::cout << "Entity constructor initialize" << std::endl;
 }
 
 Entity::~Entity() {
