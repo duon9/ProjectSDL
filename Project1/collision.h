@@ -16,7 +16,7 @@ public:
 	static void reload();
 	Collision(SDL_Rect* object, SDL_Rect* camera, SDL_Point* position);
 	~Collision();
-	static void update(SDL_Point point);
+	static void update(SDL_Point point, int value);
 	static std::vector<std::vector<int>> collider;
 
 private:

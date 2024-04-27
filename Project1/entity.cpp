@@ -66,6 +66,7 @@ void Entity::setSize(int w, int h) {
 }
 
 void Entity::handleMissle(int damage, Effect effect) {
+	std::cout << 10;
 	return;
 }
 

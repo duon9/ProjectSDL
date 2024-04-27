@@ -69,8 +69,11 @@ void IceLancet::handleEffect(SDL_Rect target) {
             Ice* ice = new Ice(renderer);
             ice->setLocation({ position.x, position.y });
             ice->create();
+
+           // std::cout << "xxxxxxxxxxxxxxxxxx" << std::endl;
             global::dtiles.push_back(ice);
             global::layers.push_back(ice);
+            //std::cout << "xxxxxxxxxxxxxxxxxx" << std::endl;
         }
     }
 }

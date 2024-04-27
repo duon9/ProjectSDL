@@ -14,7 +14,7 @@ public:
 	~Ice() {
 
 	}
-
+	virtual void handleLogic() override;
 	void create();
 	void clear();
 };

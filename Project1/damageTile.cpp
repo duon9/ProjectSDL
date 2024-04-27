@@ -36,7 +36,7 @@ void damageTile::render() {
 }
 
 void damageTile::handleEvents() {
-
+	listen(global::e);
 }
 
 void damageTile::setProperties() {
@@ -63,4 +63,31 @@ void damageTile::setTexture() {
 	else {
 		texture = global::resources[type];
 	}
+}
+
+void damageTile::listen(SDL_Event e) {
+	if (!check_death) {
+		SDL_Rect interact;
+		int dame;
+		if (protocol->listen(&e, interact, dame)) {
+			SDL_Rect rec = getRect();
+			if (SDL_HasIntersection(&interact, &rec)) {
+				stat.health -= dame;
+			}
+		}
+	}
+}
+
+void damageTile::handleLogic() {
+	if (!check_death) {
+		if (stat.health <= 0) {
+			status = ENDING;
+			frameCount = 0;
+			check_death = true;
+		}
+	}
+}
+
+void damageTile::handleMissle(int damage, Effect effect) {
+	stat.health -= damage;
 }

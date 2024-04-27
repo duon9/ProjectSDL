@@ -24,7 +24,10 @@ public:
 
 	virtual void init() override;
 	virtual void render() override;
+	virtual void handleMissle(int damage, Effect effect = NONE) override;
 	virtual void handleEvents();
+	void listen(SDL_Event e);
+	virtual void handleLogic();
 	void setProperties();
 	void setProtocol();
 	virtual void setTexture() override;

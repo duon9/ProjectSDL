@@ -442,7 +442,7 @@
     }
   },
   "skeleton": {
-    "health": 100000,
+    "health": 10000,
     "mana": 2000,
     "damage": 1,
     "level": 1,
@@ -451,8 +451,8 @@
     "source": "assets/characters/skeleton.png",
     "range": 1,
     "desRect": [ 0, 0, 64, 64 ],
-    "width": 100,
-    "height": 100,
+    "width": 96,
+    "height": 75,
     "clips": {
       "idleFrame": {
         "count": 6,
@@ -666,9 +666,9 @@
     }
   },
   "mace": {
-    "health": 1000,
+    "health": 100000,
     "mana": 1,
-    "damage": 10,
+    "damage": 10000,
     "level": 1,
     "exp": 1,
     "speed": 3,
@@ -895,7 +895,7 @@
     }
   },
   "iceTile": {
-    "health": 1000,
+    "health": 10000,
     "mana": 1,
     "damage": 100,
     "level": 1,
@@ -904,8 +904,8 @@
     "source": "assets/skill/iceTile.png",
     "range": 2,
     "desRect": [ 0, 0, 64, 64 ],
-    "width": 64,
-    "height": 64,
+    "width": 48,
+    "height": 48,
     "clips": {
       "idleFrame": {
         "count": 15,

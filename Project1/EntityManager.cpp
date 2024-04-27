@@ -51,17 +51,20 @@ void EntityManager::HandleEvents() {
 			if (map == teleporter->getCurrentMap()) {
 				clean();
 				map = teleporter->getDestination();
-				//setComputer();
 				Collision::collider = File::readCollision(teleporter->getColliderPath());
 				Collision::reload();
 				interface->reload(teleporter->getInterfacePath());
-				//player->reload();
 				player->setLocation(teleporter->getDestinationPoint());
 				setComputer();
 				global::lighthouse.clear();
 				setMapLogic();
 			}
 		}
+	}
+
+	for (auto object : global::dtiles) {
+		object->handleEvents();
+		object->handleLogic();
 	}
 
 	for (auto& npc : npcs) {
@@ -74,12 +77,14 @@ void EntityManager::HandleEvents() {
 			continue;
 		}
 		else object->projectile();
-		for (auto& entity : global::layers) {
-			if (entity->getProtocolCode() == object->getProtocolCode() || entity->check_death == true) continue;
+		for (int i = 0; i < global::layers.size(); i++) {
+			if (global::layers[i]->getProtocolCode() == object->getProtocolCode() || global::layers[i]->check_death == true) continue;
 			else {
-				object->handleEffect(entity->getRect());
+				object->handleEffect(global::layers[i]->getRect());
 				if (object->getCollideState() == true) {
-					//entity->handleMissle(10, NONE);
+					//std::cout << "this is why we start" << std::endl;
+					global::layers[i]->handleMissle(object->getDamage(), object->getEffect());
+					//std::cout << "this is wt" << std::endl;
 					break;
 				}
 			}
@@ -144,6 +149,7 @@ void EntityManager::clean() {
 	/*for (auto& teleporter : global::teleporters) {
 		delete teleporter;
 	}*/
+	global::dtiles.clear();
 	global::missles.clear();
 	global::teleporters.clear();
 	for (int i = 0; i < (int)computers.size(); i++) {
@@ -206,7 +212,7 @@ void EntityManager::setComputer() {
 			computers.push_back(li);
 			global::layers.push_back(li);
 		}
-		for (int i = 0; i < 0; i++) {
+		for (int i = 0; i < 3; i++) {
 			FireWorm* li = new FireWorm(renderer);
 			li->init();
 			computers.push_back(li);

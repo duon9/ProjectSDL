@@ -182,9 +182,9 @@ SDL_Point Collision::atBlock() {
 	return {0,0};
 }
 
-void Collision::update(SDL_Point point) {
-	//if (point.x < map_width && point.y < map_height && point.x >= 0 && point.y >= 0) {
-		Collision::collider[point.x][point.y] = 0;
-	//}
+void Collision::update(SDL_Point point, int value) {
+	if (point.x < map_width && point.y < map_height && point.x >= 0 && point.y >= 0) {
+		Collision::collider[point.x][point.y] = value;
+	}
 	//Collision::collider[point.x][point.y] = 0;
 }

@@ -14,7 +14,7 @@ public:
 		frame = &FireBomb::limits;
 		desRect.w = 100;
 		desRect.h = 100;
-		damage = 10;
+		damage = 100;
 		lumi = new SDL_Rect();
 		lumi->w = 360;
 		lumi->h = 360;
