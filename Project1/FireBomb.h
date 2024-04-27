@@ -1,5 +1,6 @@
 #pragma once
 #include "Missle.h"
+#include "Fire.h"
 
 class FireBomb : public Missle
 {

@@ -164,6 +164,11 @@ void Player::handleUserEvents(SDL_Event *e) {
 					global::missles.push_back(ball);
 					break;
 				}
+				case 7:
+				{
+					effect = HEAL;
+					TimerManager::createTimer(id, 10000);
+				}
 				default:
 					break;
 				}

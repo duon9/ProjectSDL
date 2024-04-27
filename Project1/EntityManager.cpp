@@ -78,7 +78,7 @@ void EntityManager::HandleEvents() {
 		}
 		else object->projectile();
 		for (int i = 0; i < global::layers.size(); i++) {
-			if (global::layers[i]->getProtocolCode() == object->getProtocolCode() || global::layers[i]->check_death == true) continue;
+			if (global::layers[i]->getProtocolCode() == object->getProtocolCode() || global::layers[i]->getProtocolCode() == 30 || global::layers[i]->check_death == true) continue;
 			else {
 				object->handleEffect(global::layers[i]->getRect());
 				if (object->getCollideState() == true) {
@@ -99,7 +99,7 @@ void EntityManager::render() {
 
 	sortLayer();
 	for (const auto& entity : global::layers) {
-		if (entity->getProtocolCode() == COMPUTER_CODE || entity->getProtocolCode() == 99) {
+		if (entity->getProtocolCode() == COMPUTER_CODE || entity->getProtocolCode() == 99 || entity->getProtocolCode() == 30) {
 			if (isInScreen(interface->camera, entity->getRect())) {
 				interface->updateObjectScreenPosition(entity->position, entity->desRect);
 				entity->render();
@@ -212,15 +212,15 @@ void EntityManager::setComputer() {
 			computers.push_back(li);
 			global::layers.push_back(li);
 		}
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 0; i++) {
 			FireWorm* li = new FireWorm(renderer);
 			li->init();
 			computers.push_back(li);
 			global::layers.push_back(li);
 		}
 
-		for (int i = 0; i < 0; i++) {
-			Computer* li = new Computer(global::renderer, "slime");
+		for (int i = 0; i < 3; i++) {
+			Computer* li = new Computer(global::renderer, "rogue_knight");
 			li->init();
 			computers.push_back(li);
 			global::layers.push_back(li);

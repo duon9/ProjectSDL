@@ -45,9 +45,6 @@
     <ClCompile Include="skill.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="test.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -225,9 +222,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="skill.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="player.h">

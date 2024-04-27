@@ -81,3 +81,7 @@ SDL_Point Entity::getEntityCenterPoint() {
 void Entity::setTexture() {
 
 }
+
+std::string Entity::getType() {
+	return type;
+}

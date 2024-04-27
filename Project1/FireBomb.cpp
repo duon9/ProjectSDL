@@ -71,6 +71,12 @@ void FireBomb::handleEffect(SDL_Rect target) {
             frameCount = 0;
             lumi->w = 0;
             lumi->h = 0;
+
+            Fire* fire = new Fire(global::renderer);
+            fire->setLocation({ position.x, position.y });
+            fire->setLumination();
+            global::dtiles.push_back(fire);
+            global::layers.push_back(fire);
         }
     }
 }

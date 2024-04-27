@@ -44,4 +44,5 @@ public:
 	Uint32 getProtocolCode();
 	virtual void handleMissle(int damage, Effect effect);
 	virtual void setTexture();
+	std::string getType();
 };

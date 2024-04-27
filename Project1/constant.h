@@ -18,6 +18,7 @@ enum Effect {
 	NONE,
 	HPDrain,
 	MPDrain,
+	HEAL,
 	SLOW
 };
 

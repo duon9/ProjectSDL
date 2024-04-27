@@ -236,6 +236,7 @@ void Object::handleMissleEffect() {
 		if (time->getElapsedTime() > 0) {
 			if (effect == HPDrain) stat.health -= 10;
 			if (effect == MPDrain) stat.mana -= 10;
+			if (effect == HEAL) stat.health += 100;
 		}
 	}
 	else {

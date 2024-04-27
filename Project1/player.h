@@ -13,7 +13,7 @@
 #include "LBitmapFont.h"
 #include "LightingEagle.h"
 
-#define MAX_TYPE 6
+#define MAX_TYPE 7
 
 class Player : public Object
 {
