@@ -214,10 +214,12 @@ void Object::handleLogic() {
 	}
 
 	if (stat.health <= 0) {
+		///frameCount = 0;
 		status = DEATH;
 		check_death = true;
 	}
 	else if (stat.health < lastHealth && status != RUNNING) {
+		//frameCount = 0;
 		status = TAKEDAMAGE;
 	}
 	lastHealth = stat.health;

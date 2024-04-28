@@ -1,7 +1,4 @@
 #include "FireWorm.h"
-
-SDL_Texture* FireWorm::vessel = nullptr;
-
 //void FireWorm::draw() {
 //	SDL_RenderCopyEx(renderer, FireWorm::vessel, &srcRect, &desRect, NULL, NULL, flip);
 //}

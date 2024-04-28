@@ -54,8 +54,8 @@ void HealCloud::handleLogic() {
 
 void HealCloud::setLumination() {
 	lumi = new SDL_Rect();
-	lumi->w = 360;
-	lumi->h = 360;
+	lumi->w = 600;
+	lumi->h = 600;
 	lumi->x = desRect.x + desRect.w / 2 - lumi->w / 2;
 	lumi->y = desRect.y + desRect.h / 2 - lumi->h / 2;
 	global::lighthouse.push_back(lumi);

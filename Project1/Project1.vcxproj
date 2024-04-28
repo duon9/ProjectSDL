@@ -187,6 +187,7 @@
     <ClCompile Include="tutorial.cpp" />
     <ClCompile Include="utils.cpp" />
     <ClCompile Include="WaterBall.cpp" />
+    <ClCompile Include="wizard.cpp" />
     <ClCompile Include="zDraw.c" />
     <ClCompile Include="zGame.c" />
     <ClCompile Include="zMath.c" />
@@ -249,6 +250,7 @@
     <ClInclude Include="tutorial.h" />
     <ClInclude Include="utils.h" />
     <ClInclude Include="WaterBall.h" />
+    <ClInclude Include="wizard.h" />
     <ClInclude Include="zDraw.h" />
     <ClInclude Include="zGame.h" />
     <ClInclude Include="zMath.h" />

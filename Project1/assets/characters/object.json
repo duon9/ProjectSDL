@@ -903,7 +903,7 @@
     }
   },
   "iceTile": {
-    "health": 1000000,
+    "health": 10000,
     "mana": 1,
     "damage": 100,
     "level": 1,
@@ -1071,7 +1071,7 @@
     "damage": 1000,
     "level": 1,
     "exp": 1,
-    "speed": 2,
+    "speed": 5,
     "source": "assets/characters/wizard.png",
     "range": 10,
     "desRect": [ 0, 0, 64, 64 ],
@@ -1133,8 +1133,8 @@
         "desRect": "NULL"
       },
       "spellFrame": {
-        "count": 0,
-        "maxFrame": 80,
+        "count": 8,
+        "maxFrame": 240,
         "srcRect": [
           [ 0, 950, 231, 190 ],
           [ 231, 950, 231, 190 ],
@@ -1173,8 +1173,8 @@
     "source": "assets/skill/heal.png",
     "range": 2,
     "desRect": [ 0, 0, 64, 64 ],
-    "width": 150,
-    "height": 150,
+    "width": 300,
+    "height": 300,
     "clips": {
       "idleFrame": {
         "count": 1,

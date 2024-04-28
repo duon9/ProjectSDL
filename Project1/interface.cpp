@@ -66,11 +66,11 @@ void Interface::reload(std::string path) {
 	if (global::resources[path] == nullptr) {
 		global::resources[path] = TextureManagement::LoadTexture(path, renderer);
 		texture = global::resources[path];
-		std::cout << "load new texture" << std::endl;
+		//std::cout << "load new texture" << std::endl;
 	}
 	else {
 		texture = global::resources[path];
-		std::cout << "load preload texture" << std::endl;
+		//std::cout << "load preload texture" << std::endl;
 	}
 	//texture = TextureManagement::LoadTexture(path, renderer);
 	SDL_QueryTexture(texture, NULL, NULL, &map_w, &map_h);
@@ -112,8 +112,8 @@ void Interface::light2D() {
 	if (global::isDark) {
 		SDL_SetRenderTarget(global::renderer, dark);
 		SDL_RenderClear(global::renderer);
-		for (auto lumi : global::lighthouse) {
-			SDL_RenderCopy(global::renderer, light, NULL, lumi);
+		for (int i = 0; i < (int)global::lighthouse.size(); i++) {
+			SDL_RenderCopy(global::renderer, light, NULL, global::lighthouse[i]);
 		}
 		SDL_RenderCopy(global::renderer, light, NULL, &global::lightRect);
 

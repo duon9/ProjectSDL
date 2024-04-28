@@ -184,7 +184,7 @@ std::vector<std::vector<SDL_Rect>> File::getClips(std::string type) {
 	readJSON(file_object, jsondata);
 	nlohmann::json entity = jsondata[type];
 	nlohmann::json clips = entity["clips"];
-
+	
 	std::string state[] = { "idleFrame", "runFrame", "attackFrame", "deathFrame", "takedameFrame", "spellFrame" };
 	for (int i = 0; i < MAX_STATUS; i++) {
 		nlohmann::json clip = clips[state[i]];

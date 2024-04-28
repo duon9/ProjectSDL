@@ -15,7 +15,7 @@ public:
 		wareClips = &FireBall::clips;
 		frame = &FireBall::limits;
 		speed = 5;
-		damage = 100000000;
+		damage = 1000;
 		lumi = new SDL_Rect();
 		lumi->w = 360;
 		lumi->h = 360;

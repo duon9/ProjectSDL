@@ -10,7 +10,7 @@
 #include "portal.h"
 #include "MaceSkeleton.h"
 #include "obelisk.h"
-
+#include "wizard.h"
 class EntityManager
 {
 private:

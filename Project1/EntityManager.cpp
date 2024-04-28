@@ -56,7 +56,7 @@ void EntityManager::HandleEvents() {
 				interface->reload(teleporter->getInterfacePath());
 				player->setLocation(teleporter->getDestinationPoint());
 				setComputer();
-				global::lighthouse.clear();
+				//global::lighthouse.clear();
 				setMapLogic();
 			}
 		}
@@ -152,6 +152,8 @@ void EntityManager::clean() {
 	/*for (auto& teleporter : global::teleporters) {
 		delete teleporter;
 	}*/
+
+	global::lighthouse.clear();
 	global::dtiles.clear();
 	global::missles.clear();
 	global::teleporters.clear();
@@ -215,15 +217,15 @@ void EntityManager::setComputer() {
 			computers.push_back(li);
 			global::layers.push_back(li);
 		}
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 0; i++) {
 			FireWorm* li = new FireWorm(renderer);
 			li->init();
 			computers.push_back(li);
 			global::layers.push_back(li);
 		}
 
-		for (int i = 0; i < 0; i++) {
-			Computer* li = new Computer(global::renderer, "wizard");
+		for (int i = 0; i < 1; i++) {
+			Wizard* li = new Wizard(global::renderer, "wizard");
 			li->init();
 			computers.push_back(li);
 			global::layers.push_back(li);
@@ -251,8 +253,8 @@ void EntityManager::setComputer() {
 
 		// 1153 1040
 
-		for (int i = 0; i < 10; i++) {
-			Fire* fire = new Fire(global::renderer);
+		for (int i = 0; i < 0; i++) {
+			HealCloud* fire = new HealCloud(global::renderer);
 			fire->setLocation({ 1153, 1040 });
 			fire->setLumination();
 			global::dtiles.push_back(fire);
