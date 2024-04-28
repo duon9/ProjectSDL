@@ -84,7 +84,6 @@ void EntityManager::HandleEvents() {
 				if (object->getCollideState() == true) {
 					//std::cout << "this is why we start" << std::endl;
 					global::layers[i]->handleMissle(object->getDamage(), object->getEffect());
-					//std::cout << "this is wt" << std::endl;
 					break;
 				}
 			}
@@ -103,6 +102,10 @@ void EntityManager::render() {
 			if (isInScreen(interface->camera, entity->getRect())) {
 				interface->updateObjectScreenPosition(entity->position, entity->desRect);
 				entity->render();
+			}
+			else {
+				entity->desRect.x = -1000;
+				entity->desRect.y = -1000;
 			}
 		}
 		else {
@@ -212,15 +215,15 @@ void EntityManager::setComputer() {
 			computers.push_back(li);
 			global::layers.push_back(li);
 		}
-		for (int i = 0; i < 0; i++) {
+		for (int i = 0; i < 1; i++) {
 			FireWorm* li = new FireWorm(renderer);
 			li->init();
 			computers.push_back(li);
 			global::layers.push_back(li);
 		}
 
-		for (int i = 0; i < 3; i++) {
-			Computer* li = new Computer(global::renderer, "rogue_knight");
+		for (int i = 0; i < 0; i++) {
+			Computer* li = new Computer(global::renderer, "wizard");
 			li->init();
 			computers.push_back(li);
 			global::layers.push_back(li);
@@ -244,6 +247,17 @@ void EntityManager::setComputer() {
 			li->init();
 			computers.push_back(li);
 			global::layers.push_back(li);
+		}
+
+		// 1153 1040
+
+		for (int i = 0; i < 10; i++) {
+			Fire* fire = new Fire(global::renderer);
+			fire->setLocation({ 1153, 1040 });
+			fire->setLumination();
+			global::dtiles.push_back(fire);
+			global::layers.push_back(fire);
+
 		}
 	}
 	else if (map == GREYYARD) {
@@ -305,7 +319,7 @@ void EntityManager::setComputer() {
 }
 
 void EntityManager::setMapLogic() {
-	if (map == LIBRARY || map == TAVERN) {
+	if (map == LIBRARY) {
 		global::isDark = true;
 	}
 	else {

@@ -7,7 +7,7 @@ private:
 	static std::vector<std::vector<SDL_Rect>> clips;
 	static std::vector<Frame> limits;
 	static SDL_Texture* vessel;
-	const static int damage = 1000;
+	//const static int damage = 1000;
 	SDL_Rect* lumi = nullptr;
 	
 public:
@@ -15,6 +15,7 @@ public:
 		wareClips = &FireBall::clips;
 		frame = &FireBall::limits;
 		speed = 5;
+		damage = 100000000;
 		lumi = new SDL_Rect();
 		lumi->w = 360;
 		lumi->h = 360;

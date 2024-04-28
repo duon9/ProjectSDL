@@ -12,8 +12,9 @@
 #include "global.h"
 #include "LBitmapFont.h"
 #include "LightingEagle.h"
+#include "HealCloud.h"
 
-#define MAX_TYPE 7
+#define MAX_TYPE 8
 
 class Player : public Object
 {

@@ -146,6 +146,7 @@
     <ClCompile Include="galaxy.cpp" />
     <ClCompile Include="global.cpp" />
     <ClCompile Include="header.cpp" />
+    <ClCompile Include="HealCloud.cpp" />
     <ClCompile Include="HolySpear.cpp" />
     <ClCompile Include="Ice.cpp" />
     <ClCompile Include="IceLancet.cpp" />
@@ -207,6 +208,7 @@
     <ClInclude Include="galaxy.h" />
     <ClInclude Include="global.h" />
     <ClInclude Include="header.h" />
+    <ClInclude Include="HealCloud.h" />
     <ClInclude Include="HolySpear.h" />
     <ClInclude Include="Ice.h" />
     <ClInclude Include="IceLancet.h" />

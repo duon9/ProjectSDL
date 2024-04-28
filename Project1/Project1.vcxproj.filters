@@ -192,6 +192,9 @@
     <ClCompile Include="Ice.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HealCloud.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -369,6 +372,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Ice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HealCloud.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

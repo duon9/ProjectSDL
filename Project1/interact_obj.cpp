@@ -209,6 +209,10 @@ void Object::handleLogic() {
 		handleMissleEffect();
 	}
 
+	if (stat.health > global::stats[type]->health) {
+		stat.health = global::stats[type]->health;
+	}
+
 	if (stat.health <= 0) {
 		status = DEATH;
 		check_death = true;
@@ -233,10 +237,10 @@ void Object::handleMissleEffect() {
 	Timer* time = TimerManager::getTimer(id);
 	if (time != nullptr) {
 		//std::cout << "y" << std::endl;
-		if (time->getElapsedTime() > 0) {
-			if (effect == HPDrain) stat.health -= 10;
+		if (time->getElapsedTime() % 100 == 0) {
+			if (effect == HPDrain) stat.health -= (stat.health / 100 > 10) ? stat.health / 100 : 10;
 			if (effect == MPDrain) stat.mana -= 10;
-			if (effect == HEAL) stat.health += 100;
+			//if (effect == HEAL) stat.health += 100;
 		}
 	}
 	else {

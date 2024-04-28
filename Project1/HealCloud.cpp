@@ -1,30 +1,33 @@
-#include "Fire.h"
+#include "HealCloud.h"
+
 #include "global.h"
 
-void Fire::handleEvents() {
+void HealCloud::handleEvents() {
 	if (!check_death) {
-		stat.health -= 10;
+		//stat.health -= 10;
 		listen(global::e);
 		incinerate();
 	}
 }
 
-void Fire::incinerate() {
+void HealCloud::incinerate() {
 	if (frameCount % 30 == 1) {
 		for (int i = 0; i < global::layers.size(); i++) {
-			if (global::layers[i]->getProtocolCode() == code || global::layers[i]->getType() == "fireworm") continue;
+			if (global::layers[i]->getProtocolCode() != ALLY_CODE) {
+				continue;
+			}
 			SDL_Rect v = global::layers[i]->getRect();
 			if (SDL_HasIntersection(getDamageRect(), &v)) {
-				global::layers[i]->handleMissle(stat.damage, HPDrain);
+				global::layers[i]->handleMissle(-stat.damage, NONE);
 				//stat.health += 1000;
 			}
 			//global::layers[i]->handleMissle(stat.damage, HPDrain);
 		}
 	}
-	
+
 }
 
-SDL_Rect* Fire::getDamageRect() {
+SDL_Rect* HealCloud::getDamageRect() {
 	SDL_Rect* res = new SDL_Rect();
 	res->x = position.x + desRect.w / 6;
 	res->y = position.y + desRect.w / 3;
@@ -33,7 +36,7 @@ SDL_Rect* Fire::getDamageRect() {
 	return res;
 }
 
-void Fire::handleLogic() {
+void HealCloud::handleLogic() {
 	if (!check_death) {
 		if (stat.health <= 0) {
 			status = ENDING;
@@ -49,7 +52,7 @@ void Fire::handleLogic() {
 	}
 }
 
-void Fire::setLumination() {
+void HealCloud::setLumination() {
 	lumi = new SDL_Rect();
 	lumi->w = 360;
 	lumi->h = 360;

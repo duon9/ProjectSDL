@@ -84,19 +84,19 @@
         "maxFrame": 0
       },
       "takedameFrame": {
+        "count": 1,
+        "maxFrame": 10,
         "srcRect": [
           [ 0, 0, 32, 32 ]
         ],
-        "desRect": "NULL",
-        "count": 1,
-        "maxFrame": 2
+        "desRect": "NULL"
       }
     }
   },
   "minotaur": {
-    "health": 1,
+    "health": 100000,
     "mana": 100,
-    "damage": 1000,
+    "damage": 10000,
     "level": 1,
     "exp": 1,
     "speed": 3,
@@ -167,8 +167,12 @@
         "maxFrame": 0
       },
       "takedameFrame": {
-        "count": 0,
-        "maxFrame": 0
+        "count": 1,
+        "maxFrame": 10,
+        "srcRect": [
+          [ 0, 0, 96, 96 ]
+        ],
+        "desRect": "NULL"
       }
     }
   },
@@ -263,7 +267,7 @@
   },
   "little": {
     "health": 100000,
-    "mana": 100,
+    "mana": 10000000000,
     "damage": 5000,
     "level": 1,
     "exp": 1,
@@ -338,9 +342,9 @@
     }
   },
   "night": {
-    "health": 10000000,
+    "health": 100000,
     "mana": 2000,
-    "damage": 100000000,
+    "damage": 1000,
     "level": 1,
     "exp": 1,
     "speed": 5,
@@ -899,7 +903,7 @@
     }
   },
   "iceTile": {
-    "health": 10000,
+    "health": 1000000,
     "mana": 1,
     "damage": 100,
     "level": 1,
@@ -1029,7 +1033,7 @@
           [ 288, 288, 96, 96 ],
           [ 0, 384, 96, 96 ],
           [ 96, 384, 96, 96 ],
-          [ 192, 384, 96, 96 ]        
+          [ 192, 384, 96, 96 ]
         ],
         "desRect": "NULL"
       },
@@ -1037,7 +1041,180 @@
         "count": 1,
         "maxFrame": 5,
         "srcRect": [
-          [ 288, 384, 96, 96 ] 
+          [ 288, 384, 96, 96 ]
+        ],
+        "desRect": "NULL"
+      },
+      "takedameFrame": {
+        "count": 0,
+        "maxFrame": 0,
+        "srcRect": [
+        ],
+        "desRect": "NULL"
+      },
+      "spellFrame": {
+        "count": 0,
+        "maxFrame": 0
+      },
+      "deathFrame": {
+        "count": 0,
+        "maxFrame": 0,
+        "srcRect": [
+        ],
+        "desRect": "NULL"
+      }
+    }
+  },
+  "wizard": {
+    "health": 100000,
+    "mana": 10000000,
+    "damage": 1000,
+    "level": 1,
+    "exp": 1,
+    "speed": 2,
+    "source": "assets/characters/wizard.png",
+    "range": 10,
+    "desRect": [ 0, 0, 64, 64 ],
+    "width": 231,
+    "height": 190,
+    "clips": {
+      "idleFrame": {
+        "count": 6,
+        "maxFrame": 60,
+        "srcRect": [
+          [ 0, 0, 231, 190 ],
+          [ 231, 0, 231, 190 ],
+          [ 462, 0, 231, 190 ],
+          [ 693, 0, 231, 190 ],
+          [ 924, 0, 231, 190 ],
+          [ 1155, 0, 231, 190 ]
+        ],
+        "desRect": "NULL"
+      },
+      "runFrame": {
+        "count": 8,
+        "maxFrame": 80,
+        "srcRect": [
+          [ 0, 190, 231, 190 ],
+          [ 231, 190, 231, 190 ],
+          [ 462, 190, 231, 190 ],
+          [ 693, 190, 231, 190 ],
+          [ 924, 190, 231, 190 ],
+          [ 1155, 190, 231, 190 ],
+          [ 1386, 190, 231, 190 ],
+          [ 1617, 190, 231, 190 ]
+        ],
+        "desRect": "NULL"
+      },
+      "attackFrame": {
+        "count": 8,
+        "maxFrame": 80,
+        "srcRect": [
+          [ 0, 380, 231, 190 ],
+          [ 231, 380, 231, 190 ],
+          [ 462, 380, 231, 190 ],
+          [ 693, 380, 231, 190 ],
+          [ 924, 380, 231, 190 ],
+          [ 1155, 380, 231, 190 ],
+          [ 1386, 380, 231, 190 ],
+          [ 1617, 380, 231, 190 ]
+        ],
+        "desRect": "NULL"
+      },
+      "takedameFrame": {
+        "count": 4,
+        "maxFrame": 40,
+        "srcRect": [
+          [ 0, 570, 231, 190 ],
+          [ 231, 570, 231, 190 ],
+          [ 462, 570, 231, 190 ],
+          [ 693, 570, 231, 190 ]
+        ],
+        "desRect": "NULL"
+      },
+      "spellFrame": {
+        "count": 0,
+        "maxFrame": 80,
+        "srcRect": [
+          [ 0, 950, 231, 190 ],
+          [ 231, 950, 231, 190 ],
+          [ 462, 950, 231, 190 ],
+          [ 693, 950, 231, 190 ],
+          [ 924, 950, 231, 190 ],
+          [ 1155, 950, 231, 190 ],
+          [ 1386, 950, 231, 190 ],
+          [ 1617, 950, 231, 190 ]
+        ],
+        "desRect": "NULL"
+      },
+      "deathFrame": {
+        "count": 7,
+        "maxFrame": 70,
+        "srcRect": [
+          [ 0, 760, 231, 190 ],
+          [ 231, 760, 231, 190 ],
+          [ 462, 760, 231, 190 ],
+          [ 693, 760, 231, 190 ],
+          [ 924, 760, 231, 190 ],
+          [ 1155, 760, 231, 190 ],
+          [ 1386, 760, 231, 190 ]
+        ],
+        "desRect": "NULL"
+      }
+    }
+  },
+  "healTile": {
+    "health": 10000,
+    "mana": 1,
+    "damage": 1000,
+    "level": 1,
+    "exp": 1,
+    "speed": 3,
+    "source": "assets/skill/heal.png",
+    "range": 2,
+    "desRect": [ 0, 0, 64, 64 ],
+    "width": 150,
+    "height": 150,
+    "clips": {
+      "idleFrame": {
+        "count": 1,
+        "maxFrame": 3,
+        "srcRect": [
+          [ 288, 384, 96, 96 ]
+        ],
+        "desRect": "NULL"
+      },
+      "runFrame": {
+        "count": 19,
+        "maxFrame": 95,
+        "srcRect": [
+          [ 0, 0, 96, 96 ],
+          [ 96, 0, 96, 96 ],
+          [ 192, 0, 96, 96 ],
+          [ 288, 0, 96, 96 ],
+          [ 0, 96, 96, 96 ],
+          [ 96, 96, 96, 96 ],
+          [ 192, 96, 96, 96 ],
+          [ 288, 96, 96, 96 ],
+          [ 0, 192, 96, 96 ],
+          [ 96, 192, 96, 96 ],
+          [ 192, 192, 96, 96 ],
+          [ 288, 192, 96, 96 ],
+          [ 0, 288, 96, 96 ],
+          [ 96, 288, 96, 96 ],
+          [ 192, 288, 96, 96 ],
+          [ 288, 288, 96, 96 ],
+          [ 0, 384, 96, 96 ],
+          [ 96, 384, 96, 96 ],
+          [ 192, 384, 96, 96 ]
+        ],
+        "desRect": "NULL"
+      },
+      "attackFrame": {
+        "count": 1,
+        "maxFrame": 5,
+        "srcRect": [
+          [ 288, 384, 96, 96 ]
         ],
         "desRect": "NULL"
       },
