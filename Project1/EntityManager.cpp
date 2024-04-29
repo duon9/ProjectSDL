@@ -119,8 +119,8 @@ void EntityManager::render() {
 	}
 
 	for (auto& teleporter : global::teleporters) {
-		/*interface->updateObjectScreenPosition(teleporter->position, teleporter->desRect);
-		teleporter->render();*/
+		interface->updateObjectScreenPosition(teleporter->position, teleporter->desRect);
+		teleporter->render();
 	}
 }
 
@@ -178,6 +178,44 @@ void EntityManager::clean() {
 
 void EntityManager::setComputer() {
 
+	if (map == PEARL_HARBOR) {
+		Teleporter* teleporter = new Teleporter(renderer);
+		teleporter->init();
+		teleporter->setMap(Map::PEARL_HARBOR);
+		teleporter->setColliderPath(grey);
+		teleporter->setDestination(Map::GREYYARD);
+		teleporter->setDestinationPoint({ 916,615 });
+		teleporter->setInterfacePath(greyyard);
+		teleporter->setLocation({ -90,17 * 32 });
+		global::teleporters.push_back(teleporter);
+
+		// 912 505
+
+		Teleporter* teleporter2 = new Teleporter(renderer);
+		teleporter2->init();
+		teleporter2->setSize(32, 32);
+		teleporter2->setMap(Map::PEARL_HARBOR);
+		teleporter2->setColliderPath(tavern_collision);
+		teleporter2->setDestination(Map::TAVERN);
+		teleporter2->setDestinationPoint({ 594 + 22,904 });
+		teleporter2->setInterfacePath(tavern_interface);
+		teleporter2->setLocation({ 924,490 });
+		global::teleporters.push_back(teleporter2);
+
+		Teleporter* teleporter3 = new Teleporter(renderer);
+		teleporter3->init();
+		teleporter3->setSize(32, 32);
+		teleporter3->setMap(Map::PEARL_HARBOR);
+		teleporter3->setColliderPath(tavern_collision);
+		teleporter3->setDestination(Map::TAVERN);
+		teleporter3->setDestinationPoint({ 1090, 877 });
+		teleporter3->setInterfacePath(tavern_interface);
+		teleporter3->setLocation({ 1084, 490});
+		global::teleporters.push_back(teleporter3);
+	}
+
+
+
 	if (map == GREYYARD) {
 		Obelisk* obelisk = new Obelisk(global::renderer);
 		obelisk->init();
@@ -204,7 +242,7 @@ void EntityManager::setComputer() {
 			global::layers.push_back(li);
 		}
 	}
-	else {
+	if (map == GREYYARD) {
 		for (int i = 0; i < 0; i++) {
 			Skeleton* li = new Skeleton(renderer);
 			li->init();
@@ -224,7 +262,7 @@ void EntityManager::setComputer() {
 			global::layers.push_back(li);
 		}
 
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 0; i++) {
 			Wizard* li = new Wizard(global::renderer, "wizard");
 			li->init();
 			computers.push_back(li);
@@ -266,10 +304,10 @@ void EntityManager::setComputer() {
 		Teleporter* teleporter = new Teleporter(renderer);
 		teleporter->init();
 		teleporter->setMap(Map::GREYYARD);
-		teleporter->setColliderPath(water_town);
-		teleporter->setDestination(Map::LIBRARY);
-		teleporter->setDestinationPoint({ 0,6 * 32 });
-		teleporter->setInterfacePath(TEST);
+		teleporter->setColliderPath(city_collision);
+		teleporter->setDestination(Map::PEARL_HARBOR);
+		teleporter->setDestinationPoint({ 70,18 * 32 });
+		teleporter->setInterfacePath(city_interface);
 		teleporter->setLocation({ 950,589 });
 		global::teleporters.push_back(teleporter);
 
@@ -298,13 +336,26 @@ void EntityManager::setComputer() {
 		Teleporter* teleporter = new Teleporter(renderer);
 		teleporter->init();
 		teleporter->setMap(Map::TAVERN);
-		teleporter->setColliderPath(grey);
-		teleporter->setDestination(Map::GREYYARD);
-		teleporter->setDestinationPoint({ 0,350 });
-		teleporter->setInterfacePath(greyyard);
+		teleporter->setColliderPath(city_collision);
+		teleporter->setDestination(Map::PEARL_HARBOR);
+		teleporter->setDestinationPoint({ 910, 545 });
+		teleporter->setInterfacePath(city_interface);
 		teleporter->setLocation({ 592 + 16, 900 + 30 });
 		teleporter->setSize(32, 32);
 		global::teleporters.push_back(teleporter);
+
+		//1074 904
+		
+		Teleporter* teleporter2 = new Teleporter(renderer);
+		teleporter2->init();
+		teleporter2->setMap(Map::TAVERN);
+		teleporter2->setColliderPath(city_collision);
+		teleporter2->setDestination(Map::PEARL_HARBOR);
+		teleporter2->setDestinationPoint({ 1074, 545 });
+		teleporter2->setInterfacePath(city_interface);
+		teleporter2->setLocation({ 1084, 930 });
+		teleporter2->setSize(32, 32);
+		global::teleporters.push_back(teleporter2);
 	}
 	else if (map == Map::SAND) {
 		Portal* portal = new Portal();
@@ -317,11 +368,19 @@ void EntityManager::setComputer() {
 		portal->setLocation({ 100, 100 });
 		global::teleporters.push_back(portal);
 		global::layers.push_back(portal);
+
+		for (int i = 0; i < 1; i++) {
+			FireWorm* li = new FireWorm(renderer);
+			li->init();
+			computers.push_back(li);
+			global::layers.push_back(li);
+		}
+
 	}
 }
 
 void EntityManager::setMapLogic() {
-	if (map == LIBRARY) {
+	if (map == LIBRARY || map == SAND) {
 		global::isDark = true;
 	}
 	else {

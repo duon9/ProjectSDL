@@ -194,6 +194,11 @@ const std::string arrakis_collider = "assets/map/arrakis.tmj";
 
 const std::string tavern_interface = "assets/map/tavern.png";
 const std::string tavern_collision = "assets/map/tavern.tmj";
+
+const std::string city_interface = "assets/map/city.png";
+const std::string city_collision = "assets/map/city.tmj";
+
+
 const double TOLERANCE = 0.03;
 
 #define MISSLE_WIDTH 64

@@ -18,6 +18,8 @@ public:
 	~Collision();
 	static void update(SDL_Point point, int value);
 	static std::vector<std::vector<int>> collider;
+	static int getWidth();
+	static int getHeight();
 
 private:
 	static int map_width, map_height;

@@ -109,10 +109,6 @@ void Object::render() {
 	frameCount++;
 	srcRect = (*wareClips)[status][frameCount / (*frame)[status].perFrame];
 	lastStatus = status;
-	//SDL_RenderCopyEx(renderer, texture, &srcRect, &desRect, NULL, NULL, flip);
-	/*SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-	SDL_RenderDrawRect(renderer, &desRect);*/
-
 	draw();
 }
 

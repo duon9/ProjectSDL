@@ -1,5 +1,6 @@
 #include "wizard.h"
 #include "math.h"
+#include "collision.h"
 
 void Wizard::chaseTarget(Player* target) {
 	if (!check_death && !global::isPause) {
@@ -11,7 +12,7 @@ void Wizard::chaseTarget(Player* target) {
 					return;
 				}
 				else {
-					int x = Math::Casuale::casuale(1, 2);
+					int x = Math::Casuale::casuale(1, 100);
 					if (x == 1) {
 						frameCount = 0;
 						status = SPELLCAST;
@@ -27,13 +28,20 @@ void Wizard::chaseTarget(Player* target) {
 						global::dtiles.push_back(fire);
 						global::layers.push_back(fire);
 					}
-					else {
+					else if (x == 2) {
+						frameCount = 0;
 						status = ATTACKING;
 						frameTick = (*frame)[status].maxFrame;
 						//attack();
 						LightingEagle* bomb = new LightingEagle(renderer, getPosition(), target->getPosition(), { 0,0 }, code);
 						bomb->setSize(100, 100);
 						global::missles.push_back(bomb);
+					}
+					else if (x == 3) {
+						setLocation(target->getPosition());
+					}
+					else if (x == 4) {
+						//setLocation({ Math::Casuale::casuale(100, Collision::getWidth() * 32), Math::Casuale::casuale(100, Collision::getHeight() * 32) });
 					}
 				}
 				

@@ -582,7 +582,7 @@
     "exp": 1,
     "speed": 2,
     "source": "assets/characters/fireworm.png",
-    "range": 10,
+    "range": 15,
     "desRect": [ 0, 0, 64, 64 ],
     "width": 120,
     "height": 120,
@@ -1066,14 +1066,14 @@
     }
   },
   "wizard": {
-    "health": 100000,
+    "health": 1000000,
     "mana": 10000000,
     "damage": 1000,
     "level": 1,
     "exp": 1,
     "speed": 5,
     "source": "assets/characters/wizard.png",
-    "range": 10,
+    "range": 15,
     "desRect": [ 0, 0, 64, 64 ],
     "width": 231,
     "height": 190,
@@ -1134,7 +1134,7 @@
       },
       "spellFrame": {
         "count": 8,
-        "maxFrame": 240,
+        "maxFrame": 80,
         "srcRect": [
           [ 0, 950, 231, 190 ],
           [ 231, 950, 231, 190 ],

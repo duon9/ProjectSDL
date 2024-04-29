@@ -188,3 +188,11 @@ void Collision::update(SDL_Point point, int value) {
 	}
 	//Collision::collider[point.x][point.y] = 0;
 }
+
+int Collision::getWidth() {
+	return map_width;
+}
+
+int Collision::getHeight() {
+	return map_height;
+}

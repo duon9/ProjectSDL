@@ -13,7 +13,7 @@ public:
 	LightingEagle(SDL_Renderer* renderer, SDL_Point currPos, SDL_Point desPos, SDL_Point camera, Uint32 code) : Missle(renderer, currPos, desPos, camera, code) {
 		wareClips = &LightingEagle::clips;
 		frame = &LightingEagle::limits;
-		damage = 50000;
+		damage = 10000;
 		speed = 5;
 	}
 
