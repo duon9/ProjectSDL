@@ -1237,5 +1237,97 @@
         "desRect": "NULL"
       }
     }
+  },
+  "receptionist": {
+    "health": 1,
+    "mana": 1,
+    "damage": 1,
+    "level": 1,
+    "exp": 1,
+    "speed": 1,
+    "source": "assets/characters/receptionist1.png",
+    "range": 1,
+    "desRect": [ 0, 0, 64, 64 ],
+    "width": 48,
+    "height": 72,
+    "clips": {
+      "idleFrame": {
+        "count": 4,
+        "maxFrame": 40,
+        "srcRect": [
+          [ 0, 0, 32, 48 ],
+          [ 32, 0, 32, 48 ],
+          [ 64, 0, 32, 48 ],
+          [ 96, 0, 32, 48 ]
+        ],
+        "desRect": "NULL"
+      },
+      "runFrame": {
+        "count": 0,
+        "maxFrame": 0
+      },
+      "attackFrame": {
+        "count": 0,
+        "maxFrame": 0
+      },
+      "deathFrame": {
+        "count": 0,
+        "maxFrame": 0
+      },
+      "spellFrame": {
+        "count": 0,
+        "maxFrame": 0
+      },
+      "takedameFrame": {
+        "count": 0,
+        "maxFrame": 0
+      }
+    }
+  },
+  "questgiver": {
+    "health": 1,
+    "mana": 1,
+    "damage": 1,
+    "level": 1,
+    "exp": 1,
+    "speed": 1,
+    "source": "assets/characters/receptionist2.png",
+    "range": 1,
+    "desRect": [ 0, 0, 64, 64 ],
+    "width": 48,
+    "height": 72,
+    "clips": {
+      "idleFrame": {
+        "count": 4,
+        "maxFrame": 40,
+        "srcRect": [
+          [ 0, 0, 32, 48 ],
+          [ 32, 0, 32, 48 ],
+          [ 64, 0, 32, 48 ],
+          [ 96, 0, 32, 48 ]
+        ],
+        "desRect": "NULL"
+      },
+      "runFrame": {
+        "count": 0,
+        "maxFrame": 0
+      },
+      "attackFrame": {
+        "count": 0,
+        "maxFrame": 0
+      },
+      "deathFrame": {
+        "count": 0,
+        "maxFrame": 0
+      },
+      "spellFrame": {
+        "count": 0,
+        "maxFrame": 0
+      },
+      "takedameFrame": {
+        "count": 0,
+        "maxFrame": 0
+      }
+    }
   }
 }

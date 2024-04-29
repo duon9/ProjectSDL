@@ -11,6 +11,9 @@
 #include "MaceSkeleton.h"
 #include "obelisk.h"
 #include "wizard.h"
+#include "receptionist.h"
+#include "guidegirl.h"
+
 class EntityManager
 {
 private:

@@ -118,10 +118,10 @@ void EntityManager::render() {
 		object->render(); // error
 	}
 
-	for (auto& teleporter : global::teleporters) {
+	/*for (auto& teleporter : global::teleporters) {
 		interface->updateObjectScreenPosition(teleporter->position, teleporter->desRect);
 		teleporter->render();
-	}
+	}*/
 }
 
 bool EntityManager::isInScreen(SDL_Rect object1, SDL_Rect object2) {
@@ -356,6 +356,19 @@ void EntityManager::setComputer() {
 		teleporter2->setLocation({ 1084, 930 });
 		teleporter2->setSize(32, 32);
 		global::teleporters.push_back(teleporter2);
+
+		Receptionist* re = new Receptionist(renderer);
+		re->init();
+		re->setLocation({ 25 * 32, 12 * 32 - 30 });
+		global::layers.push_back(re);
+		npcs.push_back(re);
+
+
+		GuideGirl* gf = new GuideGirl(renderer);
+		gf->init();
+		gf->setLocation({ 28 * 32, 12 * 32 - 30 });
+		global::layers.push_back(gf);
+		npcs.push_back(gf);
 	}
 	else if (map == Map::SAND) {
 		Portal* portal = new Portal();

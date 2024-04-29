@@ -145,6 +145,7 @@
     <ClCompile Include="FireWorm.cpp" />
     <ClCompile Include="galaxy.cpp" />
     <ClCompile Include="global.cpp" />
+    <ClCompile Include="guidegirl.cpp" />
     <ClCompile Include="header.cpp" />
     <ClCompile Include="HealCloud.cpp" />
     <ClCompile Include="HolySpear.cpp" />
@@ -169,6 +170,7 @@
     <ClCompile Include="FPScontroller.cpp" />
     <ClCompile Include="FPSparameter.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="receptionist.cpp" />
     <ClCompile Include="sfx.cpp" />
     <ClCompile Include="skeleton.cpp" />
     <ClCompile Include="Static.cpp" />
@@ -208,6 +210,7 @@
     <ClInclude Include="FireWorm.h" />
     <ClInclude Include="galaxy.h" />
     <ClInclude Include="global.h" />
+    <ClInclude Include="guidegirl.h" />
     <ClInclude Include="header.h" />
     <ClInclude Include="HealCloud.h" />
     <ClInclude Include="HolySpear.h" />
@@ -233,6 +236,7 @@
     <ClInclude Include="FPSparameter.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="constant.h" />
+    <ClInclude Include="receptionist.h" />
     <ClInclude Include="sfx.h" />
     <ClInclude Include="skeleton.h" />
     <ClInclude Include="Static.h" />
