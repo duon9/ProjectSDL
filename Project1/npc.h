@@ -19,5 +19,6 @@ public:
 	//virtual void setProtocolCode() override;
 	virtual void listen(SDL_Event* e) override;
 	virtual void update();
+	virtual void updateDialogue(const std::vector<std::string>& content);
 };
 

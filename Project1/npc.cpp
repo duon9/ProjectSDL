@@ -32,3 +32,7 @@ void NPC::listen(SDL_Event* e) {
 void NPC::update() {
 
 }
+
+void NPC::updateDialogue(const std::vector<std::string>& content) {
+	dialogue = content;
+}

@@ -170,6 +170,7 @@
     <ClCompile Include="FPScontroller.cpp" />
     <ClCompile Include="FPSparameter.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="QuestManager.cpp" />
     <ClCompile Include="receptionist.cpp" />
     <ClCompile Include="sfx.cpp" />
     <ClCompile Include="skeleton.cpp" />
@@ -236,6 +237,7 @@
     <ClInclude Include="FPSparameter.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="constant.h" />
+    <ClInclude Include="QuestManager.h" />
     <ClInclude Include="receptionist.h" />
     <ClInclude Include="sfx.h" />
     <ClInclude Include="skeleton.h" />

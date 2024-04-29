@@ -69,6 +69,7 @@ enum charState {
 	DEATH*/
 };
 
+
 struct blockPosition {
 	short row, col;
 	blockPosition(short _row = 0, short _col = 0) {

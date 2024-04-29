@@ -56,6 +56,7 @@ public:
 	virtual void death();
 	virtual void afterDeath();
 	virtual void handleMissle(int damage, Effect effect = NONE) override;
+	virtual void gift();
 	void handleMissleEffect();
 	virtual void setTexture() override;
 	void resurrect(int time);

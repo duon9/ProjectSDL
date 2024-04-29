@@ -201,6 +201,7 @@ void Object::handleMissle(int damage, Effect effect) {
 }
 
 void Object::handleLogic() {
+	if (check_death == true) return;
 	if (this->effect != NONE) {
 		handleMissleEffect();
 	}
@@ -213,6 +214,8 @@ void Object::handleLogic() {
 		///frameCount = 0;
 		status = DEATH;
 		check_death = true;
+		std::cout << "die die die" << std::endl;
+		gift();
 	}
 	else if (stat.health < lastHealth && status != RUNNING) {
 		//frameCount = 0;
@@ -249,4 +252,8 @@ void Object::handleMissleEffect() {
 
 void Object::setRandomId() {
 	id = Math::Casuale::casuale(1, 30000);
+}
+
+void Object::gift() {
+	return;
 }

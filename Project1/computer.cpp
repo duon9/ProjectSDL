@@ -91,3 +91,6 @@ SDL_Point Computer::shortestSmartPath() {
 	return { 0,0 };
 }
 
+void Computer::gift() {
+	manager.check(type);
+}

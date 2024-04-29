@@ -243,7 +243,7 @@ void EntityManager::setComputer() {
 		}
 	}
 	if (map == GREYYARD) {
-		for (int i = 0; i < 0; i++) {
+		for (int i = 0; i < 5; i++) {
 			Skeleton* li = new Skeleton(renderer);
 			li->init();
 			computers.push_back(li);

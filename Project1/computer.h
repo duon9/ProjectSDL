@@ -5,6 +5,7 @@
 #include "player.h"
 #include <vector>
 #include "math.h"
+#include "QuestManager.h"
 
 enum RandomOrient {
 	UP,
@@ -18,6 +19,7 @@ class Computer : public Object
 private:
 
 protected:
+	QuestManager manager = QuestManager::getInstance();
 	int range = 30;
 public:
 	Computer(SDL_Renderer* renderer, std::string type) : Object(renderer) {
@@ -39,5 +41,6 @@ public:
 	SDL_Point shortestSmartPath();
 	virtual void chaseTarget(Player* target);
 	virtual void setProtocolCode() override;
+	virtual void gift() override;
 	//void waitToRevive();
 };
