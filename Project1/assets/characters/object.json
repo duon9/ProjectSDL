@@ -1401,5 +1401,80 @@
         "desRect": "NULL"
       }
     }
+  },
+  "smokeTile": {
+    "health": 10000,
+    "mana": 1,
+    "damage": 1000,
+    "level": 1,
+    "exp": 1,
+    "speed": 3,
+    "source": "assets/skill/smokeTile.png",
+    "range": 2,
+    "desRect": [ 0, 0, 64, 64 ],
+    "width": 86,
+    "height": 86,
+    "clips": {
+      "idleFrame": {
+        "count": 1,
+        "maxFrame": 3,
+        "srcRect": [
+          [ 288, 384, 96, 96 ]
+        ],
+        "desRect": "NULL"
+      },
+      "runFrame": {
+        "count": 19,
+        "maxFrame": 95,
+        "srcRect": [
+          [ 0, 0, 96, 96 ],
+          [ 96, 0, 96, 96 ],
+          [ 192, 0, 96, 96 ],
+          [ 288, 0, 96, 96 ],
+          [ 0, 96, 96, 96 ],
+          [ 96, 96, 96, 96 ],
+          [ 192, 96, 96, 96 ],
+          [ 288, 96, 96, 96 ],
+          [ 0, 192, 96, 96 ],
+          [ 96, 192, 96, 96 ],
+          [ 192, 192, 96, 96 ],
+          [ 288, 192, 96, 96 ],
+          [ 0, 288, 96, 96 ],
+          [ 96, 288, 96, 96 ],
+          [ 192, 288, 96, 96 ],
+          [ 288, 288, 96, 96 ],
+          [ 0, 384, 96, 96 ],
+          [ 96, 384, 96, 96 ],
+          [ 192, 384, 96, 96 ]
+        ],
+        "desRect": "NULL"
+      },
+      "attackFrame": {
+        "count": 1,
+        "maxFrame": 5,
+        "srcRect": [
+          [ 288, 384, 96, 96 ]
+        ],
+        "desRect": "NULL"
+      },
+      "takedameFrame": {
+        "count": 0,
+        "maxFrame": 0,
+        "srcRect": [
+        ],
+        "desRect": "NULL"
+      },
+      "spellFrame": {
+        "count": 0,
+        "maxFrame": 0
+      },
+      "deathFrame": {
+        "count": 0,
+        "maxFrame": 0,
+        "srcRect": [
+        ],
+        "desRect": "NULL"
+      }
+    }
   }
 }

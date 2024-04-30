@@ -267,6 +267,11 @@ void EntityManager::setComputer() {
 		Wave* wave = new Wave(renderer);
 		wave->setLocation({ 520, 776 });
 		global::layers.push_back(wave);
+
+		damageTile* smoke = new damageTile(renderer, "smokeTile");
+		smoke->init();
+		smoke->setLocation({ 260, 310 });
+		global::layers.push_back(smoke);
 	}
 
 
