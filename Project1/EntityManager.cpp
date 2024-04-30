@@ -282,6 +282,8 @@ void EntityManager::setComputer() {
 		obelisk->setLocation({ 320, 320 });
 		global::layers.push_back(obelisk);
 		npcs.push_back(obelisk);
+
+
 	}
 
 
@@ -355,7 +357,7 @@ void EntityManager::setComputer() {
 			global::layers.push_back(li);
 		}
 		for (int i = 0; i < 0; i++) {
-			NightBorne* li = new NightBorne(renderer);
+			Computer* li = new Computer(renderer, "slime");
 			li->init();
 			computers.push_back(li);
 			global::layers.push_back(li);
@@ -399,8 +401,15 @@ void EntityManager::setComputer() {
 		teleporter2->setLocation({ 2866, 192 });
 		global::teleporters.push_back(teleporter2);
 
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 1; i++) {
 			MaceSkeleton* li = new MaceSkeleton(renderer);
+			li->init();
+			computers.push_back(li);
+			global::layers.push_back(li);
+		}
+
+		for (int i = 0; i < 10; i++) {
+			Computer* li = new Computer(renderer, "slime");
 			li->init();
 			computers.push_back(li);
 			global::layers.push_back(li);

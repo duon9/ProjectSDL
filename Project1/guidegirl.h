@@ -6,8 +6,8 @@ class GuideGirl : public NPC
 {
 private:
 	//SDL_Rect* lumi = nullptr;
-	Node* temp = nullptr;
-	QuestManager manager = QuestManager::getInstance();
+	Quest temp;
+	QuestManager& manager = QuestManager::getInstance();
 public:
 	GuideGirl(SDL_Renderer* renderer, std::string type = "questgiver") : NPC(renderer, type) {
 		//texture = TextureManagement::LoadTexture("assets/characters/captain.png", renderer);

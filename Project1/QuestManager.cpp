@@ -2,35 +2,65 @@
 #include "constant.h"
 
 void QuestManager::init() {
-	addNode();
+	//addNode();
+	//first = new Node;
+	//first->data.content.push_back("Kill 5 Skeleton at Greyyard \n   Progress: ");
+	//first->data.name = "Newbie's adventure";
+	//first->data.object = "skeleton";
+	//first->data.number = 5;
+	//first->data.finish = false;
+	//first->next = nullptr;
+	//last = first;
+	addMission();
 }
 
-void QuestManager::addNode() {
-	Node* temp = new Node();
-	temp->data.content.push_back("Kill 5 Skeleton at Greyyard \n   Progress: ");
-	temp->data.name = "Newbie's adventure";
-	temp->data.object = "skeleton";
-	temp->data.number = 5;
-	temp->data.finish = false;
+void QuestManager::addNode(Quest data) {
+	Node* temp = new Node;
+	temp->data = data;
 	temp->next = nullptr;
-	first = temp;
+	last->next = temp;
 	last = temp;
 }
 
-Node* QuestManager::getMission() {
-	return first;
+Quest QuestManager::getMission() {
+	return quests[curr];
 }
 
 void QuestManager::check(std::string type) {
-	if (first->data.finish == true) return;
-	if (first->data.object == type) {
-		first->data.progress += 1;
-		if (first->data.progress == first->data.number) {
-			first->data.finish = true;
-			first->data.content.clear();
-			first->data.content.push_back("Excellent kid, you can do it by yourseft");
-			first->data.content.push_back("Most of adventurer die when do their first mission");
-			first->data.content.push_back("Come back here in tomorrow to take your next \n  mission");
+	//std::cout << first->data.content.at(0) << std::endl;
+	//std::cout << first->data.name << std::endl;
+	if (quests[curr].finish == true) {
+		std::cout << "Pass" << std::endl;
+		return;
+	}
+	if (quests[curr].object == type) {
+		//std::cout << "check" << std::endl;
+		quests[curr].progress += 1;
+		if (quests[curr].progress == quests[curr].number) {
+			//std::cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" << std::endl;
+			quests[curr].finish = true;
+			if (curr < quests.size() - 1)curr++;
+
 		}
 	}
+}
+
+void QuestManager::addMission() {
+	Quest mission1;
+	mission1.content.push_back("Kill 5 Skeleton at Greyyard \n   Progress: ");
+	mission1.name = "Newbie's adventure";
+	mission1.object = "skeleton";
+	mission1.number = 5;
+	mission1.finish = false;
+
+	//Quest mission1;
+	Quest mission2;
+	mission2.content.push_back("Slime has become an digust problem for citizen in \n   Pearl Harbor, you have to eliminate them");
+	mission2.content.push_back("Kill 10 Slime under the Pearl Harbor\n   Progress: ");
+	mission2.finish = false;
+	mission2.name = "Digusting odd";
+	mission2.number = 10;
+	mission2.object = "slime";
+	quests.push_back(mission1);
+	quests.push_back(mission2);
 }

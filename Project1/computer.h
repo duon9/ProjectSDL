@@ -19,7 +19,7 @@ class Computer : public Object
 private:
 
 protected:
-	QuestManager manager = QuestManager::getInstance();
+	QuestManager& manager = QuestManager::getInstance();
 	int range = 30;
 public:
 	Computer(SDL_Renderer* renderer, std::string type) : Object(renderer) {

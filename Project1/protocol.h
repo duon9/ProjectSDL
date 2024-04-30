@@ -9,12 +9,12 @@ private:
 	//std::vector<std::pair<int, std::pair<SDL_Rect*, int*>>> eventsCleanQueue;
 public:
 	Protocol(Uint32 code) {
-		SDL_Log("Protocol initialized \n");
+		//SDL_Log("Protocol initialized \n");
 		this->code = code;
 	}
 
 	Protocol() {
-		SDL_Log("Protocol closed \n");
+		//SDL_Log("Protocol closed \n");
 	}
 
 	void send(SDL_Rect* attack, int* damage);

@@ -1,5 +1,5 @@
 #include "guidegirl.h"
-
+#include <iostream>
 void GuideGirl::listen(SDL_Event* e) {
 	if (!check_pause) {
 		SDL_Point point;
@@ -31,13 +31,13 @@ void GuideGirl::listen(SDL_Event* e) {
 
 void GuideGirl::resetDialogue() {
 	temp = manager.getMission();
-	if (temp->data.finish == false) {
-		dialogue = temp->data.content;
-		dialogue[0] += std::to_string(temp->data.progress);
-		dialogue[0] += '/';
-		dialogue[0] += std::to_string(temp->data.number);
-	}
-	else {
-		dialogue = temp->data.content;
-	}
+	/*std::cout << temp.data.content.size() << std::endl;
+	std::cout << temp.data.name << std::endl;
+	std::cout << temp.data.object << std::endl;
+	std::cout << temp.data.number << std::endl;*/
+
+	dialogue = temp.content;
+	dialogue[dialogue.size() - 1] += std::to_string(temp.progress);
+	dialogue[dialogue.size() - 1] += '/';
+	dialogue[dialogue.size() - 1] += std::to_string(temp.number);
 }
