@@ -17,7 +17,7 @@ EntityManager::~EntityManager() {
 }
 
 void EntityManager::init() {
-
+	manager.run();
 	Collision::collider = File::readCollision(grey);
 	Collision::reload();
 	Portal::loadClip();

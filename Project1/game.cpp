@@ -41,6 +41,7 @@ void Game::gameLoop() {
 		handleEvents();
 		render();
 	}
+	manager.wait();
 }
 
 void Game::handleEvents() {

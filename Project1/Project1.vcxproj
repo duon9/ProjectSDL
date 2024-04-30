@@ -172,6 +172,7 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="QuestManager.cpp" />
     <ClCompile Include="receptionist.cpp" />
+    <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="sfx.cpp" />
     <ClCompile Include="skeleton.cpp" />
     <ClCompile Include="Static.cpp" />
@@ -240,6 +241,7 @@
     <ClInclude Include="constant.h" />
     <ClInclude Include="QuestManager.h" />
     <ClInclude Include="receptionist.h" />
+    <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="sfx.h" />
     <ClInclude Include="skeleton.h" />
     <ClInclude Include="Static.h" />

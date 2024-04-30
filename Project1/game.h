@@ -1,4 +1,5 @@
 #pragma once
+#include "ResourceManager.h"
 
 #include "SDL.h"
 #include "SDL_image.h"
@@ -35,7 +36,7 @@ private:
 	void render();
 	Map* map = new Map;
 
-
+	ResourceManager manager = ResourceManager::getInstance();
 	Menu* menu = nullptr;
 	Interface* interface = nullptr;
 	//Player* player1 = nullptr;

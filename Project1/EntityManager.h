@@ -14,6 +14,7 @@
 #include "receptionist.h"
 #include "guidegirl.h"
 #include "Wave.h"
+#include "ResourceManager.h"
 
 class EntityManager
 {
@@ -27,6 +28,7 @@ private:
 	//std::vector<Entity*> layers;
 	Interface* interface = nullptr;
 	Map map = GREYYARD;
+	ResourceManager manager = ResourceManager::getInstance();
 	
 public:
 
