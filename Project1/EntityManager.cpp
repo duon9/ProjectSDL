@@ -46,15 +46,16 @@ void EntityManager::HandleEvents() {
 		computer->handleLogic();
 	}
 
-	for (auto& teleporter : global::teleporters) {
-		if (teleporter->isTeleport(player->getEntityCenterPoint())) {
-			if (map == teleporter->getCurrentMap()) {
-				clean();
-				map = teleporter->getDestination();
-				Collision::collider = File::readCollision(teleporter->getColliderPath());
+	for (int i = 0; i < (int)global::teleporters.size(); i++){
+		if (global::teleporters[i]->isTeleport(player->getEntityCenterPoint())) {
+			if (map == global::teleporters[i]->getCurrentMap()) {
+				//clean();
+				map = global::teleporters[i]->getDestination();
+				Collision::collider = File::readCollision(global::teleporters[i]->getColliderPath());
 				Collision::reload();
-				interface->reload(teleporter->getInterfacePath());
-				player->setLocation(teleporter->getDestinationPoint());
+				interface->reload(global::teleporters[i]->getInterfacePath());
+				player->setLocation(global::teleporters[i]->getDestinationPoint());
+				clean();
 				setComputer();
 				//global::lighthouse.clear();
 				setMapLogic();
@@ -94,28 +95,26 @@ void EntityManager::HandleEvents() {
 }
 
 void EntityManager::render() {
-
-
 	sortLayer();
-	for (const auto& entity : global::layers) {
-		if (entity->getProtocolCode() == COMPUTER_CODE || entity->getProtocolCode() == 99 || entity->getProtocolCode() == 30) {
-			if (isInScreen(interface->camera, entity->getRect())) {
-				interface->updateObjectScreenPosition(entity->position, entity->desRect);
-				entity->render();
+	for (int i = 0; i < (int)global::layers.size(); i++) {
+		if (global::layers[i]->getProtocolCode() == COMPUTER_CODE || global::layers[i]->getProtocolCode() == 99 || global::layers[i]->getProtocolCode() == 30) {
+			if (isInScreen(interface->camera, global::layers[i]->getRect())) {
+				interface->updateObjectScreenPosition(global::layers[i]->position, global::layers[i]->desRect);
+				global::layers[i]->render();
 			}
 			else {
-				entity->desRect.x = -1000;
-				entity->desRect.y = -1000;
+				global::layers[i]->desRect.x = -1000;
+				global::layers[i]->desRect.y = -1000;
 			}
 		}
 		else {
-			entity->render();
+			global::layers[i]->render();
 		}
 	}
 
 	for (auto& object : global::missles) {
 		interface->updateObjectScreenPosition(object->position, object->desRect);
-		object->render(); // error
+		object->render(); 
 	}
 
 	/*for (auto& teleporter : global::teleporters) {
@@ -153,9 +152,25 @@ void EntityManager::clean() {
 		delete teleporter;
 	}*/
 
+	for (int i = 0; i < (int)global::lighthouse.size(); i++) {
+		delete global::lighthouse[i];
+	}
+
 	global::lighthouse.clear();
+
+	for (int i = 0; i < (int)global::dtiles.size(); i++) {
+		delete global::dtiles[i];
+	}
 	global::dtiles.clear();
+
+	for (int i = 0; i < (int)global::missles.size(); i++) {
+		delete global::missles[i];
+	}
 	global::missles.clear();
+
+	for (int i = 0; i < (int)global::teleporters.size(); i++) {
+		delete global::teleporters[i];
+	}
 	global::teleporters.clear();
 	for (int i = 0; i < (int)computers.size(); i++) {
 		delete computers[i];
@@ -212,6 +227,46 @@ void EntityManager::setComputer() {
 		teleporter3->setInterfacePath(tavern_interface);
 		teleporter3->setLocation({ 1084, 490});
 		global::teleporters.push_back(teleporter3);
+
+		Teleporter* teleporter4 = new Teleporter(renderer);
+		teleporter4->init();
+		teleporter4->setMap(Map::PEARL_HARBOR);
+		teleporter4->setColliderPath(water_town);
+		teleporter4->setDestination(Map::LIBRARY);
+		teleporter4->setDestinationPoint({ 0, 6 * 32 });
+		teleporter4->setInterfacePath(TEST);
+		teleporter4->setLocation({ 1265, 1056 });
+		global::teleporters.push_back(teleporter4); // 1244 1056
+
+		// -22 1060
+
+		Teleporter* teleporter5 = new Teleporter(renderer);
+		teleporter5->init();
+		teleporter5->setMap(Map::PEARL_HARBOR);
+		teleporter5->setColliderPath(water_town);
+		teleporter5->setDestination(Map::LIBRARY);
+		teleporter5->setDestinationPoint({ 2846, 192 });
+		teleporter5->setInterfacePath(TEST);
+		teleporter5->setLocation({ -22 - 60, 1060 });
+		global::teleporters.push_back(teleporter5);
+
+		Entity* ship = new Entity(renderer);
+		ship->setSource(ship_source);
+		ship->init();
+		ship->setLocation({ 500, 600 - 32 });
+		ship->setSize(256 * 1.5, 192 * 1.5);
+		global::layers.push_back(ship);
+
+		Entity* ship1 = new Entity(renderer);
+		ship1->setSource(ship_source);
+		ship1->init();
+		ship1->setLocation({ 400, 1000 - 64 });
+		ship1->setSize(256 * 2, 192 * 2);
+		global::layers.push_back(ship1);
+
+		Wave* wave = new Wave(renderer);
+		wave->setLocation({ 520, 776 });
+		global::layers.push_back(wave);
 	}
 
 
@@ -275,12 +330,24 @@ void EntityManager::setComputer() {
 		Teleporter* teleporter = new Teleporter(renderer);
 		teleporter->init();
 		teleporter->setMap(Map::LIBRARY);
-		teleporter->setColliderPath(grey);
-		teleporter->setDestination(Map::GREYYARD);
-		teleporter->setDestinationPoint({ 916,615 });
-		teleporter->setInterfacePath(greyyard);
+		teleporter->setColliderPath(city_collision);
+		teleporter->setDestination(Map::PEARL_HARBOR);
+		teleporter->setDestinationPoint({ 1240, 1056 });
+		teleporter->setInterfacePath(city_interface);
 		teleporter->setLocation({ -90,6 * 32 });
 		global::teleporters.push_back(teleporter);
+
+		// 2846 192
+
+		Teleporter* teleporter2 = new Teleporter(renderer);
+		teleporter2->init();
+		teleporter2->setMap(Map::LIBRARY);
+		teleporter2->setColliderPath(city_collision);
+		teleporter2->setDestination(Map::PEARL_HARBOR);
+		teleporter2->setDestinationPoint({ -22, 1055 });
+		teleporter2->setInterfacePath(city_interface);
+		teleporter2->setLocation({ 2866, 192 });
+		global::teleporters.push_back(teleporter2);
 
 		for (int i = 0; i < 10; i++) {
 			MaceSkeleton* li = new MaceSkeleton(renderer);

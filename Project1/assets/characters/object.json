@@ -1329,5 +1329,77 @@
         "maxFrame": 0
       }
     }
+  },
+  "wave": {
+    "health": 1,
+    "mana": 1,
+    "damage": 1,
+    "level": 1,
+    "exp": 1,
+    "speed": 3,
+    "source": "assets/characters/wave.png",
+    "range": 2,
+    "desRect": [ 0, 0, 64, 64 ],
+    "width": 288,
+    "height": 72,
+    "clips": {
+      "idleFrame": {
+        "count": 1,
+        "maxFrame": 3,
+        "srcRect": [
+          [ 0, 0, 64, 16 ]
+        ],
+        "desRect": "NULL"
+      },
+      "runFrame": {
+        "count": 16,
+        "maxFrame": 160,
+        "srcRect": [
+          [ 0, 0, 64, 16 ],
+          [ 0, 16, 64, 16 ],
+          [ 0, 32, 64, 16 ],
+          [ 0, 48, 64, 16 ],
+          [ 0, 64, 64, 16 ],
+          [ 0, 80, 64, 16 ],
+          [ 0, 96, 64, 16 ],
+          [ 0, 112, 64, 16 ],
+          [ 0, 128, 64, 16 ],
+          [ 0, 144, 64, 16 ],
+          [ 0, 160, 64, 16 ],
+          [ 0, 176, 64, 16 ],
+          [ 0, 192, 64, 16 ],
+          [ 0, 208, 64, 16 ],
+          [ 0, 224, 64, 16 ],
+          [ 0, 240, 64, 16 ]
+        ],
+        "desRect": "NULL"
+      },
+      "attackFrame": {
+        "count": 1,
+        "maxFrame": 5,
+        "srcRect": [
+          [ 0, 0, 64, 16 ]
+        ],
+        "desRect": "NULL"
+      },
+      "takedameFrame": {
+        "count": 0,
+        "maxFrame": 0,
+        "srcRect": [
+        ],
+        "desRect": "NULL"
+      },
+      "spellFrame": {
+        "count": 0,
+        "maxFrame": 0
+      },
+      "deathFrame": {
+        "count": 0,
+        "maxFrame": 0,
+        "srcRect": [
+        ],
+        "desRect": "NULL"
+      }
+    }
   }
 }

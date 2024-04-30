@@ -17,7 +17,7 @@ void Teleporter::render() {
 void Teleporter::init() {
 	desRect.w = 100;
 	desRect.h = 100;
-	setLocation({ 300, 300 });
+	//setLocation({ 300, 300 });
 }
 
 void Teleporter::setMap(Map map) {

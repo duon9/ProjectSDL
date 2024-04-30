@@ -11,7 +11,6 @@ public:
 	~Animated() {
 		SDL_Log("Animated destructor called \n");
 	}
-
 	virtual void setClip(); // -> Animated
 	virtual void setFrameLimit(); //-> Animated
 	virtual void setLumination();

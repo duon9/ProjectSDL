@@ -14,6 +14,7 @@ Interface::~Interface() {
 
 void Interface::init() {
 	dark = SDL_CreateTexture(global::renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, SCREEN_WIDTH, SCREEN_HEIGHT);
+	SDL_SetTextureAlphaMod(dark, 100);
 	SDL_SetTextureBlendMode(dark, SDL_BLENDMODE_MOD);
 	light = TextureManagement::LoadTexture("assets/vfx/lighting.png", global::renderer);
 	SDL_SetTextureBlendMode(light, SDL_BLENDMODE_ADD);

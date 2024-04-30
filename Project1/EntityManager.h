@@ -13,6 +13,7 @@
 #include "wizard.h"
 #include "receptionist.h"
 #include "guidegirl.h"
+#include "Wave.h"
 
 class EntityManager
 {

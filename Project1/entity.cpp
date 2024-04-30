@@ -1,4 +1,5 @@
 #include "entity.h"
+#include "global.h"
 
 SDL_Texture* Entity::vessel = nullptr;
 
@@ -15,11 +16,12 @@ void Entity::init() {
 	setLocation();
 	setProtocol();
 	setProtocolCode();
-	setSize(32, 91);
+	setTexture();
+	//setSize(32, 91);
 }
 
 void Entity::render() {
-	SDL_RenderCopy(renderer, vessel, NULL, &desRect);
+	SDL_RenderCopy(renderer, texture, NULL, &desRect);
 }
 
 void Entity::setProtocolCode() {
@@ -79,9 +81,19 @@ SDL_Point Entity::getEntityCenterPoint() {
 }
 
 void Entity::setTexture() {
-
+	if (global::resources[type] == nullptr) {
+		global::resources[type] = TextureManagement::LoadTexture(source, global::renderer);
+		texture = global::resources[type];
+	}
+	else {
+		texture = global::resources[type];
+	}
 }
 
 std::string Entity::getType() {
 	return type;
+}
+
+void Entity::setSource(std::string source) {
+	this->source = source;
 }

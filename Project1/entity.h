@@ -20,6 +20,7 @@ protected:
 	Uint32 code;
 	SDL_Texture* texture = nullptr;
 	std::string type;
+	std::string source;
 public:
 	Entity(SDL_Renderer* renderer);
 	~Entity();
@@ -45,4 +46,5 @@ public:
 	virtual void handleMissle(int damage, Effect effect);
 	virtual void setTexture();
 	std::string getType();
+	void setSource(std::string source);
 };

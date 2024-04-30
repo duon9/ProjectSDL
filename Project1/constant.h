@@ -198,7 +198,7 @@ const std::string tavern_collision = "assets/map/tavern.tmj";
 
 const std::string city_interface = "assets/map/city.png";
 const std::string city_collision = "assets/map/city.tmj";
-
+const std::string ship_source = "assets/characters/ship.png";
 
 const double TOLERANCE = 0.03;
 
