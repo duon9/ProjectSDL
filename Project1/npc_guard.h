@@ -10,6 +10,7 @@ private:
 public:
 	Guard(SDL_Renderer* renderer, std::string type = "npc_guard") : NPC(renderer, type) {
 		texture = TextureManagement::LoadTexture("assets/characters/captain.png", renderer);
+		//dialogue.clear();
 		dialogue.push_back("welcome to pearl harbor");
 		dialogue.push_back("come to the receptionist to take the mission");
 		dialogue.push_back("good luck kid");

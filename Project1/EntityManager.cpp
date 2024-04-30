@@ -25,7 +25,7 @@ void EntityManager::init() {
 	player = new Player(renderer, "little", interface);
 	player->init();
 	global::layers.push_back(player);
-	 
+	global::resources["assets/characters/element.png"] = TextureManagement::LoadTexture("assets/characters/element.png", renderer);
 	setComputer();
 }
 
@@ -292,15 +292,60 @@ void EntityManager::setComputer() {
 		global::layers.push_back(guard);
 		npcs.push_back(guard);
 
-	
+		NPC* mauler = new NPC(renderer, "npc_mauler");
+		mauler->init();
+		mauler->setLocation({ 30 * 32, 15 * 32 });
+		mauler->add("My skin is as hard as diamond");
+		global::layers.push_back(mauler);
+		npcs.push_back(mauler);
 
-		for (int i = 0; i < 0; i++) {
-			Skeleton* li = new Skeleton(renderer);
-			li->init();
-			li->setLocation({ 20 * 32,20 * 32 });
-			computers.push_back(li);
-			global::layers.push_back(li);
-		}
+		NPC* ranger = new NPC(renderer, "npc_ranger");
+		ranger->init();
+		ranger->setLocation({ 16 * 32, 18 * 32 });
+		ranger->add("let your mind flow with the wind, it will lead you\n   to the elf wood");
+		global::layers.push_back(ranger);
+		npcs.push_back(ranger);
+
+		NPC* bladekeeper = new NPC(renderer, "npc_bladekeeper");
+		bladekeeper->init();
+		bladekeeper->setLocation({ 25 * 32, 18 * 32 });
+		bladekeeper->add("my blade is the combine of blood and fire");
+		global::layers.push_back(bladekeeper);
+		npcs.push_back(bladekeeper);
+
+		NPC* knight = new NPC(renderer, "npc_knight");
+		knight->init();
+		knight->setLocation({ 20 * 32, 15 * 32 });
+		knight->add("dedicate my life to my nation");
+		knight->add("you look to young to become a adventurer");
+		global::layers.push_back(knight);
+		npcs.push_back(knight);
+
+		NPC* priestess = new NPC(renderer, "npc_priestess");
+		priestess->init();
+		priestess->setLocation({ 16 * 32, 26 * 32 });
+		priestess->add("how young a kid");
+		priestess->add("your eyes conceal furiosity and  desire for \n   recognization");
+		global::layers.push_back(priestess);
+		npcs.push_back(priestess);
+
+		NPC* hashashin = new NPC(renderer, "npc_hashashin");
+		hashashin->init();
+		hashashin->setLocation({ 32 * 32, 26 * 32 });
+		hashashin->add("the arrakis is my hometown");
+		hashashin->add("it is covered by sand and fireworm");
+		global::layers.push_back(hashashin);
+		npcs.push_back(hashashin);
+
+
+		NPC* monk = new NPC(renderer, "npc_monk");
+		monk->init();
+		monk->setLocation({ 27 * 32, 26 * 32 });
+		monk->add("as silent as earth");
+		monk->add("become stable in a chaotic world");
+		global::layers.push_back(monk);
+		npcs.push_back(monk);
+
 	}
 	if (map == GREYYARD) {
 		for (int i = 0; i < 5; i++) {

@@ -225,12 +225,12 @@ void Object::handleLogic() {
 }
 
 void Object::setTexture() {
-	if (global::resources[type] == nullptr) {
-		global::resources[type] = TextureManagement::LoadTexture(stat.source, global::renderer);
-		texture = global::resources[type];
+	if (global::resources[stat.source] == nullptr) {
+		global::resources[stat.source] = TextureManagement::LoadTexture(stat.source, global::renderer);
+		texture = global::resources[stat.source];
 	}
 	else {
-		texture = global::resources[type];
+		texture = global::resources[stat.source];
 	}
 }
 

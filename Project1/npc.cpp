@@ -36,3 +36,11 @@ void NPC::update() {
 void NPC::updateDialogue(const std::vector<std::string>& content) {
 	dialogue = content;
 }
+
+void NPC::add(std::string content) {
+	dialogue.push_back(content);
+}
+
+void NPC::link(std::vector<std::string> content) {
+	this->dialogue = content;
+}
