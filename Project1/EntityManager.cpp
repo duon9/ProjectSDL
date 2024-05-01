@@ -401,7 +401,7 @@ void EntityManager::setComputer() {
 		teleporter2->setLocation({ 2866, 192 });
 		global::teleporters.push_back(teleporter2);
 
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 8; i++) {
 			MaceSkeleton* li = new MaceSkeleton(renderer);
 			li->init();
 			computers.push_back(li);

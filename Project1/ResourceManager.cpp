@@ -8,7 +8,7 @@ int ResourceManager::loadNPCProperties(void* data) {
 }
 
 int loader(void* data) {
-	std::vector<std::string> types = { "npc_monk", "npc_hashashin", "npc_priestess", "npc_mauler", "npc_ranger", "npc_bladekeeper", "npc_knight", "npc_guard", "smokeTile", "wave", "receptionist", "questgiver", "mace", "fireTile", "iceTile"};
+	std::vector<std::string> types = { "npc_monk", "npc_hashashin", "npc_priestess", "npc_mauler", "npc_ranger", "npc_bladekeeper", "npc_knight", "npc_guard", "smokeTile", "wave", "receptionist", "questgiver", "mace", "fireTile", "iceTile", "slime", "obelisk"};
 	for (auto it = types.begin(); it != types.end(); it++) {
 		std::cout << "load finish " << *it << std::endl;
 		global::stats[*it] = new Stat();
@@ -20,6 +20,7 @@ int loader(void* data) {
 	}
 	return 0;
 }
+
 
 void ResourceManager::run() {
 	//std::vector<std::string> types = { "npc_monk", "npc_hashashin", "npc_priestess", "npc_mauler", "npc_ranger", "npc_bladekeeper", "npc_knight" };

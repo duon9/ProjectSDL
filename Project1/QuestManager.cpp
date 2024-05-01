@@ -47,6 +47,8 @@ void QuestManager::check(std::string type) {
 
 void QuestManager::addMission() {
 	Quest mission1;
+	mission1.content.push_back("This is your first mission \n    Reported that the dark has come back in the greyyard");
+	mission1.content.push_back("at the west side of the Pearl Harbor, use HolySpear to\n    purify them");
 	mission1.content.push_back("Kill 5 Skeleton at Greyyard \n   Progress: ");
 	mission1.name = "Newbie's adventure";
 	mission1.object = "skeleton";
@@ -55,6 +57,9 @@ void QuestManager::addMission() {
 
 	//Quest mission1;
 	Quest mission2;
+	mission2.content.push_back("Well done kid, most of adventurer cannot survive in their \n   first mission");
+	mission2.content.push_back("Due to the drastically exploit coal underground, the slime \n    do not have inhabitant, so they have took over our sewer");
+	mission2.content.push_back("Go to underground to eliminate them");
 	mission2.content.push_back("Slime has become an digust problem for citizen in \n   Pearl Harbor, you have to eliminate them");
 	mission2.content.push_back("Kill 10 Slime under the Pearl Harbor\n   Progress: ");
 	mission2.finish = false;
@@ -63,4 +68,26 @@ void QuestManager::addMission() {
 	mission2.object = "slime";
 	quests.push_back(mission1);
 	quests.push_back(mission2);
+
+	Quest mission3;
+	mission3.content.push_back("Congratulations, you have done a great job");
+	mission3.content.push_back("Now, come to the next job, we will uprank to bronze \n    after this mission");
+	mission3.content.push_back("Reported that under the city has skeleton mace you \n   have to clear them in order to protect the researcher");
+	mission3.content.push_back("Kill 10 Slime under the Pearl Harbor\n   Progress: ");
+	mission3.finish = false;
+	mission3.name = "Digusting odd";
+	mission3.number = 8;
+	mission3.object = "mace";
+	quests.push_back(mission3);
+
+	Quest mission4;
+	mission4.content.push_back("Congratulations, you have done a great job");
+	mission4.content.push_back("Now, come to the next job, Hashashin, one of gold\n    rank advanturer, have a request to kill the fireworm at");
+	mission4.content.push_back("arrakis, this is a hard mission, so you need to \n    prepare carefully");
+	mission4.content.push_back("Kill the fireworm at Arrakis\n   Progress: ");
+	mission4.finish = false;
+	mission4.name = "Arrakis trip";
+	mission4.number = 1;
+	mission4.object = "fireworm";
+	quests.push_back(mission4);
 }
