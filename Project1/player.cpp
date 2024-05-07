@@ -183,15 +183,17 @@ void Player::handleUserEvents(SDL_Event *e) {
 					//setLocation({interface->camera.x + e->motion.x, interface->camera.y + e->motion.y});
 					break;
 				}
-				case 8:
+				/*case 8:
 				{
-					HealCloud* fire = new HealCloud(global::renderer);
-					fire->setLocation({ interface->camera.x + e->motion.x, interface->camera.y + e->motion.y });
-					fire->setLumination();
-					global::dtiles.push_back(fire);
-					global::layers.push_back(fire);
+					SDL_Point point = getCursorPosition(e);
+					for (int i = 0; i < global::layers.size(); i++) {
+						SDL_Rect rect = global::layers[i]->getRect();
+						if (SDL_PointInRect(&point, &rect)) {
+							
+						}
+					}
 					break;
-				}
+				}*/
 				default:
 					break;
 				}

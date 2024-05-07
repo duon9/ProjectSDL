@@ -73,7 +73,7 @@ void QuestManager::addMission() {
 	mission3.content.push_back("Congratulations, you have done a great job");
 	mission3.content.push_back("Now, come to the next job, we will uprank to bronze \n    after this mission");
 	mission3.content.push_back("Reported that under the city has skeleton mace you \n   have to clear them in order to protect the researcher");
-	mission3.content.push_back("Kill 10 Slime under the Pearl Harbor\n   Progress: ");
+	mission3.content.push_back("Kill 8 Mace Skeleton under the Pearl Harbor\n   Progress: ");
 	mission3.finish = false;
 	mission3.name = "Digusting odd";
 	mission3.number = 8;

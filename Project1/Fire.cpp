@@ -16,7 +16,7 @@ void Fire::incinerate() {
 			SDL_Rect v = global::layers[i]->getRect();
 			if (SDL_HasIntersection(getDamageRect(), &v)) {
 				global::layers[i]->handleMissle(stat.damage, HPDrain);
-				//stat.health += 1000;
+				//stat.health += 1000; 
 			}
 			//global::layers[i]->handleMissle(stat.damage, HPDrain);
 		}

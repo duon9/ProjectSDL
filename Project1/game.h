@@ -1,11 +1,5 @@
 #pragma once
 #include "ResourceManager.h"
-
-#include "SDL.h"
-#include "SDL_image.h"
-#include "SDL_mixer.h"
-#include "SDL_ttf.h"
-#include <iostream>
 #include "menu.h"
 #include "interface.h"
 #include "entity.h"
@@ -26,9 +20,6 @@ public:
 
 private:
 	void init(const char* title, int _x, int _y, int w, int h, Uint32 flags);
-	//SDL_Event e;
-	//SDL_Window* window = nullptr;
-	//SDL_Renderer* renderer = nullptr;
 	int screenWidth;
 	int screenHeight;
 	void handleEvents();
@@ -36,7 +27,7 @@ private:
 	void render();
 	Map* map = new Map;
 
-	ResourceManager manager = ResourceManager::getInstance();
+	ResourceManager& manager = ResourceManager::getInstance();
 	Menu* menu = nullptr;
 	Interface* interface = nullptr;
 	//Player* player1 = nullptr;

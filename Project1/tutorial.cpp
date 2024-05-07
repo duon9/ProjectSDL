@@ -2,8 +2,15 @@
 
 void Tutorial::init() {
 	object = { 20, 20, SCREEN_WIDTH - 40, SCREEN_HEIGHT - 40 };
-	text1 = TextureManagement::LoadText(renderer, font, "UNDERSTAND");
-	text2 = TextureManagement::LoadText(renderer, font, "UNDERSTAND", { 255,255,255,255 });
+	//fbutton = TTF_OpenFont("assets/fonts/test.ttf", 20);
+	text1 = TextureManagement::LoadText(renderer, font, "SAVE");
+	text2 = TextureManagement::LoadText(renderer, font, "SAVE", { 255,255,255,255 });
+	fps60 = new AnimatedButton(renderer, { 200,40, 100,40 }, "60", font);
+	fps90 = new AnimatedButton(renderer, { 350, 40, 100, 40 }, "90", font);
+	fps60->init();
+	fps90->init();
+	fps = TextureManagement::LoadText(renderer, font, "FPS:");
+	SDL_QueryTexture(fps, NULL, NULL, &fpsdes.w, &fpsdes.h);
 	SDL_QueryTexture(text1, NULL, NULL, &button.w, &button.h);
 	button.x = SCREEN_WIDTH - 20 - 20 - button.w;
 	button.y = SCREEN_HEIGHT - 20 - 20 - button.h;
@@ -12,12 +19,18 @@ void Tutorial::init() {
 
 void Tutorial::render() {
 	TextureManagement::FillRect(renderer, { 50,50,50, 150 }, object);
+	fps60->render();
+	fps90->render();
+	SDL_RenderCopy(renderer, fps, NULL, &fpsdes);
 	SDL_RenderCopy(renderer, texture, NULL, &button);
-	test();
+	//test();
 }
 
 bool Tutorial::handleEvents(SDL_Event e) {
 	//SDL_Point curr = { e.motion.x, e.motion.y };
+
+	fps60->handleUserMouseMotion(e);
+	fps90->handleUserMouseMotion(e);
 	if (e.type == SDL_MOUSEMOTION) {
 		SDL_Point curr = { e.motion.x, e.motion.y };
 		if (SDL_PointInRect(&curr, &button)) {

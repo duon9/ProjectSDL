@@ -121,6 +121,8 @@ void EntityManager::render() {
 		interface->updateObjectScreenPosition(teleporter->position, teleporter->desRect);
 		teleporter->render();
 	}*/
+
+	SDL_SetRenderDrawColor(renderer, 15, 15, 15, 255);
 }
 
 bool EntityManager::isInScreen(SDL_Rect object1, SDL_Rect object2) {
@@ -283,7 +285,12 @@ void EntityManager::setComputer() {
 		global::layers.push_back(obelisk);
 		npcs.push_back(obelisk);
 
-
+		for (int i = 0; i < 5; i++) {
+			Computer* zombie = new Computer(renderer, "zombie");
+			zombie->init();
+			global::layers.push_back(zombie);
+			computers.push_back(zombie);
+		}
 	}
 
 

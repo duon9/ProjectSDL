@@ -49,7 +49,7 @@ void Game::handleEvents() {
 	if (Global::gamestate == GameState::MENU) {
 		if (menu->handleMenuEvents(global::e) == 1) {
 			Global::gamestate = GameState::PLAY;
-			delete menu;
+			//delete menu;
 		}
 		else if (menu->handleMenuEvents(global::e) == 2) {
 			printf("Still updating");
@@ -72,8 +72,10 @@ void Game::handleEvents() {
 			global::isEscape = true;
 			global::isPause = true;
 		}
+	}
 
-
+	if (global::e.type == SDL_KEYDOWN && global::e.key.keysym.sym == SDLK_F1) {
+		Global::gamestate = MENU;
 	}
 
 	if (Global::gamestate == GameState::PLAY) {
