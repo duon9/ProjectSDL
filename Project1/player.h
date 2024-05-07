@@ -41,9 +41,8 @@ public:
 		*Destructor
 		*/
 	}
-
-	static SDL_Texture* vessel;
-
+	Stat& getStat();
+	SDL_Point& getAddressLocation();
 	void handleBarDisplay();
 	bool isInvisible = false;
 	void setBarProperties();

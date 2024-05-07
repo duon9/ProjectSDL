@@ -14,6 +14,21 @@ void QuestManager::init() {
 	addMission();
 }
 
+int QuestManager::getCurrentQuest() {
+	/*
+	* this function is used to get the current quest index
+	*/
+	return curr;
+}
+
+int QuestManager::getCurrentProgress() {
+	/*
+	* this function is used to get the current progress of current quest
+	*/
+
+	return quests[curr].progress;
+}
+
 void QuestManager::addNode(Quest data) {
 	Node* temp = new Node;
 	temp->data = data;
@@ -24,6 +39,14 @@ void QuestManager::addNode(Quest data) {
 
 Quest QuestManager::getMission() {
 	return quests[curr];
+}
+
+void QuestManager::setMission(int mission) {
+	curr = mission;
+}
+
+void QuestManager::setProgress(int progress) {
+	quests[curr].progress = progress;
 }
 
 void QuestManager::check(std::string type) {

@@ -2,7 +2,13 @@
 
 #define check (!orient.up && !orient.down && !orient.left && !orient.right)
 
-SDL_Texture* Player::vessel = nullptr;
+Stat& Player::getStat() {
+	return stat;
+}
+
+SDL_Point& Player::getAddressLocation() {
+	return position;
+}
 
 void Player::handleUserEvents(SDL_Event *e) {
 

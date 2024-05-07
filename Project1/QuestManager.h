@@ -42,6 +42,10 @@ public:
 	void init();
 	void addNode(Quest data);
 	void check(std::string type);
+	int getCurrentQuest();
+	int getCurrentProgress();
+	void setMission(int mission);
+	void setProgress(int progress);
 	//void deleteMission();
 	Quest getMission();
 };

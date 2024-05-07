@@ -1,0 +1,16 @@
+{
+    "map": {
+        "map": 0
+    },
+    "player": {
+        "XOffset": 864,
+        "YOffset": 580,
+        "exp": 1,
+        "health": 59997,
+        "mana": 1410065408
+    },
+    "quest": {
+        "current": 0,
+        "progress": 0
+    }
+}

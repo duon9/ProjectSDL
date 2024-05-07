@@ -15,6 +15,48 @@ EntityManager::EntityManager(SDL_Renderer* renderer, SDL_Event *e, Map* map, Int
 EntityManager::~EntityManager() {
 	std::cout << "EntityManager destructor called \n";
 }
+void EntityManager::save() {
+	// save game
+	File::writeSaveGame(
+		player->getHealth(),
+		player->getMana(),
+		player->getExp(),
+		player->getPosition(),
+		quest.getCurrentQuest(),
+		quest.getCurrentProgress(),
+		map
+	);
+}
+
+void EntityManager::load() {
+	SDL_Point p = { 0,0 };
+	File::readSaveGame(player->getStat(), p, map, quest);
+	clean();
+	if (map == LIBRARY) {
+		Collision::collider = File::readCollision(water_town);
+		interface->reload(TEST);
+	}
+	else if (map == GREYYARD) {
+		Collision::collider = File::readCollision(grey);
+		interface->reload(greyyard);
+	}
+	else if (map == PEARL_HARBOR) {
+		Collision::collider = File::readCollision(city_collision);
+		interface->reload(city_interface);
+	}
+	else if (map == TAVERN) {
+		Collision::collider = File::readCollision(tavern_collision);
+		interface->reload(tavern_interface);
+	}
+	else if (map == SAND) {
+		Collision::collider = File::readCollision(arrakis_collider);
+		interface->reload(arrakis);
+	}
+	Collision::reload();
+	player->setLocation(p);
+	setComputer();
+	setMapLogic();
+}
 
 void EntityManager::init() {
 	manager.run();
@@ -27,6 +69,7 @@ void EntityManager::init() {
 	global::layers.push_back(player);
 	global::resources["assets/characters/element.png"] = TextureManagement::LoadTexture("assets/characters/element.png", renderer);
 	setComputer();
+	setMapLogic();
 }
 
 void EntityManager::HandleEvents() {

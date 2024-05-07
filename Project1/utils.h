@@ -10,6 +10,7 @@
 #include <pugixml.hpp>
 #include "constant.h"
 #include <unordered_map>
+#include "QuestManager.h"
 
 class TextureManagement
 {
@@ -44,6 +45,24 @@ public:
 	static void getProperties(std::string type, Stat* stat);
 	static std::vector<std::vector<SDL_Rect>> getClips(std::string type);
 	static void getFrameLimit(std::string type, std::vector<Frame>* frame);
+
+	static void writeSaveGame(
+		int health, // current health of player
+		int mana, // current mana of player
+		int exp, // current exp of player
+		SDL_Point location, // current location of player
+		int quest_curr, // current quest index
+		int quest_progress,
+		Map curr_map // current map
+	);
+
+	static void readSaveGame(
+		Stat& stat, 
+		SDL_Point& location,
+		Map& map,
+		QuestManager& quest
+	);
+
 };
 
 namespace Global {

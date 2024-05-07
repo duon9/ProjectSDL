@@ -242,3 +242,87 @@ TTF_Font* Font::loadFont(std::string path, int size) {
 //	textRect.w = w;
 //	textRect.h = h;
 //}
+
+void File::writeSaveGame(
+	int health, // current health of player
+	int mana, // current mana of player
+	int exp, // current exp of player
+	SDL_Point location, // current location of player
+	int quest_curr, // current quest index
+	int quest_progress, // current progress of mission
+	Map curr_map // current map, this will transform to int to store in json
+) {
+	/*
+	* This function is used to write saved information when save
+	* Current state of player will save under json type, and save at save.json
+	* The structure of json file will be:
+	* 
+	* "player" : {
+	*	"health" : health,
+	*	"mana" : mana,
+	*	"exp" : exp
+	*	"XOffset" : location.x,
+	*	"YOffset" : location.y
+	* },
+	* "quest" {
+	*	"current" : quest_curr,
+	*	"progress" : quest_progress
+	* },
+	* "map" {
+	*	map : (int)curr_map
+	* }
+	*/
+
+	std::ofstream file("save.json", std::ofstream::out | std::ofstream::trunc);
+	if (!file.is_open()) {
+		std::cerr << "Cannot open file" << std::endl;
+		return;
+	}
+
+	nlohmann::json j;
+
+	j["player"] = {
+		{"health", health},
+		{"mana", mana},
+		{"exp", exp},
+		{"XOffset", location.x},
+		{"YOffset", location.y}
+	};
+
+	j["quest"] = {
+		{"current", quest_curr},
+		{"progress", quest_progress}
+	};
+
+	j["map"] = {
+		{"map", static_cast<int>(curr_map)}
+	};
+
+	file << std::setw(4) << j << std::endl;
+
+	file.close();
+}
+
+void File::readSaveGame(
+	Stat& stat, // stat of player
+	SDL_Point& location, // location of player
+	Map& map, // map
+	QuestManager& quest // quest
+) {
+	/*
+	* this function is used to load the saved gamestate
+	* The saved information will read from save.json
+	*/
+	nlohmann::json jsondata;
+	readJSON("save.json", jsondata);
+	nlohmann::json player = jsondata["player"];
+	stat.health = player["health"];
+	stat.mana = player["mana"];
+	stat.exp = player["exp"];
+	location.x = player["XOffset"];
+	location.y = player["YOffset"];
+	nlohmann::json questr = jsondata["quest"];
+	quest.setMission(questr["current"]);
+	quest.setProgress(questr["progress"]);
+	map = static_cast<Map>(jsondata["map"]["map"]);
+}

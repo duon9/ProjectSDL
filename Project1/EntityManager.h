@@ -28,13 +28,15 @@ private:
 	//std::vector<Entity*> layers;
 	Interface* interface = nullptr;
 	Map map = GREYYARD;
-	ResourceManager manager = ResourceManager::getInstance();
+	ResourceManager& manager = ResourceManager::getInstance();
+	QuestManager& quest = QuestManager::getInstance();
 	
 public:
 
 	EntityManager(SDL_Renderer* renderer, SDL_Event* e, Map* map, Interface* interface);
 	~EntityManager();
-
+	void save();
+	void load();
 	void init();
 	void render();
 	void HandleEvents();

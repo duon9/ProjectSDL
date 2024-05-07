@@ -1,4 +1,5 @@
 #include "tutorial.h"
+#include "global.h"
 
 void Tutorial::init() {
 	object = { 20, 20, SCREEN_WIDTH - 40, SCREEN_HEIGHT - 40 };
@@ -29,8 +30,13 @@ void Tutorial::render() {
 bool Tutorial::handleEvents(SDL_Event e) {
 	//SDL_Point curr = { e.motion.x, e.motion.y };
 
-	fps60->handleUserMouseMotion(e);
-	fps90->handleUserMouseMotion(e);
+	if (fps60->handleUserMouseMotion(e)) {
+		global::fps = 10;
+	}
+	if (fps90->handleUserMouseMotion(e)) {
+		global::fps = 90;
+	}
+
 	if (e.type == SDL_MOUSEMOTION) {
 		SDL_Point curr = { e.motion.x, e.motion.y };
 		if (SDL_PointInRect(&curr, &button)) {

@@ -52,7 +52,8 @@ void Game::handleEvents() {
 			//delete menu;
 		}
 		else if (menu->handleMenuEvents(global::e) == 2) {
-			printf("Still updating");
+			entitys->load();
+			Global::gamestate = GameState::PLAY;
 		}
 		else if (menu->handleMenuEvents(global::e) == 4) {
 			Global::gamestate = GameState::EXIT;
@@ -76,6 +77,10 @@ void Game::handleEvents() {
 
 	if (global::e.type == SDL_KEYDOWN && global::e.key.keysym.sym == SDLK_F1) {
 		Global::gamestate = MENU;
+	}
+
+	if (global::e.type == SDL_KEYDOWN && global::e.key.keysym.sym == SDLK_F2) {
+		entitys->save();
 	}
 
 	if (Global::gamestate == GameState::PLAY) {
@@ -105,6 +110,6 @@ void Game::render() {
 	}
 	SDL_SetRenderDrawColor(global::renderer, 0, 0, 0, 255);
 	SDL_RenderPresent(global::renderer);
-	FPScontroller::FPSlimit(60);
+	FPScontroller::FPSlimit(global::fps);
 }
 
