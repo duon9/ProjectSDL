@@ -196,3 +196,12 @@ int Collision::getWidth() {
 int Collision::getHeight() {
 	return map_height;
 }
+
+bool Collision::check(SDL_Point position, SDL_Rect object) {
+	SDL_Point* center = new SDL_Point();
+	center->x = position.x + object.w / 2;
+	center->y = position.y + object.h - static_cast<int>(TOLERANCE * object.h);
+	if (collider[(center->y) / TILE_HEIGHT][(center->x) / TILE_WIDTH] == 0) return true;
+	delete center;
+	return false;
+}

@@ -45,7 +45,7 @@ enum Map {
 	VILLAGE,
 	FRONTIER_TOWN,
 	CAPITAL,
-	WATER_TOWN,
+	BEACH,
 	PEARL_HARBOR,
 	FROST_HILL,
 	ELF_WOOD,
@@ -199,6 +199,12 @@ const std::string tavern_collision = "assets/map/tavern.tmj";
 const std::string city_interface = "assets/map/city.png";
 const std::string city_collision = "assets/map/city.tmj";
 const std::string ship_source = "assets/characters/ship.png";
+
+const std::string beach_interface = "assets/map/beach.png";
+const std::string beach_collision = "assets/map/beach.tmj";
+
+const std::string dungeon1_interface = "assets/map/dungeon1.png";
+const std::string dungeon1_collision = "assets/map/dungeon1.tmj";
 
 const double TOLERANCE = 0.03;
 

@@ -97,3 +97,12 @@ std::string Entity::getType() {
 void Entity::setSource(std::string source) {
 	this->source = source;
 }
+
+void Entity::setRandonLocation(int minx, int maxx, int miny, int maxy) {
+	position.x = Math::Casuale::casuale(minx, maxx);
+	position.y = Math::Casuale::casuale(miny, maxy);
+	while (Collision::check({ position.x, position.y }, desRect)) {
+		position.x = Math::Casuale::casuale(minx, maxx);
+		position.y = Math::Casuale::casuale(miny, maxy);
+	}
+}

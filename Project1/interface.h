@@ -37,7 +37,8 @@ public:
 	void handleInterfaceEvents();
 	void loadTexture();
 	void loadMap();
-
+	int getMapWidth();
+	int getMapHeight();
 	void cameraInitObjectLocation(int map_x, int map_y, SDL_Rect& object);
 	void cameraInitLocation(int map_x, int map_y);
 	bool isCameraCollideCornerHorizontal(int velocity);

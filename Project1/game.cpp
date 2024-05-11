@@ -40,6 +40,7 @@ void Game::gameLoop() {
 		TimerManager::updateAllTimers();
 		handleEvents();
 		render();
+
 	}
 	manager.wait();
 }

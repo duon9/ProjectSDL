@@ -12,6 +12,14 @@ Interface::~Interface() {
 	// Deconstructor
 }
 
+int Interface::getMapWidth() {
+	return map_w;
+}
+
+int Interface::getMapHeight() {
+	return map_h;
+}
+
 void Interface::init() {
 	dark = SDL_CreateTexture(global::renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, SCREEN_WIDTH, SCREEN_HEIGHT);
 	SDL_SetTextureAlphaMod(dark, 100);

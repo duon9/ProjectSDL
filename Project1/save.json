@@ -1,12 +1,12 @@
 {
     "map": {
-        "map": 0
+        "map": 6
     },
     "player": {
-        "XOffset": 864,
-        "YOffset": 580,
+        "XOffset": 538,
+        "YOffset": 541,
         "exp": 1,
-        "health": 59997,
+        "health": 82000,
         "mana": 1410065408
     },
     "quest": {

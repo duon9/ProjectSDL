@@ -52,6 +52,10 @@ void EntityManager::load() {
 		Collision::collider = File::readCollision(arrakis_collider);
 		interface->reload(arrakis);
 	}
+	else if (map == BEACH) {
+		Collision::collider = File::readCollision(beach_collision);
+		interface->reload(beach_interface);
+	}
 	Collision::reload();
 	player->setLocation(p);
 	setComputer();
@@ -67,7 +71,7 @@ void EntityManager::init() {
 	player = new Player(renderer, "little", interface);
 	player->init();
 	global::layers.push_back(player);
-	global::resources["assets/characters/element.png"] = TextureManagement::LoadTexture("assets/characters/element.png", renderer);
+	//global::resources["assets/characters/element.png"] = TextureManagement::LoadTexture("assets/characters/element.png", renderer);
 	setComputer();
 	setMapLogic();
 }
@@ -100,7 +104,6 @@ void EntityManager::HandleEvents() {
 				player->setLocation(global::teleporters[i]->getDestinationPoint());
 				clean();
 				setComputer();
-				//global::lighthouse.clear();
 				setMapLogic();
 			}
 		}
@@ -160,12 +163,12 @@ void EntityManager::render() {
 		object->render(); 
 	}
 
-	/*for (auto& teleporter : global::teleporters) {
+	for (auto& teleporter : global::teleporters) {
 		interface->updateObjectScreenPosition(teleporter->position, teleporter->desRect);
 		teleporter->render();
-	}*/
+	}
 
-	SDL_SetRenderDrawColor(renderer, 15, 15, 15, 255);
+	//SDL_SetRenderDrawColor(renderer, 15, 15, 15, 255);
 }
 
 bool EntityManager::isInScreen(SDL_Rect object1, SDL_Rect object2) {
@@ -295,6 +298,17 @@ void EntityManager::setComputer() {
 		teleporter5->setLocation({ -22 - 60, 1060 });
 		global::teleporters.push_back(teleporter5);
 
+
+		Teleporter* teleporter6 = new Teleporter(renderer);
+		teleporter6->init();
+		teleporter6->setMap(Map::PEARL_HARBOR);
+		teleporter6->setColliderPath(beach_collision);
+		teleporter6->setDestination(Map::BEACH);
+		teleporter6->setDestinationPoint({ 100, 100 });
+		teleporter6->setInterfacePath(beach_interface);
+		teleporter6->setLocation({ 1265, 1060 - 150});
+		global::teleporters.push_back(teleporter6);
+
 		Entity* ship = new Entity(renderer);
 		ship->setSource(ship_source);
 		ship->init();
@@ -320,6 +334,63 @@ void EntityManager::setComputer() {
 	}
 
 
+	if (map == BEACH) {
+		Teleporter* teleporter6 = new Teleporter(renderer);
+		teleporter6->init();
+		teleporter6->setMap(Map::BEACH);
+		teleporter6->setColliderPath(city_collision);
+		teleporter6->setDestination(Map::PEARL_HARBOR);
+		teleporter6->setDestinationPoint({ 1265, 1060 - 150 });
+		teleporter6->setInterfacePath(city_interface);
+		teleporter6->setLocation({ -70, 110 });
+		global::teleporters.push_back(teleporter6);
+
+		Entity* ship = new Entity(renderer);
+		ship->setSource(ship_source);
+		ship->init();
+		ship->setLocation({ 500, 600 - 32 });
+		ship->setSize(256 * 1.5, 192 * 1.5);
+		global::layers.push_back(ship);
+
+		Entity* ship2 = new Entity(renderer);
+		ship2->setSource(ship_source);
+		ship2->init();
+		ship2->setLocation({ 238, 803 });
+		ship2->setSize(256 * 2, 192 * 2);
+		global::layers.push_back(ship2);
+
+		NPC* priestess = new NPC(renderer, "npc_priestess");
+		priestess->init();
+		priestess->setLocation({ 500, 100 });
+		priestess->add("want to come to my hometown");
+		priestess->add("come to these man, and ask for a trip to atlantis");
+		global::layers.push_back(priestess);
+		npcs.push_back(priestess);
+
+		Obelisk* obelisk = new Obelisk(global::renderer);
+		obelisk->init();
+		obelisk->setSize(100, 200);
+		obelisk->setLocation({ 300, 100 });
+		global::layers.push_back(obelisk);
+		npcs.push_back(obelisk);
+
+		for (int i = 0; i < 5; i++) {
+			Computer* li = new Computer(renderer, "goblin");
+			li->init();
+			li->setRandonLocation(200, interface->getMapWidth() - 200, 200, interface->getMapHeight() - 200);
+			computers.push_back(li);
+			global::layers.push_back(li);
+		}
+		for (int i = 0; i < 5; i++) {
+			Computer* li = new Computer(renderer, "shield");
+			li->init();
+			li->setRandonLocation(200, interface->getMapWidth() - 200, 200, interface->getMapHeight() - 200);
+			computers.push_back(li);
+			global::layers.push_back(li);
+		}
+	}
+
+
 
 	if (map == GREYYARD) {
 		Obelisk* obelisk = new Obelisk(global::renderer);
@@ -328,7 +399,7 @@ void EntityManager::setComputer() {
 		global::layers.push_back(obelisk);
 		npcs.push_back(obelisk);
 
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 0; i++) {
 			Computer* zombie = new Computer(renderer, "zombie");
 			zombie->init();
 			global::layers.push_back(zombie);
@@ -403,6 +474,7 @@ void EntityManager::setComputer() {
 		for (int i = 0; i < 5; i++) {
 			Skeleton* li = new Skeleton(renderer);
 			li->init();
+			li->setRandonLocation(100, interface->getMapWidth() - 100, 100, interface->getMapHeight() - 100);
 			computers.push_back(li);
 			global::layers.push_back(li);
 		}
@@ -448,8 +520,20 @@ void EntityManager::setComputer() {
 		teleporter2->setDestination(Map::PEARL_HARBOR);
 		teleporter2->setDestinationPoint({ -22, 1055 });
 		teleporter2->setInterfacePath(city_interface);
-		teleporter2->setLocation({ 2866, 192 });
+		teleporter2->setLocation({ 2866 - 50, 192 });
 		global::teleporters.push_back(teleporter2);
+
+		// 2703 2407
+
+		Teleporter* teleporter3 = new Teleporter(renderer);
+		teleporter3->init();
+		teleporter3->setMap(Map::LIBRARY);
+		teleporter3->setColliderPath(city_collision);
+		teleporter3->setDestination(Map::DWARF_FORTRESS);
+		teleporter3->setDestinationPoint({ 500, 500 });
+		teleporter3->setInterfacePath(city_interface);
+		teleporter3->setLocation({ 2703, 2407 });
+		global::teleporters.push_back(teleporter3);
 
 		for (int i = 0; i < 8; i++) {
 			MaceSkeleton* li = new MaceSkeleton(renderer);

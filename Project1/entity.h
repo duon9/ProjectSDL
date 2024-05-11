@@ -9,6 +9,7 @@
 #include "constant.h"
 #include "protocol.h"
 #include "math.h"
+#include "collision.h"
 
 class Entity
 {
@@ -29,6 +30,7 @@ public:
 	virtual void setLocation();
 	virtual void handleLogic();
 	void setLocation(SDL_Point location);
+	void setRandonLocation(int minx, int maxx, int miny, int maxy);
 	void setSize(int w, int h);
 	static void setTexture(std::string path, SDL_Renderer*renderer);
 	SDL_Point getPosition();

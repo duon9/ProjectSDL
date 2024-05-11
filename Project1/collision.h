@@ -20,6 +20,7 @@ public:
 	static std::vector<std::vector<int>> collider;
 	static int getWidth();
 	static int getHeight();
+	static bool check(SDL_Point position, SDL_Rect object);
 
 private:
 	static int map_width, map_height;

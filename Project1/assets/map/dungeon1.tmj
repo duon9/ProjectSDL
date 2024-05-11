@@ -1,12 +1,4 @@
 { "compressionlevel":-1,
- "editorsettings":
-    {
-     "export":
-        {
-         "format":"json",
-         "target":"..\/map\/dungeon1.tmj"
-        }
-    },
  "height":40,
  "infinite":false,
  "layers":[
@@ -223,15 +215,15 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"tileset\/Dungeon_Tileset.tsx"
+         "source":"..\/.tile\/tileset\/Dungeon_Tileset.tsx"
         }, 
         {
          "firstgid":321,
-         "source":"underground\/green.tsx"
+         "source":"..\/.tile\/underground\/green.tsx"
         }, 
         {
          "firstgid":322,
-         "source":"underground\/tilesetformattedupdate1.tsx"
+         "source":"..\/.tile\/underground\/tilesetformattedupdate1.tsx"
         }],
  "tilewidth":32,
  "type":"map",
