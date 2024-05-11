@@ -1800,12 +1800,12 @@
     }
   },
   "zombie": {
-    "health": 100000,
+    "health": 10000,
     "mana": 1,
-    "damage": 10,
+    "damage": 5000,
     "level": 1,
     "exp": 1,
-    "speed": 4,
+    "speed": 3.5,
     "source": "assets/characters/zombie.png",
     "range": 1,
     "desRect": [ 0, 0, 64, 64 ],
@@ -1844,7 +1844,7 @@
       },
       "attackFrame": {
         "count": 7,
-        "maxFrame": 70,
+        "maxFrame": 35,
         "srcRect": [
           [ 0, 32, 32, 32 ],
           [ 32, 32, 32, 32 ],

@@ -163,10 +163,10 @@ void EntityManager::render() {
 		object->render(); 
 	}
 
-	for (auto& teleporter : global::teleporters) {
+	/*for (auto& teleporter : global::teleporters) {
 		interface->updateObjectScreenPosition(teleporter->position, teleporter->desRect);
 		teleporter->render();
-	}
+	}*/
 
 	//SDL_SetRenderDrawColor(renderer, 15, 15, 15, 255);
 }
@@ -240,6 +240,27 @@ void EntityManager::clean() {
 }
 
 void EntityManager::setComputer() {
+	//462 425
+	if (map == DWARF_FORTRESS) {
+		Teleporter* teleporter = new Teleporter(renderer);
+		teleporter->init();
+		teleporter->setSize(32, 32);
+		teleporter->setMap(Map::DWARF_FORTRESS);
+		teleporter->setColliderPath(water_town);
+		teleporter->setDestination(Map::LIBRARY);
+		teleporter->setDestinationPoint({ 2703, 2397 });
+		teleporter->setInterfacePath(TEST);
+		teleporter->setLocation({ 462, 425 });
+		global::teleporters.push_back(teleporter);
+
+		for (int i = 0; i < 15; i++) {
+			Computer* li = new Computer(renderer, "zombie");
+			li->init();
+			li->setRandonLocation(200, interface->getMapWidth() - 200, 200, interface->getMapHeight() - 200);
+			computers.push_back(li);
+			global::layers.push_back(li);
+		}
+	}
 
 	if (map == PEARL_HARBOR) {
 		Teleporter* teleporter = new Teleporter(renderer);
@@ -520,7 +541,7 @@ void EntityManager::setComputer() {
 		teleporter2->setDestination(Map::PEARL_HARBOR);
 		teleporter2->setDestinationPoint({ -22, 1055 });
 		teleporter2->setInterfacePath(city_interface);
-		teleporter2->setLocation({ 2866 - 50, 192 });
+		teleporter2->setLocation({ 2866, 192 });
 		global::teleporters.push_back(teleporter2);
 
 		// 2703 2407
@@ -528,10 +549,10 @@ void EntityManager::setComputer() {
 		Teleporter* teleporter3 = new Teleporter(renderer);
 		teleporter3->init();
 		teleporter3->setMap(Map::LIBRARY);
-		teleporter3->setColliderPath(city_collision);
+		teleporter3->setColliderPath(dungeon1_collision);
 		teleporter3->setDestination(Map::DWARF_FORTRESS);
 		teleporter3->setDestinationPoint({ 500, 500 });
-		teleporter3->setInterfacePath(city_interface);
+		teleporter3->setInterfacePath(dungeon1_interface);
 		teleporter3->setLocation({ 2703, 2407 });
 		global::teleporters.push_back(teleporter3);
 
@@ -653,7 +674,7 @@ void EntityManager::setComputer() {
 }
 
 void EntityManager::setMapLogic() {
-	if (map == LIBRARY || map == SAND) {
+	if (map == LIBRARY || map == SAND || map == DWARF_FORTRESS) {
 		global::isDark = true;
 	}
 	else {

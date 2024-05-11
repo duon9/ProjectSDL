@@ -2,6 +2,7 @@
 #include "aniamted_obj.h"
 #include "math.h"
 #include "constant.h"
+#include "collision.h"
 //#include "global.h"
 class Missle : public Animated
 {
@@ -13,10 +14,12 @@ protected:
 	Math::Vector v;
 	int damage = 1000;
 	Effect effect = NONE;
+	Collision* collision = nullptr;
 public:
 	
 
 	Missle(SDL_Renderer* renderer, SDL_Point currPos, SDL_Point desPos, SDL_Point camera, Uint32 code) : Animated(renderer) {
+		init();
 		desRect.w = MISSLE_WIDTH;
 		desRect.h = MISSLE_HEIGHT;
 		this->code = code;

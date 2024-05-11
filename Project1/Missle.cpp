@@ -30,7 +30,7 @@ void Missle::render() {
 }
 
 void Missle::init() {
-
+	collision = new Collision(&desRect, nullptr, &position);
 }
 
 void Missle::handleEffect(SDL_Rect target) {
@@ -48,6 +48,25 @@ void Missle::projectile() {
 	if (state == FINAL /*|| state == FORMATION*/) {
 		position.x += v.getX() * speed;
 		position.y += v.getY() * speed;
+		/*if (!collision->isCollidingHorizontal(v.getX() * speed)) {
+			position.x = position.x + (v.getX() * speed);
+		}
+		else {
+			state = IMPACT;
+			isCollide = true;
+			frameCount = 0;
+			return;
+		}
+
+		if (!collision->isCollidingVertical(v.getY() * speed)) {
+			position.y = position.y + (v.getY() * speed);
+		}
+		else {
+			state = IMPACT;
+			isCollide = true;
+			frameCount = 0;
+			return;
+		}*/
 	}
 }
 
