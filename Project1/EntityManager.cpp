@@ -56,6 +56,15 @@ void EntityManager::load() {
 		Collision::collider = File::readCollision(beach_collision);
 		interface->reload(beach_interface);
 	}
+	else if (map == DWARF_FORTRESS) {
+		Collision::collider = File::readCollision(dungeon1_collision);
+		interface->reload(dungeon1_interface);
+	}
+	else if (map == DWARF_FORTRESS_1) {
+		Collision::collider = File::readCollision(dungeon2_collision);
+		interface->reload(dungeon2_interface);
+	}
+	player->check_death = false;
 	Collision::reload();
 	player->setLocation(p);
 	setComputer();
@@ -252,9 +261,57 @@ void EntityManager::setComputer() {
 		teleporter->setInterfacePath(TEST);
 		teleporter->setLocation({ 462, 425 });
 		global::teleporters.push_back(teleporter);
+		// 1246 566
 
-		for (int i = 0; i < 15; i++) {
+		Teleporter* teleporter1 = new Teleporter(renderer);
+		teleporter1->init();
+		teleporter1->setMap(Map::DWARF_FORTRESS);
+		teleporter1->setColliderPath(dungeon2_collision);
+		teleporter1->setDestination(Map::DWARF_FORTRESS_1);
+		teleporter1->setDestinationPoint({ 20, 37 * 16 });
+		teleporter1->setInterfacePath(dungeon2_interface);
+		teleporter1->setLocation({ 1254, 566 });
+		global::teleporters.push_back(teleporter1);
+
+		for (int i = 0; i < 10; i++) {
 			Computer* li = new Computer(renderer, "zombie");
+			li->init();
+			li->setRandonLocation(200, interface->getMapWidth() - 200, 200, interface->getMapHeight() - 200);
+			computers.push_back(li);
+			global::layers.push_back(li);
+		}
+
+		for (int i = 0; i < 1; i++) {
+			Computer* li = new Computer(renderer, "minotaur");
+			li->init();
+			li->setRandonLocation(200, interface->getMapWidth() - 200, 200, interface->getMapHeight() - 200);
+			computers.push_back(li);
+			global::layers.push_back(li);
+		}
+	}
+
+	if (map == DWARF_FORTRESS_1) {
+		// -32 530
+
+		Teleporter* teleporter = new Teleporter(renderer);
+		teleporter->init();
+		teleporter->setMap(Map::DWARF_FORTRESS_1);
+		teleporter->setColliderPath(dungeon1_collision);
+		teleporter->setDestination(Map::DWARF_FORTRESS);
+		teleporter->setDestinationPoint({ 1247, 580 });
+		teleporter->setInterfacePath(dungeon1_interface);
+		teleporter->setLocation({ -80, 530 });
+		global::teleporters.push_back(teleporter);
+
+		for (int i = 0; i < 5; i++) {
+			Computer* li = new Computer(renderer, "goblin");
+			li->init();
+			li->setRandonLocation(200, interface->getMapWidth() - 200, 200, interface->getMapHeight() - 200);
+			computers.push_back(li);
+			global::layers.push_back(li);
+		}
+		for (int i = 0; i < 5; i++) {
+			Computer* li = new Computer(renderer, "shield");
 			li->init();
 			li->setRandonLocation(200, interface->getMapWidth() - 200, 200, interface->getMapHeight() - 200);
 			computers.push_back(li);
@@ -396,14 +453,7 @@ void EntityManager::setComputer() {
 		npcs.push_back(obelisk);
 
 		for (int i = 0; i < 5; i++) {
-			Computer* li = new Computer(renderer, "goblin");
-			li->init();
-			li->setRandonLocation(200, interface->getMapWidth() - 200, 200, interface->getMapHeight() - 200);
-			computers.push_back(li);
-			global::layers.push_back(li);
-		}
-		for (int i = 0; i < 5; i++) {
-			Computer* li = new Computer(renderer, "shield");
+			Computer* li = new Computer(renderer, "rogue_knight");
 			li->init();
 			li->setRandonLocation(200, interface->getMapWidth() - 200, 200, interface->getMapHeight() - 200);
 			computers.push_back(li);
@@ -558,6 +608,7 @@ void EntityManager::setComputer() {
 
 		for (int i = 0; i < 8; i++) {
 			MaceSkeleton* li = new MaceSkeleton(renderer);
+			li->setRandonLocation(1000, interface->getMapWidth() - 200, 1000, interface->getMapHeight() - 200);
 			li->init();
 			computers.push_back(li);
 			global::layers.push_back(li);
@@ -565,20 +616,10 @@ void EntityManager::setComputer() {
 
 		for (int i = 0; i < 10; i++) {
 			Computer* li = new Computer(renderer, "slime");
+			li->setRandonLocation(200, interface->getMapWidth() - 200, 200, interface->getMapHeight() - 200);
 			li->init();
 			computers.push_back(li);
 			global::layers.push_back(li);
-		}
-
-		// 1153 1040
-
-		for (int i = 0; i < 0; i++) {
-			HealCloud* fire = new HealCloud(global::renderer);
-			fire->setLocation({ 1153, 1040 });
-			fire->setLumination();
-			global::dtiles.push_back(fire);
-			global::layers.push_back(fire);
-
 		}
 	}
 	else if (map == GREYYARD) {
@@ -674,7 +715,7 @@ void EntityManager::setComputer() {
 }
 
 void EntityManager::setMapLogic() {
-	if (map == LIBRARY || map == SAND || map == DWARF_FORTRESS) {
+	if (map == LIBRARY || map == SAND || map == DWARF_FORTRESS || map == DWARF_FORTRESS_1) {
 		global::isDark = true;
 	}
 	else {

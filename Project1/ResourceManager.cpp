@@ -8,8 +8,8 @@ int ResourceManager::loadNPCProperties(void* data) {
 }
 
 int loader(void* data) {
-	std::vector<std::string> types = { "npc_monk", "npc_hashashin", "npc_priestess", "npc_mauler", "npc_ranger", "npc_bladekeeper", "npc_knight", "npc_guard", "smokeTile", "wave", "receptionist", "questgiver", "mace", "fireTile", "iceTile", "slime", "obelisk", "zombie", "goblin"};
-	std::vector<std::string> textures = { "assets/characters/goblin.png", "assets/characters/zombie.png","assets/characters/shield.png","assets/characters/element.png","assets/characters/slime.png","assets/characters/mace.png" };
+	std::vector<std::string> types = { "npc_monk", "npc_hashashin", "npc_priestess", "npc_mauler", "npc_ranger", "npc_bladekeeper", "npc_knight", "npc_guard", "smokeTile", "wave", "receptionist", "questgiver", "mace", "fireTile", "iceTile", "slime", "zombie", "goblin", "shield"};
+	std::vector<std::string> textures = { "assets/characters/goblin.png", "assets/characters/zombie.png","assets/characters/shield.png","assets/characters/element.png","assets/characters/slime.png","assets/characters/mace.png", "assets/map/dungeon1.png", "assets/map/beach.png", "assets/map/city.png" };
 	for (auto it = types.begin(); it != types.end(); it++) {
 		//std::cout << "load finish " << *it << std::endl;
 		global::stats[*it] = new Stat();

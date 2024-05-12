@@ -1,12 +1,4 @@
 { "compressionlevel":-1,
- "editorsettings":
-    {
-     "export":
-        {
-         "format":"json",
-         "target":"..\/map\/dungeon2.tmj"
-        }
-    },
  "height":40,
  "infinite":false,
  "layers":[
@@ -274,27 +266,27 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"tileset\/Desert Tileset.tsx"
+         "source":"..\/.tile\/tileset\/Desert Tileset.tsx"
         }, 
         {
          "firstgid":561,
-         "source":"Bridge_All.tsx"
+         "source":"..\/.tile\/Bridge_All.tsx"
         }, 
         {
          "firstgid":609,
-         "source":"tileset\/Dungeon_Tileset.tsx"
+         "source":"..\/.tile\/tileset\/Dungeon_Tileset.tsx"
         }, 
         {
          "firstgid":929,
-         "source":"underground\/tilesetformattedupdate1.tsx"
+         "source":"..\/.tile\/underground\/tilesetformattedupdate1.tsx"
         }, 
         {
          "firstgid":1145,
-         "source":"Water.tsx"
+         "source":"..\/.tile\/Water.tsx"
         }, 
         {
          "firstgid":1146,
-         "source":"underground\/green.tsx"
+         "source":"..\/.tile\/underground\/green.tsx"
         }],
  "tilewidth":32,
  "type":"map",

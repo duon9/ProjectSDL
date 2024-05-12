@@ -1,11 +1,11 @@
 {
   "rogue_knight": {
-    "health": 100000,
+    "health": 6666,
     "mana": 1000,
-    "damage": 400,
+    "damage": 4500,
     "level": 1,
     "exp": 1,
-    "speed": 2,
+    "speed": 3,
     "source": "assets/characters/rogue.png",
     "range": 1,
     "width": 54,
@@ -1802,10 +1802,10 @@
   "zombie": {
     "health": 10000,
     "mana": 1,
-    "damage": 5000,
+    "damage": 3000,
     "level": 1,
     "exp": 1,
-    "speed": 3.5,
+    "speed": 3,
     "source": "assets/characters/zombie.png",
     "range": 1,
     "desRect": [ 0, 0, 64, 64 ],

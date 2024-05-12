@@ -50,6 +50,7 @@ enum Map {
 	FROST_HILL,
 	ELF_WOOD,
 	DWARF_FORTRESS,
+	DWARF_FORTRESS_1,
 	TAVERN,
 	SAND
 };
@@ -205,6 +206,9 @@ const std::string beach_collision = "assets/map/beach.tmj";
 
 const std::string dungeon1_interface = "assets/map/dungeon1.png";
 const std::string dungeon1_collision = "assets/map/dungeon1.tmj";
+
+const std::string dungeon2_interface = "assets/map/dungeon2.png";
+const std::string dungeon2_collision = "assets/map/dungeon2.tmj";
 
 const double TOLERANCE = 0.03;
 

@@ -2,6 +2,7 @@
 
 #define check (!orient.up && !orient.down && !orient.left && !orient.right)
 
+int cost[] = { 100, 200, 300, 400, 500, 600, 700, 800, 900 };
 Stat& Player::getStat() {
 	return stat;
 }
@@ -11,7 +12,8 @@ SDL_Point& Player::getAddressLocation() {
 }
 
 void Player::handleUserEvents(SDL_Event *e) {
-
+	stat.health += global::stats[type]->health / 10000;
+	stat.mana += global::stats[type]->mana / 10000;
 	if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_e) protocol->send(getPosition(), true);
 	if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_q) protocol->send(getPosition(), false);
 	if (!check_death && !global::isPause) {
@@ -133,6 +135,7 @@ void Player::handleUserEvents(SDL_Event *e) {
 				attack();
 			}
 			if (e->button.button == SDL_BUTTON_RIGHT && global::isHaveArcane) {
+				stat.mana -= cost[magic];
 				switch (magic) {
 				case 1:
 				{

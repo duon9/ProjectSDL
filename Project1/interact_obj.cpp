@@ -210,6 +210,10 @@ void Object::handleLogic() {
 		stat.health = global::stats[type]->health;
 	}
 
+	if (stat.mana > global::stats[type]->mana) {
+		stat.mana = global::stats[type]->mana;
+	}
+
 	if (stat.health <= 0) {
 		///frameCount = 0;
 		status = DEATH;
